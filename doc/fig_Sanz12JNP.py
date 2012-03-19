@@ -20,8 +20,6 @@ import numpy as np
 import sys
 sys.path.append('..')
 import MotionClouds as mc
-fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
-#print mc.N_X, mc.N_Y, mc.N_frame
 
 # Figure 1: \caption{(\textit{A}) Top: a natural movie with the main motion component consisting of a horizontal, rightward full-field translation. Such a movie would be produced by an eye movement with constant mean velocity to the left (negative $x$ direction), plus some residual, centered jitter noise in the motion-compensated natural scene. We represent the movie as a cube, whose $(x,y,t=0)$ face corresponds to the first frame, the $(x,y=0,t)$ face shows the rightward translation motion as diagonal stripes. As a result of the horizontal motion direction, the $(x=54,y,t)$ face is a reflected image of the $(x,y,t=0)$ face, contracted or dilated depending on the amplitude of motion. The bottom panel shows the corresponding Fourier energy spectrum, as well as its projections onto three orthogonal planes. For any given point in frequency space, the energy value with respect to the maximum is coded by 6 discrete color iso-surfaces (i.e.: 90\%, 75\%, 50\%, 25\%, 11\% and 6\% of peak. The amplitude of the Fourier energy spectrum has been normalized to 1 in all panels and the same conventions used here apply to all following figures. (\textit{B}) to (\textit{C}): The image is progressively morphed (A through B to C) into a Random Phase Texture by perturbing independently the phase of each Fourier component.  (\textit{upper row}): Form is gradually lost in this process, whereas (\textit{lower row}): most motion energy information is preserved, as it is concentrated around the same speed plane in all three cases (the spectral envelopes are nearly identical).}
 if not(os.path.isfile('figure1.pdf')):
@@ -155,6 +153,9 @@ if not(os.path.isfile('figure1.pdf')):
         spectrum /= spectrum.max()
         mc.visualize(fx, fy, ft, spectrum, name=name_)
 
+
+print mc.N_X, mc.N_Y, mc.N_frame
+fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
 
 # Figure 2:  \caption{From an impulse to a Motion Cloud. (\textit{A}): The movie corresponding to a typical ``edge", i.e., a moving Gabor patch that corresponds to a localized grating. The Gabor patch being relatively small, for clarity, we zoomed 8 times into the non-zeros values of the image. (\textit{B}): By densely mixing multiple copies of the kernel shown in (A) at random positions, we obtain a Random Phase Texture (RPT), see Supplemental Movie 1. (\textit{C}):  We show here the envelope of the Fourier transform of kernel $K$: inversely, $K$ is the impulse response in image space of the filter defined by this envelope. Due to the linearity of the Fourier transform, apart from a multiplicative constant that vanishes by normalizing the energy of the  RPT to $1$, the spectral envelope of the RPT in (B) is the same as the one of the kernel K shown in (A): $\mathcal{E}_{\bar{\beta}}=\mathcal{F}(K)$. Note that, the spectral energy envelope  of a ``classical" grating would result in a pair of Dirac delta functions centered on the peak of the patches in (C) (the orange ``hot-spots"). Motion Clouds are defined as the subset of such RPTs whose main motion component is a full-field translations and thus characterized by spectral envelopes concentrated on a plane.}
 name = 'grating'

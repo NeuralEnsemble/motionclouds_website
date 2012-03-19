@@ -56,7 +56,7 @@ figures_png: figure1.png figure2.png figure3.png figure4.png figure5.png
 touch:
 	touch *.tex *py
 clean: # careful! this is quite radical!
-	rm -f *.fff *.lof *.dvi *.ps  *.pdf  *.bib *.out *.log *.aux *.bbl *.blg *.snm *.nav *.toc *.synctex.gz *.fdb_latexmk diff* results
+	rm -fr *.fff *.lof *.dvi *.ps  *.pdf  *.bib *.out *.log *.aux *.bbl *.blg *.snm *.nav *.toc *.synctex.gz *.fdb_latexmk diff* results
 
 .PHONY: clean
 
