@@ -44,7 +44,7 @@ $(SRC).pdf: $(SRC).tex bib_citeulike figures
 # post-production
 
 diff: $(SRC).tex
-	latexdiff /Users/lup/Desktop/12-03-07_MotionClouds\ resubmission/MotionClouds.tex  $(SRC) > diff.tex
+	latexdiff /Users/lup/Desktop/12-03-07_MotionClouds\ resubmission/MotionClouds.tex  $(SRC).tex > diff.tex
 	# latexdiff /Users/lup/Desktop/RTC/12-01-31_MotionClouds\ resubmission/main_MotionClouds.tex /Users/lup/Desktop/12-03-07_MotionClouds\ resubmission/MotionClouds.tex   > diff.tex
 	latexmk -pdf diff.tex
 
@@ -55,8 +55,8 @@ figures_png: figure1.png figure2.png figure3.png figure4.png figure5.png
 
 touch:
 	touch *.tex *py
-clean:
-	rm -f *.fff *.lof *.dvi *.ps *.out *.log *.aux *.bbl *.blg *.snm *.nav *.toc *.synctex.gz *.fdb_latexmk diff* results
+clean: # careful! this is quite radical!
+	rm -f *.fff *.lof *.dvi *.ps  *.pdf  *.bib *.out *.log *.aux *.bbl *.blg *.snm *.nav *.toc *.synctex.gz *.fdb_latexmk diff* results
 
 .PHONY: clean
 

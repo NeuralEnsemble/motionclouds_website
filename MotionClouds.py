@@ -6,14 +6,6 @@ Main script for generating Motion Clouds
 
 (c) Laurent Perrinet - INT/CNRS
 
-"""
-
-import os
-DEBUG = False
-"""
-
-**Default Motion Clouds parameters**
-
 Motion Clouds (keyword) parameters:
 size   	-- power of two to define the frame size (N_X, N_Y)
 size_T 	-- power of two to define the number of frames (N_frame)
@@ -39,6 +31,10 @@ T_movie -- movie duration [s].
 fps  	-- frame per seconds
 
 """
+
+import os
+DEBUG = False
+print DEBUG
 import numpy as np
 if DEBUG:
     size = 5

@@ -12,8 +12,8 @@
 \newcommand{\AuthorC}{Guillaume S.~Masson} %
 \newcommand{\AuthorD}{Laurent U.~Perrinet}%
 \newcommand{\AddressA}{INCM, CNRS / Aix-Marseille University, France}
-\newcommand{\AddressB}{Institut de Neurosciences de la Tim{\^o}ne, CNRS / Aix-Marseille University, Marseille, France}%
-%\newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
+\newcommand{\AddressB}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille University, Marseille, France}%
+\newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
 \newcommand{\EmailA}{Paula.Sanz@univ-amu.fr}%
 \newcommand{\EmailB}{Ivo.Vanzetta@univ-amu.fr}%
 \newcommand{\EmailC}{Guillaume.Masson@univ-amu.fr}%
@@ -36,7 +36,7 @@ Examples of the use of this framework are shown. We also propose extensions to o
 \newcommand{\Keywords}%
 {Motion Clouds, Random Phase Textures, Low-level sensory systems, eye movements, optimal stimulation, natural scenes, motion detection, random textures, Python}
 \newcommand{\Acknowledgments}{%
-This work is supported by the European Union project Number FP7-269921, ``BrainScaleS'' and by the VISAFIX (ANR-10-Blan-1432)  grant from the Agence Nationale de la Recherche. SLP is supported by a doctoral fellowship from the Minist{\`e}re de la Recherche. We thank Anna Montagnini, Fr\'ed\'eric Chavane and Gabriel Peyr\'e for their comments on an earlier version of the manuscript. Supplementary material can be accessed on the corresponding author's website.}%at \textit{http://www.incm.cnrs-mrs.fr/LaurentPerrinet/MotionClouds}.%
+This work is supported by the European Union project Number FP7-269921, ``BrainScaleS'' and by the VISAFIX (ANR-10-Blan-1432)  grant from the Agence Nationale de la Recherche. SLP is supported by a doctoral fellowship from the Minist{\`e}re de la Recherche. We thank Anna Montagnini, Fr\'ed\'eric Chavane and Gabriel Peyr\'e for their comments on an earlier version of the manuscript. Supplementary material can be accessed on the corresponding author's website at \textit{\Website/MotionClouds}.}%%
 %}%
 %--------------------------
 
@@ -55,16 +55,8 @@ This work is supported by the European Union project Number FP7-269921, ``BrainS
 \usepackage[comma,sort&compress,square]{natbib}%,numbers
 
 %% Declarations and definitions
-
-%% new float to avoid putting the tables at the end
-%\floatstyle{plain}
-%\newfloat{mytable}{thp}{lop}
-%\floatname{mytable}{Table}
-%
-%
-%\definecolor{light-gray}{gray}{0.95}
 \DeclareGraphicsExtensions{.jpg,.pdf,.png,.tiff}%,.mps,.bmp
-%\graphicspath{{results/}}
+%\graphicspath{{../results/}}
 \hypersetup{
  unicode=false, % non-Latin characters in Acrobat??s bookmarks
 	pdftitle={\Title},%
@@ -79,40 +71,10 @@ This work is supported by the European Union project Number FP7-269921, ``BrainS
  filecolor = Black, 			 % color of file links
  urlcolor = Black 		 % color of external links
 }
-%\lstset{ %
-%language=Python, % the language of the code
-%basicstyle=\footnotesize, % the size of the fonts that are used for the code
-%numbers=none, %left, % where to put the line-numbers
-%numberstyle=\footnotesize, % the size of the fonts that are used for the line-numbers
-%stepnumber=1, % the step between two line-numbers. If it's 1, each line 
-% % will be numbered
-%numbersep=5pt, % how far the line-numbers are from the code
-%backgroundcolor=\color{light-gray}, % choose the background color. You must add \usepackage{color}
-%showspaces=false, % show spaces adding particular underscores
-%showstringspaces=false, % underline spaces within strings
-%showtabs=false, % show tabs within strings adding particular underscores
-%frame=single, % adds a frame around the code
-%tabsize=2, % sets default tabsize to 2 spaces
-%captionpos=b, % sets the caption-position to bottom
-%breaklines=true, % sets automatic line breaking
-%breakatwhitespace=false, % sets if automatic breaks should only happen at whitespace
-%title=\lstname, % show the filename of files included with \lstinputlisting;
-% % also try caption instead of title
-%escapeinside={\%*}{*)}, % if you want to add a comment within your code
-%morekeywords={*,...} % if you want to add more keywords to the set
-%}
 
-%\bibpunct{(}{)}{;}{a}{}{;}
 
-\setlength{\parindent}{0in}
-\setcounter{secnumdepth}{-1}  % this line turn off the section numbering
-%\usepackage{endfloat}%[notablist,notabhead]
-%\makeatletter
-%\renewcommand{\@makecaption}[2]{%
-%\vskip\abovecaptionskip
-%\hbox to \hsize{\hfil #1\hfil}%
-%\vskip\belowcaptionskip}
-%\makeatother
+%\setlength{\parindent}{0in}
+%\setcounter{secnumdepth}{-1}  % this line turn off the section numbering
 
 % Title Page
 
@@ -129,36 +91,10 @@ This work is supported by the European Union project Number FP7-269921, ``BrainS
 %\and \AuthorD \thanks{Corresponding Author, \EmailD , \Website}}%
 %\affil[1]{\AddressA}
 %\affil{\AddressB}
-
 \date{}%\today}
-%\def\baselinestretch{1.3}%
-%\usepackage{lineno}
-%\linenumbers
-%\setpagewiselinenumbers
-%\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
 \begin{document}
 \maketitle
-%\vspace{-1cm}
-%\newpage
-%\tableofcontents 
-%\newpage
-%\setcounter{secnumdepth}{1}
-%\pagestyle{empty}
-%\pagenumbering{roman}
-%\renewcommand*\thesection{\arabic{section}} % so we do not get the annoying 0 from chapter
-
-%\tableofcontents		% Uncomment (if needed) for final draft
-
-%\listoffigures		 % Uncomment (if needed) for final draft
-
-%\listoftables			% Uncomment (if needed) for final draft
-%\cleardoublepage
-%\pagestyle{plain}
-%\pagenumbering{arabic}
-%\setcounter{page}{1}
-
 %%%%%%%%%%%%%%%%%%% Include files %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Include abstract page as asked by jn
 \begin{abstract}
 \Abstract
 \end{abstract}%
@@ -166,8 +102,6 @@ This work is supported by the European Union project Number FP7-269921, ``BrainS
 \Keywords
 \section*{Acknowledgments}
 \Acknowledgments
-%\newpage
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction }\label{intro}
 
@@ -182,22 +116,37 @@ However, motion perception is highly dynamical and the classical toolbox of stan
 To overcome thee limits, several recent studies have proposed that linearly combining several frequency channels can partly account for pattern direction and speed selectivity~\citep{Rust2005Spatiotemporal,Rust06,Nishimoto11}. Still, such multistage L-NL models~\citep{Heeger96,Simoncelli98} fail to account most of the response properties seen with natural scenes (see~\citep{Carandini05} for a review). One key issue is to understand how motion information gathered at different scales is normalized and weighted before integration as in the divisive normalization version of the L-NL model of motion detection. Natural-like stimuli are good probes to further explore the performance of these models~\citep{Schwartz01}. However, ``raw" natural scenes have the major drawback that information content is poorly controlled: Their dimensionality is extremely high and the inter-stimulus variability in the information content with respect to sensory parameters is large~\citep{Rust05}. Popular alternatives to natural scenes are dense and sparse noise. However, those are often irrelevant to the sensory system and most often fail to drive strong neuronal responses.  Here, we explore a new approach for the characterization of the first-order motion system. Our stimuli are  equivalent to a sub-class of random phase textures (RPTs)~\citep{Galerne10}, which are increasingly attracting interest in exploring neural mechanisms of texture perception (e.g.~\citep{Solomon10})
 
 The paper is organized as follows. In the Method section, we first recall the main properties of  RPTs as originally defined in computer vision for texture analysis. Next, we define their dynamical version, called thereafter Motion Clouds (MCs), and provide their complete mathematical formulation. We briefly describe the architecture of our implementation, all technical details being available as supplementary material, including the source code. In the Results section, we illustrate the practical use of MCs for studying several long-lasting problems of visual motion processing such as 2D motion integration, motion segmentation and transparency. For each, we will compare the usefulness of Motion Clouds relative to existing low-dimension stimuli. Finally, we discuss how this approach can be generalized to different aspects of visual system identification. %
+
+%\begin{quote}
+%	\begin{center}
+%		\textbf{INSERT FIGURE 1 AROUND HERE}
+%	\end{center}
+%\end{quote}
+%--------------------------------------------------------------------------------------------------------------------%
+\begin{figure}%[h!]
+	\includegraphics[width=\textwidth]{figure1}%
+	\caption{(\textit{A}) Top: a natural movie with the main motion component consisting of a horizontal, rightward full-field translation. Such a movie would be produced by an eye movement with constant mean velocity to the left (negative $x$ direction), plus some residual, centered jitter noise in the motion-compensated natural scene. We represent the movie as a cube, whose $(x,y,t=0)$ face corresponds to the first frame, the $(x,y=0,t)$ face shows the rightward translation motion as diagonal stripes. As a result of the horizontal motion direction, the $(x=54,y,t)$ face is a reflected image of the $(x,y,t=0)$ face, contracted or dilated depending on the amplitude of motion. The bottom panel shows the corresponding Fourier energy spectrum, as well as its projections onto three orthogonal planes. For any given point in frequency space, the energy value with respect to the maximum is coded by 6 discrete color iso-surfaces (i.e.: 90\%, 75\%, 50\%, 25\%, 11\% and 6\% of peak. The amplitude of the Fourier energy spectrum has been normalized to 1 in all panels and the same conventions used here apply to all following figures. (\textit{B}) to (\textit{C}): The image is progressively morphed (A through B to C) into a Random Phase Texture by perturbing independently the phase of each Fourier component.  (\textit{upper row}): Form is gradually lost in this process, whereas (\textit{lower row}): most motion energy information is preserved, as it is concentrated around the same speed plane in all three cases (the spectral envelopes are nearly identical).}%
+	 \label{fig:morphing}%
+\end{figure}%
+% ------------------------------------------------------------------------------------------------------------------%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methods}\label{section:Methods}
 \subsection{Random phase textures and natural retinal motion}\label{subsection:random_phase_textures}
 First, Random Phase Textures (RPTs) are defined as generic random motion textures that are optimal for probing luminance-based visual processing. Most of the information present in a given dynamical image can be divided into its geometry (that is the outline of the objects it represents) and its distribution of luminance in space and time~\citep{Neri98,Perrone01,Perrone02,Jasinschi92}. In the spatiotemporal Fourier space this is well separated between the phase and the absolute amplitude spectra, respectively~\citep{Oppenheim81}. This can be easily seen by gradually perturbing the phase spectrum of a natural scene: while form is progressively lost, its global motion information remains essentially unchanged (see Figure~\ref{fig:morphing}). This invariance with respect to phase shuffling in the Fourier domain is generally considered to be characteristic of the first-order motion stage~\citep{Lu01,Derrington04}. 
 
-\begin{quote}
-	\begin{center}
-		\textbf{INSERT FIGURE 1 AROUND HERE}
-	\end{center}
-\end{quote}
-
-\begin{quote}
-	\begin{center}
-		\textbf{INSERT FIGURE 2 AROUND HERE}
-	\end{center}
-\end{quote}
+%\begin{quote}
+%	\begin{center}
+%		\textbf{INSERT FIGURE 2 AROUND HERE}
+%	\end{center}
+%\end{quote}
+% ------------------------------------------------------------------------------------------------------------------%
+\begin{figure}%[h!]
+	\includegraphics[width=\textwidth]{figure2}%
+	 \caption{From an impulse to a Motion Cloud. (\textit{A}): The movie corresponding to a typical ``edge", i.e., a moving Gabor patch that corresponds to a localized grating. The Gabor patch being relatively small, for clarity, we zoomed 8 times into the non-zeros values of the image. (\textit{B}): By densely mixing multiple copies of the kernel shown in (A) at random positions, we obtain a Random Phase Texture (RPT), see Supplemental Movie 1. (\textit{C}):  We show here the envelope of the Fourier transform of kernel $K$: inversely, $K$ is the impulse response in image space of the filter defined by this envelope. Due to the linearity of the Fourier transform, apart from a multiplicative constant that vanishes by normalizing the energy of the  RPT to $1$, the spectral envelope of the RPT in (B) is the same as the one of the kernel K shown in (A): $\mathcal{E}_{\bar{\beta}}=\mathcal{F}(K)$. Note that, the spectral energy envelope  of a ``classical" grating would result in a pair of Dirac delta functions centered on the peak of the patches in (C) (the orange ``hot-spots"). Motion Clouds are defined as the subset of such RPTs whose main motion component is a full-field translations and thus characterized by spectral envelopes concentrated on a plane.}% (obtained by densely mixing kernels with the {\it same} phase) 
+	 \label{fig:impulse}
+\end{figure}
+% -------------------------------------------------------------------------------------------------------------------%
 
 We next formally define a linear generative model for the synthesis of such natural-like moving textures. Most generally, we can describe luminance at position $(x,y)$ and time $t$ as the scalar $I(x, y, t)$ that is the sum of the contribution of a set of basis functions:
 \begin{equation}%
@@ -340,29 +289,49 @@ Moreover, each Motion Cloud is generated by a fully known, computer-generated no
 
 Varying the spatiotemporal frequency distribution from a grating-like stimulus to complex random phase textures should be a powerful method for investigating neuronal selectivity and cortical maps of extra-striate areas. Motion Clouds (and other types of RPT patterns) shall be able to drive cortical neurons known for receiving converging inputs from several spatiotemporal frequency channels~\citep{Rust05}. We have considered the idea of generating stimuli to explore the effects of varying a single bandwidth parameter: $B_{f}$, while setting $B_{V}$ and $B_{\theta}$ to some fixed values (with relatively low values to get some precision along these components). We use the name BroadBand stimuli (BB) for the MCs with a large $B_{f}$, whereas NarrowBand stimuli (NB) are MCs characterized by small $B_{f}$ values. As illustrated in Figure~\ref{fig:examples}-middle, BB and NB clouds are both symmetric, airfoil-shaped volumes. However, the broadband envelope contains more frequency information than the narrow band one. Therefore it is thought to better represent natural images. %
 
-\begin{quote}
-	\begin{center}
-		\textbf{INSERT FIGURE 3 AROUND HERE}
-	\end{center}
-\end{quote}
+%\begin{quote}
+%	\begin{center}
+%		\textbf{INSERT FIGURE 3 AROUND HERE}
+%	\end{center}
+%\end{quote}
+%--------------------------------------------------------------------------------------------------------------------%
+\begin{figure}%[h!]
+\includegraphics[width=\textwidth]{figure3}%
+	 \caption{Equivalent MC representations of some classical stimuli. (\textit{A}, \textit{top}): a narrow-orientation-bandwidth Motion Cloud produced only with vertically oriented kernels and a horizontal mean motion to the right (Supplemental Movie 1). (\textit{Bottom}): The spectral envelopes concentrated on a pair of patches centered on a constant speed surface. Note that this ``speed plane" is thin (as seen by the projection onto the ($f_x$,$f_t$) face), yet it has a finite thickness, resulting in small, local, jittering motion components. ({\textit{B}}) a Motion Cloud illustrating the aperture problem. (\textit{Top}): The stimulus, having oblique preferred orientation ($\theta=\frac{\pi}{4}$ and narrow bandwidth $B_{\theta}=\pi/36$) is moving horizontally and rightwards. However, the perceived speed direction in such a case is biased towards the oblique downwards, i.e., orthogonal to the orientation, consistently with the fact that the best speed plane is ambiguous to detect (Supplemental Movie 2). (\textit{C}): a low-coherence random-dot kinematogram-like Motion Cloud: its orientation and speed bandwidths, $B_{\theta}$ and $B_{V}$ respectively, are large, yielding a low-coherence stimulus in which no edges can be identified (Supplemental Movie 3).} %
+	 \label{fig:examples} %
+\end{figure} %
+%--------------------------------------------------------------------------------------------------------------------%
 
-\begin{quote}
-	\begin{center}
-		\textbf{INSERT FIGURE 4 AROUND HERE}
-	\end{center}
-\end{quote}
+%\begin{quote}
+%	\begin{center}
+%		\textbf{INSERT FIGURE 4 AROUND HERE}
+%	\end{center}
+%\end{quote}
+%--------------------------------------------------------------------------------------------------------------------%
+\begin{figure}%[h!]
+\includegraphics[width=\textwidth]{figure4}%
+	 \caption{Broadband vs. narrowband stimuli. From (\textit{A}) through (\textit{B}) to (\textit{C}) the frequency bandwidth $B_{f}$ increases, while all other parameters (such as $f_{0}$) are kept constant. The Motion Cloud with the broadest bandwidth is thought to best represent natural stimuli, since, as those, it contains many frequency components. (\textit{A}) $B_{f}=0.05$ (Supplemental Movie 4), (\textit{B}) $B_{f}=0.15$ (Supplemental Movie 5) and (\textit{C}) $B_{f}=0.4$ (Supplemental Movie 6).} 
+	 \label{fig:broadbandstimuli}
+\end{figure}
+%--------------------------------------------------------------------------------------------------------------------%
 
 Recently, we have used such Motion Cloud stimuli to investigate how the visual system integrates different spatial frequency information levels, by varying $B_{f}$ across a large range of spatial frequencies~\citep{Simoncini11}. The stimuli were displayed using Psychotoolbox v3~\citep{Pelli97,Brainard97} for MATLAB (http://psychtoolbox.org) on a CRT monitor ($1280\times1024$@\unit[100]{Hz}). They covered \unit[47]{degrees} of visual angle at a viewing distance of \unit[57]{cm}. We have used these stimuli to understand how two different visual behaviors, perceptual speed discrimination and reflexive tracking, would take advantage of presenting a single speed at different spatial scales. We found that the visual system pools motion information adaptively, as a function of constraints raised by different tasks. Motion Clouds were found to be useful to resolve problems associated with the integration of multiple spatial frequencies as they allow a precise control all variables related to speed and frequency content. In particular, previous studies have failed to understand how speed information is reconstructed across different spatial frequencies because the mixing of two, or more, gratings poses several perceptual problems. For instance, depending on the phase relationship between spatial frequency components, different interference patterns would appear, generating second-order motion in same or opposite motion direction~\citep{smith90}. Second, mixing sparse RDKs moving at the same speed but band-pass filtered at different spatial frequency results in complex patterns that can be perceived as being either coherent or transparent~\citep{watson94}. The same difficulties have been encountered by neurophysiological studies trying to understand the origin of speed selectivity in V1 complex cells~\citep{Priebe06} or MT neurons~\citep{Priebe03}. %
 
 \subsection{Clouds with competing motions}% 
 Low and mid-level visual integration and segmentation mechanisms have been extensively investigated with either combinations of gratings (i.e. plaid patterns) or random dot patterns with different directions, speed and/or spatiotemporal components. Such plaid stimuli have been extensively studied and constitute an important pillar in motion detection theories, such as the separation between component and pattern cells in area MT (see~\citep{Movshon85,Burr11,Bradley05} for reviews). However, there have been a long standing controversy about which information can be used in plaid patterns, such as component gratings, their product or 2D features called blobs that are generated at the intersection between component gratings~\citep{Derrington04}. It is also unclear how different direction and spatial frequency channels are mixed to create pattern direction selectivity~\citep{Rust06}. As explained above, Motion Clouds stimuli are by definition less susceptible to create interference patterns (or Moir{\'e} patterns) when mixed together. This is a striking difference with respect to classical low-entropy stimuli, such as gratings. Being able to mix together two textures with the same motion but different characteristic spatial frequencies is also critical to further study motion integration (e.g. single neuron selectivity:~\citep{Rust05}; ocular tracking behavior:~\citep{Masson02}; motion perception~\citep{smith90}). By contrast, it must be also possible to mix two textures with different motions to study the competition between integration and segmentation, leading to different percepts such as coherent or transparent motions. %
 
-\begin{quote}
-	\begin{center}
-		\textbf{INSERT FIGURE 5 AROUND HERE}
-	\end{center}
-\end{quote}
-
+%\begin{quote}
+%	\begin{center}
+%		\textbf{INSERT FIGURE 5 AROUND HERE}
+%	\end{center}
+%\end{quote}
+%--------------------------------------------------------------------------------------------------------------------%
+\begin{figure}%[h!]
+\includegraphics[width=\textwidth]{figure5}%
+	 \caption{Competing Motion Clouds. (\textit{A}): A narrow-orientation-bandwidth Motion Cloud with explicit noise. A red noise envelope was added to the global envelop of a Motion Cloud with a bandwidth in the orientation domain (Supplemental Movie  7). (\textit{B}): Two Motion Clouds with same motion but different preferred orientation were added together, yielding a plaid-like Motion Cloud texture (Supplemental Movie 8). (\textit{C}): Two Motion Clouds with opposite velocity directions were added, yielding a texture similar to a ``counter-phase'' grating (Supplemental Movie 9). Note that the crossed shape in the $f_x-f_t$ plane is a signature of the opposite velocity directions, while two gratings with the same spatial frequency and in opposite directions would generate a flickering stimulus with energy concentrated on the $f_t$ plane.} %
+	 \label{fig:counterphase} %
+\end{figure} %
+%--------------------------------------------------------------------------------------------------------------------%
 Using Motion Clouds, there is a further number of combinations that may be of interest for studying motion detection. We illustrate several possibilities in Figure~\ref{fig:counterphase}. The left panel shows a standard Motion Cloud with added explicit noise, corresponding to an envelope broadly centered around $V=0$. The middle panel illustrates the plaid-equivalent Motion Cloud obtained by adding two Motion Clouds of same velocity but different orientations, similarly to a plaid stimulus. In the right panel, the two components have different velocities (here opposite ones) while all other parameters are identical. With standard gratings, such two gratings would interfere and create a {counter-phase}, flickering stimulus. With Motion Clouds, there is no such interference and the resulting stimulus has all desired energy distributed on both speed planes. By varying the relative direction of two, or more, components, it becomes possible to produce several transparent patterns and therefore to overcome a limit of classical motion stimuli such as gratings. %
 
 \section{Discussion}\label{section:future}
@@ -382,488 +351,449 @@ These models can be assembled, thus leading to a rich content that mixes edge an
 %
 \subsection{Exporting Motion Clouds to other sensory modalities}
 Strong parallels have been drawn between visual and haptic processing for low level encoding of motion information, for instance~\citep{Pei11}. Simple stimuli like drifting relief gratings, dynamic noise patterns or single elements such as lines and spots have already been used to investigate the properties of the somatosensory system. There is also a strong need to develop more sophisticated stimuli that can reproduce, in a controllable way, the statistics of natural somesthetic inputs.  The theoretical framework described in the present article may also be used to design somesthetic inputs using mechanical actuators to excite the vibrissal array of rats' whiskers~\citep{Jacob08}. This is another potential application of a set of stimuli bridging the gap between artificial and natural sensory input. %
-%\bibliographystyle{apalike} 
-%\bibliography{MotionClouds}
-\begin{thebibliography}{}
-
-\bibitem[Adelson and Bergen, 1985]{Adelson85}
-Adelson, E.~H. and Bergen, J.~R. (1985).
-\newblock Spatiotemporal energy models for the perception of motion.
-\newblock {\em J. Opt. Soc. Am. A}, 2(2):284--299.
-
-\bibitem[Atick, 1992]{Atick92}
-Atick, J.~J. (1992).
-\newblock Could information theory provide an ecological theory of sensory
-  processing?
-\newblock {\em Network}, 3(2):213--52.
-
-\bibitem[Blasdel and Salama, 1986]{Blasdel86}
-Blasdel, G.~G. and Salama, G. (1986).
-\newblock Voltage-sensitive dyes reveal a modular organization in monkey
-  striate cortex.
-\newblock {\em Nature}, 321(6070):579--585.
-
-\bibitem[Born and Bradley, 2005]{Bradley05}
-Born, R.~T. and Bradley, D.~C. (2005).
-\newblock Structure and function of visual area {MT}.
-\newblock {\em Ann. Rev. of Neurosci.}, 28(1):157--189.
-
-\bibitem[Braddick, 1993]{Braddick1993Segmentation}
-Braddick, O. (1993).
-\newblock Segmentation versus integration in visual motion processing.
-\newblock {\em Trends Neurosci.}, 16(7):263--268.
-
-\bibitem[Bradley and Goyal, 2008]{Bradley08}
-Bradley, D.~C. and Goyal, M.~S. (2008).
-\newblock Velocity computation in the primate visual system.
-\newblock {\em Nat. Neurosci.}, 9(9):686--695.
-
-\bibitem[Brainard, 1997]{Brainard97}
-Brainard, D.~H. (1997).
-\newblock The psychophysics toolbox.
-\newblock {\em Spatial Vision}, 10:433--436.
-
-\bibitem[Burr and Thompson, 2011]{Burr11}
-Burr, D. and Thompson, P. (2011).
-\newblock Motion psychophysics: 1985-2010.
-\newblock {\em Vision Res.}, 51(13):1431--1456.
-
-\bibitem[Carandini et~al., 2005]{Carandini05}
-Carandini, M., Demb, J.~B., Mante, V., Tolhurst, D.~J., Dan, Y., Olshausen,
-  B.~A., Gallant, J.~L., and Rust, N.~C. (2005).
-\newblock Do we know what the early visual system does?
-\newblock {\em J. Neurosci.}, 25(46):10577--97.
-
-\bibitem[Conway et~al., 2007]{Conway07}
-Conway, B.~R., Moeller, S., and D., T. (2007).
-\newblock Specialized color modules in macaque extrastriate cortex.
-\newblock {\em Neuron}, 56(3).
-
-\bibitem[Dan et~al., 1996]{Dan96}
-Dan, Y., Atick, J.~J., and Reid, R.~C. (1996).
-\newblock Efficient coding of natural scenes in the lateral geniculate nucleus:
-  experimental test of a computational theory.
-\newblock {\em J. Neurosci.}, 16(10):3351--62.
-
-\bibitem[Daugman, 1980]{Daugman80}
-Daugman, J.~G. (1980).
-\newblock Two-dimensional spectral analysis of cortical receptive field
-  profiles.
-\newblock {\em Vision Res.}, 20(10):847--856.
-
-\bibitem[Derrington et~al., 2004]{Derrington04}
-Derrington, A.~M., Allen, H.~A., and Delicato, L.~S. (2004).
-\newblock Visual mechanisms of motion analysis and motion perception.
-\newblock {\em Annu. Rev. Psychol.}, 55(1):181--205.
-
-\bibitem[DeValois and DeValois, 1988]{DeValois1988Spatial}
-DeValois, R.~L. and DeValois, K.~K. (1988).
-\newblock {\em Spatial Vision}.
-\newblock Oxford University Press, USA.
-
-\bibitem[Drewes et~al., 2008]{Drewes08}
-Drewes, J., Barthelemy, F., and Masson, G.~S. (2008).
-\newblock Human ocular following and natural scene statistics.
-\newblock {\em J. Vis.}, 8(6):383.
-
-\bibitem[Essock et~al., 2009]{Essock09}
-Essock, E.~A., Haun, A.~M., and Kim, Y.~J. (2009).
-\newblock An anisotropy of orientation-tuned suppression that matches the
-  anisotropy of typical natural scenes.
-\newblock {\em J. Vis.}, 9(1).
-
-\bibitem[Felsen and Dan, 2005]{Felsen2005Natural}
-Felsen, G. and Dan, Y. (2005).
-\newblock A natural approach to studying vision.
-\newblock {\em Nat. Neurosci.}, 8(12):1643--1646.
-
-\bibitem[Field, 1987]{Field87}
-Field, D.~J. (1987).
-\newblock Relations between the statistics of natural images and the response
-  properties of cortical cells.
-\newblock {\em J. Opt. Soc. Am. A}, 4:2379--2394.
-
-\bibitem[Field, 1994]{Field94}
-Field, D.~J. (1994).
-\newblock What is the goal of sensory coding?
-\newblock {\em Neural Comput.}, 6(4):559--601.
-
-\bibitem[Field, 1999]{Field99}
-Field, D.~J. (1999).
-\newblock Wavelets, vision and the statistics of natural scenes.
-\newblock {\em Philos T Roy Soc A}, 357(1760):2527--2542.
-
-\bibitem[Fischer et~al., 2007]{Fischer07a}
-Fischer, S., \v{S}roubek, F., Perrinet, L.~U., Redondo, R., and Crist{\'o}bal,
-  G. (2007).
-\newblock Self-invertible {2D} log-gabor wavelets.
-\newblock {\em Int. J. Comput. Vision}, 75(2):231--246.
-
-\bibitem[Galerne et~al., 2010]{Galerne10}
-Galerne, B., Gousseau, Y., and Morel, J.~M. (2010).
-\newblock Random {P}hase {T}extures: Theory and synthesis.
-\newblock {\em IEEE T. Image. Process.}
-
-\bibitem[Geisler and Ringach, 2009]{Geisler08}
-Geisler, W.~S. and Ringach, D. (2009).
-\newblock Natural systems analysis.
-\newblock {\em Visual Neurosci}, 26:1--3.
-
-\bibitem[Graham, 1979]{Graham79}
-Graham, N. (1979).
-\newblock Does the brain perform a fourier analysis of the visual scene?
-\newblock {\em Trends Neurosci.}, 2:207--208.
-
-\bibitem[Hansen and Hess, 2006]{HansenHess2006}
-Hansen, B. and Hess, R. (2006).
-\newblock The role of spatial phase in texture segmentation and contour
-  integration.
-\newblock {\em J. Vis.}, 5(5):594--615.
-
-\bibitem[Heeger et~al., 1996]{Heeger96}
-Heeger, D.~J., Simoncelli, E.~P., and Movshon, J.~A. (1996).
-\newblock Computational models of cortical visual processing.
-\newblock {\em Proc. Natl. Acad. Sci. U. S. A.}, 93(2):623--627.
-
-\bibitem[Henriksson et~al., 2008]{Henriksson08}
-Henriksson, L., Nurminen, L., Hyv{\"a}rinen, A., and Vanni, S. (2008).
-\newblock Spatial frequency tuning in human retinotopic visual areas.
-\newblock {\em J. Vis.}, 8(10).
-
-\bibitem[Hess et~al., 2003]{hessreview03}
-Hess, R., Hayes, A., and Field, D.~J. (2003).
-\newblock Contour integration and cortical processing.
-\newblock {\em J. Physiol. Paris}, 97(2-3):105--119.
-
-\bibitem[Jacob et~al., 2008]{Jacob08}
-Jacob, V., {Le Cam}, J., Ego-Stengel, V., and Shulz, D.~E. (2008).
-\newblock Emergent properties of tactile scenes selectively activate barrel
-  cortex neurons.
-\newblock {\em Neuron}, 60(6):1112--1125.
-
-\bibitem[Jasinschi et~al., 1992]{Jasinschi92}
-Jasinschi, R., Rosenfeld, A., and Sumit, K. (1992).
-\newblock Perceptual motion transparency: the role of geometrical information.
-\newblock {\em J. Opt. Soc. Am. A}, 9(11):1865--1879.
-
-\bibitem[Jones and Palmer, 1987]{Jones87}
-Jones, J.~P. and Palmer, L.~A. (1987).
-\newblock An evaluation of the two-dimensional gabor filter model of simple
-  receptive fields in cat striate cortex.
-\newblock {\em J. Neurophysiol.}, 58(6):1233--1258.
-
-\bibitem[Klein et~al., 2000]{Klein00}
-Klein, D.~J., Depireux, D.~A., Simon, J.~Z., and Shamma, S.~A. (2000).
-\newblock Robust spectrotemporal reverse correlation for the auditory system:
-  Optimizing stimulus design.
-\newblock {\em J. Comput. Neurosci.}, 9(1):85--111.
-
-\bibitem[Lagae et~al., 2009]{Lagae09}
-Lagae, A., Lefebvre, S., Drettakis, G., and Dutr{\'e}, P. (2009).
-\newblock Procedural noise using sparse gabor convolution.
-\newblock Technical Report Report CW 545, Department of Computer Science,
-  K.U.Leuven.
-
-\bibitem[Lee, 1996]{Lee96}
-Lee, T.~S. (1996).
-\newblock Image representation using {2D} gabor wavelets.
-\newblock {\em IEEE T. Pattern. Anal.}, 18:959--971.
-
-\bibitem[Lewis, 1984]{Lewis84}
-Lewis, J.~P. (1984).
-\newblock Texture synthesis for digital painting.
-\newblock {\em ACM SIGGRAPH}, 18:245--252.
-
-\bibitem[Lu and Sperling, 2001]{Lu01}
-Lu, Z.-L. and Sperling, G. (2001).
-\newblock Three-systems theory of human visual motion perception: review and
-  update.
-\newblock {\em J. Opt. Soc. Am. A}, 18(9):2331--70.
-
-\bibitem[Mainen and Sejnowski, 1995]{Mainen95}
-Mainen, Z.~F. and Sejnowski, T.~J. (1995).
-\newblock Reliability of spike timing in neocortical neurons.
-\newblock {\em Science}, 268(5216):1503--1506.
-
-\bibitem[Marcelja, 1980]{Marcelja80}
-Marcelja, S. (1980).
-\newblock Mathematical description of the responses of simple cortical cells.
-\newblock {\em J. Opt. Soc. Am. A}, 70(11):1297--1300.
-
-\bibitem[Masson and Castet, 2002]{Masson02}
-Masson, G.~S. and Castet, E. (2002).
-\newblock Parallel motion processing for the initiation of short-latency ocular
-  following in humans. journal of neuroscience, 22, 5149-63.
-\newblock {\em J. Neurosci.}, 22:5149--63.
-
-\bibitem[Masson and Ilg, 2010]{Masson10}
-Masson, G.~S. and Ilg, U.~J., editors (2010).
-\newblock {\em Dynamics of Visual Motion Processing: Neuronal, Behavioral and
-  Computational Approaches}.
-\newblock Springer, Berlin-Heidelberg, first edition.
-
-\bibitem[Movshon et~al., 1985]{Movshon85}
-Movshon, J.~A., Adelson, E.~H., Gizzi, M.~S., and Newsome, W.~T. (1985).
-\newblock The analysis of moving visual patterns.
-\newblock In Chagas, C., Gattass, R., and Gross, C., editors, {\em Pattern
-  Recognition Mechanisms}, volume~54, pages 117--151. Rome: Vatican Press.
-
-\bibitem[Neri et~al., 1998]{Neri98}
-Neri, P., Morrone, M.~C., and Burr, D.~C. (1998).
-\newblock Seeing biological motion.
-\newblock {\em Nature}, 395(6705):894--896.
-
-\bibitem[Newsome, 1997]{Newsome1997Deciding}
-Newsome, W.~T. (1997).
-\newblock Deciding about motion: linking perception to action.
-\newblock {\em J. Comp. Physiol. A. Neuroethol. Sens. Neural Behav. Physiol.},
-  181(1):5--12.
-
-\bibitem[Nishimoto and Gallant, 2011]{Nishimoto11}
-Nishimoto, S. and Gallant, J.~L. (2011).
-\newblock A three-dimensional spatiotemporal receptive field model explains
-  responses of area {MT} neurons to naturalistic movies.
-\newblock {\em J. Neurosci.}, 31(41):14551--14564.
-
-\bibitem[Oliva and Torralba, 2001]{Oliva01}
-Oliva, A. and Torralba, A. (2001).
-\newblock Modeling the shape of the scene: A holistic representation of the
-  spatial envelope.
-\newblock {\em Int. J. Comput. Vision}, 42:145--175.
-
-\bibitem[Oppenheim and Lim, 1981]{Oppenheim81}
-Oppenheim, A.~V. and Lim, J.~S. (1981).
-\newblock The importance of phase in signals.
-\newblock {\em P. IEEE}, 69(5):529--541.
-
-\bibitem[Pei et~al., 2011]{Pei11}
-Pei, Y.~C., Hsiao, S.~S., Craig, J.~C., and Bensmaia, S.~J. (2011).
-\newblock Neural mechanisms of tactile motion integration in somatosensory
-  cortex.
-\newblock {\em Neuron}, 69(3):536--47.
-
-\bibitem[Pelli, 1997]{Pelli97}
-Pelli, D.~G. (1997).
-\newblock The videotoolbox software for visual psychophysics: transforming
-  numbers into movies.
-\newblock {\em Spatial Vision}, 10:437--442.
-
-\bibitem[Perrinet et~al., 2011]{Perrinet11sfn}
-Perrinet, L., Fitzpatrick, D., and Bednar, J.~A. (2011).
-\newblock Edge statistics in natural images versus laboratory animal
-  environments: implications for understanding lateral connectivity in {V1}.
-\newblock In {\em Society for~Neuroscience Abstracts}, Program No. 530.04.
-
-\bibitem[Perrinet, 2010]{Perrinet10shl}
-Perrinet, L.~U. (2010).
-\newblock Role of homeostasis in learning sparse representations.
-\newblock {\em Neural Comput.}, 22(7):1812--36.
-
-\bibitem[Perrone and Thiele, 2001]{Perrone01}
-Perrone, J.~A. and Thiele, A. (2001).
-\newblock Speed skills: measuring the visual speed analyzing properties of
-  primate {MT} neurons.
-\newblock {\em Nat. Neurosci.}, 4(5):526--532.
-
-\bibitem[Perrone and Thiele, 2002]{Perrone02}
-Perrone, J.~A. and Thiele, A. (2002).
-\newblock A model of speed tuning in {MT} neurons.
-\newblock {\em Vision Res.}, 42(8):1035--1051.
-
-\bibitem[Phillips and Todd, 2010]{PhillipsTodd2010}
-Phillips, F. and Todd, J. (2010).
-\newblock Texture discrimination based on global feature alignments.
-\newblock {\em J. Vis.}, 10(6):6.
-
-\bibitem[Priebe et~al., 2003]{Priebe03}
-Priebe, N., Cassanello, C., and Lisberger, S. (2003).
-\newblock The neural representation of speed in macaque area {MT/V5}.
-\newblock {\em J. Neurosci.}, 23:5650--5661.
-
-\bibitem[Priebe et~al., 2006]{Priebe06}
-Priebe, N., Lisberger, S., and Movshon, J.~A. (2006).
-\newblock Tuning for spatiotemporal frequency and speed in directionally
-  selective neurons of macaque striate cortex.
-\newblock {\em J. Neurosci.}, 26:2941--2950.
-
-\bibitem[Rieke et~al., 1995]{Rieke95}
-Rieke, F., Bodnar, D.~A., and Bialek, W. (1995).
-\newblock Naturalistic stimuli increase the rate and efficiency of information
-  transmission by primary auditory afferents.
-\newblock {\em P. Roy. Soc. Lond. B Bio.}, 262(1365).
-
-\bibitem[Rust et~al., 2006]{Rust06}
-Rust, N.~C., Mante, V., Simoncelli, E.~P., and Movshon, J.~A. (2006).
-\newblock How {MT} cells analyze the motion of visual patterns.
-\newblock {\em Nat. Neurosci.}, 9(11):1421--31.
-
-\bibitem[Rust and Movshon, 2005]{Rust05}
-Rust, N.~C. and Movshon, J.~A. (2005).
-\newblock In praise of artifice.
-\newblock {\em Nat. Neurosci.}, 8(12):1647--1650.
-
-\bibitem[Rust et~al., 2005]{Rust2005Spatiotemporal}
-Rust, N.~C., Schwartz, O., Movshon, J.~A., and Simoncelli, E.~P. (2005).
-\newblock Spatiotemporal elements of macaque {V1} receptive fields.
-\newblock {\em Neuron}, 46(6):945--956.
-
-\bibitem[Scarfe and Johnston, 2010]{Scarfe10}
-Scarfe, P. and Johnston, A. (2010).
-\newblock Motion drag induced by global motion gabor arrays.
-\newblock {\em J. Vis.}, 10(5).
-
-\bibitem[Schrater et~al., 2000]{Schrater00}
-Schrater, P.~R., Knill, D.~C., and Simoncelli, E.~P. (2000).
-\newblock Mechanisms of visual motion detection.
-\newblock {\em Nat. Neurosci.}, 3(1):64--8.
-
-\bibitem[Schwartz and Simoncelli, 2001]{Schwartz01}
-Schwartz, O. and Simoncelli, E.~P. (2001).
-\newblock Natural signal statistics and sensory gain control.
-\newblock {\em Nat. Neurosci.}, 4(8):819--25.
-
-\bibitem[Simoncelli and Heeger, 1998]{Simoncelli98}
-Simoncelli, E.~P. and Heeger, D.~J. (1998).
-\newblock A model of neuronal responses in visual area {MT}.
-\newblock {\em Vision Res.}, 38(5):743--761.
-
-\bibitem[Simoncini et~al., 2011]{Simoncini11}
-Simoncini, C., Perrinet, L.~U., Montagnini, A., Mamassian, P., and Masson,
-  G.~S. (2011).
-\newblock More is not always better: different motion decoding for perception
-  or action.
-\newblock {\em Submitted}.
-
-\bibitem[Singh et~al., 2000]{Singh2000Spatiotemporal}
-Singh, K.~D., Smith, A.~T., and Greenlee, M.~W. (2000).
-\newblock Spatiotemporal frequency and direction sensitivities of human visual
-  areas measured using {fMRI}.
-\newblock {\em NeuroImage}, 12(5):550--564.
-
-\bibitem[Smith and Edgar, 1990]{smith90}
-Smith, A. and Edgar, G. (1990).
-\newblock The influence of spatial frequency on perceived temporal frequency
-  and perceived speed.
-\newblock {\em Vision Res.}, 30:1467--1474.
-
-\bibitem[Solomon et~al., 2010]{Solomon10}
-Solomon, S.~G., Tailby, C., Cheong, S.~K., and Camp, A.~J. (2010).
-\newblock Linear and nonlinear contributions to the visual sensitivity of
-  neurons in primate lateral geniculate nucleus.
-\newblock {\em J. Neurophysiol.}, 104(4):1884.
-
-\bibitem[Torralba and Oliva, 2003]{Torralba03}
-Torralba, A. and Oliva, A. (2003).
-\newblock Statistics of natural image categories.
-\newblock In {\em Network: Computation in Neural Systems}, pages 391--412.
-
-\bibitem[Touryan, 2001]{Touryan01}
-Touryan, J. (2001).
-\newblock Analysis of sensory coding with complex stimuli.
-\newblock {\em Curr Opin Neurobiol}, 11(4):443--448.
-
-\bibitem[Ts'o et~al., 1990]{TsO90}
-Ts'o, D., Frostig, R., Lieke, E., and Grinvald, A. (1990).
-\newblock Functional organization of primate visual cortex revealed by high
-  resolution optical imaging.
-\newblock {\em Science}, 249(4967):417--420.
-
-\bibitem[Tsuchiya and Braun, 2007]{Tsuchiya07}
-Tsuchiya, N. and Braun, J. (2007).
-\newblock Contrast thresholds for component motion with full and poor
-  attention.
-\newblock {\em J. Vis.}, 7(3):1.
-
-\bibitem[Turing, 1952]{Turing52}
-Turing, A. (1952).
-\newblock The chemical basis of morphogenesis.
-\newblock {\em Philos T Roy Soc A}, B.
-
-\bibitem[Victor and Conte, 1996]{VictorComte1996}
-Victor, J. and Conte, M. (1996).
-\newblock The role of high-order phase correlations in texture processing.
-\newblock {\em Vision Res.}, 36(11):1615--1631.
-
-\bibitem[Vinje and Gallant, 2000]{Vinje00}
-Vinje, W.~E. and Gallant, J.~L. (2000).
-\newblock Sparse coding and decorrelation in primary visual cortex during
-  natural vision.
-\newblock {\em Science}, 287(5456):1273--1276.
-
-\bibitem[Wang and Yao, 2011]{Wang11}
-Wang, C. and Yao, H. (2011).
-\newblock Sensitivity of {V1} neurons to direction of spectral motion.
-\newblock {\em Cereb Cortex}, 21(4):964--973.
-
-\bibitem[Watson and Eckert, 1994]{watson94}
-Watson, A. and Eckert, M. (1994).
-\newblock Motion-contrast sensitivity : visibility of motion gradients of
-  various spatial frequencies.
-\newblock {\em J. Opt. Soc. Am. A}, 11:486--505.
-
-\bibitem[Watson and Turano, 1995]{Watson95}
-Watson, A. and Turano, K. (1995).
-\newblock The optimal motion stimulus.
-\newblock {\em Vision Res.}, 35(3):325--336.
-
-\bibitem[Watson et~al., 1983]{Watson83}
-Watson, A.~B., Barlow, H.~B., and Robson, J.~G. (1983).
-\newblock What does the eye see best?
-\newblock {\em Nature}, 302(5907):419--422.
-
-\bibitem[Wu et~al., 2006]{Wu06}
-Wu, M. C.~K., David, S.~V., and Gallant, J.~L. (2006).
-\newblock Complete functional characterization of sensory neurons by system
-  identification.
-\newblock {\em Annu. Rev. Neurosci.}, 29(1):477--505.
-
-\bibitem[Zeki, 1983]{Zeki83}
-Zeki, S. (1983).
-\newblock Colour coding in the cerebral cortex: the reaction of cells in monkey
-  visual cortex to wavelengths and colours.
-\newblock {\em Neuroscience}, 9(4):741--765.
-\newblock Elsevier IBRO.
-
-\end{thebibliography}
-
-\newpage
-%--------------------------------------------------------------------------------------------------------------------%
-\begin{figure}%[h!]
-%\includegraphics[width=\textwidth]{figure1}%
-\caption{(\textit{A}) Top: a natural movie with the main motion component consisting of a horizontal, rightward full-field translation. Such a movie would be produced by an eye movement with constant mean velocity to the left (negative $x$ direction), plus some residual, centered jitter noise in the motion-compensated natural scene. We represent the movie as a cube, whose $(x,y,t=0)$ face corresponds to the first frame, the $(x,y=0,t)$ face shows the rightward translation motion as diagonal stripes. As a result of the horizontal motion direction, the $(x=54,y,t)$ face is a reflected image of the $(x,y,t=0)$ face, contracted or dilated depending on the amplitude of motion. The bottom panel shows the corresponding Fourier energy spectrum, as well as its projections onto three orthogonal planes. For any given point in frequency space, the energy value with respect to the maximum is coded by 6 discrete color iso-surfaces (i.e.: 90\%, 75\%, 50\%, 25\%, 11\% and 6\% of peak. The amplitude of the Fourier energy spectrum has been normalized to 1 in all panels and the same conventions used here apply to all following figures. (\textit{B}) to (\textit{C}): The image is progressively morphed (A through B to C) into a Random Phase Texture by perturbing independently the phase of each Fourier component.  (\textit{upper row}): Form is gradually lost in this process, whereas (\textit{lower row}): most motion energy information is preserved, as it is concentrated around the same speed plane in all three cases (the spectral envelopes are nearly identical).}%
-	 \label{fig:morphing}%
-\end{figure}%
-% ------------------------------------------------------------------------------------------------------------------%
-\newpage %
-% ------------------------------------------------------------------------------------------------------------------%
-\begin{figure}%[h!]
-%	\includegraphics[width=\textwidth]{figure2}%
-	 \caption{From an impulse to a Motion Cloud. (\textit{A}): The movie corresponding to a typical ``edge", i.e., a moving Gabor patch that corresponds to a localized grating. The Gabor patch being relatively small, for clarity, we zoomed 8 times into the non-zeros values of the image. (\textit{B}): By densely mixing multiple copies of the kernel shown in (A) at random positions, we obtain a Random Phase Texture (RPT), see Supplemental Movie 1. (\textit{C}):  We show here the envelope of the Fourier transform of kernel $K$: inversely, $K$ is the impulse response in image space of the filter defined by this envelope. Due to the linearity of the Fourier transform, apart from a multiplicative constant that vanishes by normalizing the energy of the  RPT to $1$, the spectral envelope of the RPT in (B) is the same as the one of the kernel K shown in (A): $\mathcal{E}_{\bar{\beta}}=\mathcal{F}(K)$. Note that, the spectral energy envelope  of a ``classical" grating would result in a pair of Dirac delta functions centered on the peak of the patches in (C) (the orange ``hot-spots"). Motion Clouds are defined as the subset of such RPTs whose main motion component is a full-field translations and thus characterized by spectral envelopes concentrated on a plane.}% (obtained by densely mixing kernels with the {\it same} phase) 
-	 \label{fig:impulse}
-\end{figure}
-% -------------------------------------------------------------------------------------------------------------------%
-\newpage %
-%--------------------------------------------------------------------------------------------------------------------%
-\begin{figure}%[h!]
-%\includegraphics[width=\textwidth]{figure3}%
-	 \caption{Equivalent MC representations of some classical stimuli. (\textit{A}, \textit{top}): a narrow-orientation-bandwidth Motion Cloud produced only with vertically oriented kernels and a horizontal mean motion to the right (Supplemental Movie 1). (\textit{Bottom}): The spectral envelopes concentrated on a pair of patches centered on a constant speed surface. Note that this ``speed plane" is thin (as seen by the projection onto the ($f_x$,$f_t$) face), yet it has a finite thickness, resulting in small, local, jittering motion components. ({\textit{B}}) a Motion Cloud illustrating the aperture problem. (\textit{Top}): The stimulus, having oblique preferred orientation ($\theta=\frac{\pi}{4}$ and narrow bandwidth $B_{\theta}=\pi/36$) is moving horizontally and rightwards. However, the perceived speed direction in such a case is biased towards the oblique downwards, i.e., orthogonal to the orientation, consistently with the fact that the best speed plane is ambiguous to detect (Supplemental Movie 2). (\textit{C}): a low-coherence random-dot kinematogram-like Motion Cloud: its orientation and speed bandwidths, $B_{\theta}$ and $B_{V}$ respectively, are large, yielding a low-coherence stimulus in which no edges can be identified (Supplemental Movie 3).} %
-	 \label{fig:examples} %
-\end{figure} %
-%--------------------------------------------------------------------------------------------------------------------%
-\newpage %
-%--------------------------------------------------------------------------------------------------------------------%
-\begin{figure}%[h!]
-%\includegraphics[width=\textwidth]{figure4}%
-	 \caption{Broadband vs. narrowband stimuli. From (\textit{A}) through (\textit{B}) to (\textit{C}) the frequency bandwidth $B_{f}$ increases, while all other parameters (such as $f_{0}$) are kept constant. The Motion Cloud with the broadest bandwidth is thought to best represent natural stimuli, since, as those, it contains many frequency components. (\textit{A}) $B_{f}=0.05$ (Supplemental Movie 4), (\textit{B}) $B_{f}=0.15$ (Supplemental Movie 5) and (\textit{C}) $B_{f}=0.4$ (Supplemental Movie 6).} 
-	 \label{fig:broadbandstimuli}
-\end{figure}
-%--------------------------------------------------------------------------------------------------------------------%
-\newpage %
-%--------------------------------------------------------------------------------------------------------------------%
-\begin{figure}%[h!]
-%\includegraphics[width=\textwidth]{figure5}%
-	 \caption{Competing Motion Clouds. (\textit{A}): A narrow-orientation-bandwidth Motion Cloud with explicit noise. A red noise envelope was added to the global envelop of a Motion Cloud with a bandwidth in the orientation domain (Supplemental Movie  7). (\textit{B}): Two Motion Clouds with same motion but different preferred orientation were added together, yielding a plaid-like Motion Cloud texture (Supplemental Movie 8). (\textit{C}): Two Motion Clouds with opposite velocity directions were added, yielding a texture similar to a ``counter-phase'' grating (Supplemental Movie 9). Note that the crossed shape in the $f_x-f_t$ plane is a signature of the opposite velocity directions, while two gratings with the same spatial frequency and in opposite directions would generate a flickering stimulus with energy concentrated on the $f_t$ plane.} %
-	 \label{fig:counterphase} %
-\end{figure} %
-%--------------------------------------------------------------------------------------------------------------------%
+%
+\bibliographystyle{plainnat} 
+\bibliography{MotionClouds}
+%\begin{thebibliography}{}
+%
+%\bibitem[Adelson and Bergen, 1985]{Adelson85}
+%Adelson, E.~H. and Bergen, J.~R. (1985).
+%\newblock Spatiotemporal energy models for the perception of motion.
+%\newblock {\em J. Opt. Soc. Am. A}, 2(2):284--299.
+%
+%\bibitem[Atick, 1992]{Atick92}
+%Atick, J.~J. (1992).
+%\newblock Could information theory provide an ecological theory of sensory
+%  processing?
+%\newblock {\em Network}, 3(2):213--52.
+%
+%\bibitem[Blasdel and Salama, 1986]{Blasdel86}
+%Blasdel, G.~G. and Salama, G. (1986).
+%\newblock Voltage-sensitive dyes reveal a modular organization in monkey
+%  striate cortex.
+%\newblock {\em Nature}, 321(6070):579--585.
+%
+%\bibitem[Born and Bradley, 2005]{Bradley05}
+%Born, R.~T. and Bradley, D.~C. (2005).
+%\newblock Structure and function of visual area {MT}.
+%\newblock {\em Ann. Rev. of Neurosci.}, 28(1):157--189.
+%
+%\bibitem[Braddick, 1993]{Braddick1993Segmentation}
+%Braddick, O. (1993).
+%\newblock Segmentation versus integration in visual motion processing.
+%\newblock {\em Trends Neurosci.}, 16(7):263--268.
+%
+%\bibitem[Bradley and Goyal, 2008]{Bradley08}
+%Bradley, D.~C. and Goyal, M.~S. (2008).
+%\newblock Velocity computation in the primate visual system.
+%\newblock {\em Nat. Neurosci.}, 9(9):686--695.
+%
+%\bibitem[Brainard, 1997]{Brainard97}
+%Brainard, D.~H. (1997).
+%\newblock The psychophysics toolbox.
+%\newblock {\em Spatial Vision}, 10:433--436.
+%
+%\bibitem[Burr and Thompson, 2011]{Burr11}
+%Burr, D. and Thompson, P. (2011).
+%\newblock Motion psychophysics: 1985-2010.
+%\newblock {\em Vision Res.}, 51(13):1431--1456.
+%
+%\bibitem[Carandini et~al., 2005]{Carandini05}
+%Carandini, M., Demb, J.~B., Mante, V., Tolhurst, D.~J., Dan, Y., Olshausen,
+%  B.~A., Gallant, J.~L., and Rust, N.~C. (2005).
+%\newblock Do we know what the early visual system does?
+%\newblock {\em J. Neurosci.}, 25(46):10577--97.
+%
+%\bibitem[Conway et~al., 2007]{Conway07}
+%Conway, B.~R., Moeller, S., and D., T. (2007).
+%\newblock Specialized color modules in macaque extrastriate cortex.
+%\newblock {\em Neuron}, 56(3).
+%
+%\bibitem[Dan et~al., 1996]{Dan96}
+%Dan, Y., Atick, J.~J., and Reid, R.~C. (1996).
+%\newblock Efficient coding of natural scenes in the lateral geniculate nucleus:
+%  experimental test of a computational theory.
+%\newblock {\em J. Neurosci.}, 16(10):3351--62.
+%
+%\bibitem[Daugman, 1980]{Daugman80}
+%Daugman, J.~G. (1980).
+%\newblock Two-dimensional spectral analysis of cortical receptive field
+%  profiles.
+%\newblock {\em Vision Res.}, 20(10):847--856.
+%
+%\bibitem[Derrington et~al., 2004]{Derrington04}
+%Derrington, A.~M., Allen, H.~A., and Delicato, L.~S. (2004).
+%\newblock Visual mechanisms of motion analysis and motion perception.
+%\newblock {\em Annu. Rev. Psychol.}, 55(1):181--205.
+%
+%\bibitem[DeValois and DeValois, 1988]{DeValois1988Spatial}
+%DeValois, R.~L. and DeValois, K.~K. (1988).
+%\newblock {\em Spatial Vision}.
+%\newblock Oxford University Press, USA.
+%
+%\bibitem[Drewes et~al., 2008]{Drewes08}
+%Drewes, J., Barthelemy, F., and Masson, G.~S. (2008).
+%\newblock Human ocular following and natural scene statistics.
+%\newblock {\em J. Vis.}, 8(6):383.
+%
+%\bibitem[Essock et~al., 2009]{Essock09}
+%Essock, E.~A., Haun, A.~M., and Kim, Y.~J. (2009).
+%\newblock An anisotropy of orientation-tuned suppression that matches the
+%  anisotropy of typical natural scenes.
+%\newblock {\em J. Vis.}, 9(1).
+%
+%\bibitem[Felsen and Dan, 2005]{Felsen2005Natural}
+%Felsen, G. and Dan, Y. (2005).
+%\newblock A natural approach to studying vision.
+%\newblock {\em Nat. Neurosci.}, 8(12):1643--1646.
+%
+%\bibitem[Field, 1987]{Field87}
+%Field, D.~J. (1987).
+%\newblock Relations between the statistics of natural images and the response
+%  properties of cortical cells.
+%\newblock {\em J. Opt. Soc. Am. A}, 4:2379--2394.
+%
+%\bibitem[Field, 1994]{Field94}
+%Field, D.~J. (1994).
+%\newblock What is the goal of sensory coding?
+%\newblock {\em Neural Comput.}, 6(4):559--601.
+%
+%\bibitem[Field, 1999]{Field99}
+%Field, D.~J. (1999).
+%\newblock Wavelets, vision and the statistics of natural scenes.
+%\newblock {\em Philos T Roy Soc A}, 357(1760):2527--2542.
+%
+%\bibitem[Fischer et~al., 2007]{Fischer07a}
+%Fischer, S., \v{S}roubek, F., Perrinet, L.~U., Redondo, R., and Crist{\'o}bal,
+%  G. (2007).
+%\newblock Self-invertible {2D} log-gabor wavelets.
+%\newblock {\em Int. J. Comput. Vision}, 75(2):231--246.
+%
+%\bibitem[Galerne et~al., 2010]{Galerne10}
+%Galerne, B., Gousseau, Y., and Morel, J.~M. (2010).
+%\newblock Random {P}hase {T}extures: Theory and synthesis.
+%\newblock {\em IEEE T. Image. Process.}
+%
+%\bibitem[Geisler and Ringach, 2009]{Geisler08}
+%Geisler, W.~S. and Ringach, D. (2009).
+%\newblock Natural systems analysis.
+%\newblock {\em Visual Neurosci}, 26:1--3.
+%
+%\bibitem[Graham, 1979]{Graham79}
+%Graham, N. (1979).
+%\newblock Does the brain perform a fourier analysis of the visual scene?
+%\newblock {\em Trends Neurosci.}, 2:207--208.
+%
+%\bibitem[Hansen and Hess, 2006]{HansenHess2006}
+%Hansen, B. and Hess, R. (2006).
+%\newblock The role of spatial phase in texture segmentation and contour
+%  integration.
+%\newblock {\em J. Vis.}, 5(5):594--615.
+%
+%\bibitem[Heeger et~al., 1996]{Heeger96}
+%Heeger, D.~J., Simoncelli, E.~P., and Movshon, J.~A. (1996).
+%\newblock Computational models of cortical visual processing.
+%\newblock {\em Proc. Natl. Acad. Sci. U. S. A.}, 93(2):623--627.
+%
+%\bibitem[Henriksson et~al., 2008]{Henriksson08}
+%Henriksson, L., Nurminen, L., Hyv{\"a}rinen, A., and Vanni, S. (2008).
+%\newblock Spatial frequency tuning in human retinotopic visual areas.
+%\newblock {\em J. Vis.}, 8(10).
+%
+%\bibitem[Hess et~al., 2003]{hessreview03}
+%Hess, R., Hayes, A., and Field, D.~J. (2003).
+%\newblock Contour integration and cortical processing.
+%\newblock {\em J. Physiol. Paris}, 97(2-3):105--119.
+%
+%\bibitem[Jacob et~al., 2008]{Jacob08}
+%Jacob, V., {Le Cam}, J., Ego-Stengel, V., and Shulz, D.~E. (2008).
+%\newblock Emergent properties of tactile scenes selectively activate barrel
+%  cortex neurons.
+%\newblock {\em Neuron}, 60(6):1112--1125.
+%
+%\bibitem[Jasinschi et~al., 1992]{Jasinschi92}
+%Jasinschi, R., Rosenfeld, A., and Sumit, K. (1992).
+%\newblock Perceptual motion transparency: the role of geometrical information.
+%\newblock {\em J. Opt. Soc. Am. A}, 9(11):1865--1879.
+%
+%\bibitem[Jones and Palmer, 1987]{Jones87}
+%Jones, J.~P. and Palmer, L.~A. (1987).
+%\newblock An evaluation of the two-dimensional gabor filter model of simple
+%  receptive fields in cat striate cortex.
+%\newblock {\em J. Neurophysiol.}, 58(6):1233--1258.
+%
+%\bibitem[Klein et~al., 2000]{Klein00}
+%Klein, D.~J., Depireux, D.~A., Simon, J.~Z., and Shamma, S.~A. (2000).
+%\newblock Robust spectrotemporal reverse correlation for the auditory system:
+%  Optimizing stimulus design.
+%\newblock {\em J. Comput. Neurosci.}, 9(1):85--111.
+%
+%\bibitem[Lagae et~al., 2009]{Lagae09}
+%Lagae, A., Lefebvre, S., Drettakis, G., and Dutr{\'e}, P. (2009).
+%\newblock Procedural noise using sparse gabor convolution.
+%\newblock Technical Report Report CW 545, Department of Computer Science,
+%  K.U.Leuven.
+%
+%\bibitem[Lee, 1996]{Lee96}
+%Lee, T.~S. (1996).
+%\newblock Image representation using {2D} gabor wavelets.
+%\newblock {\em IEEE T. Pattern. Anal.}, 18:959--971.
+%
+%\bibitem[Lewis, 1984]{Lewis84}
+%Lewis, J.~P. (1984).
+%\newblock Texture synthesis for digital painting.
+%\newblock {\em ACM SIGGRAPH}, 18:245--252.
+%
+%\bibitem[Lu and Sperling, 2001]{Lu01}
+%Lu, Z.-L. and Sperling, G. (2001).
+%\newblock Three-systems theory of human visual motion perception: review and
+%  update.
+%\newblock {\em J. Opt. Soc. Am. A}, 18(9):2331--70.
+%
+%\bibitem[Mainen and Sejnowski, 1995]{Mainen95}
+%Mainen, Z.~F. and Sejnowski, T.~J. (1995).
+%\newblock Reliability of spike timing in neocortical neurons.
+%\newblock {\em Science}, 268(5216):1503--1506.
+%
+%\bibitem[Marcelja, 1980]{Marcelja80}
+%Marcelja, S. (1980).
+%\newblock Mathematical description of the responses of simple cortical cells.
+%\newblock {\em J. Opt. Soc. Am. A}, 70(11):1297--1300.
+%
+%\bibitem[Masson and Castet, 2002]{Masson02}
+%Masson, G.~S. and Castet, E. (2002).
+%\newblock Parallel motion processing for the initiation of short-latency ocular
+%  following in humans. journal of neuroscience, 22, 5149-63.
+%\newblock {\em J. Neurosci.}, 22:5149--63.
+%
+%\bibitem[Masson and Ilg, 2010]{Masson10}
+%Masson, G.~S. and Ilg, U.~J., editors (2010).
+%\newblock {\em Dynamics of Visual Motion Processing: Neuronal, Behavioral and
+%  Computational Approaches}.
+%\newblock Springer, Berlin-Heidelberg, first edition.
+%
+%\bibitem[Movshon et~al., 1985]{Movshon85}
+%Movshon, J.~A., Adelson, E.~H., Gizzi, M.~S., and Newsome, W.~T. (1985).
+%\newblock The analysis of moving visual patterns.
+%\newblock In Chagas, C., Gattass, R., and Gross, C., editors, {\em Pattern
+%  Recognition Mechanisms}, volume~54, pages 117--151. Rome: Vatican Press.
+%
+%\bibitem[Neri et~al., 1998]{Neri98}
+%Neri, P., Morrone, M.~C., and Burr, D.~C. (1998).
+%\newblock Seeing biological motion.
+%\newblock {\em Nature}, 395(6705):894--896.
+%
+%\bibitem[Newsome, 1997]{Newsome1997Deciding}
+%Newsome, W.~T. (1997).
+%\newblock Deciding about motion: linking perception to action.
+%\newblock {\em J. Comp. Physiol. A. Neuroethol. Sens. Neural Behav. Physiol.},
+%  181(1):5--12.
+%
+%\bibitem[Nishimoto and Gallant, 2011]{Nishimoto11}
+%Nishimoto, S. and Gallant, J.~L. (2011).
+%\newblock A three-dimensional spatiotemporal receptive field model explains
+%  responses of area {MT} neurons to naturalistic movies.
+%\newblock {\em J. Neurosci.}, 31(41):14551--14564.
+%
+%\bibitem[Oliva and Torralba, 2001]{Oliva01}
+%Oliva, A. and Torralba, A. (2001).
+%\newblock Modeling the shape of the scene: A holistic representation of the
+%  spatial envelope.
+%\newblock {\em Int. J. Comput. Vision}, 42:145--175.
+%
+%\bibitem[Oppenheim and Lim, 1981]{Oppenheim81}
+%Oppenheim, A.~V. and Lim, J.~S. (1981).
+%\newblock The importance of phase in signals.
+%\newblock {\em P. IEEE}, 69(5):529--541.
+%
+%\bibitem[Pei et~al., 2011]{Pei11}
+%Pei, Y.~C., Hsiao, S.~S., Craig, J.~C., and Bensmaia, S.~J. (2011).
+%\newblock Neural mechanisms of tactile motion integration in somatosensory
+%  cortex.
+%\newblock {\em Neuron}, 69(3):536--47.
+%
+%\bibitem[Pelli, 1997]{Pelli97}
+%Pelli, D.~G. (1997).
+%\newblock The videotoolbox software for visual psychophysics: transforming
+%  numbers into movies.
+%\newblock {\em Spatial Vision}, 10:437--442.
+%
+%\bibitem[Perrinet et~al., 2011]{Perrinet11sfn}
+%Perrinet, L., Fitzpatrick, D., and Bednar, J.~A. (2011).
+%\newblock Edge statistics in natural images versus laboratory animal
+%  environments: implications for understanding lateral connectivity in {V1}.
+%\newblock In {\em Society for~Neuroscience Abstracts}, Program No. 530.04.
+%
+%\bibitem[Perrinet, 2010]{Perrinet10shl}
+%Perrinet, L.~U. (2010).
+%\newblock Role of homeostasis in learning sparse representations.
+%\newblock {\em Neural Comput.}, 22(7):1812--36.
+%
+%\bibitem[Perrone and Thiele, 2001]{Perrone01}
+%Perrone, J.~A. and Thiele, A. (2001).
+%\newblock Speed skills: measuring the visual speed analyzing properties of
+%  primate {MT} neurons.
+%\newblock {\em Nat. Neurosci.}, 4(5):526--532.
+%
+%\bibitem[Perrone and Thiele, 2002]{Perrone02}
+%Perrone, J.~A. and Thiele, A. (2002).
+%\newblock A model of speed tuning in {MT} neurons.
+%\newblock {\em Vision Res.}, 42(8):1035--1051.
+%
+%\bibitem[Phillips and Todd, 2010]{PhillipsTodd2010}
+%Phillips, F. and Todd, J. (2010).
+%\newblock Texture discrimination based on global feature alignments.
+%\newblock {\em J. Vis.}, 10(6):6.
+%
+%\bibitem[Priebe et~al., 2003]{Priebe03}
+%Priebe, N., Cassanello, C., and Lisberger, S. (2003).
+%\newblock The neural representation of speed in macaque area {MT/V5}.
+%\newblock {\em J. Neurosci.}, 23:5650--5661.
+%
+%\bibitem[Priebe et~al., 2006]{Priebe06}
+%Priebe, N., Lisberger, S., and Movshon, J.~A. (2006).
+%\newblock Tuning for spatiotemporal frequency and speed in directionally
+%  selective neurons of macaque striate cortex.
+%\newblock {\em J. Neurosci.}, 26:2941--2950.
+%
+%\bibitem[Rieke et~al., 1995]{Rieke95}
+%Rieke, F., Bodnar, D.~A., and Bialek, W. (1995).
+%\newblock Naturalistic stimuli increase the rate and efficiency of information
+%  transmission by primary auditory afferents.
+%\newblock {\em P. Roy. Soc. Lond. B Bio.}, 262(1365).
+%
+%\bibitem[Rust et~al., 2006]{Rust06}
+%Rust, N.~C., Mante, V., Simoncelli, E.~P., and Movshon, J.~A. (2006).
+%\newblock How {MT} cells analyze the motion of visual patterns.
+%\newblock {\em Nat. Neurosci.}, 9(11):1421--31.
+%
+%\bibitem[Rust and Movshon, 2005]{Rust05}
+%Rust, N.~C. and Movshon, J.~A. (2005).
+%\newblock In praise of artifice.
+%\newblock {\em Nat. Neurosci.}, 8(12):1647--1650.
+%
+%\bibitem[Rust et~al., 2005]{Rust2005Spatiotemporal}
+%Rust, N.~C., Schwartz, O., Movshon, J.~A., and Simoncelli, E.~P. (2005).
+%\newblock Spatiotemporal elements of macaque {V1} receptive fields.
+%\newblock {\em Neuron}, 46(6):945--956.
+%
+%\bibitem[Scarfe and Johnston, 2010]{Scarfe10}
+%Scarfe, P. and Johnston, A. (2010).
+%\newblock Motion drag induced by global motion gabor arrays.
+%\newblock {\em J. Vis.}, 10(5).
+%
+%\bibitem[Schrater et~al., 2000]{Schrater00}
+%Schrater, P.~R., Knill, D.~C., and Simoncelli, E.~P. (2000).
+%\newblock Mechanisms of visual motion detection.
+%\newblock {\em Nat. Neurosci.}, 3(1):64--8.
+%
+%\bibitem[Schwartz and Simoncelli, 2001]{Schwartz01}
+%Schwartz, O. and Simoncelli, E.~P. (2001).
+%\newblock Natural signal statistics and sensory gain control.
+%\newblock {\em Nat. Neurosci.}, 4(8):819--25.
+%
+%\bibitem[Simoncelli and Heeger, 1998]{Simoncelli98}
+%Simoncelli, E.~P. and Heeger, D.~J. (1998).
+%\newblock A model of neuronal responses in visual area {MT}.
+%\newblock {\em Vision Res.}, 38(5):743--761.
+%
+%\bibitem[Simoncini et~al., 2011]{Simoncini11}
+%Simoncini, C., Perrinet, L.~U., Montagnini, A., Mamassian, P., and Masson,
+%  G.~S. (2011).
+%\newblock More is not always better: different motion decoding for perception
+%  or action.
+%\newblock {\em Submitted}.
+%
+%\bibitem[Singh et~al., 2000]{Singh2000Spatiotemporal}
+%Singh, K.~D., Smith, A.~T., and Greenlee, M.~W. (2000).
+%\newblock Spatiotemporal frequency and direction sensitivities of human visual
+%  areas measured using {fMRI}.
+%\newblock {\em NeuroImage}, 12(5):550--564.
+%
+%\bibitem[Smith and Edgar, 1990]{smith90}
+%Smith, A. and Edgar, G. (1990).
+%\newblock The influence of spatial frequency on perceived temporal frequency
+%  and perceived speed.
+%\newblock {\em Vision Res.}, 30:1467--1474.
+%
+%\bibitem[Solomon et~al., 2010]{Solomon10}
+%Solomon, S.~G., Tailby, C., Cheong, S.~K., and Camp, A.~J. (2010).
+%\newblock Linear and nonlinear contributions to the visual sensitivity of
+%  neurons in primate lateral geniculate nucleus.
+%\newblock {\em J. Neurophysiol.}, 104(4):1884.
+%
+%\bibitem[Torralba and Oliva, 2003]{Torralba03}
+%Torralba, A. and Oliva, A. (2003).
+%\newblock Statistics of natural image categories.
+%\newblock In {\em Network: Computation in Neural Systems}, pages 391--412.
+%
+%\bibitem[Touryan, 2001]{Touryan01}
+%Touryan, J. (2001).
+%\newblock Analysis of sensory coding with complex stimuli.
+%\newblock {\em Curr Opin Neurobiol}, 11(4):443--448.
+%
+%\bibitem[Ts'o et~al., 1990]{TsO90}
+%Ts'o, D., Frostig, R., Lieke, E., and Grinvald, A. (1990).
+%\newblock Functional organization of primate visual cortex revealed by high
+%  resolution optical imaging.
+%\newblock {\em Science}, 249(4967):417--420.
+%
+%\bibitem[Tsuchiya and Braun, 2007]{Tsuchiya07}
+%Tsuchiya, N. and Braun, J. (2007).
+%\newblock Contrast thresholds for component motion with full and poor
+%  attention.
+%\newblock {\em J. Vis.}, 7(3):1.
+%
+%\bibitem[Turing, 1952]{Turing52}
+%Turing, A. (1952).
+%\newblock The chemical basis of morphogenesis.
+%\newblock {\em Philos T Roy Soc A}, B.
+%
+%\bibitem[Victor and Conte, 1996]{VictorComte1996}
+%Victor, J. and Conte, M. (1996).
+%\newblock The role of high-order phase correlations in texture processing.
+%\newblock {\em Vision Res.}, 36(11):1615--1631.
+%
+%\bibitem[Vinje and Gallant, 2000]{Vinje00}
+%Vinje, W.~E. and Gallant, J.~L. (2000).
+%\newblock Sparse coding and decorrelation in primary visual cortex during
+%  natural vision.
+%\newblock {\em Science}, 287(5456):1273--1276.
+%
+%\bibitem[Wang and Yao, 2011]{Wang11}
+%Wang, C. and Yao, H. (2011).
+%\newblock Sensitivity of {V1} neurons to direction of spectral motion.
+%\newblock {\em Cereb Cortex}, 21(4):964--973.
+%
+%\bibitem[Watson and Eckert, 1994]{watson94}
+%Watson, A. and Eckert, M. (1994).
+%\newblock Motion-contrast sensitivity : visibility of motion gradients of
+%  various spatial frequencies.
+%\newblock {\em J. Opt. Soc. Am. A}, 11:486--505.
+%
+%\bibitem[Watson and Turano, 1995]{Watson95}
+%Watson, A. and Turano, K. (1995).
+%\newblock The optimal motion stimulus.
+%\newblock {\em Vision Res.}, 35(3):325--336.
+%
+%\bibitem[Watson et~al., 1983]{Watson83}
+%Watson, A.~B., Barlow, H.~B., and Robson, J.~G. (1983).
+%\newblock What does the eye see best?
+%\newblock {\em Nature}, 302(5907):419--422.
+%
+%\bibitem[Wu et~al., 2006]{Wu06}
+%Wu, M. C.~K., David, S.~V., and Gallant, J.~L. (2006).
+%\newblock Complete functional characterization of sensory neurons by system
+%  identification.
+%\newblock {\em Annu. Rev. Neurosci.}, 29(1):477--505.
+%
+%\bibitem[Zeki, 1983]{Zeki83}
+%Zeki, S. (1983).
+%\newblock Colour coding in the cerebral cortex: the reaction of cells in monkey
+%  visual cortex to wavelengths and colours.
+%\newblock {\em Neuroscience}, 9(4):741--765.
+%\newblock Elsevier IBRO.
+%
+%\end{thebibliography}
+%
 \end{document}%
