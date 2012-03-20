@@ -2,6 +2,9 @@
 """
 Testing all possible export types 
 
+(c) Laurent Perrinet - INT/CNRS
+
+
 """
 
 import MotionClouds as mc

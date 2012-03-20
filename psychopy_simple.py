@@ -13,7 +13,7 @@ import MotionClouds as mc
 
 fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
 color = mc.envelope_color(fx, fy, ft)
-env = color *(mc.envelope_donut(fx, fy, ft, V_X=1.) + mc.envelope_donut(fx, fy, ft, V_X=-1.))
+env = color *(mc.envelope_gabor(fx, fy, ft, V_X=1.) + mc.envelope_gabor(fx, fy, ft, V_X=-1.))
 z = 2*mc.rectif(mc.random_cloud(env), contrast=.5) -1.
 
 # TODO : make a GUI with two threads: one for psychopy, one for the generation / see also experiment_smooth.py for a smooth transition of parameters

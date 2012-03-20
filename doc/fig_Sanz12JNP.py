@@ -8,9 +8,10 @@ This script generates all figures and supplemental movies related to the publica
         Author = {Sanz Leon, Paula and Vanzetta, Ivo and Masson, Guillaume S. and Perrinet, Laurent U.},
         Title = {Motion Clouds: Model-based stimulus synthesis of natural-like random textures for the study of motion perception},
         Year = {2012},
+        Journal = {Journal of Neurophysiology},
+        Url ={http://invibe.net/cgi-bin/index.cgi/Publications/Sanz12},
 }
 
-http://invibe.net/cgi-bin/index.cgi/Publications/Sanz12
 
 
 """
@@ -129,9 +130,11 @@ if not(os.path.isfile('figure1.pdf')):
 
     image = np.load('montypython.npy')[:, ::-1, N_first:(N_first+N_frame)]
     #image = np.load('~/sci/dyva/Motion/particles/movie/montypython.npy')[:, ::-1, N_first:(N_first+N_frame)]
-    #image -= image.mean()
+    image -= image.mean()
     image /= np.abs(image).max()
-    mc.anim_save(image, 'montypython.npy', display=False, vext='.mpg')
+    image += 1
+    image /= 2.
+    mc.anim_save(image, 'montypython.npy', display=False, flip=True, vext='.mpg')
 
     (N_X, N_Y, N_frame) = image.shape
     movie = translation(image)

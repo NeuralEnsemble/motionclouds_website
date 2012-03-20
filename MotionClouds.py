@@ -363,6 +363,8 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
     """
     Saves a numpy 3D matrix (x-y-t) to a multimedia file.
 
+    The input pixel values are supposed to lie in the [0, 1.] range.
+
     """
     import os                         # For issuing commands to the OS.
     import tempfile
@@ -381,6 +383,7 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
             if PROGRESS: pbar.update(frame)
             fname = os.path.join(tmpdir, 'frame%03d.png' % frame)
             image = np.rot90(z[:, :, frame])
+            if flip: image = np.flipud(image)
             toimage(image, high=255, low=0, cmin=0., cmax=1., pal=None,
                     mode=None, channel_axis=None).save(fname)
             files.append(fname)
