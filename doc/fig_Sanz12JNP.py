@@ -131,6 +131,8 @@ if not(os.path.isfile('figure1.pdf')):
     #image = np.load('~/sci/dyva/Motion/particles/movie/montypython.npy')[:, ::-1, N_first:(N_first+N_frame)]
     #image -= image.mean()
     image /= np.abs(image).max()
+    mc.anim_save(image, 'montypython.npy', display=False, vext='.mpg')
+
     (N_X, N_Y, N_frame) = image.shape
     movie = translation(image)
     (N_X, N_Y, N_frame) = movie.shape

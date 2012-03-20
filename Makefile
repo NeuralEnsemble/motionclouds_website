@@ -4,9 +4,9 @@ report_%.pdf: report_%.py MotionParticles.py
 	    pyreport --double $< && open $@
 
 run:
-	for f in test_*.py; do echo 'running' $f; python $f; done
-	for f in experiments_*.py; do echo 'running' $f; python $f; done
-	for f in fig_*.py; do echo 'running' $f; python $f; done
+	for f in test_*.py; do python $(f); done
+	for f in experiments_*.py; do python $(f); done
+	for f in fig_*.py; do python $(f); done
 
 doc: 
 	@(cd doc && $(MAKE))

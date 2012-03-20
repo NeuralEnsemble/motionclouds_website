@@ -2,6 +2,8 @@
 """
 A smooth transition while changing parameters
 
+(c) Laurent Perrinet - INT/CNRS
+
 """
 
 import MotionClouds as mc

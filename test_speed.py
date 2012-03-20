@@ -30,7 +30,7 @@ if True:
         z = color * mc.envelope_speed(fx, fy, ft, V_X=0.0, V_Y=V_Y)
         mc.figures(fx, fy, ft, z, name_)
 
-    for B_V in [0.0, 0.01, 0.05, 0.1, 0.5, 1.0, 10.0]:
+    for B_V in [0.001, 0.01, 0.05, 0.1, 0.5, 1.0, 10.0]:
         name_ = mc.figpath + name + '-B_V-' + str(B_V).replace('.', '_')
         z = color * mc.envelope_speed(fx, fy, ft, B_V=B_V)
         mc.figures(fx, fy, ft, z, name_)

@@ -3,20 +3,20 @@
 """
 Demonstration of exploring the aperture problem using MotionClouds. Used to generate page:
 
-https://www.incm.cnrs-mrs.fr/LaurentPerrinet/SciBlog/2011-07-18
+https://invibe.net/LaurentPerrinet/SciBlog/2011-07-18
+
+(c) Laurent Perrinet - INT/CNRS
 
 """
-__revision__ = "$Id: fig_MotionPlaid.py,v 417f7cf261bf 2011/07/11 16:34:55 laurent $"
 
 import numpy as np
-import sys
-sys.path.append('..')
-import RandomCloud as mc
+import MotionClouds as mc
+
 fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
 name = 'SlippingClouds'
 vext = '.gif'
 
-B_sf = .3 
+B_sf = .3
 B_theta = np.pi/32
 
 # show example
@@ -29,19 +29,19 @@ table = """
 """
 
 theta1, theta2 = 0., np.pi/2.
-diag = mc.envelope_gabor(fx, fy, ft, theta=theta2, V_X=np.cos(theta1), V_Y=np.sin(theta1), B_sf = B_sf, B_theta=B_theta)
+diag = mc.envelope_gabor(fx, fy, ft, theta=theta2, V_X=np.cos(theta1), V_Y=np.sin(theta1), B_sf=B_sf, B_theta=B_theta)
 name_ = name + '_iso'
 mc.figures(fx, fy, ft, diag, name_, vext=vext, seed=12234565)
 table += '||{{attachment:' + name_ + '.png||width=100%}}||{{attachment:' + name_ + '_cube.png||width=100%}}||{{attachment:' + name_ + '.gif||width=100%}}||\n'
 
 theta1, theta2 = 0., np.pi/4.
-diag = mc.envelope_gabor(fx, fy, ft, theta=theta2, V_X=np.cos(theta1), V_Y=np.sin(theta1), B_sf = B_sf, B_theta=B_theta)
+diag = mc.envelope_gabor(fx, fy, ft, theta=theta2, V_X=np.cos(theta1), V_Y=np.sin(theta1), B_sf=B_sf, B_theta=B_theta)
 name_ = name + '_diag'
 mc.figures(fx, fy, ft, diag, name_, vext=vext, seed=12234565)
 table += '||{{attachment:' + name_ + '.png||width=100%}}||{{attachment:' + name_ + '_cube.png||width=100%}}||{{attachment:' + name_ + '.gif||width=100%}}||\n'
 
 theta1, theta2 = 0., np.pi/2.
-diag = mc.envelope_gabor(fx, fy, ft, theta=theta2, V_X=np.cos(theta1), V_Y=np.sin(theta1), B_sf = B_sf, B_theta=B_theta)
+diag = mc.envelope_gabor(fx, fy, ft, theta=theta2, V_X=np.cos(theta1), V_Y=np.sin(theta1), B_sf=B_sf, B_theta=B_theta)
 name_ = name + '_contra'
 mc.figures(fx, fy, ft, diag, name_, vext=vext, seed=12234565)
 table += '||<width="33%">{{attachment:' + name_ + '.png||width=100%}}||<width="33%">{{attachment:' + name_ + '_cube.png||width=100%}}||<width="33%">{{attachment:' + name_ + '.gif||width=100%}}||\n'
@@ -56,16 +56,16 @@ table += '== exploring different slipping angles ==\n'
 N_orient = 8
 #downscale= 2
 #fx, fy, ft = mc.get_grids(mc.N_X/downscale, mc.N_Y/downscale, mc.N_frame)
-theta =0
+theta = 0
 for dtheta in np.linspace(0, np.pi/2, N_orient):
     name_ = name + '_dtheta_' + str(dtheta).replace('.', '_')
     theta1, theta2, B_theta = 0., np.pi/2., np.pi/32
-    diag = mc.envelope_gabor(fx, fy, ft, theta=theta+dtheta, V_X=np.cos(theta), V_Y=np.sin(theta), B_sf = B_sf, B_theta=B_theta)
+    diag = mc.envelope_gabor(fx, fy, ft, theta=theta+dtheta, V_X=np.cos(theta), V_Y=np.sin(theta), B_sf=B_sf, B_theta=B_theta)
     mc.figures(fx, fy, ft, diag, name_, vext=vext, seed=12234565)
     table += '||<width="50%">{{attachment:' + name_ + '.png||width=100%}}'
     table += '||<width="50%">{{attachment:' + name_ + '.gif||width=100%}}'
-    table +=  '||\n' 
-    
+    table += '||\n'
+
 table += '||||  We display !SlippingClouds with different angle between direction and orientation. <<BR>> Left column displays iso-surfaces of the spectral envelope by displaying enclosing volumes at 5 different energy values with respect to the peak amplitude of the Fourier spectrum. Right column of the table displays the actual movie as an animation.||\n'
 
 
@@ -77,17 +77,17 @@ table += '== manipulating different ambiguities ==\n'
 N_test = 8
 #downscale= 2
 #fx, fy, ft = mc.get_grids(mc.N_X/downscale, mc.N_Y/downscale, mc.N_frame)
-theta =0
+theta = 0
 dtheta = np.pi/4
 for B_theta_ in np.pi/8/np.arange(1, N_test+1):#np.linspace(0, np.pi/8, N_test)[1:]:
     name_ = name + '_B_theta_' + str(B_theta_).replace('.', '_')
     theta1, theta2, B_theta = 0., np.pi/2., np.pi/32
-    diag = mc.envelope_gabor(fx, fy, ft, theta=theta+dtheta, V_X=np.cos(theta), V_Y=np.sin(theta), B_sf = B_sf, B_theta=B_theta_)
+    diag = mc.envelope_gabor(fx, fy, ft, theta=theta+dtheta, V_X=np.cos(theta), V_Y=np.sin(theta), B_sf=B_sf, B_theta=B_theta_)
     mc.figures(fx, fy, ft, diag, name_, vext=vext, seed=12234565)
     table += '||<width="50%">{{attachment:' + name_ + '.png||width=100%}}'
     table += '||<width="50%">{{attachment:' + name_ + '.gif||width=100%}}'
-    table +=  '||\n' 
-    
+    table += '||\n'
+
 table += '||||  The ambiguity in !SlippingClouds can be manipualted by changing B_theta for a given B_V. <<BR>> Left column displays iso-surfaces of the spectral envelope by displaying enclosing volumes at 5 different energy values with respect to the peak amplitude of the Fourier spectrum. Right column of the table displays the actual movie as an animation.||\n'
 
 table += """

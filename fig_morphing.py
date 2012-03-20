@@ -3,16 +3,17 @@
 """
 Demonstration of going from a natural image to a random cloud by shuffling the phase in FFT space
 
-fig_morphing.py
+(c) Laurent Perrinet - INT/CNRS
+
 
 """
-__revision__ = "$Id: fig_morphing.py,v 0121097cce1f 2011/07/04 16:00:41 perrinet $"
 
 import pylab
 import numpy as np
 import sys
-sys.path.append('..')
-import RandomCloud as mc
+import MotionClouds as mc
+fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
+
 
 name = 'results/morphing'
 vext = '.mpg'

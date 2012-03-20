@@ -34,8 +34,6 @@ fps  	-- frame per seconds
 
 import os
 DEBUG = False
-print DEBUG
-import numpy as np
 if DEBUG:
     size = 5
     size_T = 5
@@ -46,6 +44,7 @@ else:
     size_T = 7
     figsize = (800, 800) # nice size, but requires some memory
 
+import numpy as np
 N_X = 2**size
 N_Y = N_X
 N_frame = 2**size_T

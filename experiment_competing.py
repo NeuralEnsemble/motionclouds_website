@@ -3,17 +3,17 @@
 
 Superposition of MotionClouds to generate competing motions.
 
+(c) Laurent Perrinet - INT/CNRS
+
 """
 import numpy
 import MotionClouds as mc
+fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
 
 name = 'competing'
 ext = '.mpg'
-#initialize
-fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
-
-z = (.5*mc.envelope_gabor(fx, fy, ft, sf_0=0.2, V_X=-.5)
-     + .1*mc.envelope_gabor(fx, fy, ft, sf_0=0.2, V_X=1.5)#, theta=numpy.pi/2.)
+z = (.5*mc.envelope_gabor(fx, fy, ft, sf_0=0.2, V_X=-1.5)
+     + .1*mc.envelope_gabor(fx, fy, ft, sf_0=0.4, V_X=.5)#, theta=numpy.pi/2.)
      )
 
 mc.figures(fx, fy, ft, z, mc.figpath + name)
@@ -32,15 +32,15 @@ for sf_0 in [0.0, 0.1 , 0.2, 0.3, 0.8, 0.9]:
     name_ = mc.figpath + name + '-sf_0' + str(sf_0).replace('.', '_')
     two = mc.envelope_gabor(fx, fy, ft, sf_0=sf_0, B_theta=10.)
     mc.figures(fx, fy, ft, one + two, mc.figpath + name_)
-    
-    
+
+
 name = 'counterphase_grating'
 name_ = mc.figpath + name
 right = mc.envelope_speed(fx, fy, ft, V_X=.5 )
 left = mc.envelope_speed(fx, fy, ft, V_X=-.5 )
 
-grating = mc.envelope_gabor(fx, fy, ft) 
-z = grating * (left   + right ) # thanks to the addititivity of MCs 
+grating = mc.envelope_gabor(fx, fy, ft)
+z = grating * (left + right ) # thanks to the addititivity of MCs 
 mc.figures(fx, fy, ft, z, name_)
 
 name = 'plaid'

@@ -1,10 +1,16 @@
 #!/usr/bin/env python
+"""
+Exploring the effect of changing contrast and the method used.
 
-import sys
-sys.path.append('..')
-import RandomCloud as mc
+(c) Laurent Perrinet - INT/CNRS
+
+"""
+
+import pylab
 import numpy as np
-#import matplotlib.mlab as mlab
+import MotionClouds as mc
+fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
+
 import matplotlib.pyplot as plt
 import Image
 import math
@@ -16,7 +22,7 @@ name = 'contrast_methods-'
 fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
 color = mc.envelope_color(fx, fy, ft)
 ext = '.zip'
-contrast=0.25
+contrast = 0.25
 B_sf = 0.3
 
 for method in ['Michelson', 'energy']:
@@ -24,16 +30,16 @@ for method in ['Michelson', 'energy']:
     name_ = 'figures/' + name + method + '-contrast-' + str(contrast).replace('.', '_') + '-B_sf-' + str(B_sf).replace('.','_')
     if mc.anim_exist(name_):
         im = np.ravel(mc.random_cloud(z))
-        im_norm = mc.rectif(mc.random_cloud(z), contrast,method=method, verbose=True)
-                
+        im_norm = mc.rectif(mc.random_cloud(z), contrast, method=method, verbose=True)
+
         plt.figure()
         plt.subplot(111)
         plt.title('Michelson normalised Histogram Ctr: ' + str(contrast))
         plt.ylabel('pixel counts')
         plt.xlabel('grayscale')
-        bins= int((np.max(im_norm[:])-np.min(im_norm[:])) * 256)
-        plt.xlim([0,1])
-        plt.hist(np.ravel(im_norm), bins=bins, normed = False, facecolor='blue', alpha=0.75)
+        bins = int((np.max(im_norm[:])-np.min(im_norm[:])) * 256)
+        plt.xlim([0, 1])
+        plt.hist(np.ravel(im_norm), bins=bins, normed=False, facecolor='blue', alpha=0.75)
         plt.savefig(name_)
 
 def image_entropy(img):

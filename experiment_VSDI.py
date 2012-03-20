@@ -4,11 +4,11 @@ experiment_VSDI.py
 Experiment designed for optical imaging showing a conversion of size from Fourier 
 to screen coordinates and an export to a zipped file conaining BMP files (as the
 video card has limited memory)
+
+(c) Paula Sanz Leon - INT/CNRS
+
+
 """
-
-__author__ = "Paula Sanz Leon INCM - CNRS"
-__Id__ = "$Id: experiment_VSDI.py,v bcfd1a48e39a 2011/06/13 10:28:41 pau $"
-
 import os
 import scipy
 import MotionClouds as mc
