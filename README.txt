@@ -1,6 +1,6 @@
 #acl All:read
 
-= MotionClouds =
+= MotionClouds: installing and running the python scripts =
 
 [[TagMotionClouds|MotionClouds]] are parameterized stimuli with controlled motion content and no spatial coherence.  They are precisely tuned in the frequency space.
 

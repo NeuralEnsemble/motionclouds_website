@@ -9,7 +9,7 @@ This script generates all figures and supplemental movies related to the publica
         Title = {Motion Clouds: Model-based stimulus synthesis of natural-like random textures for the study of motion perception},
         Year = {2012},
         Journal = {Journal of Neurophysiology},
-        Url ={http://invibe.net/cgi-bin/index.cgi/Publications/Sanz12},
+        Url ={http://invibe.net/LaurentPerrinet/Publications/Sanz12},
 }
 
 

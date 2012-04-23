@@ -11,6 +11,11 @@ figures:
 	cd results/; echo "Creating figure 5 in results/"; montage figure5A.png figure5B.png figure5C.png grating-noise.png plaid.png counterphase_grating.png -geometry 564x512 ../figure5.pdf
 
 ################################################
+# macros
+
+3D: # TODO embbed to doc
+	asy  --keep -tex pdflatex figureMotionClouds.asy 
+
 %.jpg: %.pdf
 	convert $< $@
 %.png: %.pdf
