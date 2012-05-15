@@ -23,7 +23,7 @@ brew upgrade
 #source  ~/.bash_profile # also calls bashrc
 #echo $PATH
 #echo $PYTHONPATH
-
+source ~/.bash_profile
 
 # cd /System/Library/Frameworks/Python.framework/Versions
 # sudo rm Current
