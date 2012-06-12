@@ -11,7 +11,7 @@ name = 'color'
 fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
 
 z = mc.envelope_color(fx, fy, ft)
-mc.figures(fx, fy, ft, z, 'figures/' + name)
+if mc.anim_exist(mc.figpath + name): mc.figures(fx, fy, ft, z, mc.figpath + name)
 # explore parameters
 for alpha in [0.0, 0.5, 1.0, 1.5, 2.0]:
     # resp. white(0), pink(1), red(2) or brownian noise (see http://en.wikipedia.org/wiki/1/f_noise
@@ -56,3 +56,12 @@ for size in range(5, 8):
     name_ = mc.figpath + name + '-size_T-' + str(size).replace('.', '_')
     z = mc.envelope_color(fx, fy, ft, ft_0=ft_0)
     mc.figures(fx, fy, ft, z, name_)
+
+name = 'colorfull'
+fx, fy, ft = mc.get_grids(512, 512, 512)
+z = mc.envelope_color(fx, fy, ft)
+for seed in [123456 + step for step in range(1)]:
+    if mc.anim_exist(mc.figpath + name):
+        mc.anim_save(mc.rectif(mc.random_cloud(mc.envelope_color(fx, fy, ft), seed=seed)), mc.figpath + name, display=False)
+        mc.anim_save(mc.rectif(mc.random_cloud(mc.envelope_color(fx, fy, ft), seed=seed)), mc.figpath + name, display=False, vext='.mat')
+#         mc.figures(fx, fy, ft, z, mc.figpath + name)

@@ -1,8 +1,17 @@
 # install HomeBrew
-# /usr/bin/ruby -e "$(curl -fsSL https://raw.github.com/gist/323731)"
+/usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
 
 brew update
 brew upgrade
+
+# install EPD
+# sudo rm -fr /Library/Frameworks/EPD64.framework /Applications/Enthought 
+# sudo remove-EPD-7.2-2
+# hdiutil attach /Volumes/tera_enigma/data/soft/epd-7.2-2-macosx-x86_64.dmg
+
+# hdiutil attach /Volumes/tera_enigma/data/soft/epd-7.2-2-macosx-i386.dmg
+# sudo installer -pkg /Volumes/EPD-7.2/EPD.mpkg -target /
+# hdiutil detach  /Volumes/EPD-7.2
 
 #echo ---- bashrc -----
 #cat ~/.bashrc
@@ -23,7 +32,7 @@ brew upgrade
 #source  ~/.bash_profile # also calls bashrc
 #echo $PATH
 #echo $PYTHONPATH
-source ~/.bash_profile
+#source ~/.bash_profile
 
 # cd /System/Library/Frameworks/Python.framework/Versions
 # sudo rm Current
@@ -38,26 +47,26 @@ ln -s "/usr/local/Cellar/python/2.7.3/Frameworks/Python.framework" ~/Frameworks
 
 # bootstrap pip
 /usr/local/share/python/easy_install pip
-pip install --upgrade distribute
-pip install -U ipython
-brew remove qt
-# cd `brew --prefix`
-# brew versions qt
-git checkout 83f742e Library/Formula/qt.rb
+pip install --user distribute
+pip install --user ipython
 brew install qt
-brew install pyqt
-brew install pyside	pyside-tools
-pip install -U sphinx
-pip install -U spyder
+# brew install pyqt
+# brew install pyside	pyside-tools
+pip install sphinx
+pip install --user spyder
 
 # numpy et al
-brew install gfortran
-brew install ffmpeg 
-pip install -U numpy
-pip install -U PIL
-pip install -U scipy
+brew install --user  gfortran
+brew install --user ffmpeg 
+pip install --user numpy
+pip install --user PIL
+pip install --user scipy
+# brew install libtool libagg
+# pip install --user matplotlib
+pip install git+git://github.com/matplotlib/matplotlib.git
 #pip install -U -e git+git@github.com:matplotlib/matplotlib.git#egg=matplotlib
-pip install -U matplotlib
-#brew install libtool libagg
-#pip install git+git://github.com/matplotlib/matplotlib.git
-
+# mayavi
+brew install vtk --python
+pip install --user traitsbackendqt
+pip install --user configobj
+pip install  --user "Mayavi[app]"

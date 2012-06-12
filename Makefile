@@ -3,9 +3,11 @@ default: run doc
 report_%.pdf: report_%.py MotionParticles.py
 	    pyreport --double $< && open $@
 
+test:
+	for f in test_*.py; do python $f; done
 run:
-	for f in test_*.py; do python $(f); done
 	for f in experiments_*.py; do python $(f); done
+figures:
 	for f in fig_*.py; do python $(f); done
 
 doc: 
