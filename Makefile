@@ -4,7 +4,11 @@ report_%.pdf: report_%.py MotionParticles.py
 	    pyreport --double $< && open $@
 
 test:
-	for f in test_*.py; do python $f; done
+	python test_color.py
+	python test_export.py
+	python test_orientation.py
+	python test_radial.py
+	python test_speed.py
 run:
 	for f in experiments_*.py; do python $(f); done
 figures:

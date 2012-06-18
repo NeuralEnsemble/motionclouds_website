@@ -40,10 +40,12 @@ brew upgrade
 
 # install python through HomeBrew as a framework
 brew install readline sqlite gdbm pkg-config
-rm -fr ~/Frameworks 
 brew install python --framework --universal
-mkdir ~/Frameworks
-ln -s "/usr/local/Cellar/python/2.7.3/Frameworks/Python.framework" ~/Frameworks
+mkdir -p ~/Library/Frameworks/Python.framework/Versions
+ln -s "/usr/local/Cellar/python/2.7.3/Frameworks/Python.framework/Versions/2.7" ~/Library/Frameworks/Python.framework/Versions/2.7
+ln -s ~/Library/Frameworks/Python.framework/Versions/2.7 ~/Library/Frameworks/Python.framework/Versions/Current
+ln -s ~/Library/Frameworks/Python.framework/Versions/2.7/Python ~/Library/Frameworks/Python.framework/Python
+ln -s ~/Library/Frameworks/Python.framework/Versions/2.7/Resources ~/Library/Frameworks/Python.framework/Resources
 
 # bootstrap pip
 /usr/local/share/python/easy_install pip
@@ -51,13 +53,13 @@ pip install --user distribute
 pip install --user ipython
 brew install qt
 # brew install pyqt
-# brew install pyside	pyside-tools
-pip install sphinx
+brew install pyside	pyside-tools
+pip install --user sphinx
 pip install --user spyder
 
 # numpy et al
 brew install --user  gfortran
-brew install --user ffmpeg 
+brew install --user ffmpeg
 pip install --user numpy
 pip install --user PIL
 pip install --user scipy
@@ -67,6 +69,14 @@ pip install git+git://github.com/matplotlib/matplotlib.git
 #pip install -U -e git+git@github.com:matplotlib/matplotlib.git#egg=matplotlib
 # mayavi
 brew install vtk --python
-pip install --user traitsbackendqt
+pip install -U --user traitsbackendqt
 pip install --user configobj
 pip install  --user "Mayavi[app]"
+# HDF export
+brew install --user hdf5 
+pip install --user cython 
+pip install --user numexpr 
+pip install --user tables 
+
+# convert
+brew install imagemagick
