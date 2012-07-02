@@ -58,7 +58,8 @@ for size in range(5, 8):
     mc.figures(fx, fy, ft, z, name_)
 
 name = 'colorfull'
-fx, fy, ft = mc.get_grids(512, 512, 512)
+N = 256 #512
+fx, fy, ft = mc.get_grids(N, N, N)
 z = mc.envelope_color(fx, fy, ft)
 for seed in [123456 + step for step in range(1)]:
     if mc.anim_exist(mc.figpath + name):

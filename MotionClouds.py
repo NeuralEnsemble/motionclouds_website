@@ -78,13 +78,18 @@ try:
     if not(MAYAVI is False):
         from mayavi import mlab
         MAYAVI = True
-        print 'Imported Mayavi'
+        print('Imported Mayavi')
     else:
-        print 'We have chosen not to import Mayavi'
+        print( 'We have chosen not to import Mayavi')
 
 except:
-    print 'Could not import Mayavi'
-    MAYAVI = False
+    try:
+        from enthought.mayavi import mlab
+        MAYAVI = True
+        print('Imported Mayavi')
+    except:
+        print('Could not import Mayavi')
+        MAYAVI = False
 
 # Trick from http://github.enthought.com/mayavi/mayavi/tips.html : to use offscreen rendering, try xvfb :1 -screen 0 1280x1024x24 in one terminal, export DISPLAY=:1 before you run your script
 
@@ -378,7 +383,7 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
             widgets = ["calculating", " ", progressbar.Percentage(), ' ',
                progressbar.Bar(), ' ', progressbar.ETA()]
             pbar = progressbar.ProgressBar(widgets=widgets, maxval=N_frame).start()
-        print 'Saving sequence ' + filename + vext
+        print('Saving sequence ' + filename + vext)
         for frame in range(N_frame):
             if PROGRESS: pbar.update(frame)
             fname = os.path.join(tmpdir, 'frame%03d.png' % frame)
@@ -406,7 +411,7 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
         # 2) convert frames to movie
 #        cmd = 'ffmpeg -v 0 -y -sameq -loop_output 0 -r ' + str(fps) + ' -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
         cmd = 'ffmpeg -v 0 -y -sameq  -loop_output 0 -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
-        print cmd
+        print('Doing : ', cmd)
         os.system(cmd) # + ' 2>/dev/null')
         # To force the frame rate of the output file to 24 fps:
         # ffmpeg -i input.avi -r 24 output.avi
@@ -452,7 +457,7 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
         hf = openFile(filename + vext, 'w')
         o = hf.createCArray(hf.root, 'stimulus', Float32Atom(), z.shape)
         o = z
-        print o.shape
+        #   print o.shape
         hf.close()
 
 def rectif(z, contrast=.9, method='Michelson', verbose=False):
@@ -467,8 +472,8 @@ def rectif(z, contrast=.9, method='Michelson', verbose=False):
 
     # Final rectification
     if verbose:
-        print 'Before Rectification of the frames'
-        print 'Mean=', np.mean(z[:]), ', std=', np.std(z[:]), ', Min=', np.min(z[:]), ', Max=', np.max(z[:]), ' Abs(Max)=', np.max(np.abs(z[:]))
+        print('Before Rectification of the frames')
+        print( 'Mean=', np.mean(z[:]), ', std=', np.std(z[:]), ', Min=', np.min(z[:]), ', Max=', np.max(z[:]), ' Abs(Max)=', np.max(np.abs(z[:])))
 
     z -= np.mean(z[:]) # this should be true *on average* in MotionClouds
 
@@ -481,9 +486,9 @@ def rectif(z, contrast=.9, method='Michelson', verbose=False):
         import pylab
         pylab.hist(z.ravel())
 
-        print 'After Rectification of the frames'
-        print 'Mean=', np.mean(z[:]), ', std=', np.std(z[:]), ', Min=', np.min(z[:]), ', Max=', np.max(z[:])
-        print 'percentage pixels clipped=', np.sum(np.abs(z[:])>1.)*100/z.size
+        print('After Rectification of the frames')
+        print('Mean=', np.mean(z[:]), ', std=', np.std(z[:]), ', Min=', np.min(z[:]), ', Max=', np.max(z[:]))
+        print('percentage pixels clipped=', np.sum(np.abs(z[:])>1.)*100/z.size)
     return z
 
 def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,

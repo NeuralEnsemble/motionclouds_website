@@ -27,7 +27,7 @@ B_sf = 0.3
 
 for method in ['Michelson', 'energy']:
     z = color * mc.envelope_gabor(fx, fy, ft, B_sf=B_sf)
-    name_ = 'figures/' + name + method + '-contrast-' + str(contrast).replace('.', '_') + '-B_sf-' + str(B_sf).replace('.','_')
+    name_ = mc.figpath + name + method + '-contrast-' + str(contrast).replace('.', '_') + '-B_sf-' + str(B_sf).replace('.','_')
     if mc.anim_exist(name_):
         im = np.ravel(mc.random_cloud(z))
         im_norm = mc.rectif(mc.random_cloud(z), contrast, method=method, verbose=True)
@@ -51,7 +51,7 @@ def image_entropy(img):
 
     return -np.sum([p * math.log(p, 2) for p in samples_probability if p != 0])
 
-img = Image.open('figures/grating-B_sf0_8.png')
+img = Image.open(mc.figpath + 'grating-B_sf0_8.png')
 print image_entropy(img)
 
 # XXX: If we normalise the histogram then the entropy base on gray levels is going to be the almost the same. Review the idea of entropy between narrowband and broadband stimuli.
