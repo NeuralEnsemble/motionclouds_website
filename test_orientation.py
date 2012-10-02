@@ -36,5 +36,5 @@ for sigma_div in [1, 2, 3, 5, 8, 13 ]:
 
 for B_sf in [0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.8]:
     name_ = mc.figpath + name + '-B_sf-' + str(B_sf).replace('.', '_')
-    z = color * mc.envelope_gabor(fx, fy, ft, B_sf=B_sf,sf_0=0.3)
+    z = color * mc.envelope_gabor(fx, fy, ft, B_sf=B_sf)
     mc.figures(fx, fy, ft, z, name_) # ,vext='.zip'
