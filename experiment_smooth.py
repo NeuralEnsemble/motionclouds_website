@@ -10,7 +10,7 @@ import MotionClouds as mc
 import numpy as np
 
 name = 'smooth'
-play = True
+play = False #True
 
 #initialize
 fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)

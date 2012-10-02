@@ -4,6 +4,14 @@
 brew update
 brew upgrade
 
+# install EPD
+# sudo rm -fr /Library/Frameworks/EPD64.framework /Applications/Enthought 
+# sudo remove-EPD-7.2-2
+# hdiutil attach /Volumes/tera_enigma/data/soft/epd-7.2-2-macosx-x86_64.dmg
+hdiutil attach /Volumes/tera_enigma/data/soft/epd-7.2-2-macosx-i386.dmg
+sudo installer -pkg /Volumes/EPD-7.2/EPD.mpkg -target /
+hdiutil detach  /Volumes/EPD-7.2
+
 #echo ---- bashrc -----
 #cat ~/.bashrc
 #echo ----------------
@@ -39,16 +47,16 @@ ln -s "/usr/local/Cellar/python/2.7.3/Frameworks/Python.framework" ~/Frameworks
 # bootstrap pip
 /usr/local/share/python/easy_install pip
 pip install --upgrade distribute
-pip install -U ipython
-brew remove qt
+# pip install -U ipython
+# brew remove qt
 # cd `brew --prefix`
 # brew versions qt
-git checkout 83f742e Library/Formula/qt.rb
-brew install qt
-brew install pyqt
-brew install pyside	pyside-tools
-pip install -U sphinx
-pip install -U spyder
+# git checkout 83f742e Library/Formula/qt.rb
+# brew install qt
+# brew install pyqt
+# brew install pyside	pyside-tools
+# pip install sphinx
+# pip install spyder
 
 # numpy et al
 brew install gfortran

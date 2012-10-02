@@ -97,7 +97,7 @@ def get_grids(N_X, N_Y, N_frame):
         In general, it is more efficient to define dimensions as powers of 2.
 
     """
-    fx, fy, ft = np.mgrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1),(-N_frame//2):((N_frame-1)//2 + 1)]     # output is always even.
+    fx, fy, ft = np.mgrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always even.
     fx, fy, ft = fx*1./N_X, fy*1./N_Y, ft*1./N_frame
     return fx, fy, ft
 
