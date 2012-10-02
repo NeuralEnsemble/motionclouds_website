@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """
-Exploring the orientation component of the envelope.
+
+Exploring the orientation component of the envelope around a grating.
 
 """
 
