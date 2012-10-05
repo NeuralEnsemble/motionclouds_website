@@ -13,7 +13,7 @@ import numpy as np
 import MotionClouds as mc
 fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
 
-ame = 'MotionPlaid'
+name = 'MotionPlaid'
 vext = '.gif'
 
 # show example
