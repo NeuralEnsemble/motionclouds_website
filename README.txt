@@ -43,6 +43,10 @@ sudo easy_install progressbar
 sudo aptitude install ffmpeg
 }}}
 
+ * when creating MoiMoin pages, it is useful to package images in a zip file: {{{
+aptitude install zip
+}}}
+
 === Installation on MacOsX: EPD ===
 
  * Enthought distributes a battery-included installation of python. It is recommended to use the i386 version as the 64-bits version lacks a proper compilation of MayaVi. You will still need {{{ffmpeg}}} to make movies (see HomeBrew or MacPorts section below).
@@ -91,6 +95,7 @@ pip install  -U "Mayavi[app]"
 }}}
   * be sure to install ffmpeg : {{{
 brew install ffmpeg
+brew install zip
 }}}
 
 === Installation on MacOsX: MacPorts (outdated documentation) ===

@@ -42,7 +42,7 @@ if DEBUG:
 else:
     size = 7
     size_T = 7
-    figsize = (800, 800) # nice size, but requires some memory
+    figsize = (800, 800) # nice size, but requires more memory
 
 import numpy as np
 N_X = 2**size
