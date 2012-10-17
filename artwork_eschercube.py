@@ -20,7 +20,9 @@ from enthought.mayavi import mlab
 import MotionClouds as mc
 
 size = 2**4
-# size = 2**5
+size = 2**5
+# size = 2**6
+size=50
 
 def source(dim, bwd):
     """
