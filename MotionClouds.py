@@ -76,7 +76,11 @@ MAYAVI = None
 #MAYAVI = False # uncomment to avoid generating mayavi visualizations (and save some memory...)
 try:
     if not(MAYAVI is False):
-        from mayavi import mlab
+        try:
+            from mayavi import mlab
+        except:
+            from enthought.mayavi import mlab
+            print('Seems you have an old implementation of MayaVi, but things should work')
         MAYAVI = True
         print('Imported Mayavi')
     else:
