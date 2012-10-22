@@ -19,8 +19,8 @@ from enthought.mayavi import mlab
 import MotionClouds as mc
 
 size = 2**4
-size = 2**5
-size = 2**6
+#size = 2**5
+#size = 2**6
 
 def source(dim, bwd):
     """
@@ -357,8 +357,10 @@ if __name__ == '__main__':
     # x-axis = B_f
     # y-axis = B_V
     # z_axis = B_o
-    downscale = 2
     downscale = 1
+    downscale = 2
+    downscale = 1./2
+
     mlab.figure(1, bgcolor=(1, 1, 1), fgcolor=(0, 0, 0), size=(1600/downscale,1200/downscale))
     mlab.clf()
     
@@ -399,9 +401,10 @@ if __name__ == '__main__':
 #    gsvol = mlab.pipeline.volume(gs)
         x_, y_, z_ = np.mgrid[0:(N*space), 0:(N*space), 0:(N*space)]
 #        response = np.exp(-(  ((x_-2*space) + (y_-3*space))**2 +((y_-3*space))**2 +((z_-2*space)/2.)**2)/2/(3.*space)**2)#-1/2.*np.exp(-(x_ + y_  +z_/2.- 5.)**2/2/(2.*space)**2)
-        response = np.exp(-(((x_-4*space))**2 +((y_- 1*space))**2 +((z_-3.4*space)/2.)**2)/2/(3.*space)**2)#-1/2.*np.exp(-(x_ + y_  +z_/2.- 5.)**2/2/(2.*space)**2)
-        sf = mlab.pipeline.scalar_field(x_, y_, z_, response)
-        vol = mlab.pipeline.volume(sf, vmin=0, vmax = 4.)#, color='red')#, colormap = 'RdBu') #response.min()+0.65*(response.max()-response.min()),  vmax=min+0.9*(max-min))
+        response = np.exp(-((x_-4*space)**2 +(y_- 1*space)**2 +((z_-3.4*space)/2.)**2)/2/(3.*space)**2)#-1/2.*np.exp(-(x_ + y_  +z_/2.- 5.)**2/2/(2.*space)**2)
+        #sf = mlab.pipeline.scalar_field(x_, y_, z_, response)
+        #vol = mlab.pipeline.volume(sf, vmin=0, vmax = 4.)#, color='red')#, colormap = 'RdBu') #response.min()+0.65*(response.max()-response.min()),  vmax=min+0.9*(max-min))
+        mlab.contour3d(response, opacity=0.5) 
 #        # Changing the ctf:
 #        from tvtk.util.ctf import ColorTransferFunction
 #        ctf = ColorTransferFunction()
@@ -442,12 +445,12 @@ if __name__ == '__main__':
             main(orig=(pos[i], pos[j], pos[k]), B=(Bf[i], Bv[k], Bo[j]))
         
 #    mlab.show(stop=True)
-    mlab.view( azimuth=290., elevation=45., distance='auto', focalpoint='auto')
+    mlab.view( azimuth=290., elevation=35., distance='auto', focalpoint='auto')
     mlab.savefig('MCartwork.png')
     N_frame = 128
     for i_az, azimuth in enumerate(np.linspace(0, 360, 128, endpoint=False)):
-        mlab.view(azimuth=azimuth, elevation=45., distance='auto', focalpoint='auto')
+        mlab.view(azimuth=azimuth, elevation=35., distance='auto', focalpoint='auto')
         mlab.savefig('_MCartwork%03d.png' % i_az)
-    os.system('frioul_batch "ffmpeg -v 0 -y -sameq  -loop_output 0 -i _MCartwork%03d.png  MCartwork.mpg"')
+    os.system('ffmpeg -v 0 -y -sameq  -loop_output 0 -i _MCartwork%03d.png  MCartwork.mpg')
     os.system('rm _MCartwork*') #
     

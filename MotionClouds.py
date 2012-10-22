@@ -183,7 +183,7 @@ def envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta):
         envelope_dir += np.exp(np.cos(angle-theta-np.pi)/B_theta)
         # and now selecting blobs:
         return envelope_dir
-    else: # for large bandwidth returns a strictly flat envelope
+    else: # for large bandwidth, returns a strictly flat envelope
         return 1.
 
 def envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
@@ -238,7 +238,7 @@ def get_size(mat):
     Get stimulus dimensions 
 
     """
-    return [numpy.size(mat, axis=k) for k in range(numpy.ndim(mat))]
+    return [np.size(mat, axis=k) for k in range(np.ndim(mat))]
 
 #NOTE: Python uses the first dimension (rows) as vertical axis and this is the Y in the spatiotemporal domain. Be careful with the convention of X and Y.
 
