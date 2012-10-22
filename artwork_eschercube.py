@@ -444,9 +444,10 @@ if __name__ == '__main__':
 #    mlab.show(stop=True)
     mlab.view( azimuth=290., elevation=45., distance='auto', focalpoint='auto')
     mlab.savefig('MCartwork.png')
-    for i_az, azimuth in enumerate(np.linspace(0, 360, 35, endpoint=False)):
+    N_frame = 128
+    for i_az, azimuth in enumerate(np.linspace(0, 360, 128, endpoint=False)):
         mlab.view(azimuth=azimuth, elevation=45., distance='auto', focalpoint='auto')
         mlab.savefig('_MCartwork%03d.png' % i_az)
-    os.system('ffmpeg -v 0 -y -sameq  -loop_output 0 -i _MCartwork%03d.png  MCartwork.mpg')
+    os.system('frioul_batch "ffmpeg -v 0 -y -sameq  -loop_output 0 -i _MCartwork%03d.png  MCartwork.mpg"')
     os.system('rm _MCartwork*') #
     
