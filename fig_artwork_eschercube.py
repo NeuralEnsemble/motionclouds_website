@@ -19,8 +19,8 @@ from enthought.mayavi import mlab
 import MotionClouds as mc
 
 size = 2**4
-#size = 2**5
-#size = 2**6
+size = 2**5
+size = 2**6
 
 def source(dim, bwd):
     """
@@ -401,7 +401,7 @@ if __name__ == '__main__':
 #    gsvol = mlab.pipeline.volume(gs)
         x_, y_, z_ = np.mgrid[0:(N*space), 0:(N*space), 0:(N*space)]
 #        response = np.exp(-(  ((x_-2*space) + (y_-3*space))**2 +((y_-3*space))**2 +((z_-2*space)/2.)**2)/2/(3.*space)**2)#-1/2.*np.exp(-(x_ + y_  +z_/2.- 5.)**2/2/(2.*space)**2)
-        response = np.exp(-((x_-4*space)**2 +(y_- 1*space)**2 +((z_-3.4*space)/2.)**2)/2/(3.*space)**2)#-1/2.*np.exp(-(x_ + y_  +z_/2.- 5.)**2/2/(2.*space)**2)
+        response = np.exp(-((x_-4*space)**2 +(y_- 1*space)**2 +((z_-3.4*space)/2.)**2)/2/(1.3*space)**2)#-1/2.*np.exp(-(x_ + y_  +z_/2.- 5.)**2/2/(2.*space)**2)
         #sf = mlab.pipeline.scalar_field(x_, y_, z_, response)
         #vol = mlab.pipeline.volume(sf, vmin=0, vmax = 4.)#, color='red')#, colormap = 'RdBu') #response.min()+0.65*(response.max()-response.min()),  vmax=min+0.9*(max-min))
         mlab.contour3d(response, opacity=0.5) 
