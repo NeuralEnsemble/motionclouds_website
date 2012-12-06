@@ -100,13 +100,16 @@ except:
 figpath = 'results/'
 if not(os.path.isdir(figpath)):os.mkdir(figpath)
 
-def get_grids(N_X, N_Y, N_frame):
+def get_grids(N_X, N_Y, N_frame, sparse=True):
     """
         Use that function to define a reference outline for envelopes in Fourier space.
         In general, it is more efficient to define dimensions as powers of 2.
 
     """
-    fx, fy, ft = np.mgrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always even.
+    if sparse:
+        fx, fy, ft = np.ogrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always even.
+    else:
+        fx, fy, ft = np.mgrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always even.
     fx, fy, ft = fx*1./N_X, fy*1./N_Y, ft*1./N_frame
     return fx, fy, ft
 
@@ -116,7 +119,7 @@ def frequency_radius(fx, fy, ft, ft_0=ft_0):
      'test_color.py'
 
     """
-    (N_X, N_Y, N_frame) = fx.shape
+    N_X, N_Y, N_frame = fx.shape[0], fy.shape[1], ft.shape[2]
     R2 = fx**2 + fy**2 + (ft/ft_0)**2 # cf . Paul Schrater 00
     R2[N_X//2 , N_Y//2 , N_frame//2 ] = np.inf
     return np.sqrt(R2)
@@ -242,7 +245,7 @@ def get_size(mat):
 
 #NOTE: Python uses the first dimension (rows) as vertical axis and this is the Y in the spatiotemporal domain. Be careful with the convention of X and Y.
 
-def visualize(fx, fy, ft, z, azimuth=290., elevation=45.,
+def visualize(z, azimuth=290., elevation=45.,
     thresholds=[0.94, .89, .75, .5, .25, .1], opacities=[.9, .8, .7, .5, .2, .2],
     name=None, ext=ext, do_axis=True, do_grids=False, draw_projections=True,
     colorbar=False, f_N=2., f_tN=2., figsize=figsize):
@@ -250,6 +253,8 @@ def visualize(fx, fy, ft, z, azimuth=290., elevation=45.,
     """ Visualize the  Fourier spectrum """
 
     N_X, N_Y, N_frame = z.shape
+    fx, fy, ft = mc.get_grids(N_X, N_Y, N_frame, sparse=False)
+
     mlab.figure(1, bgcolor=(1, 1, 1), fgcolor=(0, 0, 0), size=figsize)
     mlab.clf()
 
@@ -306,7 +311,7 @@ def visualize(fx, fy, ft, z, azimuth=290., elevation=45.,
 
     mlab.close(all=True)
 
-def cube(fx, fy, ft, im, azimuth=-45., elevation=130., roll=-180., name=None,
+def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
          ext=ext, do_axis=True, show_label=True, colormap='gray',
          vmin=0., vmax=1., figsize=figsize):
 
@@ -316,6 +321,8 @@ def cube(fx, fy, ft, im, azimuth=-45., elevation=130., roll=-180., name=None,
     """
 
     N_X, N_Y, N_frame = im.shape
+    fx, fy, ft = mc.get_grids(N_X, N_Y, N_frame, sparse=False)
+
     mlab.figure(1, bgcolor=(1, 1, 1), fgcolor=(0, 0, 0), size=figsize)
     mlab.clf()
     src = mlab.pipeline.scalar_field(fx*2., fy*2., ft*2., im)
@@ -508,13 +515,13 @@ def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,
         z = envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
                     B_V=B_V, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor,
                     theta=theta, B_theta=B_theta, alpha=alpha)
-        figures(fx, fy, ft, z, name, vext=vext, do_figs=do_figs, do_movie=do_movie,
+        figures(z, name, vext=vext, do_figs=do_figs, do_movie=do_movie,
                     seed=seed, impulse=impulse, verbose=verbose)
 
-def figures(fx, fy, ft, z, name, vext=vext, do_figs=True, do_movie=True,
+def figures(z, name, vext=vext, do_figs=True, do_movie=True,
                     seed=None, impulse=False, verbose=False, masking=False):
-    if MAYAVI and do_figs and anim_exist(name, vext=ext): visualize(fx, fy, ft, z, name=name)           # Visualize the Fourier Spectrum
+    if MAYAVI and do_figs and anim_exist(name, vext=ext): visualize(z, name=name)           # Visualize the Fourier Spectrum
     if (do_movie and anim_exist(name, vext=vext)) or (MAYAVI and do_figs and anim_exist(name + '_cube', vext=ext)):
         movie = rectif(random_cloud(z, seed=seed, impulse=impulse), verbose=verbose)
-    if (MAYAVI and do_figs and anim_exist(name + '_cube', vext=ext)): cube(fx, fy, ft, movie, name=name + '_cube')   # Visualize the Stimulus cube
+    if (MAYAVI and do_figs and anim_exist(name + '_cube', vext=ext)): cube(movie, name=name + '_cube')   # Visualize the Stimulus cube
     if (do_movie and anim_exist(name, vext=vext)): anim_save(movie, name, display=False, vext=vext)

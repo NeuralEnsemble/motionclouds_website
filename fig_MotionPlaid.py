@@ -31,13 +31,13 @@ theta1, theta2, B_theta = np.pi/4., -np.pi/4., np.pi/32
 diag1 = mc.envelope_gabor(fx, fy, ft, theta=theta1, V_X=np.cos(theta1), V_Y=np.sin(theta1), B_theta=B_theta)
 diag2 = mc.envelope_gabor(fx, fy, ft, theta=theta2, V_X=np.cos(theta2), V_Y=np.sin(theta2), B_theta=B_theta)
 name_ = name + '_comp1'
-mc.figures(fx, fy, ft, diag1, name_, vext=vext, seed=12234565)
+mc.figures(diag1, name_, vext=vext, seed=12234565)
 table += '||<width="33%">{{attachment:' + name_ + '.png||width=100%}}||<width="33%">{{attachment:' + name_ + '_cube.png||width=100%}}||<width="33%">{{attachment:' + name_ + '.gif||width=100%}}||\n'
 name_ = name + '_comp2'
-mc.figures(fx, fy, ft, diag2, name_, vext=vext, seed=12234565)
+mc.figures(diag2, name_, vext=vext, seed=12234565)
 table += '||{{attachment:' + name_ + '.png||width=100%}}||{{attachment:' + name_ + '_cube.png||width=100%}}||{{attachment:' + name_ + '.gif||width=100%}}||\n'
 name_ = name
-mc.figures(fx, fy, ft, diag1 + diag2, name, vext=vext, seed=12234565)
+mc.figures(diag1 + diag2, name, vext=vext, seed=12234565)
 table += '||{{attachment:' + name_ + '.png||width=100%}}||{{attachment:' + name_ + '_cube.png||width=100%}}||{{attachment:' + name_ + '.gif||width=100%}}||\n'
 table += '||||||<align="justify">  This figure shows how one can create !MotionCloud stimuli that specifically target component and pattern cell. We show in the different lines of this table respectively: Top) one motion cloud component (with a strong selectivity toward the orientation perpendicular to direction) heading in the upper diagonal  Middle) a similar motion cloud component following the lower diagonal Bottom) the addition of both components: perceptually, the horizontal direction is predominant. <<BR>> Columns represent isometric projections of a cube. The left column displays iso-surfaces of the spectral envelope by displaying enclosing volumes at 5 different energy values with respect to the peak amplitude of the Fourier spectrum. The middle column shows an isometric view of the  faces of the movie cube. The first frame of the movie lies on the x-y plane, the x-t plane lies on the top face and motion direction is seen as diagonal lines on this face (vertical motion is similarly see in the y-t face). The third column displays the actual movie as an animation. ||\n'
 
@@ -57,7 +57,7 @@ for theta1 in np.linspace(0, 2*np.pi, N_orient)[::-1]:
         name_ += '_theta2_' + str(theta2).replace('.', '_')
         diag1 = mc.envelope_gabor(fx, fy, ft, theta=theta1, V_X=np.cos(theta1), V_Y=np.sin(theta1), B_theta=B_theta)
         diag2 = mc.envelope_gabor(fx, fy, ft, theta=theta2, V_X=np.cos(theta2), V_Y=np.sin(theta2), B_theta=B_theta)
-        mc.figures(fx, fy, ft, diag1 + diag2, name_, vext=vext, seed=12234565)
+        mc.figures(diag1 + diag2, name_, vext=vext, seed=12234565)
         table += '{{attachment:' + name_ + '.gif||width=' + str(100/N_orient) +'%}}'
     table += '<<BR>>'
 #    table += '||\n'
@@ -77,7 +77,7 @@ for dtheta in np.linspace(0, np.pi/2, N_orient):#, endpoint=False):
     name_ = name + 'dtheta_' + str(dtheta).replace('.', '_')
     diag1 = mc.envelope_gabor(fx, fy, ft, theta=theta + dtheta, V_X=np.cos(theta + dtheta), V_Y=np.sin(theta + dtheta), B_theta=B_theta)
     diag2 = mc.envelope_gabor(fx, fy, ft, theta=theta - dtheta, V_X=np.cos(theta - dtheta), V_Y=np.sin(theta - dtheta), B_theta=B_theta)
-    mc.figures(fx, fy, ft, diag1 + diag2, name_, vext=vext, seed=12234565)
+    mc.figures(diag1 + diag2, name_, vext=vext, seed=12234565)
 #    line1 += '||<width="' + str(100/N_orient) +'%">{{attachment:' + name_ + '.png||width=100%}}'
 #    line2 += '||{{attachment:' + name_ + '.gif||width=100%}}'
     table += '||<width="50%">{{attachment:' + name_ + '.png||width=100%}}'
