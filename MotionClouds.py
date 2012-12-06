@@ -74,26 +74,27 @@ except:
 # os.environ['ETS_TOOLKIT'] = 'wx' # Works in Debian
 MAYAVI = None
 #MAYAVI = False # uncomment to avoid generating mayavi visualizations (and save some memory...)
-try:
-    if not(MAYAVI is False):
-        try:
-            from mayavi import mlab
-        except:
-            from enthought.mayavi import mlab
-            print('Seems you have an old implementation of MayaVi, but things should work')
-        MAYAVI = True
-        print('Imported Mayavi')
-    else:
-        print( 'We have chosen not to import Mayavi')
+def import_mayavi(MAYAVI=MAYAVI):
+	try:
+	    if not(MAYAVI is False):
+		try:
+		    from mayavi import mlab
+		except:
+		    from enthought.mayavi import mlab
+		    print('Seems you have an old implementation of MayaVi, but things should work')
+		MAYAVI = True
+		print('Imported Mayavi')
+	    else:
+		print( 'We have chosen not to import Mayavi')
 
-except:
-    try:
-        from enthought.mayavi import mlab
-        MAYAVI = True
-        print('Imported Mayavi')
-    except:
-        print('Could not import Mayavi')
-        MAYAVI = False
+	except:
+	    try:
+		from enthought.mayavi import mlab
+		MAYAVI = True
+		print('Imported Mayavi')
+	    except:
+		print('Could not import Mayavi')
+		MAYAVI = False
 
 # Trick from http://github.enthought.com/mayavi/mayavi/tips.html : to use offscreen rendering, try xvfb :1 -screen 0 1280x1024x24 in one terminal, export DISPLAY=:1 before you run your script
 
@@ -245,6 +246,7 @@ def visualize(z, azimuth=290., elevation=45.,
     colorbar=False, f_N=2., f_tN=2., figsize=figsize):
 
     """ Visualize the  Fourier spectrum """
+    import_mayavi()
 
     N_X, N_Y, N_frame = z.shape
     fx, fy, ft = mc.get_grids(N_X, N_Y, N_frame, sparse=False)
@@ -313,6 +315,7 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
     Visualize the stimulus as a cube
     
     """
+    import_mayavi()
 
     N_X, N_Y, N_frame = im.shape
     fx, fy, ft = mc.get_grids(N_X, N_Y, N_frame, sparse=False)
