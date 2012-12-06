@@ -26,7 +26,7 @@ DEBUG = False
 #initialize
 # fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
 #fx, fy, ft = mc.get_grids(256, 256, 256)
-fx, fy, ft = mc.get_grids(512, 512, 256)
+fx, fy, ft = mc.get_grids(512, 512, 128)
 color = mc.envelope_color(fx, fy, ft)
 
 name_ = mc.figpath + name

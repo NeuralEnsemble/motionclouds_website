@@ -144,7 +144,6 @@ def envelope_radial(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, ft_0=ft_0, loggabor=loggab
     """
     if sf_0 == 0.: return 1.
     if loggabor:
-        (N_X, N_Y, N_frame) = fx.shape
         # see http://en.wikipedia.org/wiki/Log-normal_distribution
         fr = frequency_radius(fx, fy, ft, ft_0=1.)
         env = 1./fr*np.exp(-.5*(np.log(fr/sf_0)**2)/(np.log((sf_0+B_sf)/sf_0)**2))
@@ -161,13 +160,12 @@ def envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V):
      A speed of V_X=1 corresponds to an average displacement of 1/N_X per frame.
      To achieve one spatial period in one temporal period, you should scale by
      V_scale = N_X/float(N_frame)
-     If N_X=N_Y=N_frame and V=1, then it is one spatial period in one temporal
+     If N_X=N_Y=N_frame and V=1, then it is one spati                                                                       al period in one temporal
      period. it can be seen in the MC cube. Define ft_0 = N_X/N_frame
 
     Run 'test_speed.py' to explore the speed parameters
 
     """
-    (N_X, N_Y, N_frame) = fx.shape
     env = np.exp(-.5*((ft+fx*V_X+fy*V_Y))**2/(B_V*frequency_radius(fx, fy, ft, ft_0=1.))**2)
     return env
 
@@ -196,12 +194,11 @@ def envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
     Returns the Motion Cloud kernel
 
     """
-    color = envelope_color(fx, fy, ft, alpha=alpha)
-    return color *\
-           envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta) *\
-           envelope_radial(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor)*\
-           envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V)
-
+    envelope = envelope_color(fx, fy, ft, alpha=alpha)
+    envelope *= envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta)
+    envelope *= envelope_radial(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor)
+    envelope *= envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V)
+    return envelope
 
 def random_cloud(envelope, seed=None, impulse=False, do_amp=False):
     """
@@ -212,7 +209,7 @@ def random_cloud(envelope, seed=None, impulse=False, do_amp=False):
     - use a specific seed to specify the RNG's seed,
     - test the impulse response of the kernel by setting impulse to True
     - test the effect of randomizing amplitudes too by setting do_amp to True
-
+shape
     """
     (N_X, N_Y, N_frame) = envelope.shape
     amps = 1.
