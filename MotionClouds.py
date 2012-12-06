@@ -179,10 +179,7 @@ def envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta):
     """
     if not(B_theta is np.inf):
         angle = np.arctan2(fy, fx)
-        envelope_dir = np.exp(np.cos(angle-theta)/B_theta)
-        # along with its symmetric (because the output signal is real)
-        envelope_dir += np.exp(np.cos(angle-theta-np.pi)/B_theta)
-        # and now selecting blobs:
+        envelope_dir = np.exp(np.cos(2*(angle-theta))/B_theta)
         return envelope_dir
     else: # for large bandwidth, returns a strictly flat envelope
         return 1.
