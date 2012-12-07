@@ -6,13 +6,19 @@ report_%.pdf: report_%.py MotionParticles.py
 test:
 	python test_color.py
 	python test_export.py
-	python test_orientation.py
+	python test_grating.py
 	python test_radial.py
 	python test_speed.py
 run:
-	for f in experiments_*.py; do python $(f); done
+	for f in experiment_*.py; do python ($f) ; done
 figures:
-	for f in fig_*.py; do python $(f); done
+	python fig_ApertureProblem.py     
+	python fig_MotionPlaid.py         
+	python fig_artwork_eschercube.py  
+	python fig_contrast.py            
+	python fig_orientation.py
+
+
 
 doc: 
 	@(cd doc && $(MAKE))
@@ -25,5 +31,4 @@ clean:
 	touch *py
 	rm -f results/* *.pyc
 
-.PHONY: clean dist-clean all clean_white clean_sc clean_dist clean_tex
 

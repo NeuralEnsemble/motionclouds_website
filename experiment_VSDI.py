@@ -32,7 +32,7 @@ B_V = V_X / 10.
 name_ = mc.figpath + name
 for seed in range(424242, 424242+8):
     name_ = mc.figpath + name + '-seed-' + str(seed)
-    mc.figures_MC(fx, fy, ft, z, name_, B_V=B_V, sf_0=sf_0, B_sf=B_sf, V_X=V_X, theta=numpy.pi/4., alpha=alpha, seed=seed, vext='.zip')
+    mc.figures_MC(fx, fy, ft, name_, B_V=B_V, sf_0=sf_0, B_sf=B_sf, V_X=V_X, theta=numpy.pi/4., alpha=alpha, seed=seed, vext='.zip')
 
 #-------------------- Narrowband vs Braodband experiment ---------------- #
 vext = '.mpg'
@@ -101,9 +101,9 @@ def tukey(n, r=0.5):
     return w		
 
 # Tukey mask - fading effect
-tw_x=tukey(n=n_x, r=0.15)
-tw_y=tukey(n=n_y, r=0.15)
-w =np.tile(((np.outer(tw_y,tw_x))), (n_f,1,1))
+tw_x = tukey(n=n_x, r=0.15)
+tw_y = tukey(n=n_y, r=0.15)
+w = np.tile(((np.outer(tw_y,tw_x))), (n_f,1,1))
 tukey_mask = w.T
 
 
@@ -113,8 +113,8 @@ name_ = mc.figpath + name
 for seed in [123456 + step for step in range(seeds)]:
 	name__ = mc.figpath + name + '-seed-' + str(seed) + '-sf0-' + str(sf_0).replace('.', '_') + '-V_X-' + str(V_X).replace('.', '_')
         # broadband 
-        z=mc.envelope_gabor(fx, fy, ft, name_, B_sf=Bsf, sf_0=sf_0, theta=theta, B_V=B_V, B_theta = B_theta, alpha=alpha)
-        movie=mc.figures(z, name=None, vext=vext, seed=seed, masking=True)    
+        z = mc.envelope_gabor(fx, fy, ft, name_, B_sf=Bsf, sf_0=sf_0, theta=theta, B_V=B_V, B_theta = B_theta, alpha=alpha)
+        movie = mc.figures(z, name=None, vext=vext, seed=seed, masking=True)    
         for label, mask in zip(['_mask', '_tukey_mask'], [gauss, tukey_mask]):
             name_ = name__ + '-cloud-' + label
             if anim_exist(name_): 
@@ -122,8 +122,8 @@ for seed in [123456 + step for step in range(seeds)]:
                 mc.anim_save(movie, name_, display=False, vext=vext)
         
        # narrowband 
-        z= mc.envelope(fx, fy, ft, name_, B_sf=B_sf/10., sf_0=sf_0, theta=theta, B_V=B_V, B_theta=B_theta, alpha=alpha)
-        movie=mc.figures(z, name=None, vext=vext, seed=seed, masking=True)
+        z = mc.envelope(fx, fy, ft, name_, B_sf=B_sf/10., sf_0=sf_0, theta=theta, B_V=B_V, B_theta=B_theta, alpha=alpha)
+        movie = mc.figures(z, name=None, vext=vext, seed=seed, masking=True)
         for label, mask in zip(['_mask', 'tukey_mask'], [gauss, tukey_mask]):
             name_ = name__ + '-blob-' + label
             if anim_exist(name_):
