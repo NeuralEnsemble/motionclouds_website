@@ -15,12 +15,12 @@ experiments:
 	python experiment_smooth.py
 	# python experiment_VSDI.py	
 figures:
+	python fig_artwork_eschercube.py  
+	python fig_contrast.py            
+wiki:
+	python fig_orientation.py
 	python fig_ApertureProblem.py     
 	python fig_MotionPlaid.py         
-	#python fig_artwork_eschercube.py  
-	python fig_contrast.py            
-	python fig_orientation.py
-
 
 doc: 
 	@(cd doc && $(MAKE))

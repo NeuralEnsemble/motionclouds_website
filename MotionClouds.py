@@ -72,7 +72,7 @@ except:
 
 # os.environ['ETS_TOOLKIT'] = 'qt4' # Works in Mac
 # os.environ['ETS_TOOLKIT'] = 'wx' # Works in Debian
-MAYAVI = None
+MAYAVI = True
 #MAYAVI = False # uncomment to avoid generating mayavi visualizations (and save some memory...)
 def import_mayavi(MAYAVI=MAYAVI):
 	try:
@@ -95,6 +95,7 @@ def import_mayavi(MAYAVI=MAYAVI):
 	    except:
 		print('Could not import Mayavi')
 		MAYAVI = False
+	return mlab
 
 # Trick from http://github.enthought.com/mayavi/mayavi/tips.html : to use offscreen rendering, try xvfb :1 -screen 0 1280x1024x24 in one terminal, export DISPLAY=:1 before you run your script
 
@@ -246,10 +247,10 @@ def visualize(z, azimuth=290., elevation=45.,
     colorbar=False, f_N=2., f_tN=2., figsize=figsize):
 
     """ Visualize the  Fourier spectrum """
-    import_mayavi()
+    mlab = import_mayavi()
 
     N_X, N_Y, N_frame = z.shape
-    fx, fy, ft = mc.get_grids(N_X, N_Y, N_frame, sparse=False)
+    fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
 
     mlab.figure(1, bgcolor=(1, 1, 1), fgcolor=(0, 0, 0), size=figsize)
     mlab.clf()
@@ -315,10 +316,10 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
     Visualize the stimulus as a cube
     
     """
-    import_mayavi()
+    mlab = import_mayavi()
 
     N_X, N_Y, N_frame = im.shape
-    fx, fy, ft = mc.get_grids(N_X, N_Y, N_frame, sparse=False)
+    fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
 
     mlab.figure(1, bgcolor=(1, 1, 1), fgcolor=(0, 0, 0), size=figsize)
     mlab.clf()

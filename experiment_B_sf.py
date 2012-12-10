@@ -5,11 +5,17 @@ Testing different spatial frequency bandwidths
 
 (c) Laurent Perrinet - INT/CNRS
 
+This is the basis for the following paper:
+
+    Claudio Simoncini, Laurent U. Perrinet, Anna Montagnini, Pascal Mamassian, Guillaume S. Masson. More is not always better: dissociation between perception and action explained by adaptive gain control. Nature Neuroscience, 2012.
+    http://invibe.net/LaurentPerrinet/Publications/Simoncini12
+
+
 """
 
 import MotionClouds as mc
 import numpy as np
-name = 'B_sf'
+name = 'iSimoncini12'
 # generates MPEG movies
 vext = '.mpg'
 # generates MATLAB mat files (uncomment to activate)

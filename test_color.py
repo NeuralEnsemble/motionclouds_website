@@ -9,9 +9,9 @@ import MotionClouds as mc
 
 name = 'color'
 fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
-
 z = mc.envelope_color(fx, fy, ft)
 if mc.anim_exist(mc.figpath + name): mc.figures(z, mc.figpath + name)
+
 # explore parameters
 for alpha in [0.0, 0.5, 1.0, 1.5, 2.0]:
     # resp. white(0), pink(1), red(2) or brownian noise (see http://en.wikipedia.org/wiki/1/f_noise
