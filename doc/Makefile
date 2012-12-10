@@ -39,8 +39,11 @@ mac_edit:
 	open Makefile 
 
 
-pdf: $(SRC).pdf
+pdf: $(SRC).pdf $(SRC)Supplementary.pdf
 LATEXMK = latexmk -pdf
+
+$(SRC)Supplementary.pdf: $(SRC)Supplementary.tex bib_citeulike figures
+	$(LATEXMK) $(SRC)Supplementary
 
 $(SRC).pdf: $(SRC).tex bib_citeulike figures
 	$(LATEXMK) $(SRC)
@@ -49,9 +52,11 @@ $(SRC).pdf: $(SRC).tex bib_citeulike figures
 # post-production
 
 diff: $(SRC).tex
-	latexdiff /Users/lup/Desktop/RTC/12-03-07_MotionClouds\ resubmission/MotionClouds.tex  $(SRC).tex > diff.tex
+	wget https://raw.github.com/meduz/MotionClouds/928ae138400ea3d556b1d10938ac35a69209af0f/doc/MotionClouds.tex -O oldMotionClouds.tex
+	latexdiff oldMotionClouds.tex  $(SRC).tex > diff.tex
 	# latexdiff /Users/lup/Desktop/RTC/12-01-31_MotionClouds\ resubmission/main_MotionClouds.tex /Users/lup/Desktop/12-03-07_MotionClouds\ resubmission/MotionClouds.tex   > diff.tex
 	latexmk -pdf diff.tex
+	rm oldMotionClouds.tex
 
 figures_png: figure1.png figure2.png figure3.png figure4.png figure5.png
 

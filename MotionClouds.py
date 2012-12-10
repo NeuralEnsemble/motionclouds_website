@@ -7,28 +7,28 @@ Main script for generating Motion Clouds
 (c) Laurent Perrinet - INT/CNRS
 
 Motion Clouds (keyword) parameters:
-size   	-- power of two to define the frame size (N_X, N_Y)
-size_T 	-- power of two to define the number of frames (N_frame)
-N_X 	-- frame size horizontal dimension [px]
-N_Y 	-- frame size vertical dimension [px]
+size    -- power of two to define the frame size (N_X, N_Y)
+size_T  -- power of two to define the number of frames (N_frame)
+N_X     -- frame size horizontal dimension [px]
+N_Y     -- frame size vertical dimension [px]
 N_frame -- number of frames [frames] (a full period in time frames)
-alpha 	-- exponent for the color envelope.
-sf_0	-- mean spatial frequency relative to the sampling frequency.
-ft_0 	-- spatiotemporal scaling factor. 
-B_sf 	-- spatial frequency bandwidth
-V_X 	-- horizontal speed component
-V_Y	-- vertical speed component
-B_V	-- speed bandwidth
-theta	-- mean orientation of the Gabor kernel
+alpha   -- exponent for the color envelope.
+sf_0    -- mean spatial frequency relative to the sampling frequency.
+ft_0    -- spatiotemporal scaling factor. 
+B_sf    -- spatial frequency bandwidth
+V_X     -- horizontal speed component
+V_Y     -- vertical speed component
+B_V     -- speed bandwidth
+theta   -- mean orientation of the Gabor kernel
 B_theta -- orientation bandwidth
-loggabor -- (boolean) if True it uses a logi-Gabor kernel 
+loggabor-- (boolean) if True it uses a log-Gabor kernel (instead of the traditional gabor) 
 
 Display parameters:
 
-vext   	-- movie format. Stimulus can be saved as a 3D (x-y-t) multimedia file: .mpg movie, .mat array, .zip folder with a frame sequence. 	
-ext    	-- frame image format.
+vext       -- movie format. Stimulus can be saved as a 3D (x-y-t) multimedia file: .mpg movie, .mat array, .zip folder with a frame sequence.     
+ext        -- frame image format.
 T_movie -- movie duration [s].
-fps  	-- frame per seconds
+fps      -- frame per seconds
 
 """
 
@@ -74,28 +74,26 @@ except:
 # os.environ['ETS_TOOLKIT'] = 'wx' # Works in Debian
 MAYAVI = True
 #MAYAVI = False # uncomment to avoid generating mayavi visualizations (and save some memory...)
-def import_mayavi(MAYAVI=MAYAVI):
-	try:
-	    if not(MAYAVI is False):
-		try:
-		    from mayavi import mlab
-		except:
-		    from enthought.mayavi import mlab
-		    print('Seems you have an old implementation of MayaVi, but things should work')
-		MAYAVI = True
-		print('Imported Mayavi')
-	    else:
-		print( 'We have chosen not to import Mayavi')
+def import_mayavi():#(MAYAVI=MAYAVI):
+    global MAYAVI#, mlab
+    if not(MAYAVI is False):
+        try:
+            from mayavi import mlab
+            MAYAVI = True
+            print('Imported Mayavi')
 
-	except:
-	    try:
-		from enthought.mayavi import mlab
-		MAYAVI = True
-		print('Imported Mayavi')
-	    except:
-		print('Could not import Mayavi')
-		MAYAVI = False
-	return mlab
+        except:
+            try:
+                from enthought.mayavi import mlab
+                print('Seems you have an old implementation of MayaVi, but things should work')
+                MAYAVI = True
+                print('Imported Mayavi')
+            except:
+                print('Could not import Mayavi')
+                MAYAVI = False
+    else:
+        print('We have chosen not to import Mayavi')
+#    return mlab
 
 # Trick from http://github.enthought.com/mayavi/mayavi/tips.html : to use offscreen rendering, try xvfb :1 -screen 0 1280x1024x24 in one terminal, export DISPLAY=:1 before you run your script
 
@@ -247,7 +245,7 @@ def visualize(z, azimuth=290., elevation=45.,
     colorbar=False, f_N=2., f_tN=2., figsize=figsize):
 
     """ Visualize the  Fourier spectrum """
-    mlab = import_mayavi()
+    import_mayavi()
 
     N_X, N_Y, N_frame = z.shape
     fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
@@ -316,7 +314,7 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
     Visualize the stimulus as a cube
     
     """
-    mlab = import_mayavi()
+    import_mayavi()
 
     N_X, N_Y, N_frame = im.shape
     fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
