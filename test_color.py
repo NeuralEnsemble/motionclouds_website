@@ -52,7 +52,7 @@ for size in range(5, 7):
         z = mc.envelope_color(fx, fy, ft, ft_0=ft_0)
         mc.figures(z, name_)
 
-for size in range(5, 8):
+for size in range(5, 7):
     N_frame = 2**size
     fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, N_frame)
     ft_0 = N_X/float(N_frame)
