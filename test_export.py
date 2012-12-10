@@ -14,7 +14,6 @@ color = mc.envelope_color(fx, fy, ft)
 
 name_ = mc.figpath + name
 z = color * mc.envelope_gabor(fx, fy, ft)
-mc.anim_save(z, name_, display=False, vext='.mpg')
-mc.anim_save(z, name_, display=False, vext='.zip')
-mc.anim_save(z, name_, display=False, vext='.mat')
-mc.anim_save(z, name_, display=False, vext='.h5')
+for vext in ['.h5', '.mpg', '.zip', '.mat']:
+    if mc.anim_exist(name_, vext=vext):
+        mc.anim_save(z, name_, display=False, vext=vext)
