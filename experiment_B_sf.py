@@ -15,7 +15,7 @@ This is the basis for the following paper:
 
 import MotionClouds as mc
 import numpy as np
-name = 'iSimoncini12'
+name = 'Simoncini12'
 # generates MPEG movies
 vext = '.mpg'
 # generates MATLAB mat files (uncomment to activate)

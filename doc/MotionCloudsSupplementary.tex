@@ -226,102 +226,98 @@ In practice we will use the Fast Fourier Transform (FFT). As a consequence, the 
 \end{figure}
 In Figure \ref{fig:MC_flowchart} we show the flow chart of the sequential construction method. We begin by building a three dimensional matrix whose dimensions are given by the input arguments $N_{X}$, $N_{Y}$ and $N_{frame}$ so that $\mathcal{E}(f_x,f_y,f_t)\, \in \mathbb{R}^{N_X\times N_Y \times N_{frame}}$. The first two define the image size, width and height, respectively. The third dimension is the length of the image-series (number of frames). 
 
-\begin{figure}%[h!]
-\begin{center}
-%!TEX root = main_MotionClouds.tex
-%!TEX TS-program = pdflatex 
-%!TEX encoding = UTF8
-%!TEX spellcheck = en-US
-%\documentclass{article}
-%\usepackage[latin1]{inputenc}
-%\usepackage{amsmath,bm,times}
-%\usepackage{tikz}
-%\usetikzlibrary{shapes,arrows}
-%\begin{document}
-%\pagestyle{empty}
-% Define the layers to draw the diagram
-\pgfdeclarelayer{background}
-\pgfdeclarelayer{foreground}
-\pgfsetlayers{background,main,foreground}
-
-% Define block styles
-\tikzstyle{decision} = [diamond, draw, fill=white,
-    text width=6em, text centered, node distance=2.5cm, inner sep=0pt]
-\tikzstyle{block} = [rectangle, draw, fill=black!10,
-    text width=12em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{line} = [draw, very thick, color=black!50, -latex']
-\tikzstyle{cloud} = [draw, rectangle,fill=black!20, node distance=4.5cm,text width=8em, text centered, rounded corners, minimum height=4em]
-\tikzstyle{decision answer}=[near start,color=black]
-    
-% todo@Paula : so it is not a sequence anymore... make the function independent?
-\begin{tikzpicture}[node distance = 2.5cm, scale=0.5]
-    % Place nodes
-    \node [cloud] (init) {initialize \\Fourier grids};
-    \node [cloud, left of=init, node distance=3.4cm] (expert) {experimental\\constraints}; % todo@Paula : table 1?
-    \node [cloud, right of=init,node distance=3.4cm] (system) {stimulus input parameters\\ $N_X$,$N_Y$,$N_{frame}$};% todo@Paula : table 2?
-    \node [block, below of=init, node distance=2.cm] (color) {build color envelope $\mathcal{C}_{\alpha}(f_{R})$};
-    \node [block, below of=color,node distance=2.2cm] (sphere) {select a sphere $sf_0$ with a bandwidth $B_{sf}$\\ $\mathcal{G}(s_{f_0}, B_{sf})$};
-    \node [block, below of=sphere] (speed) {select the speed plane with a thickness $B_V$ and speed $v_x$ or $v_y$\\$\mathcal{V}(V,B_V)$};
-%    \node [decision, below of=speed,node distance=2.8cm] (orientation) {orientation tuning?};
-%    \node [block, left of=orientation, node distance=4cm] (direction) {select envelope direction with peak orientation $\theta$\\$|F(\theta)|$};
-    \node [block, below of=speed, node distance=2.8cm] (orientation) {select envelope direction with peak orientation $\theta$\\$\mathcal{O}(\theta,B_{\theta})$};
-    \node [block, below of=orientation, node distance=2.5cm] (phase) {apply random phases \\ $e^{i\phi}$};
-    \node [block, below of=phase, node distance=1.8cm] (ifft) {compute the IFFT};
-    \node [block, below of=ifft, node distance=2.1cm] (rectify) {rectify the Motion Cloud (energy and contrast normalization)};
-    \node [block, below of=rectify, node distance=2.1cm] (stop) {save stimulus \\(movie)};
-    
-    
-    
-    % Draw edges
-    \path [line] (init) -- (color);
-    \path [line] (color) -- (sphere);
-    \path [line] (sphere) -- (speed);
-    \path [line] (speed) -- (orientation);
-%    \path[line] (orientation) -- node[decision answer] {yes} (direction);    
-%    \path [line] (direction) |- (phase);
-%    \path [line] (orientation) -- node {no}(phase);
-    \path [line] (orientation) -- (phase);
-    \path [line] (phase) -- (ifft);
-    \path [line] (ifft) -- (rectify);
-    \path [line] (rectify) -- (stop);
-    \path [line,dashed] (expert) -- (init);
-    \path [line,dashed] (system) -- (init);
-    %\path [line,dashed] (system) |- (color);
-    \path [line,dashed] (system) |- node {contrast} (rectify);
-    
-    % Draw background color layers
-     \begin{pgfonlayer}{background}
-     	% global box
-        \path (expert.west |- system.north)+(-3,0.5) node (a) {};
-        \path (system.east |- stop.south)+(+0.8,-0.3) node (c) {};    
-        \path[fill=black!5,rounded corners, draw=black!50, dashed]
-            (a) rectangle (c); 
-        
-     	% sphere box
-        \path (color.west |- color.north)+(-0.8,0.5) node (a) {};
-        \path (orientation.east |- orientation.south)+(+0.8,-1.3) node (c) {};    
-        \path[fill=blue!70!green!10,rounded corners, draw=black!50, dashed]
-            (a) rectangle (c); 
-        
-     	% speed box
-        \path (speed.west |- speed.north)+(-0.5,0.3) node (a) {};
-        \path (speed.east |- speed.south)+(+0.5,-0.3) node (c) {};          
-        \path[fill=blue!10!green!10,rounded corners, draw=black!70, dashed]
-            (a) rectangle (c);  
-            
-     	% fft box
-        \path (phase.west |- phase.north)+(-0.8,0.2) node (a) {};
-        \path (ifft.east |- ifft.south)+(+0.9,-0.2) node (c) {};          
-        \path[fill=red!20,rounded corners, draw=black!70, dashed]
-            (a) rectangle (c);                                                            
-                                                                  
-    \end{pgfonlayer}
-    
-\end{tikzpicture}
-%\end{document}\end{center}
-\caption{We show the Motion Clouds flow chart to summarize the main steps of the algorithm. The summary is in \ref{subsection:flowchart}}
-\label{fig:MC_flowchart}
-\end{figure}
+%\begin{figure}%[h!]
+%\begin{center}
+%%!TEX root = main_MotionClouds.tex
+%%!TEX TS-program = pdflatex 
+%%!TEX encoding = UTF8
+%%!TEX spellcheck = en-US
+%%\documentclass{article}
+%%\usepackage[latin1]{inputenc}
+%%\usepackage{amsmath,bm,times}
+%%\usepackage{tikz}
+%%\usetikzlibrary{shapes,arrows}
+%%\begin{document}
+%%\pagestyle{empty}
+%% Define the layers to draw the diagram
+%\pgfdeclarelayer{background}
+%\pgfdeclarelayer{foreground}
+%\pgfsetlayers{background,main,foreground}
+%
+%% Define block styles
+%\tikzstyle{decision} = [diamond, draw, fill=white,
+%    text width=6em, text centered, node distance=2.5cm, inner sep=0pt]
+%\tikzstyle{block} = [rectangle, draw, fill=black!10,
+%    text width=12em, text centered, rounded corners, minimum height=4em]
+%\tikzstyle{line} = [draw, very thick, color=black!50, -latex']
+%\tikzstyle{cloud} = [draw, rectangle,fill=black!20, node distance=4.5cm,text width=8em, text centered, rounded corners, minimum height=4em]
+%\tikzstyle{decision answer}=[near start,color=black]
+%    
+%% todo@Paula : so it is not a sequence anymore... make the function independent?
+%\begin{tikzpicture}[node distance = 2.5cm, scale=0.5]
+%    % Place nodes
+%    \node [cloud] (init) {initialize \\Fourier grids};
+%    \node [cloud, left of=init, node distance=3.4cm] (expert) {experimental\\constraints}; % todo@Paula : table 1?
+%    \node [cloud, right of=init,node distance=3.4cm] (system) {stimulus input parameters\\ $N_X$,$N_Y$,$N_{frame}$};% todo@Paula : table 2?
+%    \node [block, below of=init, node distance=2.cm] (color) {build color envelope $\mathcal{C}_{\alpha}(f_{R})$};
+%    \node [block, below of=color,node distance=2.2cm] (sphere) {select a sphere $sf_0$ with a bandwidth $B_{sf}$\\ $\mathcal{G}(s_{f_0}, B_{sf})$};
+%    \node [block, below of=sphere] (speed) {select the speed plane with a thickness $B_V$ and speed $v_x$ or $v_y$\\$\mathcal{V}(V,B_V)$};
+%%    \node [decision, below of=speed,node distance=2.8cm] (orientation) {orientation tuning?};
+%%    \node [block, left of=orientation, node distance=4cm] (direction) {select envelope direction with peak orientation $\theta$\\$|F(\theta)|$};
+%    \node [block, below of=speed, node distance=2.8cm] (orientation) {select envelope direction with peak orientation $\theta$\\$\mathcal{O}(\theta,B_{\theta})$};
+%    \node [block, below of=orientation, node distance=2.5cm] (phase) {apply random phases \\ $e^{i\phi}$};
+%    \node [block, below of=phase, node distance=1.8cm] (ifft) {compute the IFFT};
+%    \node [block, below of=ifft, node distance=2.1cm] (rectify) {rectify the Motion Cloud (energy and contrast normalization)};
+%    \node [block, below of=rectify, node distance=2.1cm] (stop) {save stimulus \\(movie)};
+%    
+%    
+%    
+%    % Draw edges
+%    \path [line] (init) -- (color);
+%    \path [line] (color) -- (sphere);
+%    \path [line] (sphere) -- (speed);
+%    \path [line] (speed) -- (orientation);
+%%    \path[line] (orientation) -- node[decision answer] {yes} (direction);    
+%%    \path [line] (direction) |- (phase);
+%%    \path [line] (orientation) -- node {no}(phase);
+%    \path [line] (orientation) -- (phase);
+%    \path [line] (phase) -- (ifft);
+%    \path [line] (ifft) -- (rectify);
+%    \path [line] (rectify) -- (stop);
+%    \path [line,dashed] (expert) -- (init);
+%    \path [line,dashed] (system) -- (init);
+%    %\path [line,dashed] (system) |- (color);
+%    \path [line,dashed] (system) |- node {contrast} (rectify);
+%    
+%    % Draw background color layers
+%     \begin{pgfonlayer}{background}
+%     	% global box
+%        \path (expert.west |- system.north)+(-3,0.5) node (a) {};
+%        \path (system.east |- stop.south)+(+0.8,-0.3) node (c) {};    
+%        \path[fill=black!5,rounded corners, draw=black!50, dashed]    (a) rectangle (c); 
+%        
+%     	% sphere box
+%        \path (color.west |- color.north)+(-0.8,0.5) node (a) {};
+%        \path (orientation.east |- orientation.south)+(+0.8,-1.3) node (c) {};    
+%        \path[fill=blue!70!green!10,rounded corners, draw=black!50, dashed]   (a) rectangle (c); 
+%        
+%     	% speed box
+%        \path (speed.west |- speed.north)+(-0.5,0.3) node (a) {};
+%        \path (speed.east |- speed.south)+(+0.5,-0.3) node (c) {};          
+%        \path[fill=blue!10!green!10,rounded corners, draw=black!70, dashed]   (a) rectangle (c);  
+%            
+%     	% fft box
+%        \path (phase.west |- phase.north)+(-0.8,0.2) node (a) {};
+%        \path (ifft.east |- ifft.south)+(+0.9,-0.2) node (c) {};          
+%        \path[fill=red!20,rounded corners, draw=black!70, dashed]  (a) rectangle (c);                                                            
+%                                                                  
+%    \end{pgfonlayer}
+%    
+%\end{tikzpicture}
+%%\end{document}\end{center}
+%\caption{We show the Motion Clouds flow chart to summarize the main steps of the algorithm. The summary is in \ref{subsection:flowchart}}
+%\label{fig:MC_flowchart}
+%\end{figure}
 
 \subsection{Summary: Flowchart}\label{subsection:flowchart}
  First, experimental parameters ( $N_{X}$, $N_{Y}$, $N_{frame}$) are initialized and physical units are normalized ($s_{f_0}$, $V_X$, $V_Y$).  Second, the color envelope is generated according to the parameter $\alpha$. Third, this color envelope ($\mathcal{C_{\alpha}}$) is multiplied by the global Fourier envelope constructed by the product of the speed ($\mathcal{V}$), spatial frequency ($\mathcal{G}$) and orientation envelopes ($\mathcal{O}$). The last step in the Fourier domain is to multiply the Fourier modulus by  a random phase ($e^{i\phi}$). Thus, after computing the 3-dimensional inverse Fourier transform we obtain a dynamic random phase texture, that is the Motion Cloud movie as a numpy array that can further be processed to be for example stored as a sequence of frames.
@@ -332,14 +328,14 @@ In Figure \ref{fig:MC_flowchart} we show the flow chart of the sequential constr
 
 Motion Clouds are built using a collection of scripts that provides a simple way of generating complex stimuli suitable for neuroscience and psychophysics experiments. It is meant to be an open-source package  that can be combined with other packages such as PsychoPy or VisionEgg.%~\citep{Visionegg}\. \\~\citep{psychopy_a} 
 
-All functions are implemented in one main script called \textit{MotionCloud.py} that handles the Fourier cube, the envelope functions as well as the random phase generation and all Fourier related processing. Additionally, all the auxiliary visualization tools to plot the spectra and the movies are included. Specific scripts such as \textit{test\_color.py}, \textit{test\_speed.py}, \textit{test\_radial.py} and \textit{test\_orientation.py} explore the role of different parameters for each individual envelope (respectively color, speed, radial frequency, orientation). Our aim is to keep the code as simple as possible in order to be comprehensible and flexible. To sum up, when we build a custom  Motion Cloud there are 3 simple steps to follow:
+All functions are implemented in one main script called \textit{MotionClouds.py} that handles the Fourier cube, the envelope functions as well as the random phase generation and all Fourier related processing. Additionally, all the auxiliary visualization tools to plot the spectra and the movies are included. Specific scripts such as \textit{test\_color.py}, \textit{test\_speed.py}, \textit{test\_radial.py} and \textit{test\_orientation.py} explore the role of different parameters for each individual envelope (respectively color, speed, radial frequency, orientation). Our aim is to keep the code as simple as possible in order to be comprehensible and flexible. To sum up, when we build a custom  Motion Cloud there are 3 simple steps to follow:
 
 \begin{enumerate}
 \item[1.] set the MC parameters and construct the Fourier envelope, then visualize it as iso-surfaces,
 \end{enumerate}
 
 \begin{lstlisting}
-import MotionCloud as mc
+import MotionClouds as mc
 import numpy as np
 fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame) # define Fourier domain
 envelope = mc.envelope_gabor(fx, fy, ft, V_X=1., V_Y=0., B_V=.1, sf_0=.15, B_sf=.1, theta=0., B_theta=np.pi/8, alpha=1.) # define an envelope
@@ -378,7 +374,7 @@ Here, we show the source code of \textit{MotionClouds.py}. The test cases are av
 #/usr/bin/env python
 # -*- coding: utf8 -*-
 """
-MotionCloud.py
+MotionClouds.py
 
 Main script for generating Motion Clouds
 
@@ -570,7 +566,7 @@ def random_cloud(envelope, seed=None, impulse=False, do_amp=True):
     return z
 \end{lstlisting}
 
-In \textit{MotionCloud.py} additional functions have been written for displaying purposes such as visualization of the Fourier spectrum and saving the stimulus in different formats.
+In \textit{MotionClouds.py} additional functions have been written for displaying purposes such as visualization of the Fourier spectrum and saving the stimulus in different formats.
 
 \begin{lstlisting}
 ##################################### Display Tools ##########################################
@@ -884,8 +880,8 @@ def figures(fx, fy, ft, z, name, vext=vext, do_figs=True, do_movie=True,
 
 
 Both functions \textbf{visualize} (line 37) and \textbf{cube} (line 100) generate isometric views of a cube. The first one displays isosurfaces enclosing volumes at 6 different energy values with respect to the peak amplitude of the Fourier spectrum. The Cartesian coordinate system is represented by 3 orthogonal grid planes going through the origin. The origin is represented by a black dot where the three 3 orthogonal axes converge. In addition to that, it is also possible to obtain the orthogonal projections onto the corresponding normal planes to the Cartesian axes, illustrated by 10 contour level curves. We enable the projection onto the $f_x-f_t$ and $f_y-f_t$ planes in order to observe the changes in the tilt of the speed plane (reflecting respectively a change in $V_X$ or $V_Y$), as well as its thickness. Furthermore, the projection onto the $f_x-f_y$ plane allows us to see the average orientation $\theta$ and the spread of the orientation envelope. The outlines delineate the frequency domain extension in Fourier units as described in \ref{subsub:Normalised_Units}. The second function draws the isometric view of the movie cube. The first frame of the movie lies on the plane $x-y$, motion direction is seen as diagonal trajectories on the top face ($x-t$ plane) and on the right face ($y-t$ plane), reflecting respectively a change in $V_X$ or $V_Y$. %
-%\bibliographystyle{apalike} 
-%\bibliography{MotionClouds}
+\bibliographystyle{apalike} 
+\bibliography{MotionClouds}
 
 \appendix
 \section{Annex}

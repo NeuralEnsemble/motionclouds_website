@@ -1,6 +1,6 @@
-#default: pdf
+default: pdf
 #default: run pdf
-default: pdf diff figures_png
+#default: pdf diff figures_png
 ################################################
 figures:
 	python fig_Sanz12JNP.py
@@ -36,7 +36,7 @@ linux_edit:
 edit_mac: mac_edit
 mac_edit: 
 	open $(SRC).tex
-	open Makefile 
+	open -e Makefile 
 
 
 pdf: $(SRC).pdf $(SRC)Supplementary.pdf

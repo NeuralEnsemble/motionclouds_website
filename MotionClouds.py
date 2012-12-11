@@ -38,7 +38,6 @@ if DEBUG:
     size = 5
     size_T = 5
     figsize = (400, 400)  # faster
-
 else:
     size = 7
     size_T = 7

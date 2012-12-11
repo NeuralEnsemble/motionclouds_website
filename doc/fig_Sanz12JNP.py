@@ -142,7 +142,7 @@ if not(os.path.isfile('figure1.pdf')):
     movie = whitening(movie)
 
 
-    fx, fy, ft = mc.get_grids(N_X, N_Y, N_frame)
+    fx, fy, ft = mc.get_grids(N_X, N_Y, N_frame, sparse=False)
     color = mc.envelope_color(fx, fy, ft) #
     z_noise = color*mc.envelope_speed(fx, fy, ft)
     movie_noise = mc.rectif(mc.random_cloud(z_noise))
@@ -152,7 +152,7 @@ if not(os.path.isfile('figure1.pdf')):
         movie_ = 1. * randomize_phase(movie, B_angle=B_angle) + .0 * movie_noise
         movie_ -= movie_.mean()
         movie_ /= np.abs(movie_).max()
-        mc.cube(fx, fy, ft, mc.rectif(movie_), name=name_ + '_cube')
+        if mc.MAYAVI[:2]=='Ok': mc.cube(fx, fy, ft, mc.rectif(movie_), name=name_ + '_cube')
         spectrum = np.absolute(np.fft.fftshift(np.fft.fftn(movie_)))# .real # **2 # + z_noise#
     #        img = img[:,::-1,:]
         spectrum /= spectrum.max()
@@ -160,7 +160,7 @@ if not(os.path.isfile('figure1.pdf')):
 
 
 print mc.N_X, mc.N_Y, mc.N_frame
-fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame)
+fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame, sparse=False)
 
 # Figure 2:  \caption{From an impulse to a Motion Cloud. (\textit{A}): The movie corresponding to a typical ``edge", i.e., a moving Gabor patch that corresponds to a localized grating. The Gabor patch being relatively small, for clarity, we zoomed 8 times into the non-zeros values of the image. (\textit{B}): By densely mixing multiple copies of the kernel shown in (A) at random positions, we obtain a Random Phase Texture (RPT), see Supplemental Movie 1. (\textit{C}):  We show here the envelope of the Fourier transform of kernel $K$: inversely, $K$ is the impulse response in image space of the filter defined by this envelope. Due to the linearity of the Fourier transform, apart from a multiplicative constant that vanishes by normalizing the energy of the  RPT to $1$, the spectral envelope of the RPT in (B) is the same as the one of the kernel K shown in (A): $\mathcal{E}_{\bar{\beta}}=\mathcal{F}(K)$. Note that, the spectral energy envelope  of a ``classical" grating would result in a pair of Dirac delta functions centered on the peak of the patches in (C) (the orange ``hot-spots"). Motion Clouds are defined as the subset of such RPTs whose main motion component is a full-field translations and thus characterized by spectral envelopes concentrated on a plane.}
 name = 'grating'
@@ -171,7 +171,7 @@ if mc.anim_exist(name_ + '_cube', vext=mc.ext):
     zoom = 8
     movie = mc.random_cloud(z, impulse=True)[:(mc.N_X/zoom), :(mc.N_Y/zoom), :(mc.N_frame/zoom)]
     movie = np.roll(movie, mc.N_frame/zoom, axis=2)
-    if mc.MAYAVI: mc.cube(fx[:(mc.N_X/zoom), :(mc.N_Y/zoom), :(mc.N_frame/zoom)],
+    if mc.MAYAVI[:2]=='Ok': mc.cube(fx[:(mc.N_X/zoom), :(mc.N_Y/zoom), :(mc.N_frame/zoom)],
         fy[:(mc.N_X/zoom), :(mc.N_Y/zoom), :(mc.N_frame/zoom)],
         ft[:(mc.N_X/zoom), :(mc.N_Y/zoom), :(mc.N_frame/zoom)],
            mc.rectif(movie), name=name_ + '_cube', do_axis=False)#
@@ -329,8 +329,10 @@ import glob, os
 
 def add_string_label(infile, outfile, label):
     # Define font 
-#     font = ImageFont.truetype("/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf", 48)#for Linux/Debian
-    font = ImageFont.truetype("/usr/local/texlive/2011/texmf-dist/fonts/truetype/public/dejavu/DejaVuSans.ttf", 48)#for MacOsX with MacTexLive
+    try:
+        font = ImageFont.truetype("/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf", 48)#for Linux/Debian
+    except:
+        font = ImageFont.truetype("/usr/local/texlive/2011/texmf-dist/fonts/truetype/public/dejavu/DejaVuSans.ttf", 48)#for MacOsX with MacTexLive
     for infilename, outfilename in zip(infile, outfile):
         img = Image.open(os.path.join(mc.figpath, infilename))
         draw = ImageDraw.Draw(img)
