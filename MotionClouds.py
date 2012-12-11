@@ -90,7 +90,7 @@ def import_mayavi():
             except:
                 print('Could not import Mayavi')
                 MAYAVI = False
-    elif (MAYAVI == 'New and shiny') or (MAYAVI == 'Old but ok'):
+    elif (MAYAVI == 'Ok : New and shiny') or (MAYAVI == 'Ok but old'):
         pass # no need to import that again
     else:
         print('We have chosen not to import Mayavi')
@@ -515,8 +515,8 @@ def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,
 
 def figures(z, name, vext=vext, do_figs=True, do_movie=True,
                     seed=None, impulse=False, verbose=False, masking=False):
-    if MAYAVI[:2]=='Ok' and do_figs and anim_exist(name, vext=ext): visualize(z, name=name)           # Visualize the Fourier Spectrum
+    if ((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and anim_exist(name, vext=ext): visualize(z, name=name)           # Visualize the Fourier Spectrum
     if (do_movie and anim_exist(name, vext=vext)) or (MAYAVI and do_figs and anim_exist(name + '_cube', vext=ext)):
         movie = rectif(random_cloud(z, seed=seed, impulse=impulse), verbose=verbose)
-    if (MAYAVI[:2]=='Ok' and do_figs and anim_exist(name + '_cube', vext=ext)): cube(movie, name=name + '_cube')   # Visualize the Stimulus cube
+    if (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and anim_exist(name + '_cube', vext=ext)): cube(movie, name=name + '_cube')   # Visualize the Stimulus cube
     if (do_movie and anim_exist(name, vext=vext)): anim_save(movie, name, display=False, vext=vext)
