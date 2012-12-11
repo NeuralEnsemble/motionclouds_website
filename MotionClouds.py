@@ -72,28 +72,28 @@ except:
 
 # os.environ['ETS_TOOLKIT'] = 'qt4' # Works in Mac
 # os.environ['ETS_TOOLKIT'] = 'wx' # Works in Debian
-MAYAVI = True
-#MAYAVI = False # uncomment to avoid generating mayavi visualizations (and save some memory...)
-def import_mayavi():#(MAYAVI=MAYAVI):
+MAYAVI = 'Import'
+#MAYAVI = 'Avoid' # uncomment to avoid generating mayavi visualizations (and save some memory...)
+def import_mayavi():
     global MAYAVI, mlab
-    if not(MAYAVI is False):
+    if (MAYAVI == 'Import'):
         try:
             from mayavi import mlab
-            MAYAVI = True
+            MAYAVI = 'New and shiny'
             print('Imported Mayavi')
-
         except:
             try:
                 from enthought.mayavi import mlab
                 print('Seems you have an old implementation of MayaVi, but things should work')
-                MAYAVI = True
+                MAYAVI = 'Old but ok'
                 print('Imported Mayavi')
             except:
                 print('Could not import Mayavi')
                 MAYAVI = False
+    elif (MAYAVI == 'New and shiny') or (MAYAVI == 'Old but ok'):
+        pass # no need to import that again
     else:
         print('We have chosen not to import Mayavi')
-#    return mlab
 
 # Trick from http://github.enthought.com/mayavi/mayavi/tips.html : to use offscreen rendering, try xvfb :1 -screen 0 1280x1024x24 in one terminal, export DISPLAY=:1 before you run your script
 
@@ -418,7 +418,7 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
         # 2) convert frames to movie
 #        cmd = 'ffmpeg -v 0 -y -sameq -loop_output 0 -r ' + str(fps) + ' -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
         cmd = 'ffmpeg -v 0 -y -sameq  -loop_output 0 -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
-        print('Doing : ', cmd)
+        # print('Doing : ', cmd)
         os.system(cmd) # + ' 2>/dev/null')
         # To force the frame rate of the output file to 24 fps:
         # ffmpeg -i input.avi -r 24 output.avi

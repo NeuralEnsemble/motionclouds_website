@@ -25,7 +25,7 @@ figures:
 # LaTeX stuff
 SRC = MotionClouds
 
-bib_citeulike:
+bib_citeulike: MotionClouds.bib
 	wget "http://www.citeulike.org/bibtex/user/LaurentPerrinet/tag/sanz12jnp?fieldmap=posted-at:date-added&do_username_prefix=0&key_type=4" -O MotionClouds.bib
 
 edit_linux: linux_edit
@@ -66,7 +66,7 @@ figures_png: figure1.png figure2.png figure3.png figure4.png figure5.png
 touch:
 	touch *.tex *py
 clean: # careful! this is quite radical!
-	rm -fr *.fff *.lof *.dvi *.ps  *.pdf  *.bib *.out *.log *.aux *.bbl *.blg *.snm *.nav *.toc *.synctex.gz *.fdb_latexmk diff* results
+	rm -fr *.fff *.lof *.dvi *.ps  *.out *.log *.aux *.bbl *.blg *.snm *.nav *.toc *.synctex.gz *.fdb_latexmk diff* results
 
 .PHONY: clean
 
