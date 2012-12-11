@@ -1,4 +1,4 @@
-default: test experiments figures doc
+default: test experiments doc
 	
 report_%.pdf: report_%.py MotionParticles.py
 	    pyreport --double $< && open $@
