@@ -59,7 +59,7 @@ for size in range(5, 7):
     name_ = mc.figpath + name + '-size_T-' + str(size).replace('.', '_')
     if mc.anim_exist(name_): 
         z = mc.envelope_color(fx, fy, ft, ft_0=ft_0)
-        mc.figures(z, name_)
+        mc.figures(z, name_, do_figs=False)
 
 name = 'colorfull'
 N = 256 #512

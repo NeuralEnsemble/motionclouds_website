@@ -75,7 +75,7 @@ except:
 MAYAVI = True
 #MAYAVI = False # uncomment to avoid generating mayavi visualizations (and save some memory...)
 def import_mayavi():#(MAYAVI=MAYAVI):
-    global MAYAVI#, mlab
+    global MAYAVI, mlab
     if not(MAYAVI is False):
         try:
             from mayavi import mlab
