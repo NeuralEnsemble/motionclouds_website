@@ -5,8 +5,11 @@ Using psychopy to perform an experiment on competing clouds
 
 (c) Laurent Perrinet - INT/CNRS
 
-
+ See http://invibe.net/LaurentPerrinet/SciBlog/2012-12-12 for a small tutorial
+ 
 """
+# width and height of your screen
+w, h = 1920, 1200
 
 print('launching experiment')
 from psychopy import *
@@ -14,18 +17,18 @@ import time
 
 try:
     #try to load previous info
-    info = misc.fromFile('competing.pickle')
+    info = misc.fromFile('data/competing.pickle')
 except:
     #if no file use some defaults
     info = {}
     info['observer'] = ''
-    info['screen_width'] = 480
-    info['screen_height'] = 270
+    info['screen_width'] = w
+    info['screen_height'] = h
     info['nTrials'] = 50
     info['N_X'] = 256 # size of image
     info['N_Y'] = 256 # size of image
     info['N_frame_total'] = 128 # a full period. in time frames
-    info['N_frame'] = 64 # a full period. in time frames
+    info['N_frame'] = 64 # length of the presented period. in time frames
 try:
     dlg = gui.DlgFromDict(info)
 except:
@@ -33,7 +36,7 @@ except:
     print(info)
 #save to a file for future use (ie storing as defaults)
 if dlg.OK:
-    misc.toFile('competing.pickle', info)
+    misc.toFile('data/competing.pickle', info)
 else:
     print('Could not load gui... running with defaut parameters')
     #core.quit() #user cancelled. quit
@@ -47,8 +50,8 @@ import MotionClouds as mc
 
 fx, fy, ft = mc.get_grids(info['N_X'], info['N_Y'], info['N_frame_total'])
 color = mc.envelope_color(fx, fy, ft)
-up = 2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_X=0., V_Y=+.5))) - 1
-down = 2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_X=0., V_Y=-.5))) - 1
+up = 2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_X=+.5))) - 1
+down = 2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_X=-.5))) - 1
 
 print('go!      ')
 win = visual.Window([info['screen_width'], info['screen_height']], fullscr=True)
@@ -56,7 +59,6 @@ win = visual.Window([info['screen_width'], info['screen_height']], fullscr=True)
 def getResponse():
     event.clearEvents()#clear the event buffer to start with
     resp = None#initially
-
     while 1:#forever until we returns
         for key in event.getKeys():
             #quit
@@ -80,11 +82,12 @@ def presentStimulus(C_A, C_B):
     for i_frame in range(info['N_frame']): # length of the stimulus
         stim = visual.PatchStim(win,
             tex=C_A * up[:, :, i_frame+phase_up]+C_B * down[:, :, i_frame+phase_down],
-            size=(info['N_X'], info['N_Y']), units='pix',
+            size=(info['screen_height'], info['screen_height']), units='pix',
             interpolate=False)
         stim.draw()
         stim.clearTextures()
         win.flip()
+    stim.clearTextures()
     win.update()
 
 results = numpy.zeros((2, info['nTrials']))
@@ -94,6 +97,8 @@ for i_trial in range(info['nTrials']):
     ans = getResponse()
     results[0, i_trial] = ans
     results[1, i_trial] = C_A
+    core.wait(0.5)
+
 
 win.update()
 core.wait(0.5)
@@ -101,9 +106,10 @@ core.wait(0.5)
 win.close()
 
 #save data
-fileName = info['observer'] + '_' + info['timeStr']
+fileName = 'data/' + info['observer'] + '_' + info['timeStr']
 numpy.save(fileName,results)
 
+print('analyzing results')
 import pylab
 pylab.scatter(results[1, :], results[0, :])
 pylab.axis([0., 1., -1.1, 1.1])

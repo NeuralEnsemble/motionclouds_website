@@ -158,7 +158,7 @@ def envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V):
      A speed of V_X=1 corresponds to an average displacement of 1/N_X per frame.
      To achieve one spatial period in one temporal period, you should scale by
      V_scale = N_X/float(N_frame)
-     If N_X=N_Y=N_frame and V=1, then it is one spati                                                                       al period in one temporal
+     If N_X=N_Y=N_frame and V=1, then it is one spatial period in one temporal
      period. it can be seen in the MC cube. Define ft_0 = N_X/N_frame
 
     Run 'test_speed.py' to explore the speed parameters
