@@ -57,43 +57,6 @@ B_V = .2
 theta = 0.
 B_theta = np.pi/32.
 loggabor = True
-vext = '.mpg'
-ext = '.png'
-T_movie = 8. # this value defines the duration of a temporal period
-fps = int(N_frame / T_movie)
-
-# display parameters
-try:
-    import progressbar
-    PROGRESS = True
-except:
-    PROGRESS = False
-
-# os.environ['ETS_TOOLKIT'] = 'qt4' # Works in Mac
-# os.environ['ETS_TOOLKIT'] = 'wx' # Works in Debian
-MAYAVI = 'Import'
-#MAYAVI = 'Avoid' # uncomment to avoid generating mayavi visualizations (and save some memory...)
-def import_mayavi():
-    global MAYAVI, mlab
-    if (MAYAVI == 'Import'):
-        try:
-            from mayavi import mlab
-            MAYAVI = 'Ok : New and shiny'
-            print('Imported Mayavi')
-        except:
-            try:
-                from enthought.mayavi import mlab
-                print('Seems you have an old implementation of MayaVi, but things should work')
-                MAYAVI = 'Ok but old'
-                print('Imported Mayavi')
-            except:
-                print('Could not import Mayavi')
-                MAYAVI = False
-    elif (MAYAVI == 'Ok : New and shiny') or (MAYAVI == 'Ok but old'):
-        pass # no need to import that again
-    else:
-        print('We have chosen not to import Mayavi')
-# Trick from http://github.enthought.com/mayavi/mayavi/tips.html : to use offscreen rendering, try xvfb :1 -screen 0 1280x1024x24 in one terminal, export DISPLAY=:1 before you run your script
 
 figpath = 'results/'
 if not(os.path.isdir(figpath)):os.mkdir(figpath)
@@ -227,6 +190,43 @@ shape
 
 
 ########################## Display Tools #######################################
+vext = '.mpg'
+ext = '.png'
+T_movie = 8. # this value defines the duration of a temporal period
+fps = int(N_frame / T_movie)
+
+# display parameters
+try:
+    import progressbar
+    PROGRESS = True
+except:
+    PROGRESS = False
+
+# os.environ['ETS_TOOLKIT'] = 'qt4' # Works in Mac
+# os.environ['ETS_TOOLKIT'] = 'wx' # Works in Debian
+MAYAVI = 'Import'
+#MAYAVI = 'Avoid' # uncomment to avoid generating mayavi visualizations (and save some memory...)
+def import_mayavi():
+    global MAYAVI, mlab
+    if (MAYAVI == 'Import'):
+        try:
+            from mayavi import mlab
+            MAYAVI = 'Ok : New and shiny'
+            print('Imported Mayavi')
+        except:
+            try:
+                from enthought.mayavi import mlab
+                print('Seems you have an old implementation of MayaVi, but things should work')
+                MAYAVI = 'Ok but old'
+                print('Imported Mayavi')
+            except:
+                print('Could not import Mayavi')
+                MAYAVI = False
+    elif (MAYAVI == 'Ok : New and shiny') or (MAYAVI == 'Ok but old'):
+        pass # no need to import that again
+    else:
+        print('We have chosen not to import Mayavi')
+# Trick from http://github.enthought.com/mayavi/mayavi/tips.html : to use offscreen rendering, try xvfb :1 -screen 0 1280x1024x24 in one terminal, export DISPLAY=:1 before you run your script
 
 def get_size(mat):
     """ 
