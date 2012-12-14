@@ -25,7 +25,7 @@ This package consists of:
   1. optional: {{{ffmpeg}}} is used to generate movies.
   1. optional: {{{matplotlib}}}, {{{scipy}}} (with PIL support) and {{{imagemagick}}} are used to generate figures in the documentation.
   1. optional: {{{progressbar}}} for displaying progress of encoding.
-  1. optional: {{{texlive-latex-recommended  latexmk}}} to compile the documentation 
+  1. optional: {{{texlive-latex-recommended  latexmk latexdiff}}} to compile the documentation 
 
 == download ===
 
@@ -66,7 +66,7 @@ sudo aptitude install ffmpeg
 }}}
 
  * Install !LaTeX to compile the documentation: {{{
-sudo aptitude install texlive-latex-recommended  latexmk
+sudo aptitude install texlive-latex-recommended latexmk latexdiff
 }}}
 
  * when creating MoiMoin pages, it is useful to package images in a zip file: {{{

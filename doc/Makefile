@@ -25,9 +25,6 @@ figures:
 # LaTeX stuff
 SRC = MotionClouds
 
-bib_citeulike: MotionClouds.bib
-	wget "http://www.citeulike.org/bibtex/user/LaurentPerrinet/tag/sanz12jnp?fieldmap=posted-at:date-added&do_username_prefix=0&key_type=4" -O MotionClouds.bib
-
 edit_linux: linux_edit
 linux_edit: 
 	texmaker $(SRC).tex &
@@ -42,11 +39,14 @@ mac_edit:
 pdf: $(SRC).pdf $(SRC)Supplementary.pdf
 LATEXMK = latexmk -pdf
 
-$(SRC)Supplementary.pdf: $(SRC)Supplementary.tex bib_citeulike figures
-	$(LATEXMK) $(SRC)Supplementary
+figures_png: figure1.png figure2.png figure3.png figure4.png figure5.png
 
-$(SRC).pdf: $(SRC).tex bib_citeulike figures
+$(SRC).pdf: $(SRC).tex $(figures_png)
+	wget "http://www.citeulike.org/bibtex/user/LaurentPerrinet/tag/sanz12jnp?fieldmap=posted-at:date-added&do_username_prefix=0&key_type=4" -O MotionClouds.bib
 	$(LATEXMK) $(SRC)
+
+$(SRC)Supplementary.pdf: $(SRC)Supplementary.tex 
+	$(LATEXMK) $(SRC)Supplementary
 
 ################################################
 # post-production
@@ -58,15 +58,18 @@ diff: $(SRC).tex
 	latexmk -pdf diff.tex
 	rm oldMotionClouds.tex
 
-figures_png: figure1.png figure2.png figure3.png figure4.png figure5.png
 
 ################################################
 # cleaning macros
 
 touch:
 	touch *.tex *py
-clean: # careful! this is quite radical!
-	rm -fr *.fff *.lof *.dvi *.ps  *.out *.log *.aux *.bbl *.blg *.snm *.nav *.toc *.synctex.gz *.fdb_latexmk diff* results
+clean_soft: # removing all temporary files from LaTeX
+	rm -fr *.fls *.fff *.lof *.dvi *.ps  *.out *.log *.aux *.bbl *.blg *.snm *.nav *.toc *.synctex.gz *.fdb_latexmk
+clean_hard: clean_soft # careful! this is quite radical!
+	rm -fr diff*  *.pdf  results
 
-.PHONY: clean
+
+.PHONY: all touch clean_soft clean_hard diff pdf 3D figures pigures_png
+
 
