@@ -3,7 +3,6 @@ default: pdf
 #default: pdf diff figures_png
 ################################################
 figures:
-	python fig_Sanz12JNP.py
 	cd results/; echo "Creating figure 1 in results/"; montage figure1A.png figure1B.png figure1C.png morphing-B_angle-0_1.png morphing-B_angle-1_0.png morphing-B_angle-10_0.png -geometry 564x512 ../figure1.pdf
 	cd results/; echo "Creating figure 2 in results/"; montage figure2A.png figure2B.png figure2C.png -geometry 564x512 ../figure2.pdf
 	cd results/; echo "Creating figure 3 in results/"; montage figure3A.png figure3B.png figure3C.png grating.png aperture.png grating-rdk.png -geometry 564x512 ../figure3.pdf
@@ -41,7 +40,8 @@ LATEXMK = latexmk -pdf
 
 figures_png: figure1.png figure2.png figure3.png figure4.png figure5.png
 
-$(SRC).pdf: $(SRC).tex $(figures_png)
+$(SRC).pdf: $(SRC).tex figures $(figures_png)
+	python fig_Sanz12JNP.py
 	wget "http://www.citeulike.org/bibtex/user/LaurentPerrinet/tag/sanz12jnp?fieldmap=posted-at:date-added&do_username_prefix=0&key_type=4" -O MotionClouds.bib
 	$(LATEXMK) $(SRC)
 
@@ -67,9 +67,9 @@ touch:
 clean_soft: # removing all temporary files from LaTeX
 	rm -fr *.fls *.fff *.lof *.dvi *.ps  *.out *.log *.aux *.bbl *.blg *.snm *.nav *.toc *.synctex.gz *.fdb_latexmk
 clean_hard: clean_soft # careful! this is quite radical!
-	rm -fr diff*  *.pdf  results
+	rm -fr figure* diff* MotionClouds.bib  *.pdf  results
 
 
-.PHONY: all touch clean_soft clean_hard diff pdf 3D figures pigures_png
+.PHONY: all touch clean_soft clean_hard diff pdf 3D figures
 
 
