@@ -1,4 +1,3 @@
-
 # MotionClouds: installing and running the python scripts
 
 MotionClouds are parameterized stimuli with controlled motion content and no spatial coherence.  They are precisely tuned in the frequency space.
@@ -16,7 +15,7 @@ This package consists of:
 
 ## Installation
 
-* Installation of MotionClouds consists simply in downloading the ```MotionClouds.py``` file which contains all routines to compute and use the MotionClouds textures. This script uses [[http://python.org|python]]] which comes (pre-installed /  easy to download and install) on many operating systems.
+* Installation of MotionClouds consists simply in downloading the ```MotionClouds.py``` file which contains all routines to compute and use the MotionClouds textures. This script uses python (http://python.org) which comes (pre-installed /  easy to download and install) on many operating systems.
 
 * Installation has some dependencies: 
 1. mandatory: ```numpy``` is the core library used to compute textures,
@@ -33,7 +32,7 @@ This package consists of:
 git clone https://github.com/meduz/MotionClouds.git 
 ```
 
-* other sources exist to get a stable release, such as [[http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=146953|ModelDb]].
+* other sources exist to get a stable release, such as ModelDb ( http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=146953 ).
 
 ### installation using custom scripts 
 
@@ -42,7 +41,7 @@ sh install_dependencies_debian.sh
 ``` or ```
 sh install_dependencies_macosx.sh
 ```
-* an alternative is to use a virtual machine such as for instance the one provided by the [[http://neuro.debian.net/vm.html|NeuroDebian team]].
+* an alternative is to use a virtual machine such as for instance the one provided by the NeuroDebian team (http://neuro.debian.net/vm.html).
 
 ### Installation in Debian-based distributions (such as Ubuntu)
 
