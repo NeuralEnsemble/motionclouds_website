@@ -10,7 +10,7 @@ This package consists of:
 * ```test_*.py``` : different types of stimuli are tested,
 * ```experiment_*py``` : different experiments.
 * ```fig_*py``` : different scripts used to generate wiki pages.
-* ```figures``` : resulting figures of tests and experiments (as set in the variable ``MotionClouds.figpath```.
+* ```figures``` : resulting figures of tests and experiments (as set in the variable ```MotionClouds.figpath```.
 * ```Makefile``` : a GNUmake file to edit files ```make edit```, generate figures ```make figures``` or compile the documentation ```make doc```.
 
 ## Installation
@@ -32,7 +32,7 @@ This package consists of:
 git clone https://github.com/meduz/MotionClouds.git 
 ```
 
-* other sources exist to get a stable release, such as ModelDb ( http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=146953 ).
+* other sources exist to get a stable release, such as ModelDb (http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=146953).
 
 ### installation using custom scripts 
 
@@ -41,33 +41,40 @@ sh install_dependencies_debian.sh
 ``` or ```
 sh install_dependencies_macosx.sh
 ```
+
 * an alternative is to use a virtual machine such as for instance the one provided by the NeuroDebian team (http://neuro.debian.net/vm.html).
 
 ### Installation in Debian-based distributions (such as Ubuntu)
 
 * Use the ```aptitude``` front end to install packages: (or alternatively ```apt -get``` if you feel confident with that tool instead)
 
-* ```python``` is supported by most distribution and should already be installed. You can check which version is installed : ```
+* ```python``` is supported by most distribution and should already be installed. You can check which version is installed : 
+```
 python -V
 ```
 
-* The same libraries as for MacOsX need to be installed : ```
+* The same libraries as for MacOsX need to be installed : 
+```
 sudo aptitude install python-scipy python-numpy python-matplotlib
 ```
 
-* Idem for the progress bar module ```
+* Idem for the progress bar module: 
+```
 sudo easy_install progressbar 
 ```
 
-* Install the ```ffmpeg``` encoder to work with mpeg, avi, etc, videos: ```
+* Install the ```ffmpeg``` encoder to work with mpeg, avi, etc, videos: 
+```
 sudo aptitude install ffmpeg
 ```
 
-* Install !LaTeX to compile the documentation: ```
+* Install !LaTeX to compile the documentation: 
+```
 sudo aptitude install texlive-latex-recommended latexmk latexdiff
 ```
 
-* when creating MoiMoin pages, it is useful to package images in a zip file: ```
+* when creating MoiMoin pages, it is useful to package images in a zip file: 
+```
 aptitude install zip
 ```
 
