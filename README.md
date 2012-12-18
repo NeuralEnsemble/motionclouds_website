@@ -1,8 +1,14 @@
-# MotionClouds: Model-based stimulus synthesis of natural-like random textures for the study of motion perception
+## Why use MotionClouds?
 
 These scripts implement a framework to generate random texture movies with controlled information content. In particular, these stimuli can be made closer to naturalistic textures compared to usual stimuli such as gratings and random-dot kinetograms. We simplified the definition to parametrically define these "Motion Clouds" around the most prevalent feature axis (mean and bandwith): direction, spatial frequency, orientation.
 
 <img src="http://invibe.net/cgi-bin/index.cgi/SciBlog/2011-07-12?action=AttachFile&do=get&target=MotionPlaid_comp1.gif" width="100%">
+
+The description of this method was published in:
+* Paula S. Leon, Ivo Vanzetta, Guillaume S. Masson, Laurent U. Perrinet. _Motion Clouds: Model-based stimulus synthesis of natural-like random textures for the study of motion perception._ **Journal of Neurophysiology**, 107(11):3217--3226, 2012  http://invibe.net/LaurentPerrinet/Publications/Sanz12
+
+While this method was used in the following paper:
+* Claudio Simoncini, Laurent U. Perrinet, Anna Montagnini, Pascal Mamassian, Guillaume S. Masson. _More is not always better: dissociation between perception and action explained by adaptive gain control._ **Nature Neuroscience**, 2012 http://invibe.net/LaurentPerrinet/Publications/Simoncini12
 
 This work is supported by the European Union project Number FP7-269921, ``BrainScaleS'' (Brain-inspired multiscale computation in neuromorphic hybrid systems), an EU FET-Proactive FP7 funded research project. The project started on 1 January 2011. It is a collaboration of 18 research groups from 10 European countries.
 
@@ -14,7 +20,7 @@ This work is supported by the European Union project Number FP7-269921, ``BrainS
 ***
 ## Code example
 
-Motion Clouds are built using a collection of scripts that provides a simple way of generating complex stimuli suitable for neuroscience and psychophysics experiments. It is meant to be an open-source package  that can be combined with other packages such as PsychoPy or VisionEgg.
+Motion Clouds are built using a collection of scripts that provides a simple way of generating complex stimuli suitable for neuroscience and psychophysics experiments. It is meant to be an open-source package that can be combined with other packages such as PsychoPy or NeuroTools.
 
 All functions are implemented in one main script called `MotionClouds.py` that handles the Fourier cube, the envelope functions as well as the random phase generation and all Fourier related processing. Additionally, all the auxiliary visualization tools to plot the spectra and the movies are included. Specific scripts such as `test_color.py`, `test_speed.py`, `test_radial.py` and `test_orientation.py` explore the role of different parameters for each individual envelope (respectively color, speed, radial frequency, orientation). Our aim is to keep the code as simple as possible in order to be comprehensible and flexible. To sum up, when we build a custom  Motion Cloud there are 3 simple steps to follow:
 
