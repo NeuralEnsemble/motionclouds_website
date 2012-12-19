@@ -98,6 +98,3 @@ import os
 os.system('zip zipped' + name + '.zip ' + name + '*')
 
 print table
-
-#perrinet@ghostrider:~$ rm /var/www/moin/perrinet/data/pages/SciBlog\(2f\)2011\(2d\)07\(2d\)12/attachments/MotionPlaid*
-

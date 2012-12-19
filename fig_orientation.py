@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Demonstration of studying the orle of iorientation bandwidth using MotionClouds. Used to generate page:
+Demonstration of studying the role of orientation bandwidth using MotionClouds. 
+
+Used to generate page:
 
 http://invibe.net/LaurentPerrinet/SciBlog/2012-10-02
 
@@ -72,4 +74,3 @@ import os
 os.system('zip zipped' + name + '.zip ' + name + '*')
 
 print table
-
