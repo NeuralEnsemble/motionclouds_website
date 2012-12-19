@@ -5,7 +5,11 @@ A bit of fun with gravitational waves
 
 Used to generate page:
 
-http://invibe.net/LaurentPerrinet/SciBlog/2012-12-19
+    http://invibe.net/LaurentPerrinet/SciBlog/2012-12-19
+
+Source code on:
+    
+    https://raw.github.com/NeuralEnsemble/MotionClouds/master/fig_orientation.py
 
 (c) Laurent Perrinet - INT/CNRS
 
