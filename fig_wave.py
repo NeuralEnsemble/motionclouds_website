@@ -31,7 +31,7 @@ table = """
 
 """
 
-def envelope_gravitational(fx, fy, ft, B_v, g=.2):
+def envelope_gravitational(fx, fy, ft, B_v, g=.05):
     """
      Gravitational envelope:
      selects the plane corresponding to the speed (V_X, V_Y) with some thickness B_V
@@ -69,7 +69,7 @@ table += '||<width="33%">{{attachment:' + name_ + '.png||width=100%}}||<width="3
 name_ = name + '_high'
 mc.figures(mc2, name_, vext=vext, seed=seed)
 table += '||{{attachment:' + name_ + '.png||width=100%}}||{{attachment:' + name_ + '_cube.png||width=100%}}||{{attachment:' + name_ + '.gif||width=100%}}||\n'
-table += '||||||<align="justify">  This figure shows how one can create stimuli similar to !MotionCloud stimuli that have a dstribution according to the laws of gravitational waves (that is with temporal frequency proportional to the square root of spatial frequency). The two lines correspond to different bandwitdhs for the spatial frequency of waves. <<BR>> Columns represent isometric projections of a cube. The left column displays iso-surfaces of the spectral envelope by displaying enclosing volumes at 5 different energy values with respect to the peak amplitude of the Fourier spectrum. The middle column shows an isometric view of the  faces of the movie cube. The first frame of the movie lies on the x-y plane, the x-t plane lies on the top face and motion direction is seen as diagonal lines on this face (vertical motion is similarly see in the y-t face). The third column displays the actual movie as an animation. ||\n'
+table += '||||||<align="justify">  This figure shows how one can create stimuli similar to !MotionCloud stimuli that have a dstribution according to the laws of gravitational waves (that is with temporal frequency proportional to the square root of spatial frequency for deep water conditions -- in the shallow water conditions, normal MCs are a good approximation). Note that phase speed (following a maximum) is twice faster than group speed (following a dot). The two lines correspond to different bandwitdhs for the spread around the physical law (width of the manifold). <<BR>> Columns represent isometric projections of a cube. The left column displays iso-surfaces of the spectral envelope by displaying enclosing volumes at 5 different energy values with respect to the peak amplitude of the Fourier spectrum. The middle column shows an isometric view of the  faces of the movie cube. The first frame of the movie lies on the x-y plane, the x-t plane lies on the top face and motion direction is seen as diagonal lines on this face (vertical motion is similarly see in the y-t face). The third column displays the actual movie as an animation. ||\n'
 
 table += '\n\n'
 
@@ -95,8 +95,6 @@ table += """
 TagSciBlog TagMotion TagMotionClouds
 """
 
-
-# TODO: automatic zip and uploading 
 import os
 os.system('zip zipped' + name + '.zip ' + name + '*')
 
