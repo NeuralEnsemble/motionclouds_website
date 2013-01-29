@@ -223,8 +223,8 @@ def import_mayavi():
                 MAYAVI = 'Ok but old'
                 print('Imported Mayavi')
             except:
-                print('Could not import Mayavi')
-                MAYAVI = False
+               print('Could not import Mayavi')
+               MAYAVI = 'Could not import Mayavi'
     elif (MAYAVI == 'Ok : New and shiny') or (MAYAVI == 'Ok but old'):
         pass # no need to import that again
     else:
@@ -313,7 +313,7 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
 
     """
     Visualize the stimulus as a cube
-    
+
     """
     import_mayavi()
 
@@ -517,6 +517,7 @@ def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,
 
 def figures(z, name, vext=vext, do_figs=True, do_movie=True,
                     seed=None, impulse=False, verbose=False, masking=False):
+    import_mayavi()
     if ((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and anim_exist(name, vext=ext): visualize(z, name=name)           # Visualize the Fourier Spectrum
     if (do_movie and anim_exist(name, vext=vext)) or (MAYAVI and do_figs and anim_exist(name + '_cube', vext=ext)):
         movie = rectif(random_cloud(z, seed=seed, impulse=impulse), verbose=verbose)

@@ -38,10 +38,6 @@ brew upgrade
 #echo $PYTHONPATH
 #source ~/.bash_profile
 
-# cd /System/Library/Frameworks/Python.framework/Versions
-# sudo rm Current
-# ln -s /usr/local/Cellar/python/2.7.3/Frameworks/Python.framework/Versions/Current
-
 # install python through HomeBrew as a framework
 brew install readline sqlite gdbm pkg-config
 brew install python
@@ -49,26 +45,18 @@ brew install python
 # bootstrap pip
 /usr/local/share/python/easy_install pip
 pip install --upgrade distribute
-# pip install -U ipython
-# brew remove qt
-# cd `brew --prefix`
-# brew versions qt
-# git checkout 83f742e Library/Formula/qt.rb
-# brew install qt
-# brew install pyqt
+# pip install --user ipython
 brew install pyside pyside-tools
 pip install --user sphinx
 pip install --user spyder
 
 # numpy et al
 brew install gfortran
-brew install libtool libagg¬
+brew install libtool
 brew install ffmpeg
 pip install --user numpy
 pip install --user PIL
 pip install --user scipy
-# brew install libtool libagg
-# pip install --user matplotlib
 pip install git+git://github.com/matplotlib/matplotlib.git
 # mayavi
 brew install vtk --python
