@@ -27,8 +27,8 @@ Display parameters:
 
 vext       -- movie format. Stimulus can be saved as a 3D (x-y-t) multimedia file: .mpg movie, .mat array, .zip folder with a frame sequence.     
 ext        -- frame image format.
-T_movie -- movie duration [s].
-fps      -- frame per seconds
+T_moviei   -- movie duration [s].
+fps        -- frame per seconds
 
 """
 
@@ -48,6 +48,7 @@ N_X = 2**size
 N_Y = N_X
 N_frame = 2**size_T
 ft_0 = N_X/float(N_frame)
+# default parameters for the "standard Motion Cloud"
 alpha = 1.0
 sf_0 = 0.15
 B_sf = 0.1
@@ -117,7 +118,7 @@ def envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V):
      Speed envelope:
      selects the plane corresponding to the speed (V_X, V_Y) with some thickness B_V
 
-    (V_X, V_Y) = (0,1) is downward and  (V_X, V_Y) = (1,0) is rightward in the movie.
+     (V_X, V_Y) = (0,1) is downward and  (V_X, V_Y) = (1,0) is rightward in the movie.
      A speed of V_X=1 corresponds to an average displacement of 1/N_X per frame.
      To achieve one spatial period in one temporal period, you should scale by
      V_scale = N_X/float(N_frame)
@@ -152,6 +153,8 @@ def envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
     Returns the Motion Cloud kernel
 
     """
+    # TODO : issue a warning if more than 10% of the energy of the envelope falls off the Fourier cube 
+    # TODO : use a disk mask to ensure all orientations are evely chosen
     envelope = envelope_color(fx, fy, ft, alpha=alpha)
     envelope *= envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta)
     envelope *= envelope_radial(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor)
@@ -405,7 +408,7 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
     def remove_frames(tmpdir, files):
         """
         Remove frames from the temp folder
-        
+
         """
         for fname in files: os.remove(fname)
         if not(tmpdir == None): os.rmdir(tmpdir)

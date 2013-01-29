@@ -1,27 +1,22 @@
+# install XCode
+# From this url : http://itunes.apple.com/us/app/xcode/id497799835?mt=12 install Xcode on the Mac App Store by clicking on “View in Mac App Store”.
+
 # install HomeBrew
-/usr/bin/ruby -e "$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
+ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
+# to reinstall, do:
+# rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
 
 brew update
 brew upgrade
 
-# install EPD
+# an alternative is to install EPD:
 # sudo rm -fr /Library/Frameworks/EPD64.framework /Applications/Enthought 
 # sudo remove-EPD-7.2-2
 # hdiutil attach /Volumes/tera_enigma/data/soft/epd-7.2-2-macosx-x86_64.dmg
-<<<<<<< local
-=======
-hdiutil attach /Volumes/tera_enigma/data/soft/epd-7.2-2-macosx-i386.dmg
-sudo installer -pkg /Volumes/EPD-7.2/EPD.mpkg -target /
-hdiutil detach  /Volumes/EPD-7.2
->>>>>>> other
-
-<<<<<<< local
 # hdiutil attach /Volumes/tera_enigma/data/soft/epd-7.2-2-macosx-i386.dmg
 # sudo installer -pkg /Volumes/EPD-7.2/EPD.mpkg -target /
 # hdiutil detach  /Volumes/EPD-7.2
 
-=======
->>>>>>> other
 #echo ---- bashrc -----
 #cat ~/.bashrc
 #echo ----------------
@@ -49,20 +44,10 @@ hdiutil detach  /Volumes/EPD-7.2
 
 # install python through HomeBrew as a framework
 brew install readline sqlite gdbm pkg-config
-brew install python --framework --universal
-mkdir -p ~/Library/Frameworks/Python.framework/Versions
-ln -s "/usr/local/Cellar/python/2.7.3/Frameworks/Python.framework/Versions/2.7" ~/Library/Frameworks/Python.framework/Versions/2.7
-ln -s ~/Library/Frameworks/Python.framework/Versions/2.7 ~/Library/Frameworks/Python.framework/Versions/Current
-ln -s ~/Library/Frameworks/Python.framework/Versions/2.7/Python ~/Library/Frameworks/Python.framework/Python
-ln -s ~/Library/Frameworks/Python.framework/Versions/2.7/Resources ~/Library/Frameworks/Python.framework/Resources
+brew install python
 
 # bootstrap pip
 /usr/local/share/python/easy_install pip
-<<<<<<< local
-pip install --user distribute
-pip install --user ipython
-brew install qt
-=======
 pip install --upgrade distribute
 # pip install -U ipython
 # brew remove qt
@@ -70,38 +55,31 @@ pip install --upgrade distribute
 # brew versions qt
 # git checkout 83f742e Library/Formula/qt.rb
 # brew install qt
->>>>>>> other
 # brew install pyqt
-<<<<<<< local
-brew install pyside	pyside-tools
+brew install pyside pyside-tools
 pip install --user sphinx
 pip install --user spyder
-=======
-# brew install pyside	pyside-tools
-# pip install sphinx
-# pip install spyder
->>>>>>> other
 
 # numpy et al
-brew install --user  gfortran
-brew install --user ffmpeg
+brew install gfortran
+brew install libtool libagg¬
+brew install ffmpeg
 pip install --user numpy
 pip install --user PIL
 pip install --user scipy
 # brew install libtool libagg
 # pip install --user matplotlib
 pip install git+git://github.com/matplotlib/matplotlib.git
-#pip install -U -e git+git@github.com:matplotlib/matplotlib.git#egg=matplotlib
 # mayavi
 brew install vtk --python
-pip install -U --user traitsbackendqt
+pip install --user traitsbackendqt
 pip install --user configobj
 pip install  --user "Mayavi[app]"
 # HDF export
-brew install --user hdf5 
-pip install --user cython 
-pip install --user numexpr 
-pip install --user tables 
+brew install hdf5 
+pip install --user cython
+pip install --user numexpr
+pip install --user tables
 
 # convert
 brew install imagemagick
