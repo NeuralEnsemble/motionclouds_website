@@ -45,29 +45,34 @@ brew install python
 # bootstrap pip
 /usr/local/share/python/easy_install pip
 pip install --upgrade distribute
-# pip install --user ipython
+# pip install ipython
 brew install pyside pyside-tools
-pip install --user sphinx
-pip install --user spyder
+pip install sphinx
+pip install spyder
 
 # numpy et al
 brew install gfortran
+brew install cmake
+brew install fftw
+brew install umfpack
 brew install libtool
 brew install ffmpeg
-pip install --user numpy
-pip install --user PIL
-pip install --user scipy
+pip install numpy
+pip install PIL
+pip install scipy
 pip install git+git://github.com/matplotlib/matplotlib.git
 # mayavi
-brew install vtk --python
-pip install --user traitsbackendqt
-pip install --user configobj
+brew install --python --qt vtk
+#brew install vtk --python
+#pip install traitsbackendqt
+pip install configobj
+pip install envisage
 pip install  --user "Mayavi[app]"
 # HDF export
 brew install hdf5 
-pip install --user cython
-pip install --user numexpr
-pip install --user tables
+pip install cython
+pip install numexpr
+pip install tables
 
 # convert
 brew install imagemagick
