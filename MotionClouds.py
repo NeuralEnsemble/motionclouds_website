@@ -225,7 +225,7 @@ def import_mayavi():
             except:
                print('Could not import Mayavi')
                MAYAVI = 'Could not import Mayavi'
-    elif (MAYAVI == 'Ok : New and shiny') or (MAYAVI == 'Ok but old'):
+    elif (MAYAVI == 'Could not import Mayavi') or (MAYAVI == 'Ok : New and shiny') or (MAYAVI == 'Ok but old'):
         pass # no need to import that again
     else:
         print('We have chosen not to import Mayavi')
