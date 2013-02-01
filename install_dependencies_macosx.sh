@@ -62,7 +62,7 @@ pip install PIL
 pip install scipy
 pip install git+git://github.com/matplotlib/matplotlib.git
 # mayavi
-brew install --python --qt vtk
+brew install --pyqt --python --qt vtk
 #brew install vtk --python
 #pip install traitsbackendqt
 pip install configobj
