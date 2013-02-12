@@ -25,7 +25,7 @@ loggabor-- (boolean) if True it uses a log-Gabor kernel (instead of the traditio
 
 Display parameters:
 
-vext       -- movie format. Stimulus can be saved as a 3D (x-y-t) multimedia file: .mpg movie, .mat array, .zip folder with a frame sequence.     
+vext       -- movie format. Stimulus can be saved as a 3D (x-y-t) multimedia file: .mpg or .mp4 movie, .mat array, .zip folder with a frame sequence.     
 ext        -- frame image format.
 T_moviei   -- movie duration [s].
 fps        -- frame per seconds
@@ -193,7 +193,7 @@ shape
 
 
 ########################## Display Tools #######################################
-vext = '.mpg'
+vext = '.mp4'
 ext = '.png'
 T_movie = 8. # this value defines the duration of a temporal period
 fps = int(N_frame / T_movie)
@@ -363,7 +363,7 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
 
     mlab.close(all=True)
 
-def anim_exist(filename, vext='.mpg'):
+def anim_exist(filename, vext=vext):
     """
     Check if the movie already exists
 
@@ -371,7 +371,7 @@ def anim_exist(filename, vext='.mpg'):
     return not(os.path.isfile(filename+vext))
 
 
-def anim_save(z, filename, display=True, flip=False, vext='.mpg',
+def anim_save(z, filename, display=True, flip=False, vext=vext,
               centered=False, fps=fps):
     """
     Saves a numpy 3D matrix (x-y-t) to a multimedia file.
@@ -418,13 +418,24 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
         tmpdir, files = make_frames(z)
         # 2) convert frames to movie
 #        cmd = 'ffmpeg -v 0 -y -sameq -loop_output 0 -r ' + str(fps) + ' -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
-        cmd = 'ffmpeg -v 0 -y -sameq  -loop_output 0 -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
-        # print('Doing : ', cmd)
-        os.system(cmd) # + ' 2>/dev/null')
+        #cmd = 'ffmpeg -v 0 -y -sameq  -loop_output 0 -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
+        os.system('ffmpeg -v 0 -y  -f image2 -r ' + str(fps) + ' -sameq -i ' + tmpdir + '/frame%03d.png  ' + filename + '.mpg 2>/dev/null')
+        #print('Doing : ', cmd)
+        #ret = os.system(cmd) # + ' 2>/dev/null')
+        #print ret
         # To force the frame rate of the output file to 24 fps:
         # ffmpeg -i input.avi -r 24 output.avi
         # 3) clean up
+        #remove_frames(tmpdir, files)
+    if vext == '.mp4': # specially tuned for iPhone/iPod http://www.dudek.org/blog/82
+        # 1) create temporary frames
+        tmpdir, files = make_frames(z)
+        # 2) convert frames to movie
+        options = '-vcodec libx264 -y '
+        os.system('ffmpeg -i '  + tmpdir + '/frame%03d.png  ' + options + filename + vext )#+ ' 2>/dev/null')¬
+        # 3) clean up
         remove_frames(tmpdir, files)
+
     if vext == '.gif': # http://www.uoregon.edu/~noeckel/MakeMovie.html
         # 1) create temporary frames
         tmpdir, files = make_frames(z)
@@ -433,7 +444,6 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
 #        os.system('ffmpeg -i '  + tmpdir + '/frame%03d.png  ' + options + filename + vext + ' 2>/dev/null')
         options = ' -set delay 8 -colorspace GRAY -colors 256 -dispose 1 -loop 0 '
         os.system('convert '  + tmpdir + '/frame*.png  ' + options + filename + vext )# + ' 2>/dev/null')
-
         # 3) clean up
         remove_frames(tmpdir, files)
 
@@ -493,18 +503,18 @@ def play(z, T=5.):
             else:
                 fig.window.set_fullscreen(1)
         if symbol == glumpy.window.key.ESCAPE:
+            import sys
             sys.exit()
 
     @fig.event
     def on_idle(dt):
         global t, t0, frames
-        frames = frames + 1
         t += dt
+        frames = frames + 1
         if t-t0 > 5.0:
             fps = float(frames)/(t-t0)
             print 'FPS: %.2f (%d frames in %.2f seconds)' % (fps, frames, t-t0)
             frames, t0 = 0, t
-
          # computing the frame more closely to the actual time
         Z[...] = z[:, :, np.int(np.mod(t, T)/T * N_frame)].T.astype(np.float32)
         #Z[...] = z[:, :, frames % N_frame].T.astype(np.float32)
