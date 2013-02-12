@@ -29,8 +29,9 @@ if mc.anim_exist(name_):
     for i_N in xrange(N):
         im_ = mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft), seed=seed+i_N)
         if i_N == 0:
-            phase = 0. * im_[mc.N_X/2, mc.N_Y/2, :]
-        im += im_ - im_[mc.N_X/2, mc.N_Y/2, :] + phase
+            phase = 0.5 + 0. * im_[0, 0, :]#mc.N_X/2, mc.N_Y/2, :]
+        #im += im_ - im_[mc.N_X/2, mc.N_Y/2, :] + phase
+        im += im_ - im_[0, 0, :] + phase
 
     if play:
         mc.play(mc.rectif(im))
