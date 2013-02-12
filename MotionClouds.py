@@ -468,6 +468,35 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
         #   print o.shape
         hf.close()
 
+def play(z):
+    global t, t0, frames
+    N_X, N_Y, N_frame = z.shape
+    import glumpy
+    fig = glumpy.figure((N_X, N_Y))
+    Z = z[:, :, 0].T.astype(np.float32)
+    image = glumpy.image.Image(Z) #, interpolation='nearest', colormap=glumpy.colormap.Grey, vmin=0, vmax=1)
+    t0, frames, t = 0, 0, 0
+
+    @fig.event
+    def on_draw():
+        fig.clear()
+        image.draw(x=0, y=0, z=0, width=fig.width, height=fig.height )
+
+    @fig.event
+    def on_idle(dt):
+        global t, t0, frames
+        frames = frames + 1
+        t += dt
+        if t-t0 > 5.0:
+            fps = float(frames)/(t-t0)
+            print 'FPS: %.2f (%d frames in %.2f seconds)' % (fps, frames, t-t0)
+            frames, t0 = 0, t
+
+        Z[...] = z[:, :, frames % N_frame].T.astype(np.float32)
+        image.update()
+        fig.redraw()
+    glumpy.show()
+
 def rectif(z, contrast=.9, method='Michelson', verbose=False):
     """ 
     Transforms an image (can be 1,2 or 3D) with normal histogram into

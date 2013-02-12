@@ -24,6 +24,7 @@ This package consists of:
 1. optional: ```matplotlib```, ```scipy``` (with PIL support) and ```imagemagick``` are used to generate figures in the documentation.
 1. optional: ```progressbar``` for displaying progress of encoding.
 1. optional: ```texlive-latex-recommended  latexmk latexdiff``` to compile the documentation 
+1. optional: ```PyOpenGL PyOpenGL_accelerate glumpy``` to display MotionClouds online
 
 ## download
 

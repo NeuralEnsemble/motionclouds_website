@@ -74,5 +74,9 @@ pip install cython
 pip install numexpr
 pip install tables
 
+# install online displaying tools
+pip install PyOpenGL PyOpenGL_accelerate
+pip install glumpy
+
 # convert
 brew install imagemagick
