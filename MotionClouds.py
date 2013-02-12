@@ -468,7 +468,11 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
         #   print o.shape
         hf.close()
 
-def play(z):
+def play(z, T=5.):
+    """
+    T: duration in second of a period
+
+    """
     global t, t0, frames
     N_X, N_Y, N_frame = z.shape
     import glumpy
@@ -481,6 +485,15 @@ def play(z):
     def on_draw():
         fig.clear()
         image.draw(x=0, y=0, z=0, width=fig.width, height=fig.height )
+    @fig.event
+    def on_key_press(symbol, modifiers):
+        if symbol == glumpy.window.key.TAB:
+            if fig.window.get_fullscreen():
+                fig.window.set_fullscreen(0)
+            else:
+                fig.window.set_fullscreen(1)
+        if symbol == glumpy.window.key.ESCAPE:
+            sys.exit()
 
     @fig.event
     def on_idle(dt):
@@ -492,7 +505,9 @@ def play(z):
             print 'FPS: %.2f (%d frames in %.2f seconds)' % (fps, frames, t-t0)
             frames, t0 = 0, t
 
-        Z[...] = z[:, :, frames % N_frame].T.astype(np.float32)
+         # computing the frame more closely to the actual time
+        Z[...] = z[:, :, np.int(np.mod(t, T)/T * N_frame)].T.astype(np.float32)
+        #Z[...] = z[:, :, frames % N_frame].T.astype(np.float32)
         image.update()
         fig.redraw()
     glumpy.show()
