@@ -432,7 +432,7 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         tmpdir, files = make_frames(z)
         # 2) convert frames to movie
         options = '-vcodec libx264 -y '
-        os.system('ffmpeg -i '  + tmpdir + '/frame%03d.png  ' + options + filename + vext )#+ ' 2>/dev/null')¬
+        os.system('ffmpeg -i '  + tmpdir + '/frame%03d.png  ' + options + filename + vext + ' 2>/dev/null')
         # 3) clean up
         remove_frames(tmpdir, files)
 
