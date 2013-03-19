@@ -39,7 +39,7 @@ if DEBUG:
     size_T = 5
     figsize = (400, 400)  # faster
 else:
-    size = 7
+    size = 8
     size_T = 7
     figsize = (800, 800) # nice size, but requires more memory
 

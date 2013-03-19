@@ -1,5 +1,10 @@
 # installing dependencies on Debian for MotionClouds
 # --------------------------------------------------
+
+# it is always a good idea to update/upgrade your system before
+sudo aptitude update
+sudo aptitude upgrade
+
 # A script for the impatient:
 # uncomment to fit your installation preference
 # others should read the README.txt doc.
