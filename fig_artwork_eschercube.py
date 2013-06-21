@@ -334,6 +334,8 @@ if __name__ == '__main__':
     upper right in the right and top facets. Overlaid hue gives a measure of a 
     typical response for a sensory response (here a motion energy model) which 
     gives a complete characterization of the sensory system at hand.
+        
+    Les \emph{Motion Clouds} constituent un ensemble de stimuli visant à explorer de manière systématique la réponse fonctionnelle d'un système sensoriel à un stimulus en mouvement de type naturel. Ceux-ci sont optimisées pour décrire un mouvement de translation pure en plein champ et sont par construction des textures synthétisées à partir de ``patchs" élémentaires de mouvement semblable placés au hasard dans l'espace. L'objet d'une telle entreprise est de tester systématiquement un système en variant les paramètres de telles textures sur les dimensions perceptives principales (vitesse moyenne,  direction, l'orientation spatiale et  fréquence). Nous montrons ici un \emph{espèce de stimuli} comme une grille tri-dimensionnelle dont les n\oe dus correspondent à des stimuli et les axes des paramètres du mouvement: bande passante pour la vitesse (panneau de gauche), fréquence (panneau de droite) et orientation (partie supérieure). Chaque n\oe ud contient un cube élémentaire qui représente le film correspondant au stimulus, avec le temps qui s'écoule du coin inférieur gauche au coin en haut à droite dans les facettes à droite et en haut. Nous avons superposé en couleur une teinte qui représente une mesure de la réponse sensorielle (ici un modèle d'énergie du mouvement) dans cet espace de stimuli. Ce genre de caractérisation permet une étude systématique du système (ici oculomoteur) qui est étudié.        
     """
 
     import itertools
@@ -440,7 +442,7 @@ if __name__ == '__main__':
         for i_az, azimuth in enumerate(np.linspace(0, 360, 128, endpoint=False)):
             mlab.view(*view)
             mlab.view(azimuth=azimuth)
-            mlab.savefig('_MCartwork%03d.png' % i_az)
+            mlab.savefig('_MCartwork%03d.png' % i_az, magnification=0.5)
         import os
         os.system('ffmpeg -v 0 -y -sameq  -loop_output 0 -i _MCartwork%03d.png  MCartwork.mpg')
         os.system('ffmpeg -v 0 -y -sameq  -pix_fmt rgb24 -r 12 -loop_output 0 -i _MCartwork%03d.png  MCartwork.gif')

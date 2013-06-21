@@ -14,18 +14,18 @@ N_Y     -- frame size vertical dimension [px]
 N_frame -- number of frames [frames] (a full period in time frames)
 alpha   -- exponent for the color envelope.
 sf_0    -- mean spatial frequency relative to the sampling frequency.
-ft_0    -- spatiotemporal scaling factor. 
+ft_0    -- spatiotemporal scaling factor.
 B_sf    -- spatial frequency bandwidth
 V_X     -- horizontal speed component
 V_Y     -- vertical speed component
 B_V     -- speed bandwidth
 theta   -- mean orientation of the Gabor kernel
 B_theta -- orientation bandwidth
-loggabor-- (boolean) if True it uses a log-Gabor kernel (instead of the traditional gabor) 
+loggabor-- (boolean) if True it uses a log-Gabor kernel (instead of the traditional gabor)
 
 Display parameters:
 
-vext       -- movie format. Stimulus can be saved as a 3D (x-y-t) multimedia file: .mpg or .mp4 movie, .mat array, .zip folder with a frame sequence.     
+vext       -- movie format. Stimulus can be saved as a 3D (x-y-t) multimedia file: .mpg or .mp4 movie, .mat array, .zip folder with a frame sequence.
 ext        -- frame image format.
 T_moviei   -- movie duration [s].
 fps        -- frame per seconds
@@ -88,7 +88,7 @@ def frequency_radius(fx, fy, ft, ft_0=ft_0):
 
 def envelope_color(fx, fy, ft, alpha=alpha, ft_0=ft_0):
     """
-    Returns the color envelope. 
+    Returns the color envelope.
     Run 'test_color.py' to see the effect of alpha
     alpha = 0 white
     alpha = 1 pink
@@ -153,7 +153,7 @@ def envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
     Returns the Motion Cloud kernel
 
     """
-    # TODO : issue a warning if more than 10% of the energy of the envelope falls off the Fourier cube 
+    # TODO : issue a warning if more than 10% of the energy of the envelope falls off the Fourier cube
     # TODO : use a disk mask to ensure all orientations are evely chosen
     envelope = envelope_color(fx, fy, ft, alpha=alpha)
     envelope *= envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta)
@@ -232,8 +232,8 @@ def import_mayavi():
 # Trick from http://github.enthought.com/mayavi/mayavi/tips.html : to use offscreen rendering, try xvfb :1 -screen 0 1280x1024x24 in one terminal, export DISPLAY=:1 before you run your script
 
 def get_size(mat):
-    """ 
-    Get stimulus dimensions 
+    """
+    Get stimulus dimensions
 
     """
     return [np.size(mat, axis=k) for k in range(np.ndim(mat))]
@@ -523,7 +523,7 @@ def play(z, T=5.):
     glumpy.show()
 
 def rectif(z, contrast=.9, method='Michelson', verbose=False):
-    """ 
+    """
     Transforms an image (can be 1,2 or 3D) with normal histogram into
     a 0.5 centered image of determined contrast
     method is either 'Michelson' or 'Energy'

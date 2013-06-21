@@ -1,6 +1,6 @@
 # installing dependencies on Debian for MotionClouds
 # --------------------------------------------------
-
+sudo apt-get install aptitude
 # it is always a good idea to update/upgrade your system before
 sudo aptitude update
 sudo aptitude upgrade

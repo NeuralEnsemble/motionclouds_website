@@ -89,7 +89,7 @@ if True:#try:
         mlab.outline(surf_, color=(.7, .7, .7))
 #fig.add(s)
         view = mlab.view(azimuth=290., elevation=60, distance='auto', focalpoint='auto')
-        mlab.savefig('_MC_%03d.png' % frame)
+        mlab.savefig('_MC_%03d.png' % frame, magnification=0.5)
     import os
     os.system('ffmpeg -v 0 -y -sameq  -loop_output 0 -i _MC_%03d.png  MC_wave.mpg')
     os.system('convert  _MC_%03d.png  MC_wave.gif')
