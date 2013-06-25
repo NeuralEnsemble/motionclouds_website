@@ -27,7 +27,7 @@ Display parameters:
 
 vext       -- movie format. Stimulus can be saved as a 3D (x-y-t) multimedia file: .mpg or .mp4 movie, .mat array, .zip folder with a frame sequence.
 ext        -- frame image format.
-T_moviei   -- movie duration [s].
+T_movie    -- movie duration [s].
 fps        -- frame per seconds
 
 """

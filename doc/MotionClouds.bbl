@@ -10,8 +10,8 @@ Edward~H. Adelson and James~R. Bergen.
 \newblock Spatiotemporal energy models for the perception of motion.
 \newblock \emph{Journal of {O}ptical {S}ociety of {A}merica, {A}.}, 2\penalty0
   (2):\penalty0 284--99, February 1985.
-\newblock \doi{10.1364/JOSAA.2.000284}.
-\newblock URL \url{http://dx.doi.org/10.1364/JOSAA.2.000284}.
+\newblock \doi{10.1364/josaa.2.000284}.
+\newblock URL \url{http://dx.doi.org/10.1364/josaa.2.000284}.
 
 \bibitem[Atick(1992)]{Atick92}
 J.~J. Atick.
@@ -27,7 +27,7 @@ Gary~G. Blasdel and Guy Salama.
 \newblock \doi{10.1038/321579a0}.
 \newblock URL \url{http://dx.doi.org/10.1038/321579a0}.
 
-\bibitem[Born and Bradley(2005)]{Bradley05}
+\bibitem[Born and Bradley(2005)]{Born05}
 Richard~T. Born and David~C. Bradley.
 \newblock Structure and function of visual area {MT}.
 \newblock \emph{Ann. Rev. of Neurosci.}, 28\penalty0 (1):\penalty0 157--189,
@@ -35,14 +35,14 @@ Richard~T. Born and David~C. Bradley.
 \newblock \doi{10.1146/annurev.neuro.26.041002.131052}.
 \newblock URL \url{http://dx.doi.org/10.1146/annurev.neuro.26.041002.131052}.
 
-\bibitem[Braddick(1993)]{Braddick1993Segmentation}
+\bibitem[Braddick(1993)]{Braddick93}
 Oliver Braddick.
 \newblock Segmentation versus integration in visual motion processing.
 \newblock \emph{Trends Neurosci.}, 16\penalty0 (7):\penalty0 263--268, July
   1993.
 \newblock ISSN 01662236.
-\newblock \doi{10.1016/0166-2236(93)90179-P}.
-\newblock URL \url{http://dx.doi.org/10.1016/0166-2236(93)90179-P}.
+\newblock \doi{10.1016/0166-2236(93)90179-p}.
+\newblock URL \url{http://dx.doi.org/10.1016/0166-2236(93)90179-p}.
 
 \bibitem[Bradley and Goyal(2008)]{Bradley08}
 David~C. Bradley and Manu~S. Goyal.
@@ -101,7 +101,7 @@ A.~M. Derrington, H.~A. Allen, and L.~S. Delicato.
 \newblock \doi{10.1146/annurev.psych.55.090902.141903}.
 \newblock URL \url{http://dx.doi.org/10.1146/annurev.psych.55.090902.141903}.
 
-\bibitem[DeValois and DeValois(1988)]{DeValois1988Spatial}
+\bibitem[DeValois and DeValois(1988)]{DeValois88}
 Russell~L. DeValois and Karen~K. DeValois.
 \newblock \emph{Spatial Vision}.
 \newblock Oxford University Press, USA, March 1988.
@@ -123,7 +123,7 @@ E.~A. Essock, A.~M. Haun, and Y.~J. Kim.
 \newblock \doi{10.1167/9.1.35}.
 \newblock URL \url{http://dx.doi.org/10.1167/9.1.35}.
 
-\bibitem[Felsen and Dan(2005)]{Felsen2005Natural}
+\bibitem[Felsen and Dan(2005)]{Felsen05}
 Gidon Felsen and Yang Dan.
 \newblock A natural approach to studying vision.
 \newblock \emph{Nat. Neurosci.}, 8\penalty0 (12):\penalty0 1643--1646, November
@@ -154,13 +154,14 @@ D.~J. Field.
 \newblock \doi{10.1098/rsta.1999.0446}.
 \newblock URL \url{http://dx.doi.org/10.1098/rsta.1999.0446}.
 
-\bibitem[Fischer et~al.(2007)Fischer, Vsroubek, Perrinet, Redondo, and
-  Crist\'{o}bal]{Fischer07}
-Sylvain Fischer, Filip Vsroubek, Laurent Perrinet, Rafael Redondo, and Gabriel
-  Crist\'{o}bal.
-\newblock {Self-Invertible} {2D} {Log-Gabor} wavelets.
-\newblock \emph{Int. J. Comput. Vision}, 75\penalty0 (2):\penalty0 231--246,
-  November 2007.
+\bibitem[Fischer et~al.(2007)Fischer, Redondo, Perrinet, and
+  Crist{\'{o}}bal]{Fischer07}
+Sylvain Fischer, Rafael Redondo, Laurent~U. Perrinet, and Gabriel
+  Crist{\'{o}}bal.
+\newblock Sparse approximation of images inspired from the functional
+  architecture of the primary visual areas.
+\newblock \emph{EURASIP Journal on Advances in Signal Processing},
+  2007\penalty0 (1):\penalty0 231--122, November 2007.
 \newblock ISSN 0920-5691.
 \newblock \doi{10.1007/s11263-006-0026-8}.
 \newblock URL \url{http://dx.doi.org/10.1007/s11263-006-0026-8}.
@@ -172,7 +173,7 @@ B.~Galerne, Y.~Gousseau, and J.~M. Morel.
 \newblock URL
   \url{http://www.biomedsearch.com/nih/Random-Phase-Textures-Theory-Synthesis/20550995.html}.
 
-\bibitem[Geisler and Ringach(2009)]{Geisler08}
+\bibitem[Geisler and Ringach(2009)]{Geisler09}
 Wilson~S. Geisler and Dario Ringach.
 \newblock Natural systems analysis.
 \newblock \emph{Visual Neurosci}, 26:\penalty0 1--3, 2009.
@@ -187,11 +188,14 @@ Norma Graham.
 \newblock \doi{10.1016/0166-2236(79)90082-1}.
 \newblock URL \url{http://dx.doi.org/10.1016/0166-2236(79)90082-1}.
 
-\bibitem[Hansen and Hess(2006)]{Hansen06}
-B.~C. Hansen and R.~F. Hess.
+\bibitem[Hansen and Hess(2006)]{Hansen06a}
+Bruce~C. Hansen and Robert~F. Hess.
 \newblock The role of spatial phase in texture segmentation and contour
   integration.
-\newblock \emph{J. Vis.}, 5\penalty0 (5):\penalty0 594--615, 2006.
+\newblock \emph{Journal of Vision}, 6\penalty0 (5), April 2006.
+\newblock ISSN 1534-7362.
+\newblock \doi{10.1167/6.5.5}.
+\newblock URL \url{http://dx.doi.org/10.1167/6.5.5}.
 
 \bibitem[Heeger et~al.(1996)Heeger, Simoncelli, and Movshon]{Heeger96}
 D.~J. Heeger, Eero~P. Simoncelli, and J.~Anthony Movshon.
@@ -245,7 +249,7 @@ D.~J. Klein, D.~A. Depireux, J.~Z. Simon, and S.~A. Shamma.
 \newblock \emph{J. Comput. Neurosci.}, 9\penalty0 (1):\penalty0 85--111, July
   2000.
 \newblock ISSN 09295313.
-\newblock \doi{10.1023/A:1008990412183}.
+\newblock \doi{10.1023/a:1008990412183}.
 \newblock URL \url{http://www.isr.umd.edu/CAAR/papers/jcns.pdf}.
 
 \bibitem[Lagae et~al.(2009)Lagae, Lefebvre, Drettakis, and
@@ -297,7 +301,7 @@ Guillaume~S. Masson and E.~Castet.
   following in humans.
 \newblock \emph{Journal of Neuroscience}, 22:\penalty0 5149--5163, 2002.
 
-\bibitem[Masson and Ilg(2010)]{Masson10}
+\bibitem[Masson and Ilg(2010)]{Masson10a}
 Guillaume~S. Masson and Uwe~J. Ilg, editors.
 \newblock \emph{Dynamics of visual motion processing: neuronal, behavioral and
   computational approaches}.
@@ -317,7 +321,7 @@ P.~Neri, M.~C. Morrone, and D.~C. Burr.
 \newblock \doi{10.1038/27661}.
 \newblock URL \url{http://dx.doi.org/10.1038/27661}.
 
-\bibitem[Newsome(1997)]{Newsome1997Deciding}
+\bibitem[Newsome(1997)]{Newsome97}
 W.~T. Newsome.
 \newblock Deciding about motion: linking perception to action.
 \newblock \emph{J. Comp. Physiol. A. Neuroethol. Sens. Neural Behav. Physiol.},
@@ -333,8 +337,8 @@ Shinji Nishimoto and Jack~L. Gallant.
 \newblock \emph{J. Neurosci.}, 31\penalty0 (41):\penalty0 14551--14564, October
   2011.
 \newblock ISSN 1529-2401.
-\newblock \doi{10.1523/JNEUROSCI.6801-10.2011}.
-\newblock URL \url{http://dx.doi.org/10.1523/JNEUROSCI.6801-10.2011}.
+\newblock \doi{10.1523/jneurosci.6801-10.2011}.
+\newblock URL \url{http://dx.doi.org/10.1523/jneurosci.6801-10.2011}.
 
 \bibitem[Oliva and Torralba(2001)]{Oliva01}
 Aude Oliva and A.~Torralba.
@@ -382,12 +386,12 @@ Laurent Perrinet, David Fitzpatrick, and James~A. Bednar.
 \bibitem[Perrinet(2010)]{Perrinet10shl}
 Laurent~U. Perrinet.
 \newblock Role of homeostasis in learning sparse representations.
-\newblock \emph{Neural Computation}, 22\penalty0 (7):\penalty0 1812--1836, July
+\newblock \emph{Neural Computation}, 22\penalty0 (7):\penalty0 1812--36, July
   2010.
 \newblock ISSN 1530-888X.
 \newblock \doi{10.1162/neco.2010.05-08-795}.
 \newblock URL
-  \url{http://www.incm.cnrs-mrs.fr/LaurentPerrinet/Publications/Perrinet10shl}.
+  \url{http://invibe.net/LaurentPerrinet/Publications/Perrinet10shl}.
 
 \bibitem[Perrone and Thiele(2001)]{Perrone01}
 John~A. Perrone and Alexander Thiele.
@@ -403,7 +407,7 @@ John~A. Perrone and Alexander Thiele.
 \newblock URL
   \url{http://www.sciencedirect.com/science/article/pii/S0042698902000299}.
 
-\bibitem[Phillips and Todd(2010)]{PhillipsTodd2010}
+\bibitem[Phillips and Todd(2010)]{Phillips10}
 F.~Phillips and J.~T. Todd.
 \newblock Texture discrimination based on global feature alignments.
 \newblock \emph{J. Vis.}, 10\penalty0 (6):\penalty0 6, 2010.
@@ -437,8 +441,7 @@ Nicole~C. Rust and J.~Anthony Movshon.
 \newblock \doi{10.1038/nn1606}.
 \newblock URL \url{http://dx.doi.org/10.1038/nn1606}.
 
-\bibitem[Rust et~al.(2005)Rust, Schwartz, Movshon, and
-  Simoncelli]{Rust2005Spatiotemporal}
+\bibitem[Rust et~al.(2005)Rust, Schwartz, Movshon, and Simoncelli]{Rust05b}
 Nicole~C. Rust, Odelia Schwartz, J.~Anthony Movshon, and Eero~P. Simoncelli.
 \newblock Spatiotemporal elements of macaque {V1} receptive fields.
 \newblock \emph{Neuron}, 46\penalty0 (6):\penalty0 945--956, June 2005.
@@ -479,23 +482,23 @@ Eero~P. Simoncelli and David~J. Heeger.
 \newblock \emph{Vision Research}, 38\penalty0 (5):\penalty0 743--761, March
   1998.
 \newblock ISSN 0042-6989.
-\newblock \doi{10.1016/S0042-6989(97)00183-1}.
+\newblock \doi{10.1016/s0042-6989(97)00183-1}.
 \newblock URL
   \url{http://www.sciencedirect.com/science?\_ob=MiamiImageURL\&\#38;\_cid=271122\&\#38;\_user=125795\&\#38;\_pii=S0042698997001831\&\#38;\_check=y\&\#38;\_origin=\&\#38;\_coverDate=31-Mar-1998\&\#38;view=c\&\#38;wchp=dGLbVBA-zSkWA\&\#38;md5=66fbdfa4194480f1b9dba0189ad567a4/1-s2.0-S0042698997001831-main.pdf}.
 
 \bibitem[Simoncini et~al.(2012)Simoncini, Perrinet, Montagnini, Mamassian, and
-  Masson]{Simoncini2012More}
+  Masson]{Simoncini12}
 Claudio Simoncini, Laurent~U. Perrinet, Anna Montagnini, Pascal Mamassian, and
   Guillaume~S. Masson.
 \newblock More is not always better: adaptive gain control explains
   dissociation between perception and action.
-\newblock \emph{Nature Neuroscience}, 15\penalty0 (11):\penalty0 1596--1603,
-  September 2012.
+\newblock \emph{Nat Neurosci}, 15\penalty0 (11):\penalty0 1596--1603, November
+  2012.
 \newblock ISSN 1097-6256.
 \newblock \doi{10.1038/nn.3229}.
 \newblock URL \url{http://dx.doi.org/10.1038/nn.3229}.
 
-\bibitem[Singh et~al.(2000)Singh, Smith, and Greenlee]{Singh2000Spatiotemporal}
+\bibitem[Singh et~al.(2000)Singh, Smith, and Greenlee]{Singh00}
 K.~D. Singh, A.~T. Smith, and M.~W. Greenlee.
 \newblock Spatiotemporal frequency and direction sensitivities of human visual
   areas measured using {fMRI}.
@@ -520,8 +523,8 @@ S.~G. Solomon, C.~Tailby, S.~K. Cheong, and A.~J. Camp.
 Antonio Torralba and Aude Oliva.
 \newblock Statistics of natural image categories.
 \newblock \emph{Network}, 14\penalty0 (3):\penalty0 391--412, January 2003.
-\newblock \doi{10.1088/0954-898X\_14\_3\_302}.
-\newblock URL \url{http://dx.doi.org/10.1088/0954-898X\_14\_3\_302}.
+\newblock \doi{10.1088/0954-898x\_14\_3\_302}.
+\newblock URL \url{http://dx.doi.org/10.1088/0954-898x\_14\_3\_302}.
 
 \bibitem[Touryan(2001)]{Touryan01}
 J.~Touryan.
@@ -529,7 +532,7 @@ J.~Touryan.
 \newblock \emph{Curr Opin Neurobiol}, 11\penalty0 (4):\penalty0 443--448,
   August 2001.
 \newblock ISSN 09594388.
-\newblock \doi{10.1016/S0959-4388(00)00232-4}.
+\newblock \doi{10.1016/s0959-4388(00)00232-4}.
 \newblock URL
   \url{https://www.incm.cnrs-mrs.fr/biblio\_database/Show?\_id=4bac\&\#38;sort=DEFAULT\&\#38;search=dan\&\#38;hits=13}.
 
@@ -553,7 +556,7 @@ A.~Turing.
 \newblock \emph{Philos. Trans. Roy. Soc. London Ser. B}, 327:\penalty0 37--72,
   1952.
 
-\bibitem[Victor and Conte(1996)]{VictorComte1996}
+\bibitem[Victor and Conte(1996)]{Victor96a}
 J.~D. Victor and M.~M. Conte.
 \newblock The role of high-order phase correlations in texture processing.
 \newblock \emph{Vision Res.}, 36\penalty0 (11):\penalty0 1615--1631, 1996.
@@ -581,10 +584,10 @@ A.~Watson and K.~Turano.
 \newblock \emph{Vision Res.}, 35\penalty0 (3):\penalty0 325--336, February
   1995.
 \newblock ISSN 00426989.
-\newblock \doi{10.1016/0042-6989(94)00182-L}.
-\newblock URL \url{http://dx.doi.org/10.1016/0042-6989(94)00182-L}.
+\newblock \doi{10.1016/0042-6989(94)00182-l}.
+\newblock URL \url{http://dx.doi.org/10.1016/0042-6989(94)00182-l}.
 
-\bibitem[Watson and Eckert(1994)]{watson94}
+\bibitem[Watson and Eckert(1994)]{Watson94}
 A.~B. Watson and M.~P. Eckert.
 \newblock Motion-contrast sensitivity : visibility of motion gradients of
   various spatial frequencies.
