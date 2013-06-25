@@ -1,0 +1,6 @@
+doc/montypython.npy
+.DS*
+doc/diff.tex
+results
+*pyc
+*pyo
