@@ -6,17 +6,17 @@
 %--------------------------
 \documentclass[a4paper,11pt]{article}%draft
 %-------definitions-----
-\newcommand{\AuthorA}{Sanz Leon, Paula}%
-\newcommand{\AuthorB}{Vanzetta, Ivo}%
-\newcommand{\AuthorC}{Masson, Guillaume S.} %
-\newcommand{\AuthorD}{Perrinet, Laurent U.}%
+\newcommand{\AuthorA}{Paula~Sanz Leon}%
+\newcommand{\AuthorB}{Ivo~Vanzetta}%
+\newcommand{\AuthorC}{Guillaume S.~Masson} %
+\newcommand{\AuthorD}{Laurent U.~Perrinet}%
 \newcommand{\AddressA}{INCM, CNRS / Aix-Marseille University, France}
 \newcommand{\AddressB}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille University, Marseille, France}%
-%\newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
-\newcommand{\EmailA}{Paula.Sanz@incm.cnrs-mrs.fr}%
-\newcommand{\EmailB}{Ivo.Vanzetta@incm.cnrs-mrs.fr}%
-\newcommand{\EmailC}{Guillaume.Masson@incm.cnrs-mrs.fr}%
-\newcommand{\EmailD}{Laurent.Perrinet@incm.cnrs-mrs.fr}%
+\newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
+\newcommand{\EmailA}{Paula.Sanz@univ-amu.fr}%
+\newcommand{\EmailB}{Ivo.Vanzetta@univ-amu.fr}%
+\newcommand{\EmailC}{Guillaume.Masson@univ-amu.fr}%
+\newcommand{\EmailD}{Laurent.Perrinet@univ-amu.fr}%
 \newcommand{\Title}{%
 Supplementary Videos to : \\ %
 Motion Clouds: Model-based stimulus synthesis of natural-like random textures for the study of motion perception}%
@@ -27,7 +27,7 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 %--------------------------
 
 %%% Packages
-\usepackage[utf8x]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 %\usepackage{natbib}
 \usepackage[pdftex]{graphicx} 
@@ -69,7 +69,21 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 %\usepackage{pst-3dplot}
 
 \usepackage{movie15}
-
+%\usepackage{media9}%
+%\newcommand{\includemovie}[3]{%
+%\includemedia[%
+%width=#1,height=#2,%
+%activate=pagevisible,%
+%deactivate=pageclose,%
+%addresource=#3,%
+%flashvars={%
+%src=#3 % same path as in addresource!
+%&autoPlay=true % default: false; if =true, automatically starts playback after activation (see option Ôactivation)Õ
+%&loop=true % if loop=true, media is played in a loop
+%&controlBarAutoHideTimeout=0 %  time span before auto-hide
+%}%
+%]{}{StrobeMediaPlayback.swf}%
+%}%
 %%% Declarations and definitions
 %
 % %new float to avoid putting the tables at the end when using endfloat package
@@ -79,7 +93,7 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 %
 
 \DeclareGraphicsExtensions{.jpg,.pdf,.png,.tiff}%.bmp,.mps,
-\graphicspath{{results/}}
+\graphicspath{{../results/}}
 \hypersetup{
  unicode=false, % non-Latin characters in Acrobatï¿½??s bookmarks
 	pdftitle={Supplementary Material: Motion Clouds},%
@@ -159,13 +173,13 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 \begin{figure}%[h!]
 \begin{center}
 \begin{tabular}{cc} 
-\includemovie[poster,controls,mouse,repeat]{.5\textwidth}{.5\textwidth}{speed-V_X-1_0.mpg}&
-\includemovie[poster,controls,mouse,repeat]{.5\textwidth}{.5\textwidth}{speed-V_X-0_5.mpg}\\
-\includemovie[poster,controls,mouse,repeat]{.5\textwidth}{.5\textwidth}{speed-B_V-0_1.mpg}&%
-\includemovie[poster,controls,mouse,repeat]{.5\textwidth}{.5\textwidth}{speed-B_V-0_5.mpg}
+\includemovie{.5\linewidth}{.5\linewidth}{../results/speed-V_X-1_0.mpg}&
+\includemovie{.5\linewidth}{.5\linewidth}{../results/speed-V_X-0_5.mpg}\\
+\includemovie{.5\textwidth}{.5\textwidth}{../results/speed-B_V-0_1.mpg}&%
+\includemovie{.5\textwidth}{.5\textwidth}{../results/speed-B_V-0_5.mpg}
 \end{tabular}
 \end{center}
-	    \caption{Correponding movies of the changes in the speed plane presented in Figure~\ref{fig:radial_speed_plane}.}
+	    \caption{Corresponding movies of the changes in the speed plane presented in Figure~\ref{fig:radial_speed_plane}.}
 	    \label{fig:radial_speed_plane_mpg}
 \end{figure}
 
@@ -184,9 +198,9 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 \includegraphics[width=.31\textwidth]{radial-sf_0-0_2_cube.png}&%
 \includegraphics[width=.31\textwidth]{radial-sf_0-0_4_cube.png}%
 \\%
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{radial-sf_0-0_1.mpg}&%
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{radial-sf_0-0_2.mpg}&% standard MC
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{radial-sf_0-0_4.mpg}%
+\includemovie{.31\textwidth}{.31\textwidth}{radial-sf_0-0_1.mpg}&%
+\includemovie{.31\textwidth}{.31\textwidth}{radial-sf_0-0_2.mpg}&% standard MC
+\includemovie{.31\textwidth}{.31\textwidth}{radial-sf_0-0_4.mpg}%
 \end{tabular}
 \end{center}
 	    \caption{Spectra and stimulus cubes displaying the effect of different $sf_0$ values for a given selection of the speed plane. From right to left: increasing values of central spatial frequency. Not only the peak amplitude moves away from the origin but also the envelope spread widens from the definition of frequency bandwidth. From left to right, $sf_0$ values are $0.1$, $0.2$ and $0.4$, while $B_sf=0.2$. This stimuli are therefore simply scaled by the $sf_0$ parameter.} % TODO: check that the parameters are in sync with generate_figures.py
@@ -208,9 +222,9 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 \includegraphics[width=.31\textwidth]{grating-theta-pi-over-4_cube.png}&%
 \includegraphics[width=.31\textwidth]{grating-theta-pi-over-2_cube.png}%
 \\%
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{grating-B_theta-pi-over-8.mpg}&%
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{grating-theta-pi-over-4.mpg}&% standard MC
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{grating-theta-pi-over-2.mpg}%
+\includemovie{.31\textwidth}{.31\textwidth}{grating-B_theta-pi-over-8.mpg}&%
+\includemovie{.31\textwidth}{.31\textwidth}{grating-theta-pi-over-4.mpg}&% standard MC
+\includemovie{.31\textwidth}{.31\textwidth}{grating-theta-pi-over-2.mpg}%
 \end{tabular}
 \end{center}
 	    \caption{In this figure we illustrate the effect of parameter $\theta$: the kernel preferred orientation. We show three differently oriented narrow-orientation-bandwidth Motion Clouds (respectively $0$, $\pi/4$ and $\pi/2$ from left to right), both in the Fourier (upper row) and spatiotemporal (lower row) domains. Changes in the preferred orientation can be seen in the $x-y$ plane that corresponds to the spatial image domain, whereas in the frequency domain orientation is encoded by the relative position of the blobs with respect to the origin. Note that for $\theta=\pi/2$, the orientation is parallel to the direction, a situation that may lead to ambiguities in detecting motion similarly to the aperture problem.}
@@ -228,9 +242,9 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 \includegraphics[width=.31\textwidth]{grating-B_theta-pi-over-8_cube.png}&%
 \includegraphics[width=.31\textwidth]{grating-B_theta-pi-over-0_5_cube.png}%
 \\%
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{grating-B_theta-pi-over-16.mpg}&% TODO is that grating.mpg?
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{grating-B_theta-pi-over-8.mpg}&% standard MC
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{grating-B_theta-pi-over-0_5.mpg}%
+\includemovie{.31\textwidth}{.31\textwidth}{grating-B_theta-pi-over-16.mpg}&% TODO is that grating.mpg?
+\includemovie{.31\textwidth}{.31\textwidth}{grating-B_theta-pi-over-8.mpg}&% standard MC
+\includemovie{.31\textwidth}{.31\textwidth}{grating-B_theta-pi-over-0_5.mpg}%
 \end{tabular}
 \end{center}
 	    \caption{Motion Cloud stimuli with increasing $B_{\theta}$ from left to right. All stimuli have the same spatial frequency. On the left: a narrow orientation bandwidth stimulus ($B_\theta = \pi/32$). Its Fourier spectrum is two symmetric small aerofoil-shaped envelopes around the origin, concentrated in $sf_{0}$ and $\theta$. Middle: an intermediate bandwidth $B_\theta = \pi/8$. On the right: A cloud stimulus has a large $B_{\theta}$ and oriented edges are lost ($B_\theta = 2.\pi$). Its spectrum is disk-shaped as in Figure~\ref{fig:radial_sf_0}-right.}
@@ -252,9 +266,9 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 %	\includegraphics[width=.31\textwidth]{color-alpha-1_0_cube.png} &
 %	\includegraphics[width=.31\textwidth]{color-alpha-2_0_cube.png}
 %%\\%
-%%\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{color-alpha-0_0.mpg}&%
-%%\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{color-alpha-1_0.mpg}&% standard MC
-%%\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{color-alpha-2_0.mpg}%
+%%\includemovie{.31\textwidth}{.31\textwidth}{color-alpha-0_0.mpg}&%
+%%\includemovie{.31\textwidth}{.31\textwidth}{color-alpha-1_0.mpg}&% standard MC
+%%\includemovie{.31\textwidth}{.31\textwidth}{color-alpha-2_0.mpg}%
 %\end{tabular}
 %\end{center}
 %\caption{From left to right: Image cubes of white ($\alpha=0$), pink ($\alpha=1$) and red ($\alpha=2$) spatial noise. Pink corresponds to the best fit to the average spectrum of  natural scenes and is chosen here to modulate the average spectrum of Motion Clouds.}
@@ -272,9 +286,9 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 \includegraphics[width=.31\textwidth]{plaid_cube.png}&%
 \includegraphics[width=.31\textwidth]{counterphase_grating_cube.png}%
 \\%
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{grating-noise.mpg}&
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{plaid.mpg}&
-\includemovie[poster,controls,mouse,repeat]{.31\textwidth}{.31\textwidth}{counterphase_grating.mpg}%
+\includemovie{.31\textwidth}{.31\textwidth}{grating-noise.mpg}&
+\includemovie{.31\textwidth}{.31\textwidth}{plaid.mpg}&
+\includemovie{.31\textwidth}{.31\textwidth}{counterphase_grating.mpg}%
 \end{tabular}
 \end{center}
 	 \caption{Competing Motion Clouds. (\textit{A}): A narrow-orientation-bandwidth Motion Cloud with explicit noise. A red noise envelope was added to the global envelop of a Motion Cloud with a bandwidth in the orientation domain. (\textit{B}): Two Motion Clouds with same motion but different preferred orientation were added together, yielding a plaid-like Motion Cloud texture. (\textit{C}): Two Motion Clouds with opposite velocity directions were added, yielding a texture similar to a "counter-phase" grating. Note yet that the crossed shape in the $f_x-f_t$ plane is a signature of the opposite velocity directions, while two gratings with the same spatial frequency and in opposite directions would generate a flickering stimulus with energy concentrated on the $f_t$ plane.} %

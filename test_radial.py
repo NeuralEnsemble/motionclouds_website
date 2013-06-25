@@ -26,11 +26,11 @@ for B_V in [0.001, 0.01, 0.05, 0.1, 0.5, 1.0, 10.0]:
     name_ = mc.figpath + name + '-B_V-' + str(B_V).replace('.', '_')
     mc.figures_MC(fx, fy, ft, name_, B_V=B_V, B_theta=B_theta, verbose=verbose)
 
-for sf_0 in [0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]:
+for sf_0 in [0.01, 0.05, 0.1, 0.2, 0.4, 0.8]:
     name_ = mc.figpath + name + '-sf_0-' + str(sf_0).replace('.', '_')
     mc.figures_MC(fx, fy, ft, name_, sf_0=sf_0, B_theta=B_theta, verbose=verbose)
 
-for sf_0 in [0.01, 0.05, 0.1, 0.2, 0.3, 0.8]:
+for sf_0 in [0.01, 0.05, 0.1, 0.2, 0.4, 0.8]:
     name_ = mc.figpath + name + '-sf_0_nologgabor-' + str(sf_0).replace('.', '_')
     mc.figures_MC(fx, fy, ft, name_, sf_0=sf_0, B_theta=B_theta, loggabor=False, verbose=verbose)
 

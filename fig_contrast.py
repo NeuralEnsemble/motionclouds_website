@@ -51,7 +51,7 @@ def image_entropy(img):
 
     return -np.sum([p * math.log(p, 2) for p in samples_probability if p != 0])
 
-img = Image.open(mc.figpath + 'grating-B_sf0_8.png')
-print image_entropy(img)
+#img = Image.open(mc.figpath + 'grating-B_sf0_8.png')
+#print image_entropy(img)
 
 # XXX: If we normalise the histogram then the entropy base on gray levels is going to be the almost the same. Review the idea of entropy between narrowband and broadband stimuli.

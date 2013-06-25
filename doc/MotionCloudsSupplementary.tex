@@ -6,17 +6,17 @@
 %--------------------------
 \documentclass[a4paper,11pt]{article}%draft
 %-------definitions-----
-\newcommand{\AuthorA}{Sanz Leon, Paula}%
-\newcommand{\AuthorB}{Vanzetta, Ivo}%
-\newcommand{\AuthorC}{Masson, Guillaume S.} %
-\newcommand{\AuthorD}{Perrinet, Laurent U.}%
+\newcommand{\AuthorA}{Paula~Sanz Leon}%
+\newcommand{\AuthorB}{Ivo~Vanzetta}%
+\newcommand{\AuthorC}{Guillaume S.~Masson} %
+\newcommand{\AuthorD}{Laurent U.~Perrinet}%
 \newcommand{\AddressA}{INCM, CNRS / Aix-Marseille University, France}
 \newcommand{\AddressB}{Institut de Neurosciences de la Timone, CNRS / Aix-Marseille University, Marseille, France}%
-%\newcommand{\Website}{http://www.incm.cnrs-mrs.fr/LaurentPerrinet}%
-\newcommand{\EmailA}{Paula.Sanz@incm.cnrs-mrs.fr}%
-\newcommand{\EmailB}{Ivo.Vanzetta@incm.cnrs-mrs.fr}%
-\newcommand{\EmailC}{Guillaume.Masson@incm.cnrs-mrs.fr}%
-\newcommand{\EmailD}{Laurent.Perrinet@incm.cnrs-mrs.fr}%
+\newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
+\newcommand{\EmailA}{Paula.Sanz@univ-amu.fr}%
+\newcommand{\EmailB}{Ivo.Vanzetta@univ-amu.fr}%
+\newcommand{\EmailC}{Guillaume.Masson@univ-amu.fr}%
+\newcommand{\EmailD}{Laurent.Perrinet@univ-amu.fr}%
 \newcommand{\Title}{%
 Supplementary Material to : \\ %
 Motion Clouds: Model-based stimulus synthesis of natural-like random textures for the study of motion perception}%
@@ -43,14 +43,16 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 \usepackage{color}
 \usepackage{booktabs}
 \usepackage{fullpage}
-\usepackage{tikz,times}
+\usepackage{times}
+\usepackage{amsmath,bm}
+\usepackage{tikz}
 \usepackage{listings}
 \usepackage{fancyvrb}
 \usepackage{verbatim}
 \usepackage{alltt}
 \usepackage{watermark}
 \usepackage{fullpage}
-\usepackage{fourier}
+%\usepackage{fourier}
 \usepackage{nicefrac} 
 \usepackage{units}
 \usepackage{authblk}
@@ -68,7 +70,7 @@ Motion Clouds: Model-based stimulus synthesis of natural-like random textures fo
 %\usepackage{pstricks,multido,fp,pst-coil,pst-text}
 %\usepackage{pst-3dplot}
 
-\usepackage{movie15}
+%\usepackage{movie15}
 
 %% Declarations and definitions
 
@@ -228,17 +230,6 @@ In Figure \ref{fig:MC_flowchart} we show the flow chart of the sequential constr
 
 \begin{figure}%[h!]
 \begin{center}
-%!TEX root = main_MotionClouds.tex
-%!TEX TS-program = pdflatex 
-%!TEX encoding = UTF8
-%!TEX spellcheck = en-US
-%\documentclass{article}
-%\usepackage[latin1]{inputenc}
-%\usepackage{amsmath,bm,times}
-%\usepackage{tikz}
-%\usetikzlibrary{shapes,arrows}
-%\begin{document}
-%\pagestyle{empty}
 % Define the layers to draw the diagram
 \pgfdeclarelayer{background}
 \pgfdeclarelayer{foreground}
@@ -294,33 +285,29 @@ In Figure \ref{fig:MC_flowchart} we show the flow chart of the sequential constr
      	% global box
         \path (expert.west |- system.north)+(-3,0.5) node (a) {};
         \path (system.east |- stop.south)+(+0.8,-0.3) node (c) {};    
-        \path[fill=black!5,rounded corners, draw=black!50, dashed]
-            (a) rectangle (c); 
+        \path[fill=black!5,rounded corners, draw=black!50, dashed]    (a) rectangle (c); 
         
      	% sphere box
         \path (color.west |- color.north)+(-0.8,0.5) node (a) {};
         \path (orientation.east |- orientation.south)+(+0.8,-1.3) node (c) {};    
-        \path[fill=blue!70!green!10,rounded corners, draw=black!50, dashed]
-            (a) rectangle (c); 
+        \path[fill=blue!70!green!10,rounded corners, draw=black!50, dashed]   (a) rectangle (c); 
         
      	% speed box
         \path (speed.west |- speed.north)+(-0.5,0.3) node (a) {};
         \path (speed.east |- speed.south)+(+0.5,-0.3) node (c) {};          
-        \path[fill=blue!10!green!10,rounded corners, draw=black!70, dashed]
-            (a) rectangle (c);  
+        \path[fill=blue!10!green!10,rounded corners, draw=black!70, dashed]   (a) rectangle (c);  
             
      	% fft box
         \path (phase.west |- phase.north)+(-0.8,0.2) node (a) {};
         \path (ifft.east |- ifft.south)+(+0.9,-0.2) node (c) {};          
-        \path[fill=red!20,rounded corners, draw=black!70, dashed]
-            (a) rectangle (c);                                                            
+        \path[fill=red!20,rounded corners, draw=black!70, dashed]  (a) rectangle (c);                                                            
                                                                   
     \end{pgfonlayer}
     
 \end{tikzpicture}
-%\end{document}\end{center}
 \caption{We show the Motion Clouds flow chart to summarize the main steps of the algorithm. The summary is in \ref{subsection:flowchart}}
 \label{fig:MC_flowchart}
+\end{center}
 \end{figure}
 
 \subsection{Summary: Flowchart}\label{subsection:flowchart}
@@ -332,14 +319,14 @@ In Figure \ref{fig:MC_flowchart} we show the flow chart of the sequential constr
 
 Motion Clouds are built using a collection of scripts that provides a simple way of generating complex stimuli suitable for neuroscience and psychophysics experiments. It is meant to be an open-source package  that can be combined with other packages such as PsychoPy or VisionEgg.%~\citep{Visionegg}\. \\~\citep{psychopy_a} 
 
-All functions are implemented in one main script called \textit{MotionCloud.py} that handles the Fourier cube, the envelope functions as well as the random phase generation and all Fourier related processing. Additionally, all the auxiliary visualization tools to plot the spectra and the movies are included. Specific scripts such as \textit{test\_color.py}, \textit{test\_speed.py}, \textit{test\_radial.py} and \textit{test\_orientation.py} explore the role of different parameters for each individual envelope (respectively color, speed, radial frequency, orientation). Our aim is to keep the code as simple as possible in order to be comprehensible and flexible. To sum up, when we build a custom  Motion Cloud there are 3 simple steps to follow:
+All functions are implemented in one main script called \textit{MotionClouds.py} that handles the Fourier cube, the envelope functions as well as the random phase generation and all Fourier related processing. Additionally, all the auxiliary visualization tools to plot the spectra and the movies are included. Specific scripts such as \textit{test\_color.py}, \textit{test\_speed.py}, \textit{test\_radial.py} and \textit{test\_orientation.py} explore the role of different parameters for each individual envelope (respectively color, speed, radial frequency, orientation). Our aim is to keep the code as simple as possible in order to be comprehensible and flexible. To sum up, when we build a custom  Motion Cloud there are 3 simple steps to follow:
 
 \begin{enumerate}
 \item[1.] set the MC parameters and construct the Fourier envelope, then visualize it as iso-surfaces,
 \end{enumerate}
 
 \begin{lstlisting}
-import MotionCloud as mc
+import MotionClouds as mc
 import numpy as np
 fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame) # define Fourier domain
 envelope = mc.envelope_gabor(fx, fy, ft, V_X=1., V_Y=0., B_V=.1, sf_0=.15, B_sf=.1, theta=0., B_theta=np.pi/8, alpha=1.) # define an envelope
@@ -375,59 +362,58 @@ for sf_0 in [0.01, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]:
 Here, we show the source code of \textit{MotionClouds.py}. The test cases are available on request to the corresponding author. 
 
 \begin{lstlisting}
-#/usr/bin/env python
+#! /usr/bin/env python
 # -*- coding: utf8 -*-
 """
-MotionCloud.py
 
 Main script for generating Motion Clouds
 
-"""
-
-import numpy as np
-import os
-#os.environ['ETS_TOOLKIT'] = 'qt4' # Works in Mac
-os.environ['ETS_TOOLKIT'] = 'wx' # Works in Debian
-
-"""
-
-**Default Motion Clouds parameters**
+(c) Laurent Perrinet - INT/CNRS
 
 Motion Clouds (keyword) parameters:
-size   	-- power of two to define the frame size (N_X, N_Y)
-size_T 	-- power of two to define the number of frames (N_frame)
-N_X 	-- frame size horizontal dimension [px]
-N_Y 	-- frame size vertical dimension [px]
+size    -- power of two to define the frame size (N_X, N_Y)
+size_T  -- power of two to define the number of frames (N_frame)
+N_X     -- frame size horizontal dimension [px]
+N_Y     -- frame size vertical dimension [px]
 N_frame -- number of frames [frames] (a full period in time frames)
-alpha 	-- exponent for the color envelope.
-sf_0	-- mean spatial frequency relative to the sampling frequency.
-ft_0 	-- spatiotemporal scaling factor. 
-B_sf 	-- spatial frequency bandwidth
-V_X 	-- horizontal speed component
-V_Y	-- vertical speed component
-B_V	-- speed bandwidth
-theta	-- mean orientation of the Gabor kernel
+alpha   -- exponent for the color envelope.
+sf_0    -- mean spatial frequency relative to the sampling frequency.
+ft_0    -- spatiotemporal scaling factor. 
+B_sf    -- spatial frequency bandwidth
+V_X     -- horizontal speed component
+V_Y     -- vertical speed component
+B_V     -- speed bandwidth
+theta   -- mean orientation of the Gabor kernel
 B_theta -- orientation bandwidth
-loggabor -- (boolean) if True it uses a log-Gabor kernel 
+loggabor-- (boolean) if True it uses a log-Gabor kernel (instead of the traditional gabor) 
 
 Display parameters:
 
-vext   	-- movie format. Stimulus can be saved as a 3D (x-y-t) multimedia file: .mpg movie, .mat array, .zip folder with a frame sequence. 	
-ext    	-- frame image format.
+vext       -- movie format. Stimulus can be saved as a 3D (x-y-t) multimedia file: .mpg movie, .mat array, .zip folder with a frame sequence.     
+ext        -- frame image format.
 T_movie -- movie duration [s].
-fps  	-- frame per seconds
+fps      -- frame per seconds
 
 """
 
+import os
+DEBUG = False
+if DEBUG:
+    size = 5
+    size_T = 5
+    figsize = (400, 400)  # faster
+else:
+    size = 7
+    size_T = 7
+    figsize = (800, 800) # nice size, but requires more memory
 
-size = 7
-size_T = 7
-N_X = 2**size 
+import numpy as np
+N_X = 2**size
 N_Y = N_X
 N_frame = 2**size_T
 ft_0 = N_X/float(N_frame)
-alpha = 1.0 
-sf_0 = 0.15 
+alpha = 1.0
+sf_0 = 0.15
 B_sf = 0.1
 V_X = 1.
 V_Y = 0.
@@ -436,20 +422,56 @@ theta = 0.
 B_theta = np.pi/32.
 loggabor = True
 vext = '.mpg'
-ext =  '.png'
+ext = '.png'
 T_movie = 8. # this value defines the duration of a temporal period
-fps = int( N_frame / T_movie)
+fps = int(N_frame / T_movie)
 
+# display parameters
+try:
+    import progressbar
+    PROGRESS = True
+except:
+    PROGRESS = False
 
+# os.environ['ETS_TOOLKIT'] = 'qt4' # Works in Mac
+# os.environ['ETS_TOOLKIT'] = 'wx' # Works in Debian
+MAYAVI = 'Import'
+#MAYAVI = 'Avoid' # uncomment to avoid generating mayavi visualizations (and save some memory...)
+def import_mayavi():
+    global MAYAVI, mlab
+    if (MAYAVI == 'Import'):
+        try:
+            from mayavi import mlab
+            MAYAVI = 'Ok : New and shiny'
+            print('Imported Mayavi')
+        except:
+            try:
+                from enthought.mayavi import mlab
+                print('Seems you have an old implementation of MayaVi, but things should work')
+                MAYAVI = 'Ok but old'
+                print('Imported Mayavi')
+            except:
+                print('Could not import Mayavi')
+                MAYAVI = False
+    elif (MAYAVI == 'Ok : New and shiny') or (MAYAVI == 'Ok but old'):
+        pass # no need to import that again
+    else:
+        print('We have chosen not to import Mayavi')
+# Trick from http://github.enthought.com/mayavi/mayavi/tips.html : to use offscreen rendering, try xvfb :1 -screen 0 1280x1024x24 in one terminal, export DISPLAY=:1 before you run your script
 
-def get_grids(N_X, N_Y, N_frame):
+figpath = 'results/'
+if not(os.path.isdir(figpath)):os.mkdir(figpath)
+
+def get_grids(N_X, N_Y, N_frame, sparse=True):
     """
         Use that function to define a reference outline for envelopes in Fourier space.
         In general, it is more efficient to define dimensions as powers of 2.
 
     """
-    
-    fx, fy, ft = np.mgrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1),(-N_frame//2):((N_frame-1)//2 + 1)]     # output is always even.
+    if sparse:
+        fx, fy, ft = np.ogrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always even.
+    else:
+        fx, fy, ft = np.mgrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always even.
     fx, fy, ft = fx*1./N_X, fy*1./N_Y, ft*1./N_frame
     return fx, fy, ft
 
@@ -457,16 +479,16 @@ def frequency_radius(fx, fy, ft, ft_0=ft_0):
     """
      Returns the frequency radius. To see the effect of the scaling factor run
      'test_color.py'
+
     """
-    
-    (N_X, N_Y, N_frame) = fx.shape
+    N_X, N_Y, N_frame = fx.shape[0], fy.shape[1], ft.shape[2]
     R2 = fx**2 + fy**2 + (ft/ft_0)**2 # cf . Paul Schrater 00
-    R2[N_X//2 , N_Y//2 , N_frame//2 ] = np.inf 
+    R2[N_X//2 , N_Y//2 , N_frame//2 ] = np.inf
     return np.sqrt(R2)
 
 def envelope_color(fx, fy, ft, alpha=alpha, ft_0=ft_0):
     """
-    Returns the color envelope_color. 
+    Returns the color envelope. 
     Run 'test_color.py' to see the effect of alpha
     alpha = 0 white
     alpha = 1 pink
@@ -484,7 +506,6 @@ def envelope_radial(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, ft_0=ft_0, loggabor=loggab
     """
     if sf_0 == 0.: return 1.
     if loggabor:
-        (N_X, N_Y, N_frame) = fx.shape
         # see http://en.wikipedia.org/wiki/Log-normal_distribution
         fr = frequency_radius(fx, fy, ft, ft_0=1.)
         env = 1./fr*np.exp(-.5*(np.log(fr/sf_0)**2)/(np.log((sf_0+B_sf)/sf_0)**2))
@@ -507,9 +528,7 @@ def envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V):
     Run 'test_speed.py' to explore the speed parameters
 
     """
-    (N_X, N_Y, N_frame) = fx.shape
     env = np.exp(-.5*((ft+fx*V_X+fy*V_Y))**2/(B_V*frequency_radius(fx, fy, ft, ft_0=1.))**2)
-    
     return env
 
 def envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta):
@@ -522,12 +541,9 @@ def envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta):
     """
     if not(B_theta is np.inf):
         angle = np.arctan2(fy, fx)
-        envelope_dir = np.exp(np.cos(angle-theta)/B_theta)
-        # along with its symmetric (because the output signal is real)
-        envelope_dir += np.exp(np.cos(angle-theta-np.pi)/B_theta)
-        # and now selecting blobs:
+        envelope_dir = np.exp(np.cos(2*(angle-theta))/B_theta)
         return envelope_dir
-    else: # for large bandwidth returns a strictly flat envelope
+    else: # for large bandwidth, returns a strictly flat envelope
         return 1.
 
 def envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
@@ -537,19 +553,22 @@ def envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
     Returns the Motion Cloud kernel
 
     """
-    color = envelope_color(fx, fy, ft, alpha=alpha)
-    return color *\
-           envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta) *\
-           envelope_radial(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor)*\
-           envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V)
+    envelope = envelope_color(fx, fy, ft, alpha=alpha)
+    envelope *= envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta)
+    envelope *= envelope_radial(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor)
+    envelope *= envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V)
+    return envelope
 
-
-def random_cloud(envelope, seed=None, impulse=False, do_amp=True):
+def random_cloud(envelope, seed=None, impulse=False, do_amp=False):
     """
-    Returns a Motion Cloud!
-    It first creates a random phase spectrum and then it computes the nIFFT to obtain
+    Returns a Motion Cloud movie as a 3D matrix.
+    It first creates a random phase spectrum and then it computes the inverse FFT to obtain
     the spatiotemporal stimulus.
 
+    - use a specific seed to specify the RNG's seed,
+    - test the impulse response of the kernel by setting impulse to True
+    - test the effect of randomizing amplitudes too by setting do_amp to True
+shape
     """
     (N_X, N_Y, N_frame) = envelope.shape
     amps = 1.
@@ -558,86 +577,67 @@ def random_cloud(envelope, seed=None, impulse=False, do_amp=True):
     else:
         np.random.seed(seed=seed)
         phase = 2 * np.pi * np.random.rand(N_X, N_Y, N_frame)
-        if do_amp: # also shuffling the amplitude coefficients as a control
+        if do_amp:
             amps = np.random.randn(N_X, N_Y, N_frame)
+            # see Galerne, B., Gousseau, Y. & Morel, J.-M. Random phase textures: Theory and synthesis. IEEE Transactions in Image Processing (2010). URL http://www.biomedsearch.com/nih/Random-Phase-Textures-Theory-Synthesis/20550995.html. (basically, they conclude "Even though the two processes ADSN and RPN have different Fourier modulus distributions (see Section 4), they produce visually similar results when applied to natural images as shown by Fig. 11.")
 
     Fz = amps * envelope * np.exp(1j * phase)
-    
+
     # centering the spectrum
     Fz = np.fft.ifftshift(Fz)
     Fz[0, 0, 0] = 0.
-    z = np.fft.ifftn((Fz)).real  
+    z = np.fft.ifftn((Fz)).real
     return z
+
+
 \end{lstlisting}
 
-In \textit{MotionCloud.py} additional functions have been written for displaying purposes such as visualization of the Fourier spectrum and saving the stimulus in different formats.
+In \textit{MotionClouds.py} additional functions have been written for displaying purposes such as visualization of the Fourier spectrum and saving the stimulus in different formats.
 
 \begin{lstlisting}
-##################################### Display Tools ##########################################
-
-try:
-    import progressbar
-    PROGRESS = True
-except:
-    PROGRESS = False
-
-MAYAVI = None
-#MAYAVI = False # uncomment to avoid generating mayavi visualizations (and save some memory...)
-#figsize=(800, 800) # nice size, but requires some memory
-figsize=(400, 400)  # faster
-
-# Trick: use  xvfb :1 -screen 0 1280x1024x24 in one terminal, export DISPLAY=:1 where you run your script
-
-try:
-    if not(MAYAVI is False):
-        from enthought.mayavi import mlab
-        MAYAVI = True
-    else:
-        print 'We have chosen not to import Mayavi'
-
-except:
-    print 'Could not import Mayavi'
-    MAYAVI = False
-
+########################## Display Tools #######################################
 
 def get_size(mat):
     """ 
     Get stimulus dimensions 
 
     """
-    return [numpy.size(mat, axis=k) for k in range(numpy.ndim(mat))]
+    return [np.size(mat, axis=k) for k in range(np.ndim(mat))]
 
-#NOTE: Python uses the first dimension (rows) as vertical axis and this is the Y in the spatiotemporal domain. Be careful with the convention for of X and Y.
+#NOTE: Python uses the first dimension (rows) as vertical axis and this is the Y in the spatiotemporal domain. Be careful with the convention of X and Y.
 
-def visualize(fx, fy, ft, z, azimuth=290., elevation=45., 
-    thresholds=[0.94, .89, .75, .5, .25, .1], opacities=[.9, .8, .7, .5, .2,.2],
+def visualize(z, azimuth=290., elevation=45.,
+    thresholds=[0.94, .89, .75, .5, .25, .1], opacities=[.9, .8, .7, .5, .2, .2],
     name=None, ext=ext, do_axis=True, do_grids=False, draw_projections=True,
     colorbar=False, f_N=2., f_tN=2., figsize=figsize):
-    
+
     """ Visualize the  Fourier spectrum """
+    import_mayavi()
 
     N_X, N_Y, N_frame = z.shape
+    fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
+
     mlab.figure(1, bgcolor=(1, 1, 1), fgcolor=(0, 0, 0), size=figsize)
     mlab.clf()
-    
+
     # Normalize the amplitude.
-    z /= z.max() 
+    z /= z.max()
     # Create scalar field
     src = mlab.pipeline.scalar_field(fx, fy, ft, z)
     if draw_projections:
-        src_x = mlab.pipeline.scalar_field(fx,fy,ft,np.tile(np.sum(z,axis=0),(N_X,1,1)))
-        src_y = mlab.pipeline.scalar_field(fx,fy,ft,np.tile(np.reshape(np.sum(z,axis=1),(N_X,1,N_frame)), (1,N_Y,1)))
-        src_z = mlab.pipeline.scalar_field(fx,fy,ft,np.tile(np.reshape(np.sum(z,axis=2),(N_X,N_Y,1)), (1,1,N_frame)))
+        src_x = mlab.pipeline.scalar_field(fx, fy, ft, np.tile(np.sum(z, axis=0), (N_X, 1, 1)))
+        src_y = mlab.pipeline.scalar_field(fx, fy, ft, np.tile(np.reshape(np.sum(z, axis=1), (N_X, 1, N_frame)), (1, N_Y, 1)))
+        src_z = mlab.pipeline.scalar_field(fx, fy, ft, np.tile(np.reshape(np.sum(z, axis=2), (N_X, N_Y, 1)), (1, 1, N_frame)))
 
         # Create projections
         border = 0.47
         scpx = mlab.pipeline.scalar_cut_plane(src_x, plane_orientation='x_axes', view_controls=False)
         scpx.implicit_plane.plane.origin = [-border, 1/N_Y, 1/N_frame]
         scpx.enable_contours = True
-        scpy=mlab.pipeline.scalar_cut_plane(src_y,plane_orientation='y_axes', view_controls=False)
+        scpy = mlab.pipeline.scalar_cut_plane(src_y, plane_orientation='y_axes', view_controls=False)
         scpy.implicit_plane.plane.origin = [1/N_X, border, 1/N_frame]
         scpy.enable_contours = True
-        scpz=mlab.pipeline.scalar_cut_plane(src_z,plane_orientation='z_axes', view_controls=False)
+        scpz = mlab.pipeline.scalar_cut_plane(src_z, plane_orientation='z_axes', view_controls=False)
         scpz.implicit_plane.plane.origin = [1/N_X, 1/N_Y, -border]
         scpz.enable_contours = True
 
@@ -645,34 +645,35 @@ def visualize(fx, fy, ft, z, azimuth=290., elevation=45.,
     for threshold, opacity in zip(thresholds, opacities):
         mlab.pipeline.iso_surface(src, contours=[z.max()-threshold*z.ptp(), ],
                                   opacity=opacity)
-        mlab.outline(extent=[-1./2,1./2,-1./2,1./2,-1./2,1./2],)
-    
+        mlab.outline(extent=[-1./2, 1./2, -1./2, 1./2, -1./2, 1./2],)
+
     # Draw a sphere at the origin
     x = np.array([0])
     y = np.array([0])
     z = np.array([0])
     s = 0.01
-    mlab.points3d(x, y, z, extent=[-s,s,-s,s,-s,s], scale_factor=0.15)
+    mlab.points3d(x, y, z, extent=[-s, s, -s, s, -s, s], scale_factor=0.15)
 
     if colorbar: mlab.colorbar(title='density', orientation='horizontal')
     if do_axis:
         ax = mlab.axes(xlabel='fx', ylabel='fy', zlabel='ft',
-                       extent=[-1./2,1./2,-1./2,1./2,-1./2,1./2])
+                       extent=[-1./2, 1./2, -1./2, 1./2, -1./2, 1./2],
+                       )
         ax.axes.set(font_factor=2.)
+
     try:
-        mlab.view(azimuth=azimuth, elevation=elevation, distance='auto',
-                  focalpoint='auto')
+        mlab.view(azimuth=azimuth, elevation=elevation, distance='auto', focalpoint='auto')
     except:
         print(" You should upgrade your mayavi version")
 
     if not(name is None):
-        mlab.savefig(name + ext)
+        mlab.savefig(name + ext, magnification=1, size=figsize)
     else:
        mlab.show(stop=True)
 
     mlab.close(all=True)
 
-def cube(fx, fy, ft, im, azimuth=-45., elevation=130., roll=-180., name=None,
+def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
          ext=ext, do_axis=True, show_label=True, colormap='gray',
          vmin=0., vmax=1., figsize=figsize):
 
@@ -680,26 +681,40 @@ def cube(fx, fy, ft, im, azimuth=-45., elevation=130., roll=-180., name=None,
     Visualize the stimulus as a cube
     
     """
+    import_mayavi()
 
     N_X, N_Y, N_frame = im.shape
+    fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
+
     mlab.figure(1, bgcolor=(1, 1, 1), fgcolor=(0, 0, 0), size=figsize)
     mlab.clf()
     src = mlab.pipeline.scalar_field(fx*2., fy*2., ft*2., im)
 
-    mlab.pipeline.image_plane_widget(src, plane_orientation='z_axes', 
-                                     slice_index=0, colormap=colormap,vmin=vmin,vmax=vmax)
     mlab.pipeline.image_plane_widget(src, plane_orientation='z_axes',
-                                     slice_index=N_frame,colormap=colormap,
-                                     vmin=vmin,vmax=vmax)
+                                     slice_index=0, colormap=colormap, vmin=vmin, vmax=vmax)
+    mlab.pipeline.image_plane_widget(src, plane_orientation='z_axes',
+                                     slice_index=N_frame, colormap=colormap,
+                                     vmin=vmin, vmax=vmax)
     mlab.pipeline.image_plane_widget(src, plane_orientation='x_axes', slice_index=0,
-                                     colormap=colormap,vmin=vmin,vmax=vmax)
+                                     colormap=colormap, vmin=vmin, vmax=vmax)
     mlab.pipeline.image_plane_widget(src, plane_orientation='x_axes', slice_index=N_X,
-                                     colormap=colormap,vmin=vmin,vmax=vmax)
+                                     colormap=colormap, vmin=vmin, vmax=vmax)
 
     mlab.pipeline.image_plane_widget(src, plane_orientation='y_axes', slice_index=0,
-                                     colormap=colormap,vmin=vmin,vmax=vmax)
+                                     colormap=colormap, vmin=vmin, vmax=vmax)
     mlab.pipeline.image_plane_widget(src, plane_orientation='y_axes', slice_index=N_Y,
-                                     colormap=colormap,vmin=vmin,vmax=vmax)
+                                     colormap=colormap, vmin=vmin, vmax=vmax)
+
+    if do_axis:
+        ax = mlab.axes(xlabel='x', ylabel='y', zlabel='t',
+                       extent=[-1., 1., -1., 1., -1., 1.],
+                       ranges=[0., N_X, 0., N_Y, 0., N_frame],
+                       x_axis_visibility=True, y_axis_visibility=True,
+                       z_axis_visibility=True)
+        ax.axes.set(font_factor=2.)
+
+        if not(show_label): ax.axes.set(label_format='')
+
 
     try:
         mlab.view(azimuth=azimuth, elevation=elevation, distance='auto', focalpoint='auto')
@@ -707,17 +722,8 @@ def cube(fx, fy, ft, im, azimuth=-45., elevation=130., roll=-180., name=None,
     except:
         print(" You should upgrade your mayavi version")
 
-    if do_axis:
-        ax = mlab.axes(xlabel='x', ylabel='y', zlabel='t', 
-                       extent=[-1.,1.,-1.,1.,-1.,1.],ranges=[0.,N_X,0.,N_Y,0.,N_frame],
-                       x_axis_visibility=True,y_axis_visibility=True,
-                       z_axis_visibility=True)
-        ax.axes.set(font_factor=2.)
-
-        if not(show_label): ax.axes.set(label_format = '')
-
     if not(name is None):
-        mlab.savefig(name + ext, size = figsize)
+        mlab.savefig(name + ext, magnification=1, size=figsize)
     else:
         mlab.show(stop=True)
 
@@ -728,14 +734,15 @@ def anim_exist(filename, vext='.mpg'):
     Check if the movie already exists
 
     """
-#    print filename+vext, os.path.isfile(filename+vext)
     return not(os.path.isfile(filename+vext))
 
 
-def anim_save(z, filename, display=True, flip=False, vext='.mpg', 
+def anim_save(z, filename, display=True, flip=False, vext='.mpg',
               centered=False, fps=fps):
     """
     Saves a numpy 3D matrix (x-y-t) to a multimedia file.
+
+    The input pixel values are supposed to lie in the [0, 1.] range.
 
     """
     import os                         # For issuing commands to the OS.
@@ -749,13 +756,14 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
         if PROGRESS:
             widgets = ["calculating", " ", progressbar.Percentage(), ' ',
                progressbar.Bar(), ' ', progressbar.ETA()]
-            pbar = progressbar.ProgressBar(widgets=widgets,maxval=N_frame).start()
-        print 'Saving sequence ' + filename + vext
+            pbar = progressbar.ProgressBar(widgets=widgets, maxval=N_frame).start()
+        print('Saving sequence ' + filename + vext)
         for frame in range(N_frame):
             if PROGRESS: pbar.update(frame)
             fname = os.path.join(tmpdir, 'frame%03d.png' % frame)
             image = np.rot90(z[:, :, frame])
-            toimage(image, high=255, low=0, cmin=0., cmax=1., pal=None, 
+            if flip: image = np.flipud(image)
+            toimage(image, high=255, low=0, cmin=0., cmax=1., pal=None,
                     mode=None, channel_axis=None).save(fname)
             files.append(fname)
             if PROGRESS: pbar.update(frame)
@@ -777,7 +785,7 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
         # 2) convert frames to movie
 #        cmd = 'ffmpeg -v 0 -y -sameq -loop_output 0 -r ' + str(fps) + ' -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
         cmd = 'ffmpeg -v 0 -y -sameq  -loop_output 0 -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
-        print cmd
+        # print('Doing : ', cmd)
         os.system(cmd) # + ' 2>/dev/null')
         # To force the frame rate of the output file to 24 fps:
         # ffmpeg -i input.avi -r 24 output.avi
@@ -823,7 +831,7 @@ def anim_save(z, filename, display=True, flip=False, vext='.mpg',
         hf = openFile(filename + vext, 'w')
         o = hf.createCArray(hf.root, 'stimulus', Float32Atom(), z.shape)
         o = z
-        print o.shape
+        #   print o.shape
         hf.close()
 
 def rectif(z, contrast=.9, method='Michelson', verbose=False):
@@ -838,8 +846,8 @@ def rectif(z, contrast=.9, method='Michelson', verbose=False):
 
     # Final rectification
     if verbose:
-        print 'Before Rectification of the frames'
-        print 'Mean=', np.mean(z[:]), ', std=', np.std(z[:]),', Min=',np.min(z[:]), ', Max=',np.max(z[:]), ' Abs(Max)=', np.max(np.abs(z[:]))
+        print('Before Rectification of the frames')
+        print( 'Mean=', np.mean(z[:]), ', std=', np.std(z[:]), ', Min=', np.min(z[:]), ', Max=', np.max(z[:]), ' Abs(Max)=', np.max(np.abs(z[:])))
 
     z -= np.mean(z[:]) # this should be true *on average* in MotionClouds
 
@@ -852,9 +860,9 @@ def rectif(z, contrast=.9, method='Michelson', verbose=False):
         import pylab
         pylab.hist(z.ravel())
 
-        print 'After Rectification of the frames'
-        print 'Mean=', np.mean(z[:]), ', std=', np.std(z[:]), ', Min=', np.min(z[:]), ', Max=', np.max(z[:])
-        print 'percentage pixels clipped=',  np.sum(np.abs(z[:])>1.)*100/z.size
+        print('After Rectification of the frames')
+        print('Mean=', np.mean(z[:]), ', std=', np.std(z[:]), ', Min=', np.min(z[:]), ', Max=', np.max(z[:]))
+        print('percentage pixels clipped=', np.sum(np.abs(z[:])>1.)*100/z.size)
     return z
 
 def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,
@@ -870,16 +878,16 @@ def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,
         z = envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
                     B_V=B_V, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor,
                     theta=theta, B_theta=B_theta, alpha=alpha)
-        figures(fx, fy, ft, z, name, vext=vext, do_figs=do_figs, do_movie=do_movie,
+        figures(z, name, vext=vext, do_figs=do_figs, do_movie=do_movie,
                     seed=seed, impulse=impulse, verbose=verbose)
 
-def figures(fx, fy, ft, z, name, vext=vext, do_figs=True, do_movie=True,
+def figures(z, name, vext=vext, do_figs=True, do_movie=True,
                     seed=None, impulse=False, verbose=False, masking=False):
-    if MAYAVI and do_figs and anim_exist(name, vext=ext): visualize(fx, fy, ft, z, name=name)           # Visualize the Fourier Spectrum
+    if ((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and anim_exist(name, vext=ext): visualize(z, name=name)           # Visualize the Fourier Spectrum
     if (do_movie and anim_exist(name, vext=vext)) or (MAYAVI and do_figs and anim_exist(name + '_cube', vext=ext)):
         movie = rectif(random_cloud(z, seed=seed, impulse=impulse), verbose=verbose)
-    if MAYAVI and do_figs and anim_exist(name + '_cube', vext=ext): cube(fx, fy, ft, movie, name=name + '_cube')   # Visualize the Stimulus cube
-    if  do_movie and anim_exist(name, vext=vext): anim_save(movie, name, display=False, vext=vext)
+    if (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and anim_exist(name + '_cube', vext=ext)): cube(movie, name=name + '_cube')   # Visualize the Stimulus cube
+    if (do_movie and anim_exist(name, vext=vext)): anim_save(movie, name, display=False, vext=vext)
 \end{lstlisting}
 
 

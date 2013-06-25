@@ -15,12 +15,7 @@ from enthought.tvtk.api import tvtk
 from enthought.mayavi.sources.vtk_data_source import VTKDataSource
 from enthought.mayavi import mlab
 
-#ours
 import MotionClouds as mc
-
-size = 2**4
-size = 2**5
-size = 2**6
 
 def source(dim, bwd):
     """
@@ -31,7 +26,7 @@ def source(dim, bwd):
     return data
 
 
-def image_data(dim=(size, size, size), sp=(1, 1, 1), orig=(0, 0, 0), bwd=(.01, .1, .4)):#, rsrc=False):
+def image_data(dim, sp, orig, bwd):
     """
     Create Image Data for the surface from a data source. 
     If rsrc == True, it generates random data.
@@ -59,7 +54,7 @@ def view(dataset):
     # TODO : make some cubes more redish to show some "activity"
     mlab.pipeline.surface(src, colormap='gray')
 
-def main(dim=(size, size, size), sp=(1, 1, 1), orig=(0, 0, 0), B=(.01, .1, .4)):
+def main(dim, sp=(1, 1, 1), orig=(0, 0, 0), B=(.01, .1, .4)):
     view(image_data(dim=dim, sp=sp, orig=orig, bwd=B))
 
 infile = \
@@ -339,17 +334,22 @@ if __name__ == '__main__':
     upper right in the right and top facets. Overlaid hue gives a measure of a 
     typical response for a sensory response (here a motion energy model) which 
     gives a complete characterization of the sensory system at hand.
+        
+    Les \emph{Motion Clouds} constituent un ensemble de stimuli visant à explorer de manière systématique la réponse fonctionnelle d'un système sensoriel à un stimulus en mouvement de type naturel. Ceux-ci sont optimisées pour décrire un mouvement de translation pure en plein champ et sont par construction des textures synthétisées à partir de ``patchs" élémentaires de mouvement semblable placés au hasard dans l'espace. L'objet d'une telle entreprise est de tester systématiquement un système en variant les paramètres de telles textures sur les dimensions perceptives principales (vitesse moyenne,  direction, l'orientation spatiale et  fréquence). Nous montrons ici un \emph{espèce de stimuli} comme une grille tri-dimensionnelle dont les n\oe dus correspondent à des stimuli et les axes des paramètres du mouvement: bande passante pour la vitesse (panneau de gauche), fréquence (panneau de droite) et orientation (partie supérieure). Chaque n\oe ud contient un cube élémentaire qui représente le film correspondant au stimulus, avec le temps qui s'écoule du coin inférieur gauche au coin en haut à droite dans les facettes à droite et en haut. Nous avons superposé en couleur une teinte qui représente une mesure de la réponse sensorielle (ici un modèle d'énergie du mouvement) dans cet espace de stimuli. Ce genre de caractérisation permet une étude systématique du système (ici oculomoteur) qui est étudié.        
     """
 
     import itertools
-    
+    size = 2**4
+    #size = 2**5
+    size = 2**6
+ 
     space = 1.5 * size # space between 2 cubes
     N = 5
     idx = np.arange(N)
     pos = idx * space
-    Bf = np.logspace(-2., 0.1, 5)
+    Bf = np.logspace(-2., 0.1, N)
     Bv = [0.01, 0.1, 0.5, 1.0, 10.0]
-    sigma_div = [2, 3, 5, 8, 13]
+    sigma_div = [2, 3, 5, 8, 13] # I love the golden number :-)
     Bo = np.pi/np.array(sigma_div)
 
     fx, fy, ft = mc.get_grids(size, size, size)
@@ -358,10 +358,10 @@ if __name__ == '__main__':
     # y-axis = B_V
     # z_axis = B_o
     downscale = 1
-    downscale = 2
-    downscale = 1./2
+    # downscale =2
+    # downscale = 1./2
 
-    mlab.figure(1, bgcolor=(1, 1, 1), fgcolor=(0, 0, 0), size=(1600/downscale,1200/downscale))
+    mlab.figure(1, bgcolor=(.6, .6, .6), fgcolor=(0, 0, 0), size=(1600/downscale,1200/downscale))
     mlab.clf()
     
     do_grid, do_splatter, do_MCs = False, True, False
@@ -375,17 +375,18 @@ if __name__ == '__main__':
         x = x * space + size / 2.
         y = y * space + size / 2.
         z = z * space + size / 2.
-        scalars = np.random.uniform(low=0.3, high=0.55, size=x.shape)
+        #scalars = np.random.uniform(low=0.3, high=0.55, size=x.shape)
+        scalars = 0.8*np.ones(x.shape)
         
-        pts = mlab.points3d(x, y, z, scalars, colormap = 'Blues', scale_factor=5.0, resolution=10)
+        pts = mlab.points3d(x, y, z, scalars, colormap='Blues', scale_factor=5.0, resolution=10)
         pts.mlab_source.dataset.lines = np.array(connections)
     
         # Use a tube filter to plot tubes on the link, varying the radius with the
         # scalar value
-        tube = mlab.pipeline.tube(pts, tube_radius=1.5)
-        tube.filter.radius_factor = 1.
-        tube.filter.vary_radius = 'vary_radius_by_scalar'
-        mlab.pipeline.surface(tube, colormap = 'gray')
+        tube = mlab.pipeline.tube(pts, tube_sides=15, tube_radius=1.5)
+        #tube.filter.radius_factor = 1.
+        #tube.filter.vary_radius = 'vary_radius_by_scalar'
+        mlab.pipeline.surface(tube, color=(0.4, 0.4, 0.4) )#colormap='gray')
     
     ################################################################################
     ##                      Gaussian Splatter                                     ##
@@ -423,35 +424,27 @@ if __name__ == '__main__':
 #        otf.add_point(1., 1.)
 #        vol._otf = otf
 #        vol._volume_property.set_scalar_opacity(otf)
-    ################################################################################
-    ##  Generate a second layer of points to switch on and off some cubes         ##
-    ################################################################################
 
-#    # on_off = np.array(np.random.random_integers(low=0, high=1, size=125), dtype=float)
-#    #  values = on_off * scalars
-#    x_, y_, z_ = np.mgrid[0:N, 0:N, 0:N]
-##    values = np.exp(-(x_ -x_.mean())**2/x_.std()**2 - (y_ - y_.mean())**2/y_.std()**2)-.5
-#    values = 2.* np.exp(-(x_ + y_  +z_/2.- 5.)**2/2/4)-1.
-#    print(values.shape)
-#    on_off_pts = mlab.points3d(x, y, z, values.ravel()*9.1803399, colormap = 'RdBu', 
-#                               scale_factor=size/5.0, mode='sphere', resolution = 32,
-#                               transparent=True, opacity=0.25)#*np.abs(values)/np.abs(values).max())
-
-#    ################################################################################
-#    ##                      Generate the Motion Clouds cubes                      ##
-#    ################################################################################
+    ################################################################################
+    ##                      Generate the Motion Clouds cubes                      ##
+    ################################################################################
     if do_MCs:
+        print size
         for i, j, k in list(itertools.product(idx, idx, idx)):
-            main(orig=(pos[i], pos[j], pos[k]), B=(Bf[i], Bv[k], Bo[j]))
+            main(dim=(size, size, size), orig=(pos[i], pos[j], pos[k]), B=(Bf[i], Bv[k], Bo[j]))
         
 #    mlab.show(stop=True)
-    mlab.view( azimuth=290., elevation=35., distance='auto', focalpoint='auto')
+    elevation = 90. - 18.
+    view = mlab.view(azimuth=290., elevation=elevation, distance='auto', focalpoint='auto')
     mlab.savefig('MCartwork.png')
-    N_frame = 128
-    for i_az, azimuth in enumerate(np.linspace(0, 360, 128, endpoint=False)):
-        mlab.view(azimuth=azimuth, elevation=35., distance='auto', focalpoint='auto')
-        mlab.savefig('_MCartwork%03d.png' % i_az)
-    import os
-    os.system('ffmpeg -v 0 -y -sameq  -loop_output 0 -i _MCartwork%03d.png  MCartwork.mpg')
-    os.system('rm _MCartwork*') #
-    
+    if False:
+        N_frame = 128
+        for i_az, azimuth in enumerate(np.linspace(0, 360, 128, endpoint=False)):
+            mlab.view(*view)
+            mlab.view(azimuth=azimuth)
+            mlab.savefig('_MCartwork%03d.png' % i_az, magnification=0.5)
+        import os
+        os.system('ffmpeg -v 0 -y -sameq  -loop_output 0 -i _MCartwork%03d.png  MCartwork.mpg')
+        os.system('ffmpeg -v 0 -y -sameq  -pix_fmt rgb24 -r 12 -loop_output 0 -i _MCartwork%03d.png  MCartwork.gif')
+        #os.system('convert  _MCartwork%03d.png  MCartwork.gif')
+#       os.system('rm _MCartwork*') #

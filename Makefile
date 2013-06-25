@@ -1,4 +1,4 @@
-default: run doc
+default: test experiments doc
 	
 report_%.pdf: report_%.py MotionParticles.py
 	    pyreport --double $< && open $@
@@ -6,13 +6,21 @@ report_%.pdf: report_%.py MotionParticles.py
 test:
 	python test_color.py
 	python test_export.py
-	python test_orientation.py
+	python test_grating.py
 	python test_radial.py
 	python test_speed.py
-run:
-	for f in experiments_*.py; do python $(f); done
+experiments:
+	python experiment_B_sf.py  
+	python experiment_competing.py  
+	python experiment_smooth.py
+	# python experiment_VSDI.py	
 figures:
-	for f in fig_*.py; do python $(f); done
+	python fig_artwork_eschercube.py  
+	python fig_contrast.py            
+wiki:
+	python fig_orientation.py
+	python fig_ApertureProblem.py     
+	python fig_MotionPlaid.py         
 
 doc: 
 	@(cd doc && $(MAKE))
@@ -25,5 +33,4 @@ clean:
 	touch *py
 	rm -f results/* *.pyc
 
-.PHONY: clean dist-clean all clean_white clean_sc clean_dist clean_tex
 
