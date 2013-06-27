@@ -12,7 +12,6 @@ figures:
 
 ################################################
 # macros
-
 3D: # TODO embbed to doc
 	asy  --keep -tex pdflatex figureMotionClouds.asy 
 
@@ -35,8 +34,8 @@ mac_edit:
 	open $(SRC).tex
 	open -e Makefile 
 
-
-pdf: $(SRC).pdf $(SRC)Supplementary.pdf
+#################################################
+pdf: $(SRC).pdf $(SRC)_VideoFigures.pdf $(SRC)_Supplementary.pdf
 LATEXMK = latexmk -pdf
 
 figures_png: figure1.png figure2.png figure3.png figure4.png figure5.png
@@ -45,19 +44,20 @@ $(SRC).pdf: $(SRC).tex figures $(figures_png)
 	wget "http://www.citeulike.org/bibtex/user/LaurentPerrinet/tag/sanz12jnp?fieldmap=posted-at:date-added&do_username_prefix=0&key_type=4" -O MotionClouds.bib
 	$(LATEXMK) $(SRC)
 
-$(SRC)Supplementary.pdf: $(SRC)Supplementary.tex 
-	$(LATEXMK) $(SRC)Supplementary
+$(SRC)_Supplementary.pdf: $(SRC)_Supplementary.tex 
+	$(LATEXMK) $(SRC)_Supplementary
 
+$(SRC)_VideoFigures.pdf: $(SRC)_VideoFigures.tex 
+	@(cd .. && $(MAKE) test)
+	$(LATEXMK) $(SRC)_VideoFigures
 ################################################
 # post-production
-
 diff: $(SRC).tex
 	wget https://raw.github.com/meduz/MotionClouds/928ae138400ea3d556b1d10938ac35a69209af0f/doc/MotionClouds.tex -O oldMotionClouds.tex
 	latexdiff oldMotionClouds.tex  $(SRC).tex > diff.tex
 	# latexdiff /Users/lup/Desktop/RTC/12-01-31_MotionClouds\ resubmission/main_MotionClouds.tex /Users/lup/Desktop/12-03-07_MotionClouds\ resubmission/MotionClouds.tex   > diff.tex
 	latexmk -pdf diff.tex
 	rm oldMotionClouds.tex
-
 
 ################################################
 # cleaning macros
@@ -69,7 +69,4 @@ clean_soft: # removing all temporary files from LaTeX
 clean_hard: clean_soft # careful! this is quite radical!
 	rm -fr figure* diff* MotionClouds.bib  *.pdf  results
 
-
 .PHONY: all touch clean_soft clean_hard diff pdf 3D figures
-
-

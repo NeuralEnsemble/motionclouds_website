@@ -45,7 +45,7 @@ if not(os.path.isfile('figure1.pdf')):
 
     """
     name = os.path.join(mc.figpath, 'morphing')
-    vext = '.mpg'
+    vext = '.mp4'
 
     def randomize_phase(image, B_angle=0., vonmises=False, seed=None):
         Fz = np.fft.fftn(image)
@@ -150,8 +150,8 @@ if not(os.path.isfile('figure1.pdf')):
     image /= np.abs(image).max()
     image += 1
     image /= 2.
-    if not os.path.exists('results/montypython.npy.mpg'):
-        mc.anim_save(image, 'results/montypython.npy', display=False, flip=True, vext='.mpg')
+    if not os.path.exists('results/montypython.npy.mp4'):
+        mc.anim_save(image, 'results/montypython.npy', display=False, flip=True, vext='.mp4')
 
     (N_X, N_Y, N_frame) = image.shape
     movie = translation(image)
@@ -260,7 +260,7 @@ if not(os.path.isfile('figure3.pdf')):
     #     mc.figures_MC(fx, fy, ft, name_, B_sf=B_sf, do_movie=False)
     #
 
-if not(os.path.isfile('SupplementalMovie1.mpg')):
+if not(os.path.isfile('SupplementalMovie1.mp4')):
 
     # Supplemental Movie 1
     # Standard Motion Cloud
@@ -270,7 +270,7 @@ if not(os.path.isfile('SupplementalMovie1.mpg')):
     z = mc.envelope_gabor(fx, fy, ft)
     mc.figures(z, name=os.path.join(mc.figpath, 'SupplementalMovie1'), do_figs=False)
 
-if not(os.path.isfile('SupplementalMovie2.mpg')):
+if not(os.path.isfile('SupplementalMovie2.mp4')):
     # Supplemental movie 2
     # Motion Cloud with aperture problem
     # A Motion Cloud illustrating the aperture problem. It is a narrow bandwidth
@@ -283,7 +283,7 @@ if not(os.path.isfile('SupplementalMovie2.mpg')):
     grating = mc.envelope_gabor(fx, fy, ft, theta=np.pi/4, B_theta=np.pi/64)
     mc.figures(grating , name=os.path.join(mc.figpath, 'SupplementalMovie2'), do_figs=False)
 
-if not(os.path.isfile('SupplementalMovie3.mpg')):
+if not(os.path.isfile('SupplementalMovie3.mp4')):
     # Supplemental movie 3
     # Low-coherence random-dot kinematogram-like Motion Cloud
     # The orientation and speed bandwidths are large, yielding a low-coherence stimulus in which no edges can be identified (see Figure 3-C).
