@@ -57,7 +57,7 @@ for size in range(5, 7):
     fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, N_frame)
     ft_0 = N_X/float(N_frame)
     name_ = mc.figpath + name + '-size_T-' + str(size).replace('.', '_')
-    if mc.anim_exist(name_): 
+    if mc.anim_exist(name_):
         z = mc.envelope_color(fx, fy, ft, ft_0=ft_0)
         mc.figures(z, name_, do_figs=False)
 
