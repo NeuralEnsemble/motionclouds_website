@@ -368,7 +368,7 @@ if not(os.path.isfile('figure5.pdf')):
     name = 'grating-noise'
     noise = mc.envelope_color(fx, fy, ft, alpha=1.)
     grating = mc.envelope_gabor(fx, fy, ft)
-    mc.figures(1.e4*noise + grating, os.path.join(mc.figpath, name), do_movie=False)
+    mc.figures(1.e4*noise + grating, os.path.join(mc.figpath, name), do_movie=True)
 
     # Supplemental movie 7
     # A narrow-orientation-bandwidth Motion Cloud with explicit noise.
@@ -378,7 +378,7 @@ if not(os.path.isfile('figure5.pdf')):
     # B
     diag1 = mc.envelope_gabor(fx, fy, ft, theta=np.pi/4.)
     diag2 = mc.envelope_gabor(fx, fy, ft, theta=-np.pi/4.)
-    mc.figures(diag1 + diag2, name=os.path.join(mc.figpath, 'plaid'), do_movie=False)
+    mc.figures(diag1 + diag2, name=os.path.join(mc.figpath, 'plaid'), do_movie=True)
 
     # Supplemental movie 8
     # Plaid-like Motion Cloud.
@@ -392,7 +392,7 @@ if not(os.path.isfile('figure5.pdf')):
     right = mc.envelope_gabor(fx, fy, ft, V_X=1 , B_theta=10.)
     left = mc.envelope_gabor(fx, fy, ft, V_X=-1. , B_theta=10.)
     # thanks to the addititivity of MCs
-    mc.figures(left + right, name=os.path.join(mc.figpath, name), do_movie=False)
+    mc.figures(left + right, name=os.path.join(mc.figpath, name), do_movie=True)
 
     #name = 'counterphase_grating2'
     #right = mc.envelope_gabor(fx, fy, ft, V_X=1 )
