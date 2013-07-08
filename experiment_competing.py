@@ -44,7 +44,7 @@ if mc.anim_exist(name_):
     right = mc.envelope_speed(fx, fy, ft, V_X=.5 )
     left = mc.envelope_speed(fx, fy, ft, V_X=-.5 )
     grating = mc.envelope_gabor(fx, fy, ft)
-    z = grating * (left + right ) # thanks to the addititivity of MCs 
+    z = grating * (left + right ) # thanks to the addititivity of MCs
     mc.figures(z, name_)
 
 name = 'plaid'

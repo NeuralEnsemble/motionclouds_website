@@ -20,6 +20,12 @@ if mc.anim_exist(name_):
     mc.figures(z, name_)
 
 # explore parameters
+for sparseness in [0., 1.1, 2., 3., 5., 8.]:
+    name_ = mc.figpath + name + '-sparseness-' + str(sparseness).replace('.', '_')
+    if mc.anim_exist(name_):
+        z = color * mc.envelope_gabor(fx, fy, ft)
+        mc.figures_MC(fx, fy, ft, name_, do_amp=True, sparseness=sparseness)
+
 for sigma_div in [1, 2, 3, 5, 8, 13 ]:
     name_ = mc.figpath + name + '-largeband-B_theta-pi-over-' + str(sigma_div).replace('.', '_')
     if mc.anim_exist(name_):
@@ -43,4 +49,4 @@ for B_sf in [0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.8]:
     name_ = mc.figpath + name + '-B_sf-' + str(B_sf).replace('.', '_')
     if mc.anim_exist(name_):
         z = color * mc.envelope_gabor(fx, fy, ft, B_sf=B_sf)
-        mc.figures(z, name_) # ,vext='.zip'
+        mc.figures(z, name_)
