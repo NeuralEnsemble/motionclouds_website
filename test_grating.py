@@ -20,7 +20,7 @@ if mc.anim_exist(name_):
     mc.figures(z, name_)
 
 # explore parameters
-for sparseness in numpy.linspace(.5, 4., 8):
+for sparseness in numpy.linspace(.9, 4., 8):
     name_ = mc.figpath + name + '-sparseness-' + str(sparseness).replace('.', '_')
     if mc.anim_exist(name_):
         mc.figures_MC(fx, fy, ft, name_, do_amp=True, B_V=0.01, sparseness=sparseness)

@@ -188,6 +188,7 @@ shape
             if sparseness > 0.:
 		amps, phase =  np.zeros((N_X, N_Y, N_frame), dtype=np.complex), np.zeros((N_X, N_Y, N_frame))
 		coeff, rank = 1., 1
+                print 'I evaluate sparse Motion Cloud with ', np.int(threshold**(-1/sparseness)), ' components'
                 # TODO: here we make a sum of exactly similar components (corresponding to the enveloppes) such that there is no variability in their charcteristics
 		while rank**(-sparseness) > threshold:
                     a, x, y, t = np.random.randn(), N_X * np.random.rand(), N_Y * np.random.rand(), N_frame * np.random.rand()
