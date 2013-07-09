@@ -23,4 +23,4 @@ sudo aptitude upgrade
 #
 # 3) full install with python editor and libraries for various export types
 #
-sudo aptitude install ilibavcodec-extra-53 python-numpy python-scipy mayavi2 python-matplotlib ffmpeg spyder liblzo2-2 python-tables imagemagick texlive-latex-recommended latexmk latexdiff zip
+sudo aptitude install libavcodec-extra-53 python-gmpy python-numpy python-scipy mayavi2 python-matplotlib ffmpeg spyder liblzo2-2 python-tables imagemagick texlive-latex-recommended latexmk latexdiff zip
