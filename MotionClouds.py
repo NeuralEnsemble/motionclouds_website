@@ -39,9 +39,9 @@ if DEBUG:
     size_T = 5
     figsize = (400, 400)  # faster
 else:
-    size = 8
+    size = 7
     size_T = 7
-    figsize = (800, 800) # nice size, but requires more memory
+    figsize = (600, 600) # nice size, but requires more memory
 
 import numpy as np
 N_X = 2**size
@@ -161,7 +161,7 @@ def envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
     envelope *= envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V)
     return envelope
 
-def random_cloud(envelope, seed=None, impulse=False, do_amp=False, sparseness=0.):
+def random_cloud(envelope, seed=None, impulse=False, do_amp=False, sparseness=0., threshold=1.e-3):
     """
     Returns a Motion Cloud movie as a 3D matrix.
     It first creates a random phase spectrum and then it computes the inverse FFT to obtain
@@ -171,10 +171,11 @@ def random_cloud(envelope, seed=None, impulse=False, do_amp=False, sparseness=0.
     - test the impulse response of the kernel by setting impulse to True
     - test the effect of randomizing amplitudes too by setting do_amp to True
 shape
-    - the sparseness parameter tunes the sparseness of the amplitude coefficient
+    - the sparseness parameter tunes the sparseness of the amplitude coefficient - there would be as much coefficients to reach the threshold 
 
     """
     (N_X, N_Y, N_frame) = envelope.shape
+    if sparseness > 0.: fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
     amps = 1.
     if impulse:
         phase = 0.
@@ -185,7 +186,13 @@ shape
             amps = np.random.randn(N_X, N_Y, N_frame)
             # see Galerne, B., Gousseau, Y. & Morel, J.-M. Random phase textures: Theory and synthesis. IEEE Transactions in Image Processing (2010). URL http://www.biomedsearch.com/nih/Random-Phase-Textures-Theory-Synthesis/20550995.html. (basically, they conclude "Even though the two processes ADSN and RPN have different Fourier modulus distributions (see Section 4), they produce visually similar results when applied to natural images as shown by Fig. 11.")
             if sparseness > 0.:
-                amps *= np.random.zipf(a = sparseness, size=(N_X, N_Y, N_frame))
+		amps, phase =  np.zeros((N_X, N_Y, N_frame), dtype=np.complex), np.zeros((N_X, N_Y, N_frame))
+		coeff, rank = 1., 1
+		while rank**(-sparseness) > threshold:
+                    a, x, y, t = np.random.randn(), N_X * np.random.rand(), N_Y * np.random.rand(), N_frame * np.random.rand()
+                    amps +=  a * rank**(-sparseness) * np.exp(-1j*np.pi*(x*fx + y*fy + t*ft))
+                    rank += 1
+                print 'stopped sparse Motion Cloud with ', rank, ' components'
 
     Fz = amps * envelope * np.exp(1j * phase)
 

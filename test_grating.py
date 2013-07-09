@@ -20,7 +20,7 @@ if mc.anim_exist(name_):
     mc.figures(z, name_)
 
 # explore parameters
-for sparseness in [0., 1.1, 2., 3., 5., 8.]:
+for sparseness in numpy.linspace(1., 4., 8):
     name_ = mc.figpath + name + '-sparseness-' + str(sparseness).replace('.', '_')
     if mc.anim_exist(name_):
         z = color * mc.envelope_gabor(fx, fy, ft)
