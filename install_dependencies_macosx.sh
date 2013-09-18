@@ -44,6 +44,8 @@ brew install python
 
 # bootstrap pip
 /usr/local/share/python/easy_install pip
+
+pip install --upgrade setuptools
 pip install --upgrade distribute
 # pip install ipython
 brew install pyside pyside-tools
@@ -67,7 +69,7 @@ brew install --pyqt --python --qt vtk
 #pip install traitsbackendqt
 pip install configobj
 pip install envisage
-pip install  --user "Mayavi[app]"
+pip install  "Mayavi[app]"
 # HDF export
 brew install hdf5 
 pip install cython
