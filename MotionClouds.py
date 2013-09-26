@@ -171,7 +171,7 @@ def random_cloud(envelope, seed=None, impulse=False, do_amp=False, sparseness=0.
     - test the impulse response of the kernel by setting impulse to True
     - test the effect of randomizing amplitudes too by setting do_amp to True
 shape
-    - the sparseness parameter tunes the sparseness of the amplitude coefficient - there would be as much coefficients to reach the threshold 
+    - the sparseness parameter tunes the sparseness of the amplitude coefficient - there would be as much coefficients to reach the threshold
 
     """
     (N_X, N_Y, N_frame) = envelope.shape
