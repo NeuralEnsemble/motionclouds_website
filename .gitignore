@@ -1,5 +1,6 @@
 doc/montypython.npy
 .DS*
+.@__thumb
 doc/diff.tex
 results
 *pyc
