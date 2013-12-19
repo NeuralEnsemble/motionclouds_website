@@ -155,23 +155,23 @@ D.~J. Field.
 \newblock URL \url{http://dx.doi.org/10.1098/rsta.1999.0446}.
 
 \bibitem[Fischer et~al.(2007)Fischer, Redondo, Perrinet, and
-  Crist{\'{o}}bal]{Fischer07}
-Sylvain Fischer, Rafael Redondo, Laurent~U. Perrinet, and Gabriel
-  Crist{\'{o}}bal.
+  Cristobal]{Fischer07}
+Sylvain Fischer, Rafael Redondo, Laurent Perrinet, and Gabriel Cristobal.
 \newblock Sparse approximation of images inspired from the functional
   architecture of the primary visual areas.
 \newblock \emph{EURASIP Journal on Advances in Signal Processing},
-  2007\penalty0 (1):\penalty0 231--122, November 2007.
-\newblock ISSN 0920-5691.
-\newblock \doi{10.1007/s11263-006-0026-8}.
-\newblock URL \url{http://dx.doi.org/10.1007/s11263-006-0026-8}.
+  2007\penalty0 (1):\penalty0 090727--122, 2007.
+\newblock ISSN 1687-6180.
+\newblock \doi{10.1155/2007/90727}.
+\newblock URL \url{http://dx.doi.org/10.1155/2007/90727}.
 
 \bibitem[Galerne et~al.(2010)Galerne, Gousseau, and Morel]{Galerne10}
 B.~Galerne, Y.~Gousseau, and J.~M. Morel.
 \newblock Random {P}hase {T}extures: Theory and synthesis.
 \newblock \emph{IEEE T. Image. Process.}, 2010.
 \newblock URL
-  \url{http://www.biomedsearch.com/nih/Random-Phase-Textures-Theory-Synthesis/20550995.html}.
+  \url{http://www.biomedsearch.com/nih/Random-Phase-Textures-Theory-Synthesis/%
+20550995.html}.
 
 \bibitem[Geisler and Ringach(2009)]{Geisler09}
 Wilson~S. Geisler and Dario Ringach.
@@ -341,10 +341,12 @@ Shinji Nishimoto and Jack~L. Gallant.
 \newblock URL \url{http://dx.doi.org/10.1523/jneurosci.6801-10.2011}.
 
 \bibitem[Oliva and Torralba(2001)]{Oliva01}
-Aude Oliva and A.~Torralba.
+Aude Oliva and Antonio Torralba.
 \newblock Modeling the shape of the scene: A holistic representation of the
   spatial envelope.
-\newblock \emph{Int. J. Comput. Vision}, 42:\penalty0 145--175, 2001.
+\newblock \emph{International Journal of Computer Vision}, 42\penalty0
+  (3):\penalty0 145--175, 2001.
+\newblock ISSN 0920-5691.
 \newblock \doi{10.1023/A:1011139631724}.
 \newblock URL \url{http://dx.doi.org/10.1023/A:1011139631724}.
 
@@ -484,7 +486,10 @@ Eero~P. Simoncelli and David~J. Heeger.
 \newblock ISSN 0042-6989.
 \newblock \doi{10.1016/s0042-6989(97)00183-1}.
 \newblock URL
-  \url{http://www.sciencedirect.com/science?\_ob=MiamiImageURL\&\#38;\_cid=271122\&\#38;\_user=125795\&\#38;\_pii=S0042698997001831\&\#38;\_check=y\&\#38;\_origin=\&\#38;\_coverDate=31-Mar-1998\&\#38;view=c\&\#38;wchp=dGLbVBA-zSkWA\&\#38;md5=66fbdfa4194480f1b9dba0189ad567a4/1-s2.0-S0042698997001831-main.pdf}.
+  \url{http://www.sciencedirect.com/science?\_ob=MiamiImageURL\&\#38;\_cid=271%
+122\&\#38;\_user=125795\&\#38;\_pii=S0042698997001831\&\#38;\_check=y\&\#38;\_%
+origin=\&\#38;\_coverDate=31-Mar-1998\&\#38;view=c\&\#38;wchp=dGLbVBA-zSkWA\&\%
+#38;md5=66fbdfa4194480f1b9dba0189ad567a4/1-s2.0-S0042698997001831-main.pdf}.
 
 \bibitem[Simoncini et~al.(2012)Simoncini, Perrinet, Montagnini, Mamassian, and
   Masson]{Simoncini12}
@@ -529,12 +534,11 @@ Antonio Torralba and Aude Oliva.
 \bibitem[Touryan(2001)]{Touryan01}
 J.~Touryan.
 \newblock Analysis of sensory coding with complex stimuli.
-\newblock \emph{Curr Opin Neurobiol}, 11\penalty0 (4):\penalty0 443--448,
-  August 2001.
-\newblock ISSN 09594388.
+\newblock \emph{Current Opinion in Neurobiology}, 11\penalty0 (4):\penalty0
+  443--448, August 2001.
+\newblock ISSN 0959-4388.
 \newblock \doi{10.1016/s0959-4388(00)00232-4}.
-\newblock URL
-  \url{https://www.incm.cnrs-mrs.fr/biblio\_database/Show?\_id=4bac\&\#38;sort=DEFAULT\&\#38;search=dan\&\#38;hits=13}.
+\newblock URL \url{http://dx.doi.org/10.1016/s0959-4388(00)00232-4}.
 
 \bibitem[Ts'o et~al.(1990)Ts'o, Frostig, Lieke, and Grinvald]{TsO90}
 D.~Y. Ts'o, R.~D. Frostig, E.~E. Lieke, and A.~Grinvald.
@@ -565,8 +569,8 @@ J.~D. Victor and M.~M. Conte.
 W.~E. Vinje and Jack~L. Gallant.
 \newblock Sparse coding and decorrelation in primary visual cortex during
   natural vision.
-\newblock \emph{Science}, 287\penalty0 (5456):\penalty0 1273--1276, February
-  2000.
+\newblock \emph{Science (New York, N.Y.)}, 287\penalty0 (5456):\penalty0
+  1273--1276, February 2000.
 \newblock ISSN 0036-8075.
 \newblock \doi{10.1126/science.287.5456.1273}.
 \newblock URL \url{http://dx.doi.org/10.1126/science.287.5456.1273}.
