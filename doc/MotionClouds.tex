@@ -36,7 +36,7 @@ Examples of the use of this framework are shown. We also propose extensions to o
 \newcommand{\Keywords}%
 {Motion Clouds, Random Phase Textures, Low-level sensory systems, eye movements, optimal stimulation, natural scenes, motion detection, random textures, Python}
 \newcommand{\Acknowledgments}{%
-This work is supported by the European Union project Number FP7-269921, ``BrainScaleS'' and by the VISAFIX (ANR-10-Blan-1432)  grant from the Agence Nationale de la Recherche. \AuthorA was supported by a doctoral fellowship from the Minist{\`e}re de la Recherche. We thank Anna Montagnini, Fr\'ed\'eric Chavane and Gabriel Peyr\'e for their comments on an earlier version of the manuscript. \\ Supplementary material can be accessed on the corresponding author's website at \url{\Website/MotionClouds}.}%%
+This work is supported by the European Union project Number FP7-269921, ``BrainScaleS'' and by the VISAFIX (ANR-10-Blan-1432)  grant from the Agence Nationale de la Recherche. \AuthorA was supported by a doctoral fellowship from the Minist{\`e}re de la Recherche. We thank Anna Montagnini, Fr\'ed\'eric Chavane and Gabriel Peyr\'e for their comments on an earlier version of the manuscript. \\ Supplementary material regarding this implementation can be accessed on the corresponding author's website at \url{\Website/MotionClouds}. More general information about Motion Clouds can be accessed at \url{http://neuralensemble.github.io/MotionClouds/}.  }%%
 %}%
 %--------------------------
 
@@ -102,7 +102,35 @@ This work is supported by the European Union project Number FP7-269921, ``BrainS
 \Keywords
 \section*{Acknowledgments}
 \Acknowledgments
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Citation}
+This paper may be cited using the following information:
+\begin{verbatim}
+
+@article{Leon12a,
+    title = {Motion clouds: model-based stimulus synthesis 
+             of natural-like random textures for the study 
+             of motion perception},
+    author = {Sanz Leon, Paula S. and 
+              Vanzetta, I. and 
+              Masson, Guillaume S. and 
+              Perrinet, Laurent U.},
+    url = {http://view.ncbi.nlm.nih.gov/pubmed/22423003},
+    doi = {10.1152/jn.00737.2011},
+    issn = {1522-1598},
+    journal = {Journal of Neurophysiology},
+    day = {14},
+    month = mar,
+    year = {2012}
+    volume = {107},
+    number = {11},
+    pages = {3217--3226},
+    pmid = {22423003},
+    publisher = {American Physiological Society},
+    url = {http://dx.doi.org/10.1152/jn.00737.2011},
+}
+
+\end{verbatim}
 \section{Introduction }\label{intro}
 
 One of the objectives of system neuroscience is to understand how sensory information is encoded and processed in the central nervous system, from single neurons to population of cells forming columns, maps and large-scale networks. Unveiling how sensory-driven behaviors such as perception or action are elaborated implies to decipher the role of each processing stage, from peripheral sensory organs up to associative sensory cortical areas. There is a long tradition of probing each of these levels using standardized stimuli of low dimension and simple statistics. They are based on a powerful, but stringent theoretical approach that considers the visual system as a spatiotemporal frequency analyzer~\citep{Graham79,Watson83}. Accordingly, visual neurons have long been tested with drifting gratings in order to characterize both their selectivities and some of non-linear properties of their receptive fields~\citep{DeValois88}. A similar approach was applied at both mesoscopic and macroscopic scales to define functional properties of cortical maps (e.g.~\citep{Blasdel86,TsO90}) and areas (e.g.~\citep{Singh00,Henriksson08}), respectively.  
