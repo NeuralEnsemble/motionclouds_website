@@ -1,6 +1,6 @@
 ## Why use MotionClouds?
 
-These scripts implement a framework to generate random texture movies with controlled information content that we call _Motion Clouds http://neuralensemble.github.io/MotionClouds_. In particular, these stimuli can be made closer to naturalistic textures compared to usual stimuli such as gratings and random-dot kinetograms. We simplified the definition to parametrically define these "Motion Clouds" around the most prevalent feature axis (mean and bandwith): direction, spatial frequency, orientation.
+These scripts implement a framework to generate random texture movies with controlled information content that we call [Motion Clouds](http://neuralensemble.github.io/MotionClouds "The Motion Clouds page on neuralensemble"). In particular, these stimuli can be made closer to naturalistic textures compared to usual stimuli such as gratings and random-dot kinetograms. We simplified the definition to parametrically define these "Motion Clouds" around the most prevalent feature axis (mean and bandwith): direction, spatial frequency, orientation.
 
 <img src="http://invibe.net/cgi-bin/index.cgi/SciBlog/2011-07-12?action=AttachFile&do=get&target=MotionPlaid_comp1.gif" width="100%">
 
