@@ -10,6 +10,11 @@ Using psychopy to perform an experiment on competing clouds
 """
 # width and height of your screen
 w, h = 1920, 1200
+w, h = 2560, 1440 # iMac 27''
+
+# width and height of the stimulus
+w_stim, h_stim = 1024, 1024
+
 
 print('launching experiment')
 from psychopy import visual, core, event, logging, gui, misc
@@ -60,7 +65,8 @@ win = visual.Window([info['screen_width'], info['screen_height']], fullscr=True)
 
 stim = visual.GratingStim(win, 
         size=(info['screen_height'], info['screen_height']), units='pix',
-        interpolate=False,
+        interpolate=True,
+        mask = 'gauss',
         autoLog=False)#this stim changes too much for autologging to be useful
 
 wait_for_response = visual.TextStim(win, 
