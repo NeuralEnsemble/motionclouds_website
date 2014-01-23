@@ -1,12 +1,10 @@
 #!/usr/bin/env python
 """
 
-Using psychopy to perform an experiment on competing clouds
+Using psychopy to perform an experiment on discriminating clouds
 
-(c) Laurent Perrinet - INT/CNRS
+(c) Laurent Perrinet - INT/CNRS & Jonathan Vacher - CeReMaDe
 
- See http://invibe.net/LaurentPerrinet/SciBlog/2012-12-12 for a small tutorial
- 
 """
 # width and height of your screen
 w, h = 1920, 1200
@@ -26,7 +24,7 @@ import time
 
 try:
     #try to load previous info
-    info = misc.fromFile('data/competing.pickle')
+    info = misc.fromFile('data/discriminating.pickle')
 except:
     #if no file use some defaults
     info = {}
@@ -45,7 +43,7 @@ except:
     print(info)
 #save to a file for future use (ie storing as defaults)
 if dlg.OK:
-    misc.toFile('data/competing.pickle', info)
+    misc.toFile('data/discriminating.pickle', info)
 else:
     print('Could not load gui... running with defaut parameters')
     #core.quit() #user cancelled. quit
@@ -55,20 +53,30 @@ info['timeStr'] = time.strftime("%b_%d_%H%M", time.localtime())
 
 print('generating data')
 
-
+alphas = [0., 1., 2.]
 fx, fy, ft = mc.get_grids(info['N_X'], info['N_Y'], info['N_frame_total'])
-color = mc.envelope_color(fx, fy, ft)
-up = 2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_X=+.5))) - 1
-down = 2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_X=-.5))) - 1
+colors = [mc.envelope_color(fx, fy, ft, alpha=alpha) for alpha in alphas]
+slows = [2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_Y=0., V_X = 1.1))) - 1 for color in colors]
+fasts = [2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_Y=0., V_X = 0.9))) - 1 for color in colors]
 
 print('go!      ')
 win = visual.Window([info['screen_width'], info['screen_height']], fullscr=True)
 
-stim = visual.GratingStim(win, 
-        size=(info['screen_height'], info['screen_height']), units='pix',
-        interpolate=True,
-        mask = 'gauss',
-        autoLog=False)#this stim changes too much for autologging to be useful
+stimLeft = visual.GratingStim(win, 
+                            size=(info['screen_height']/2, info['screen_height']/2), 
+                            pos=(-info['screen_height']/4, 0), 
+                            units='pix',
+                            interpolate=True,
+                            mask = 'gauss',
+                            autoLog=False)#this stim changes too much for autologging to be useful
+
+stimRight = visual.GratingStim(win, 
+                            size=(info['screen_height']/2, info['screen_height']/2), 
+                            pos=(info['screen_height']/4, 0), 
+                            units='pix',
+                            interpolate=True,
+                            mask = 'gauss',
+                            autoLog=False)#this stim changes too much for autologging to be useful
 
 wait_for_response = visual.TextStim(win, 
                         text = u"?", units='norm', height=0.15, color='DarkSlateBlue',
@@ -88,40 +96,44 @@ def getResponse():
                 core.quit()
                 return None
             #valid response - check to see if correct
-            elif key in ['down', 'up']:
-                if key in ['down'] :return -1
-                else: return 1
+            elif key in ['left', 'right']:
+                if key in ['left'] :return 0.
+                else: return 1.
             else:
-                print "hit DOWN or UP (or Esc) (You hit %s)" %key
+                print "hit LEFT or RIGHT (or Esc) (You hit %s)" %key
 
 clock = core.Clock()
 FPS = 50.
-def presentStimulus(C_A, C_B):
-    """Present stimulus
+def presentStimulus(i_alpha, left):
+    """
+    Present stimulus
+    
     """
     phase_up = numpy.floor(numpy.random.rand() *(info['N_frame_total']-info['N_frame']))
     phase_down = numpy.floor(numpy.random.rand() *(info['N_frame_total']-info['N_frame']))
     clock.reset()
     for i_frame in range(info['N_frame']): # length of the stimulus
-        stim.setTex(C_A * up[:, :, i_frame+phase_up]+C_B * down[:, :, i_frame+phase_down])
-        stim.draw()
+        stimLeft.setTex(left * fasts[i_alpha][:, :, i_frame+phase_up]+ (1-left) * slows[i_alpha][:, :, i_frame+phase_down])
+        stimRight.setTex((1.-left) * fasts[i_alpha][:, :, i_frame+phase_up]+ left * slows[i_alpha][:, :, i_frame+phase_down])
+        stimLeft.draw()
+        stimRight.draw()
 #        while clock.getTime() < i_frame/FPS:
 #            print clock.getTime(), i_frame/FPS
 #            print('waiting')
         win.flip()
 
-results = numpy.zeros((2, info['nTrials']))
+n_alpha = len(alphas)
+results = numpy.zeros((n_alpha, info['nTrials']))
 for i_trial in range(info['nTrials']):
     wait_for_next.draw()
     win.flip()
     core.wait(0.5)
-    C_A = numpy.random.rand() # a random number between 0 and 1
-    presentStimulus(C_A, 1. - C_A)
+    left = numpy.random.randint(2) # a random number between 0 and 1
+    i_alpha = numpy.random.randint(n_alpha) # a random number between 0 and 1
+    presentStimulus(i_alpha, left)
     wait_for_response.draw()
     win.flip()
-    ans = getResponse()
-    results[0, i_trial] = ans
-    results[1, i_trial] = C_A
+    results[i_alpha, i_trial] = 2*(left == getResponse())-1
 
 win.update()
 core.wait(0.5)
@@ -129,14 +141,9 @@ core.wait(0.5)
 win.close()
 
 #save data
-fileName = 'data/' + info['observer'] + '_' + info['timeStr']
-numpy.save(fileName,results)
+fileName = 'data/discriminating_' + info['observer'] + '_' + info['timeStr']
+numpy.save(fileName, results)
 
 print('analyzing results')
 # TODO: loop over all data + make a fit for each
-import pylab
-pylab.scatter(results[1, :], results[0, :])
-pylab.axis([0., 1., -1.1, 1.1])
-pylab.xlabel('contrast')
-pylab.savefig('competing_psychopy.png')
-pylab.show()
+print results.sum(axis=1)/numpy.abs(results).sum(axis=1)

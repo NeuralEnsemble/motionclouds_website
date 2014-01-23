@@ -582,7 +582,7 @@ def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,
         figures(z, name, vext=vext, do_figs=do_figs, do_movie=do_movie,
                     seed=seed, impulse=impulse, verbose=verbose, do_amp=do_amp, sparseness=sparseness)
 
-def figures(z, name, vext=vext,do_movie=True, do_figs=True,
+def figures(z, name, vext=vext, do_movie=True, do_figs=True,
                     seed=None, impulse=False, verbose=False, masking=False, do_amp=False, sparseness=0.):
     import_mayavi()
     if ((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and anim_exist(name, vext=ext): visualize(z, name=name)           # Visualize the Fourier Spectrum
