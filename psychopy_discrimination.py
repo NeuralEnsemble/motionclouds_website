@@ -53,26 +53,26 @@ info['timeStr'] = time.strftime("%b_%d_%H%M", time.localtime())
 
 print('generating data')
 
-alphas = [0., 1., 2.]
+alphas = [-1., -.5, 0., 0.5, 1., 1.5, 2.]
 fx, fy, ft = mc.get_grids(info['N_X'], info['N_Y'], info['N_frame_total'])
 colors = [mc.envelope_color(fx, fy, ft, alpha=alpha) for alpha in alphas]
-slows = [2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_Y=0., V_X = 1.1))) - 1 for color in colors]
-fasts = [2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_Y=0., V_X = 0.9))) - 1 for color in colors]
+slows = [2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_Y=0., V_X = 1.1, B_sf = 10.))) - 1 for color in colors]
+fasts = [2*mc.rectif(mc.random_cloud(color * mc.envelope_gabor(fx, fy, ft, V_Y=0., V_X = 0.9, B_sf = 10.))) - 1 for color in colors]
 
 print('go!      ')
 win = visual.Window([info['screen_width'], info['screen_height']], fullscr=True)
 
 stimLeft = visual.GratingStim(win, 
-                            size=(info['screen_height']/2, info['screen_height']/2), 
-                            pos=(-info['screen_height']/4, 0), 
+                            size=(info['screen_width']/2, info['screen_width']/2), 
+                            pos=(-info['screen_width']/4, 0), 
                             units='pix',
                             interpolate=True,
                             mask = 'gauss',
                             autoLog=False)#this stim changes too much for autologging to be useful
 
 stimRight = visual.GratingStim(win, 
-                            size=(info['screen_height']/2, info['screen_height']/2), 
-                            pos=(info['screen_height']/4, 0), 
+                            size=(info['screen_width']/2, info['screen_width']/2), 
+                            pos=(info['screen_width']/4, 0), 
                             units='pix',
                             interpolate=True,
                             mask = 'gauss',
@@ -108,13 +108,17 @@ def presentStimulus(i_alpha, left):
     """
     Present stimulus
     
+    TODO : switch randomly up / down
+    
     """
     phase_up = numpy.floor(numpy.random.rand() *(info['N_frame_total']-info['N_frame']))
     phase_down = numpy.floor(numpy.random.rand() *(info['N_frame_total']-info['N_frame']))
+    up = numpy.random.randint(2)*2 - 1
     clock.reset()
     for i_frame in range(info['N_frame']): # length of the stimulus
-        stimLeft.setTex(left * fasts[i_alpha][:, :, i_frame+phase_up]+ (1-left) * slows[i_alpha][:, :, i_frame+phase_down])
-        stimRight.setTex((1.-left) * fasts[i_alpha][:, :, i_frame+phase_up]+ left * slows[i_alpha][:, :, i_frame+phase_down])
+        wait_for_next.draw()
+        stimLeft.setTex(left * fasts[i_alpha][:, :, up*i_frame+phase_up]+ (1-left) * slows[i_alpha][:, :, up*i_frame+phase_down])
+        stimRight.setTex((1.-left) * fasts[i_alpha][:, :, up*i_frame+phase_up]+ left * slows[i_alpha][:, :, up*i_frame+phase_down])
         stimLeft.draw()
         stimRight.draw()
 #        while clock.getTime() < i_frame/FPS:
@@ -146,4 +150,6 @@ numpy.save(fileName, results)
 
 print('analyzing results')
 # TODO: loop over all data + make a fit for each
-print results.sum(axis=1)/numpy.abs(results).sum(axis=1)
+print 'alphas :', alphas
+print '# of trials :', numpy.abs(results).sum(axis=1)
+print 'average results: ', (results.sum(axis=1)/numpy.abs(results).sum(axis=1)*.5+.5)

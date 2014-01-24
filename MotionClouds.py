@@ -96,6 +96,7 @@ def envelope_color(fx, fy, ft, alpha=alpha, ft_0=ft_0):
     (see http://en.wikipedia.org/wiki/1/f_noise )
     """
     f_radius = frequency_radius(fx, fy, ft, ft_0=ft_0)**alpha
+    f_radius[N_X//2 , N_Y//2 , N_frame//2 ] = np.inf
     return 1. / f_radius
 
 def envelope_radial(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, ft_0=ft_0, loggabor=loggabor):
@@ -175,7 +176,6 @@ shape
 
     """
     (N_X, N_Y, N_frame) = envelope.shape
-    if sparseness > 0.: fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
     amps = 1.
     if impulse:
         phase = 0.
@@ -183,18 +183,20 @@ shape
         np.random.seed(seed=seed)
         phase = 2 * np.pi * np.random.rand(N_X, N_Y, N_frame)
         if do_amp:
-            amps = np.random.randn(N_X, N_Y, N_frame)
             # see Galerne, B., Gousseau, Y. & Morel, J.-M. Random phase textures: Theory and synthesis. IEEE Transactions in Image Processing (2010). URL http://www.biomedsearch.com/nih/Random-Phase-Textures-Theory-Synthesis/20550995.html. (basically, they conclude "Even though the two processes ADSN and RPN have different Fourier modulus distributions (see Section 4), they produce visually similar results when applied to natural images as shown by Fig. 11.")
-            if sparseness > 0.:
-		amps, phase =  np.zeros((N_X, N_Y, N_frame), dtype=np.complex), np.zeros((N_X, N_Y, N_frame))
-		coeff, rank = 1., 1
-                print 'I evaluate sparse Motion Cloud with ', np.int(threshold**(-1/sparseness)), ' components'
-                # TODO: here we make a sum of exactly similar components (corresponding to the enveloppes) such that there is no variability in their charcteristics
-		while rank**(-sparseness) > threshold:
-                    a, x, y, t = np.random.randn(), N_X * np.random.rand(), N_Y * np.random.rand(), N_frame * np.random.rand()
-                    amps +=  a * rank**(-sparseness) * np.exp(-1j*np.pi*(x*fx + y*fy + t*ft))
-                    rank += 1
-                print 'stopped sparse Motion Cloud with ', rank, ' components'
+            amps = np.random.randn(N_X, N_Y, N_frame)
+        # a special case when we want to build a texture using a sparse set of components (see Lagae et al.)
+        if sparseness > 0.:
+            fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
+            amps, phase =  np.zeros((N_X, N_Y, N_frame), dtype=np.complex), np.zeros((N_X, N_Y, N_frame))
+            coeff, rank = 1., 1
+            print 'I evaluate sparse Motion Cloud with ', np.int(threshold**(-1/sparseness)), ' components'
+            # TODO: here we make a sum of exactly similar components (corresponding to the enveloppes) such that there is no variability in their charcteristics
+            while rank**(-sparseness) > threshold:
+                a, x, y, t = np.random.randn(), N_X * np.random.rand(), N_Y * np.random.rand(), N_frame * np.random.rand()
+                amps +=  a * rank**(-sparseness) * np.exp(-1j*np.pi*(x*fx + y*fy + t*ft))
+                rank += 1
+            print 'stopped sparse Motion Cloud with ', rank, ' components'
 
     Fz = amps * envelope * np.exp(1j * phase)
 
