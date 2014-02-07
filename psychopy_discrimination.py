@@ -22,34 +22,31 @@ import os, numpy
 import MotionClouds as mc
 import time
 
-try:
-    #try to load previous info
-    info = misc.fromFile('data/discriminating.pickle')
-except:
-    #if no file use some defaults
-    info = {}
-    info['observer'] = ''
-    info['screen_width'] = w
-    info['screen_height'] = h
-    info['nTrials'] = 50
-    info['N_X'] = mc.N_X # size of image
-    info['N_Y'] = mc.N_Y # size of image
-    info['N_frame_total'] = mc.N_frame # a full period. in time frames
-    info['N_frame'] = mc.N_frame # length of the presented period. in time frames
+#if no file use some defaults
+info = {}
+info['observer'] = 'anonymous'
+info['screen_width'] = w
+info['screen_height'] = h
+info['nTrials'] = 50
+info['N_X'] = mc.N_X # size of image
+info['N_Y'] = mc.N_Y # size of image
+info['N_frame_total'] = mc.N_frame # a full period. in time frames
+info['N_frame'] = mc.N_frame # length of the presented period. in time frames
+
 try:
     dlg = gui.DlgFromDict(info)
 except:
     print('Could not load gui... running with defaut parameters')
     print(info)
+    
+info['timeStr'] = time.strftime("%b_%d_%H%M", time.localtime())
+fileName = 'data/discriminating_v2_' + info['observer'] + '_' + info['timeStr'] + '.pickle'
 #save to a file for future use (ie storing as defaults)
 if dlg.OK:
-    misc.toFile('data/discriminating.pickle', info)
+    misc.toFile(fileName, info)
 else:
-    print('Could not load gui... running with defaut parameters')
-    #core.quit() #user cancelled. quit
-
-info['timeStr'] = time.strftime("%b_%d_%H%M", time.localtime())
-
+    print('Interrupted gui... quitting')
+    core.quit() #user cancelled. quit
 
 print('generating data')
 
@@ -145,8 +142,10 @@ core.wait(0.5)
 win.close()
 
 #save data
-fileName = 'data/discriminating_' + info['observer'] + '_' + info['timeStr']
-numpy.save(fileName, results)
+info['alphas'] = alphas
+info['results'] = results
+#numpy.savez(fileName, results=results, alphas=alphas)
+misc.toFile(fileName, info)
 
 print('analyzing results')
 # TODO: loop over all data + make a fit for each
