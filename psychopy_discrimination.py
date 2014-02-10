@@ -147,8 +147,9 @@ info['results'] = results
 #numpy.savez(fileName, results=results, alphas=alphas)
 misc.toFile(fileName, info)
 
-print('analyzing results')
+# see the notebook
+#print('analyzing results')
 # TODO: loop over all data + make a fit for each
-print 'alphas :', alphas
-print '# of trials :', numpy.abs(results).sum(axis=1)
-print 'average results: ', (results.sum(axis=1)/numpy.abs(results).sum(axis=1)*.5+.5)
+#print 'alphas :', alphas
+#print '# of trials :', numpy.abs(results).sum(axis=1)
+#print 'average results: ', (results.sum(axis=1)/numpy.abs(results).sum(axis=1)*.5+.5)
