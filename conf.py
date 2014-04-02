@@ -444,7 +444,7 @@ SOCIAL_BUTTONS_CODE = """
  <li><a class="addthis_button_facebook"><i class="icon-facebook-sign icon-2x"></i>&nbsp;&nbsp;&nbsp;&nbsp;Facebook</a>
  </ul>
  </div>
- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>¬
+ <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>
  <!-- End of social buttons -->
  """
 
