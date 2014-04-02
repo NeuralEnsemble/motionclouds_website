@@ -1,17 +1,22 @@
-## Why use MotionClouds?
-
-
-Hello
+.. title: Motion Clouds
+.. slug: index
+.. date: 2014/01/15 11:20:10
+.. tags: motion-clouds, python
+.. link:
+.. description: home page for Motion clouds 
+.. type: text
 
 These scripts implement a framework to generate random texture movies with controlled information content that we call [Motion Clouds](http://neuralensemble.github.io/MotionClouds "The Motion Clouds page on neuralensemble"). In particular, these stimuli can be made closer to naturalistic textures compared to usual stimuli such as gratings and random-dot kinetograms. We simplified the definition to parametrically define these "Motion Clouds" around the most prevalent feature axis (mean and bandwith): direction, spatial frequency, orientation.
 
 <img src="http://invibe.net/cgi-bin/index.cgi/SciBlog/2011-07-12?action=AttachFile&do=get&target=MotionPlaid_comp1.gif" width="100%">
 
 The description of this method was published in:
-* Paula S. Leon, Ivo Vanzetta, Guillaume S. Masson, Laurent U. Perrinet. _Motion Clouds: Model-based stimulus synthesis of natural-like random textures for the study of motion perception._ **Journal of Neurophysiology**, 107(11):3217--3226, 2012  http://invibe.net/LaurentPerrinet/Publications/Sanz12
+
+* Paula S. Leon, Ivo Vanzetta, Guillaume S. Masson, Laurent U. Perrinet. _Motion Clouds: Model-based stimulus synthesis of natural-like random textures for the study of motion perception._ **Journal of Neurophysiology**, 107(11):3217--3226, 2012  [URL](http://invibe.net/LaurentPerrinet/Publications/Sanz12)
 
 While this method was used in the following paper:
-* Claudio Simoncini, Laurent U. Perrinet, Anna Montagnini, Pascal Mamassian, Guillaume S. Masson. _More is not always better: dissociation between perception and action explained by adaptive gain control._ **Nature Neuroscience**, 2012 http://invibe.net/LaurentPerrinet/Publications/Simoncini12
+
+* Claudio Simoncini, Laurent U. Perrinet, Anna Montagnini, Pascal Mamassian, Guillaume S. Masson. _More is not always better: dissociation between perception and action explained by adaptive gain control._ **Nature Neuroscience**, 2012 [URL](http://invibe.net/LaurentPerrinet/Publications/Simoncini12)
 
 This work is supported by the European Union project Number FP7-269921, ``BrainScaleS'' (Brain-inspired multiscale computation in neuromorphic hybrid systems), an EU FET-Proactive FP7 funded research project. The project started on 1 January 2011. It is a collaboration of 18 research groups from 10 European countries.
 
