@@ -116,6 +116,7 @@ POSTS = (
 )
 PAGES = (
     ("doc/*.txt", "", "story.tmpl"),
+#     ("doc/*.tex", "", "story.tmpl"),
     ("doc/*.rst", "", "story.tmpl"),
     ("doc/*.md", "", "story.tmpl"),
     ("doc/*.ipynb", "", "story.tmpl"),
@@ -146,7 +147,7 @@ COMPILERS = {
     # Pandoc detects the input from the source filename
     # but is disabled by default as it would conflict
     # with many of the others.
-    # "pandoc": ('.rst', '.md', '.txt'),
+    "pandoc": ('.tex'),
 }
 
 # Create by default posts in one file format?
@@ -443,6 +444,7 @@ SOCIAL_BUTTONS_CODE = """
  <li><a class="addthis_button_facebook"><i class="icon-facebook-sign icon-2x"></i>&nbsp;&nbsp;&nbsp;&nbsp;Facebook</a>
  </ul>
  </div>
+ <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4f7088a56bb93798"></script>¬
  <!-- End of social buttons -->
  """
 
