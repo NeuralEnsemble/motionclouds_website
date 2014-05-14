@@ -43,6 +43,7 @@ else:
     size_T = 7
     figsize = (600, 600) # nice size, but requires more memory
 
+# TODO: use a parameter file
 import numpy as np
 N_X = 2**size
 N_Y = N_X
