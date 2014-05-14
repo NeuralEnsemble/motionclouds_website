@@ -43,6 +43,7 @@ else:
     size_T = 7
     figsize = (600, 600) # nice size, but requires more memory
 
+# TODO: use a parameter file
 import numpy as np
 N_X = 2**size
 N_Y = N_X
@@ -95,6 +96,7 @@ def envelope_color(fx, fy, ft, alpha=alpha, ft_0=ft_0):
     alpha = 2 red/brownian
     (see http://en.wikipedia.org/wiki/1/f_noise )
     """
+    N_X, N_Y, N_frame = fx.shape[0], fy.shape[1], ft.shape[2]
     f_radius = frequency_radius(fx, fy, ft, ft_0=ft_0)**alpha
     f_radius[N_X//2 , N_Y//2 , N_frame//2 ] = np.inf
     return 1. / f_radius
@@ -206,12 +208,10 @@ shape
     z = np.fft.ifftn((Fz)).real
     return z
 
-
 ########################## Display Tools #######################################
 vext = '.mp4'
 ext = '.png'
 T_movie = 8. # this value defines the duration of a temporal period
-fps = int(N_frame / T_movie)
 
 # display parameters
 try:
@@ -387,7 +387,7 @@ def anim_exist(filename, vext=vext):
 
 
 def anim_save(z, filename, display=True, flip=False, vext=vext,
-              centered=False, fps=fps, verbose=False):
+              centered=False, T_movie=T_movie, verbose=False):
     """
     Saves a numpy 3D matrix (x-y-t) to a multimedia file.
 
@@ -397,6 +397,7 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
     import os                         # For issuing commands to the OS.
     import tempfile
     from scipy.misc.pilutil import toimage
+    fps = int(z.shape[-1] / T_movie)
     def make_frames(z):
         N_X, N_Y, N_frame = z.shape
         files = []
@@ -468,6 +469,7 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         toimage(np.flipud(z[:, :, 0]).T, high=255, low=0, cmin=0., cmax=1., pal=None, mode=None, channel_axis=None).save(filename + vext)
 
     elif vext == '.zip':
+        # TODO : give the possiblity to specify the format of files inside the zip
         tmpdir, files = make_frames(z)
         import zipfile
         zf = zipfile.ZipFile(filename + vext, "w")
