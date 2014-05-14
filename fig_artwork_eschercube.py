@@ -21,6 +21,7 @@ def source(dim, bwd):
     """
     Create motion cloud source
     """
+    fx, fy, ft = dim
     z = mc.envelope_gabor(fx, fy, ft, B_sf=bwd[0], B_V=bwd[1], B_theta=bwd[2])
     data = mc.rectif(mc.random_cloud(z))
     return data
@@ -339,10 +340,10 @@ if __name__ == '__main__':
     """
 
     import itertools
-    #size = 2**4
-    #size = 2**5
+#     size = 2**4
+#     size = 2**5
     size = 2**6
-    #size = 2**7
+#     size = 2**7
 
     space = 1.5 * size # space between 2 cubes
     N = 5
@@ -432,7 +433,7 @@ if __name__ == '__main__':
     if do_MCs:
         print size
         for i, j, k in list(itertools.product(idx, idx, idx)):
-            main(dim=(size, size, size), orig=(pos[i], pos[j], pos[k]), B=(Bf[i], Bv[k], Bo[j]))
+            main(dim=(fx, fy, ft), orig=(pos[i], pos[j], pos[k]), B=(Bf[i], Bv[k], Bo[j]))
 
 #    mlab.show(stop=True)
     elevation = 90. - 18.
@@ -440,7 +441,7 @@ if __name__ == '__main__':
     distance = view[2]
     mlab.savefig('MCartwork.png')
     if True:#False:
-        N_frame = 128
+        N_frame = 256 #128
         widgets = ["calculating", " ", progressbar.Percentage(), ' ',
                    progressbar.Bar(), ' ', progressbar.ETA()]
         pbar = progressbar.ProgressBar(widgets=widgets, maxval=N_frame).start()
@@ -453,7 +454,7 @@ if __name__ == '__main__':
         pbar.finish()
         import os
         os.system('ffmpeg -y -i _MCartwork%03d.png  MCartwork.mpg')
-        #os.system('ffmpeg -y -i _MCartwork%03d.png  MCartwork.mp4')
+        os.system('ffmpeg -y -i _MCartwork%03d.png  MCartwork.mp4')
         #os.system('brew install gifsicle')
         #os.system('ffmpeg -y  -set delay 8 -pix_fmt rgb24 -r 12 -i _MCartwork%03d.png  MCartwork.gif')
         os.system('convert -delay 8 -loop 0 -colors 256  -scale 25% -layers Optimize  _MCartwork*.png  MCartwork.gif')

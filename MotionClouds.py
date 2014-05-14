@@ -387,7 +387,7 @@ def anim_exist(filename, vext=vext):
 
 
 def anim_save(z, filename, display=True, flip=False, vext=vext,
-              centered=False, fps=fps):
+              centered=False, fps=fps, verbose=False):
     """
     Saves a numpy 3D matrix (x-y-t) to a multimedia file.
 
@@ -428,26 +428,28 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         for fname in files: os.remove(fname)
         if not(tmpdir == None): os.rmdir(tmpdir)
 
+    if verbose:
+        verb_ = ''
+    else:
+        verb_ = ' 2>/dev/null'
     if vext == '.mpg':
         # 1) create temporary frames
         tmpdir, files = make_frames(z)
         # 2) convert frames to movie
 #        cmd = 'ffmpeg -v 0 -y -sameq -loop_output 0 -r ' + str(fps) + ' -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
         #cmd = 'ffmpeg -v 0 -y -sameq  -loop_output 0 -i ' + tmpdir + '/frame%03d.png  ' + filename + vext # + ' 2>/dev/null')
-        os.system('ffmpeg -v 0 -y  -f image2 -r ' + str(fps) + ' -sameq -i ' + tmpdir + '/frame%03d.png  ' + filename + '.mpg 2>/dev/null')
-        #print('Doing : ', cmd)
-        #ret = os.system(cmd) # + ' 2>/dev/null')
-        #print ret
-        # To force the frame rate of the output file to 24 fps:
-        # ffmpeg -i input.avi -r 24 output.avi
+        options = ' -f image2  -r ' + str(fps) + ' -y '
+        os.system('ffmpeg -i ' + tmpdir + '/frame%03d.png ' + options + filename + vext + verb_)
         # 3) clean up
         #remove_frames(tmpdir, files)
     if vext == '.mp4': # specially tuned for iPhone/iPod http://www.dudek.org/blog/82
         # 1) create temporary frames
         tmpdir, files = make_frames(z)
         # 2) convert frames to movie
-        options = '-vcodec libx264 -y '
-        os.system('ffmpeg -i '  + tmpdir + '/frame%03d.png  ' + options + filename + vext + ' 2>/dev/null')
+        options = ' -f mp4 -pix_fmt yuv420p -c:v libx264  -g ' + str(fps) + '  -r ' + str(fps) + ' '
+        cmd = 'ffmpeg -i '  + tmpdir + '/frame%03d.png ' + options + filename + vext + verb_
+        print cmd
+        os.system(cmd)
         # 3) clean up
         remove_frames(tmpdir, files)
 
@@ -458,7 +460,7 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
 #        options = ' -pix_fmt rgb24 -r ' + str(fps) + ' -loop_output 0 '
 #        os.system('ffmpeg -i '  + tmpdir + '/frame%03d.png  ' + options + filename + vext + ' 2>/dev/null')
         options = ' -set delay 8 -colorspace GRAY -colors 256 -dispose 1 -loop 0 '
-        os.system('convert '  + tmpdir + '/frame*.png  ' + options + filename + vext )# + ' 2>/dev/null')
+        os.system('convert '  + tmpdir + '/frame*.png  ' + options + filename + vext + verb_)
         # 3) clean up
         remove_frames(tmpdir, files)
 
