@@ -596,3 +596,11 @@ def figures(z, name, vext=vext, do_movie=True, do_figs=True,
         movie = rectif(random_cloud(z, seed=seed, impulse=impulse, do_amp=do_amp, sparseness=sparseness), verbose=verbose)
     if (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and anim_exist(name + '_cube', vext=ext)): cube(movie, name=name + '_cube')   # Visualize the Stimulus cube
     if (do_movie and anim_exist(name, vext=vext)): anim_save(movie, name, display=False, vext=vext)
+
+def in_show_video(filename):
+    from IPython.display import display, Image, HTML
+    from base64 import b64encode
+    video = open(os.path.join(figpath, filename + mc.vext), "rb").read()
+    video_encoded = b64encode(video)
+    video_tag = '<video controls  autoplay="autoplay" loop="loop" width=350px src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
+    display(HTML(data=video_tag))
