@@ -62,6 +62,7 @@ loggabor = True
 
 figpath = 'results/'
 if not(os.path.isdir(figpath)):os.mkdir(figpath)
+recompute = False
 
 def get_grids(N_X, N_Y, N_frame, sparse=True):
     """
@@ -383,7 +384,7 @@ def anim_exist(filename, vext=vext):
     Check if the movie already exists
 
     """
-    return not(os.path.isfile(filename+vext))
+    return not(recompute or os.path.isfile(filename+vext))
 
 
 def anim_save(z, filename, display=True, flip=False, vext=vext,
