@@ -48,7 +48,7 @@ import numpy as np
 N_X = 2**size
 N_Y = N_X
 N_frame = 2**size_T
-ft_0 = N_X/float(N_frame)
+ft_0 = np.inf
 # default parameters for the "standard Motion Cloud"
 alpha = 1.0
 sf_0 = 0.15
