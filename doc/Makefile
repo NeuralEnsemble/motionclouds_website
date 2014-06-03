@@ -64,9 +64,10 @@ diff: $(SRC).tex
 
 touch:
 	touch *.tex *py
-clean_soft: # removing all temporary files from LaTeX
+clean: # removing all temporary files from LaTeX
+	rm -f *.bcf *idx  *.md5 *.out  *.auxlock  *.run.xml *.dvi *.ps *.out *.log *.aux *.bbl *.blg *.snm *.fls *.nav *.toc *.fff *.synctex.gz* *.fdb_latexmk
 	rm -fr *.fls *.fff *.lof *.dvi *.ps  *.out *.log *.aux *.bbl *.blg *.snm *.nav *.toc *.synctex.gz *.fdb_latexmk
 clean_hard: clean_soft # careful! this is quite radical!
 	rm -fr figure* diff* MotionClouds.bib  *.pdf  results
 
-.PHONY: all touch clean_soft clean_hard diff pdf 3D figures
+.PHONY: all touch clean clean_hard diff pdf 3D figures
