@@ -216,7 +216,7 @@ T_movie = 8. # this value defines the duration of a temporal period
 
 # display parameters
 try:
-    import progressbar
+    import pyprind as progressbar
     PROGRESS = True
 except:
     PROGRESS = False
@@ -405,9 +405,7 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         tmpdir = tempfile.mkdtemp()
 
         if PROGRESS:
-            widgets = ["calculating", " ", progressbar.Percentage(), ' ',
-               progressbar.Bar(), ' ', progressbar.ETA()]
-            pbar = progressbar.ProgressBar(widgets=widgets, maxval=N_frame).start()
+            pbar = progressbar.ProgBar(N_frame)
         print('Saving sequence ' + filename + vext)
         for frame in range(N_frame):
             if PROGRESS: pbar.update(frame)
@@ -417,9 +415,8 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
             toimage(image, high=255, low=0, cmin=0., cmax=1., pal=None,
                     mode=None, channel_axis=None).save(fname)
             files.append(fname)
-            if PROGRESS: pbar.update(frame)
 
-        if PROGRESS: pbar.finish()
+        if PROGRESS: print(pbar)
         return tmpdir, files
 
     def remove_frames(tmpdir, files):
@@ -450,7 +447,6 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         # 2) convert frames to movie
         options = ' -f mp4 -pix_fmt yuv420p -c:v libx264  -g ' + str(fps) + '  -r ' + str(fps) + ' '
         cmd = 'ffmpeg -i '  + tmpdir + '/frame%03d.png ' + options + filename + vext + verb_
-        print cmd
         os.system(cmd)
         # 3) clean up
         remove_frames(tmpdir, files)
@@ -601,7 +597,7 @@ def figures(z, name, vext=vext, do_movie=True, do_figs=True,
 def in_show_video(filename):
     from IPython.display import display, Image, HTML
     from base64 import b64encode
-    video = open(os.path.join(figpath, filename + mc.vext), "rb").read()
+    video = open(os.path.join(figpath, filename + vext), "rb").read()
     video_encoded = b64encode(video)
     video_tag = '<video controls  autoplay="autoplay" loop="loop" width=350px src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
     display(HTML(data=video_tag))
