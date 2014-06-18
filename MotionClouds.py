@@ -60,20 +60,21 @@ theta = 0.
 B_theta = np.pi/32.
 loggabor = True
 
+notebook = False
 figpath = 'results/'
 if not(os.path.isdir(figpath)):os.mkdir(figpath)
 recompute = False
 
-def get_grids(N_X, N_Y, N_frame, sparse=True):
+def get_grids(N_X, N_Y, N_frame, sparse=False):
     """
         Use that function to define a reference outline for envelopes in Fourier space.
         In general, it is more efficient to define dimensions as powers of 2.
 
     """
     if sparse:
-        fx, fy, ft = np.ogrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always even.
+        fx, fy, ft = np.ogrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always of even size.
     else:
-        fx, fy, ft = np.mgrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always even.
+        fx, fy, ft = np.mgrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always  of even size..
     fx, fy, ft = fx*1./N_X, fy*1./N_Y, ft*1./N_frame
     return fx, fy, ft
 
@@ -84,8 +85,12 @@ def frequency_radius(fx, fy, ft, ft_0=ft_0):
 
     """
     N_X, N_Y, N_frame = fx.shape[0], fy.shape[1], ft.shape[2]
-    R2 = fx**2 + fy**2 + (ft/ft_0)**2 # cf . Paul Schrater 00
-    R2[N_X//2 , N_Y//2 , N_frame//2 ] = np.inf
+    if ft_0==np.inf:
+        R2 = fx**2 + fy**2
+        R2[N_X//2 , N_Y//2 , :] = np.inf
+    else:
+        R2 = fx**2 + fy**2 + (ft/ft_0)**2 # cf . Paul Schrater 00
+        R2[N_X//2 , N_Y//2 , N_frame//2 ] = np.inf
     return np.sqrt(R2)
 
 def envelope_color(fx, fy, ft, alpha=alpha, ft_0=ft_0):
@@ -99,7 +104,10 @@ def envelope_color(fx, fy, ft, alpha=alpha, ft_0=ft_0):
     """
     N_X, N_Y, N_frame = fx.shape[0], fy.shape[1], ft.shape[2]
     f_radius = frequency_radius(fx, fy, ft, ft_0=ft_0)**alpha
-    f_radius[N_X//2 , N_Y//2 , N_frame//2 ] = np.inf
+    if ft_0==np.inf:
+        f_radius[N_X//2 , N_Y//2 , : ] = np.inf
+    else:
+        f_radius[N_X//2 , N_Y//2 , N_frame//2 ] = np.inf
     return 1. / f_radius
 
 def envelope_radial(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, ft_0=ft_0, loggabor=loggabor):
@@ -221,7 +229,7 @@ try:
 except:
     PROGRESS = False
 
-# os.environ['ETS_TOOLKIT'] = 'qt4' # Works in Mac
+os.environ['ETS_TOOLKIT'] = 'qt4' # Works in Mac
 # os.environ['ETS_TOOLKIT'] = 'wx' # Works in Debian
 MAYAVI = 'Import'
 #MAYAVI = 'Avoid' # uncomment to avoid generating mayavi visualizations (and save some memory...)
@@ -379,14 +387,16 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
 
     mlab.close(all=True)
 
-def anim_exist(filename, vext=vext):
+def check_if_anim_exist(filename, vext=vext):
     """
     Check if the movie already exists
 
+    returns True if the movie does not exist, False if it does
+
     """
-    return not(recompute or os.path.isfile(filename+vext))
+    return not(os.path.isfile(os.path.join(figpath, filename + vext)))
 
-
+SUPPORTED_FORMATS = ['.h5', '.mpg', '.mp4', '.gif', '.zip', '.mat', '.mkv']
 def anim_save(z, filename, display=True, flip=False, vext=vext,
               centered=False, T_movie=T_movie, verbose=False):
     """
@@ -405,7 +415,7 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         tmpdir = tempfile.mkdtemp()
 
         if PROGRESS:
-            pbar = progressbar.ProgBar(N_frame)
+            pbar = progressbar.ProgPercent(N_frame)
         print('Saving sequence ' + filename + vext)
         for frame in range(N_frame):
             if PROGRESS: pbar.update(frame)
@@ -445,8 +455,21 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         # 1) create temporary frames
         tmpdir, files = make_frames(z)
         # 2) convert frames to movie
+#         options = ' -y -f image2pipe -c:v png -i - -c:v libx264 -preset ultrafast -qp 0 -movflags +faststart -pix_fmt yuv420p '
+#         options += ' -g ' + str(fps) + '  -r ' + str(fps) + ' '
+#         cmd = 'cat '  + tmpdir + '/*.png  | ffmpeg '  + options + filename + vext + verb_
         options = ' -f mp4 -pix_fmt yuv420p -c:v libx264  -g ' + str(fps) + '  -r ' + str(fps) + ' '
         cmd = 'ffmpeg -i '  + tmpdir + '/frame%03d.png ' + options + filename + vext + verb_
+        os.system(cmd)
+        # 3) clean up
+        remove_frames(tmpdir, files)
+
+    if vext == '.mkv': # specially tuned for iPhone/iPod http://www.dudek.org/blog/82
+        # 1) create temporary frames
+        tmpdir, files = make_frames(z)
+        # 2) convert frames to movie
+        options = ' -y -f image2pipe -c:v png -i - -c:v libx264 -preset ultrafast -qp 0 -movflags +faststart -pix_fmt yuv420p  -g ' + str(fps) + '  -r ' + str(fps) + ' '
+        cmd = 'cat '  + tmpdir + '/*.png  | ffmpeg '  + options + filename + vext + verb_
         os.system(cmd)
         # 3) clean up
         remove_frames(tmpdir, files)
@@ -578,26 +601,45 @@ def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,
     movies.
     The figures names are automatically generated.
     """
-    if anim_exist(name, vext=vext):
+    if check_if_anim_exist(name, vext=vext):
         z = envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
                     B_V=B_V, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor,
                     theta=theta, B_theta=B_theta, alpha=alpha)
-        figures(z, name, vext=vext, do_figs=do_figs, do_movie=do_movie,
+    figures(z, name, vext=vext, do_figs=do_figs, do_movie=do_movie,
                     seed=seed, impulse=impulse, verbose=verbose, do_amp=do_amp, sparseness=sparseness)
 
 def figures(z, name, vext=vext, do_movie=True, do_figs=True,
                     seed=None, impulse=False, verbose=False, masking=False, do_amp=False, sparseness=0.):
-    import_mayavi()
-    if ((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and anim_exist(name, vext=ext): visualize(z, name=name)           # Visualize the Fourier Spectrum
-    if (do_movie and anim_exist(name, vext=vext)) or (MAYAVI and do_figs and anim_exist(name + '_cube', vext=ext)):
-        movie = rectif(random_cloud(z, seed=seed, impulse=impulse, do_amp=do_amp, sparseness=sparseness), verbose=verbose)
-    if (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and anim_exist(name + '_cube', vext=ext)): cube(movie, name=name + '_cube')   # Visualize the Stimulus cube
-    if (do_movie and anim_exist(name, vext=vext)): anim_save(movie, name, display=False, vext=vext)
 
-def in_show_video(filename):
-    from IPython.display import display, Image, HTML
+    import_mayavi()
+
+    if ((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and check_if_anim_exist(name, vext=ext):
+        visualize(z, name=os.path.join(figpath, name + ext))           # Visualize the Fourier Spectrum
+
+    if (do_movie and check_if_anim_exist(name, vext=vext)) or (MAYAVI and do_figs and check_if_anim_exist(name + '_cube', vext=ext)):
+        movie = rectif(random_cloud(z, seed=seed, impulse=impulse, do_amp=do_amp, sparseness=sparseness), verbose=verbose)
+
+    if (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and check_if_anim_exist(name + '_cube', vext=ext)):
+        cube(movie, name=os.path.join(figpath, name + '_cube' + ext))   # Visualize the Stimulus cube
+
+    if (do_movie) and check_if_anim_exist(name, vext=vext):
+        anim_save(movie, os.path.join(figpath, name), display=False, vext=vext)
+
+    if notebook:
+        in_show_video(name)
+
+def in_show_video(name):
+    print(name)
+    import os
+    from IPython.core.display import display, Image
+    if os.path.isfile(os.path.join(figpath, name + ext)):
+        display(Image(filename = os.path.join(figpath, name + ext)))
+    if os.path.isfile(os.path.join(figpath, name + '_cube' + ext)):
+        display(Image(filename = os.path.join(figpath, name + '_cube' + ext)))
+    from IPython.core.display import HTML
     from base64 import b64encode
-    video = open(os.path.join(figpath, filename + vext), "rb").read()
+    video = open(os.path.join(figpath, name + vext), "rb").read()
     video_encoded = b64encode(video)
-    video_tag = '<video controls  autoplay="autoplay" loop="loop" width=350px src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
+    video_tag = '<video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
     display(HTML(data=video_tag))
+
