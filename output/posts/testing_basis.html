@@ -669,7 +669,7 @@ In [12]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In []:
+In [16]:
 </div>
 <div class="inner_cell">
 <div class="input_area">
@@ -698,7 +698,21 @@ In []:
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>
-[8108 %] elapsed[sec]: 58.548 | ETA[sec]: -57.826 
+[51150 %] elapsed[sec]: 146.872 | ETA[sec]: -146.585 
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Saving sequence ../results/arma.mp4
+Title: 
+                      Started: 06/18/2014 17:36:44
+                      Finished: 06/18/2014 17:39:11
+                      Total time elapsed: 0.000 sec
+
 </pre>
 </div>
 </div>
@@ -713,7 +727,7 @@ In []:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In []:
+In [17]:
 </div>
 <div class="inner_cell">
 <div class="input_area">
@@ -724,6 +738,49 @@ In []:
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
   Hide output</i>
 </div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+arma
+
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_text output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">IOError</span>                                   Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-17-e2865f5d115e&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">----&gt; 1</span><span class="ansired"> </span>mc<span class="ansiblue">.</span>in_show_video<span class="ansiblue">(</span>name<span class="ansiblue">=</span><span class="ansiblue">'arma'</span><span class="ansiblue">)</span><span class="ansiblue"></span>
+
+<span class="ansigreen">/Users/lolo/Dropbox/science/MotionClouds/MotionClouds.pyc</span> in <span class="ansicyan">in_show_video</span><span class="ansiblue">(name)</span>
+<span class="ansigreen">    642</span>     <span class="ansigreen">from</span> IPython<span class="ansiblue">.</span>core<span class="ansiblue">.</span>display <span class="ansigreen">import</span> HTML<span class="ansiblue"></span>
+<span class="ansigreen">    643</span>     <span class="ansigreen">from</span> base64 <span class="ansigreen">import</span> b64encode<span class="ansiblue"></span>
+<span class="ansigreen">--&gt; 644</span><span class="ansired">     </span>video <span class="ansiblue">=</span> open<span class="ansiblue">(</span>os<span class="ansiblue">.</span>path<span class="ansiblue">.</span>join<span class="ansiblue">(</span>figpath<span class="ansiblue">,</span> name <span class="ansiblue">+</span> vext<span class="ansiblue">)</span><span class="ansiblue">,</span> <span class="ansiblue">"rb"</span><span class="ansiblue">)</span><span class="ansiblue">.</span>read<span class="ansiblue">(</span><span class="ansiblue">)</span><span class="ansiblue"></span>
+<span class="ansigreen">    645</span>     video_encoded <span class="ansiblue">=</span> b64encode<span class="ansiblue">(</span>video<span class="ansiblue">)</span><span class="ansiblue"></span>
+<span class="ansigreen">    646</span>     video_tag <span class="ansiblue">=</span> <span class="ansiblue">'&lt;video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/x-m4v;base64,{0}"&gt;'</span><span class="ansiblue">.</span>format<span class="ansiblue">(</span>video_encoded<span class="ansiblue">)</span><span class="ansiblue"></span>
+
+<span class="ansired">IOError</span>: [Errno 2] No such file or directory: 'results/arma.mp4'</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 </div>
 
