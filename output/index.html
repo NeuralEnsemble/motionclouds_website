@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+    <head>
     <meta charset="utf-8">
     <meta name="description" content="home page for Motion clouds">
-    <meta name="author" content="Laurent Perrinet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width">
     <title>Motion Clouds | Motion Clouds</title>
+
+                <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+                <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
+
+      <link rel="canonical" href="http://neuralensemble.github.io/MotionClouds/index.html">
+
+
+
     
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -21,84 +31,57 @@ MathJax.Hub.Config({
 });
 </script>
 
-    
-        
-            <link href="assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-        
-    
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    <![endif]-->
-    
-        
-            <link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
-        
-    
-    
+        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
 
     
 
+        
+    <meta name="author" content="Laurent Perrinet">
+            <meta name="og:title" content="Motion Clouds">
+        <meta name="og:url" content="http://neuralensemble.github.io/MotionClouds/index.html">
+            <meta name="og:description" content="home page for Motion clouds">
+        <meta name="og:site_name" content="Motion Clouds">
+        <meta name="og:type" content="article">
+
+    
     
 
+    <meta name="author" content="Laurent Perrinet">
+            <meta name="og:title" content="Motion Clouds">
+        <meta name="og:url" content="http://neuralensemble.github.io/MotionClouds/index.html">
+            <meta name="og:description" content="home page for Motion clouds">
+        <meta name="og:site_name" content="Motion Clouds">
+        <meta name="og:type" content="article">
 
     
+    
+        <meta name="description" itemprop="description" content="home page for Motion clouds">
+
 </head>
-
 <body>
     <section class="social">
         <ul>
-<!--        <h1 id="blog-title">
-            <a href="http://neuralensemble.github.io/MotionClouds/" title="Motion Clouds">Motion Clouds</a>
-        </h1>
-        
-        
-         -->
-        
-    
-        
-            <li><a href="#" title="Home"><i class="icon-home"></i></a></li>
-        
-    
-        
+                    <li><a href="intro.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="blog" title="Blog!"><i class="icon-folder-open-user"></i></a></li>
-        
-    
-        
             <li><a href="archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-        
-    
-        
             <li><a href="categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-        
-    
-        
             <li><a href="rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-        
-    
-        
             <li><a href="http://invibe.net" title="About my research"><i class="icon-user"></i></a></li>
-        
-    
-        
             <li><a href="https://github.com/NeuralEnsemble/MotionClouds" title="My Github"><i class="icon-github"></i></a></li>
-        
-    
-        
             <li><a href="https://plus.google.com/+LaurentPerrinet" title="My Google plus"><i class="icon-igoogle-plus"></i></a></li>
-        
-    
 
-<!--         -->
         </ul>
     </section>
     <section class="page-content">
         <div class="content" rel="main">
-            
+<article class="storypage" itemscope="itemscope" itemtype="http://schema.org/Article">
+    <header>
+            <h1 class="p-name entry-title" itemprop="headline name">Motion Clouds</h1>
 
-    <h1>Motion Clouds</h1>
-
-    <div>
-<p>These scripts implement a framework to generate random texture movies with controlled information content that we call <a href="http://neuralensemble.github.io/MotionClouds" title="The Motion Clouds page on neuralensemble">Motion Clouds</a>. In particular, these stimuli can be made closer to naturalistic textures compared to usual stimuli such as gratings and random-dot kinetograms. We simplified the definition to parametrically define these "Motion Clouds" around the most prevalent feature axis (mean and bandwith): direction, spatial frequency, orientation.</p>
+        
+    </header>
+    <div itemprop="articleBody text">
+    <p>These scripts implement a framework to generate random texture movies with controlled information content that we call <a href="http://neuralensemble.github.io/MotionClouds" title="The Motion Clouds page on neuralensemble">Motion Clouds</a>. In particular, these stimuli can be made closer to naturalistic textures compared to usual stimuli such as gratings and random-dot kinetograms. We simplified the definition to parametrically define these "Motion Clouds" around the most prevalent feature axis (mean and bandwith): direction, spatial frequency, orientation.</p>
 <p><img src="http://invibe.net/cgi-bin/index.cgi/SciBlog/2011-07-12?action=AttachFile&amp;do=get&amp;target=MotionPlaid_comp1.gif" width="100%"></p>
 <p>The description of this method was published in:</p>
 <ul>
@@ -122,7 +105,7 @@ MathJax.Hub.Config({
 <ol>
 <li>set the MC parameters and construct the Fourier envelope, then visualize it as iso-surfaces: </li>
 </ol>
-<div class="code"><pre><span class="kn">import</span> <span class="nn">MotionClouds</span> <span class="kn">as</span> <span class="nn">mc</span>
+<pre class="code literal-block"><span class="kn">import</span> <span class="nn">MotionClouds</span> <span class="kn">as</span> <span class="nn">mc</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="c"># define Fourier domain</span>
 <span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">ft</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">get_grids</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">N_X</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">N_Y</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">N_frame</span><span class="p">)</span> 
@@ -133,40 +116,50 @@ MathJax.Hub.Config({
     <span class="n">theta</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">B_theta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span> 
 <span class="c"># Visualize the Fourier Spectrum</span>
 <span class="n">mc</span><span class="o">.</span><span class="n">visualize</span><span class="p">(</span><span class="n">envelope</span><span class="p">)</span>  
-</pre></div>
+</pre>
 
 
 <ol>
 <li>perform the IFFT and contrast normalization; visualize the stimulus as a 'cube' visualization of the image sequence, </li>
 </ol>
-<div class="code"><pre><span class="n">movie</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">random_cloud</span><span class="p">(</span><span class="n">envelope</span><span class="p">)</span>
+<pre class="code literal-block"><span class="n">movie</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">random_cloud</span><span class="p">(</span><span class="n">envelope</span><span class="p">)</span>
 <span class="n">movie</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">rectif</span><span class="p">(</span><span class="n">movie</span><span class="p">)</span>
 <span class="c"># Visualize the Stimulus</span>
 <span class="n">mc</span><span class="o">.</span><span class="n">cube</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span> <span class="o">+</span> <span class="s">'_cube'</span><span class="p">)</span> 
-</pre></div>
+</pre>
 
 
 <ol>
 <li>export the stimulus as a movie (.mpeg format available), as separate frames (.bmp and .png formats available) in a compressed zipped folder, or as a Matlab matrix (.mat format). </li>
 </ol>
-<div class="code"><pre><span class="n">mc</span><span class="o">.</span><span class="n">anim_save</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">vext</span><span class="o">=</span><span class="s">'.mpeg'</span><span class="p">)</span>
-</pre></div>
+<pre class="code literal-block"><span class="n">mc</span><span class="o">.</span><span class="n">anim_save</span><span class="p">(</span><span class="n">movie</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">vext</span><span class="o">=</span><span class="s">'.mpeg'</span><span class="p">)</span>
+</pre>
 
 
 <p>If some parameters are not given, they are set to default values corresponding to a ''standard'' Motion Cloud. Moreover, the user can easily explore a range of different Motion Clouds simply by setting  an array of values for a determined parameter. Here, for example, we generate 8 MCs with increasing spatial frequency <code>sf_0</code> while keeping the other parameters fixed to default values:</p>
-<div class="code"><pre><span class="k">for</span> <span class="n">sf_0</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]:</span>
+<pre class="code literal-block"><span class="k">for</span> <span class="n">sf_0</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]:</span>
     <span class="n">name_</span> <span class="o">=</span> <span class="s">'figures/'</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">'-sf_0-'</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sf_0</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">'.'</span><span class="p">,</span> <span class="s">'_'</span><span class="p">)</span>
     <span class="c"># function performing plots for a given set of parameters</span>
     <span class="n">mc</span><span class="o">.</span><span class="n">figures_MC</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">ft</span><span class="p">,</span> <span class="n">name_</span><span class="p">,</span> <span class="n">sf_0</span><span class="o">=</span><span class="n">sf_0</span><span class="p">)</span> 
-</pre></div>
-</div>
+</pre>
+    </div>
+</article>
+                    <footer id="footer" role="contentinfo">
+            <p>Contents © 2014 <a href="mailto:laurent.perrinet@univ-amu.fr">Laurent Perrinet</a> - 
+Powered by <a href="http://getnikola.com">Nikola</a> - 
+Zen theme based in <a href="https://github.com/arusahni/website-template">Arusahni's website-template</a><br>
 
-
-            Contents © 2014         <a href="mailto:laurent.perrinet@univ-amu.fr">Laurent Perrinet</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
             
-	
+        </footer>
+
+        </div>
+    </section>
+    
+    
+                <script src="assets/js/all-nocdn.js" type="text/javascript"></script>
+    
  <!-- Social buttons -->
  <div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
  <a class="addthis_button_more"><i class="icon-share-sign icon-2x"></i>    Share</a>
@@ -189,22 +182,10 @@ MathJax.Hub.Config({
  <!-- End of social buttons -->
  
 
-        </div>
-    </section>
-    
-    
-        
-            <script src="assets/js/all-nocdn.js" type="text/javascript"></script>
-        
-    
-
-    
         <script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });
         </script>
-    
-    
 </body>
 </html>

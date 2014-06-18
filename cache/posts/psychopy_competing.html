@@ -1,60 +1,124 @@
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Analysis-of-a-discrimination-experiment">Analysis of a discrimination experiment<a class="anchor-link" href="#Analysis-of-a-discrimination-experiment">&#182;</a></h1>
 </div>
+</div>
+</div>
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the <code>psychopy_competition.py</code> script, we implemented an experiment to test whether one could discriminate the dominating motionin a sum of two motion cloudsin opposite directions.</p>
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Herein, we analyse the data that was collected over different sessions and try to draw some conclusions.</p>
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[]:
+</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="The-experiment">The experiment<a class="anchor-link" href="#The-experiment">&#182;</a></h2>
 </div>
+</div>
+</div>
 
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[1]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="c">#%pycat psychopy_competing.py</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
+</div>
 </div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Analysis,-version-1">Analysis, version 1<a class="anchor-link" href="#Analysis,-version-1">&#182;</a></h2>
 </div>
+</div>
+</div>
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In a first version of the experiment, we only stored the results in a numpy file:</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[2]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="o">!</span>ls  data/competing_v1_*npy
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
 data/competing_v1_bruno_Dec_14_1210.npy  data/competing_v1_lup_Dec_12_1003.npy	data/competing_v1_lup_Dec_12_1013.npy  data/competing_v1_lup_Dec_14_1201.npy  data/competing_v1_meduz_Dec_14_1204.npy
 
@@ -66,14 +130,16 @@ data/competing_v1_bruno_Dec_14_1210.npy  data/competing_v1_lup_Dec_12_1003.npy	d
 </div>
 
 </div>
+</div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[3]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">glob</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
@@ -86,18 +152,21 @@ In&nbsp;[3]:
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">&#39;perceived direction&#39;</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
 experiment  data/competing_v1_bruno_Dec_14_1210.npy , # trials= 50
 experiment  data/competing_v1_lup_Dec_12_1003.npy , # trials= 50
@@ -109,10 +178,10 @@ experiment  data/competing_v1_meduz_Dec_14_1204.npy , # trials= 50
 </div>
 </div>
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
+<div class="output_area"><div class="prompt"></div>
 
 
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZIAAAEPCAYAAABoekJnAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xl0FGW6BvCnqrfsW2cDwpIQGAg7AUUSQUdRVFRQHMd1
 BB2VTXFGRwPjEeUCA4iiCIoDiFe9yCbL6CiLiBj2JRkgIYQAQZBA0tnX3uq7f5TpIsNih05nged3
@@ -372,23 +441,26 @@ uXOe33miq8BXJET/RZZlvPrqq/jkk08wduxYAMDNN9+MP/3pTygqKsIbb7wBu92O3r17Y/To0W5t
 wJ133omEhAQAwIgRI7BkyRJ88cUXePDBBzFs2LAGSILIPXz7LxEReYRDW0RE5BE2EiIi8ggbCRER
 eYSNhIiIPMJGQkREHmEjISIij7CREBGRR9hIiIjII2wkRETkkf8HXsMvaRP94egAAAAASUVORK5C
 YII=
-">
-
-</div>
-</div>
-
-</div>
+"
+>
 </div>
 
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[4]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">alpha</span> <span class="o">=</span> <span class="o">.</span><span class="mi">3</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
@@ -430,20 +502,23 @@ In&nbsp;[4]:
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s">&#39;lower&#39;</span><span class="p">,</span> <span class="s">&#39;upper&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s">&#39;right&#39;</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
+<div class="output_wrapper">
+<div class="output">
 
 
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAtkAAAFHCAYAAAB0yVAwAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl8VPW5P/DPOWeykpBkEkIgYUmAIGEPiBQQFUp7f2Dd
 6nZtr71aq7d6LVi1FdRWb696rUupVq1VXHrtr9Uf2LrVBUVLExYJWcgeAknIQhIyk5CQfc45vz++
@@ -915,29 +990,44 @@ TUFBAXfccQf/+q//SjabZefOnezatWvu/tHRUR5++GFisRjFxcV8/OMfZ+vWrQDs27ePhx9+mMce
 e4w/+IM/4JZbblmAIyGEEJc/ydkiF8mf8BNCCCGEEGKBSbuIEEIIIYQQC0yKbCGEEEIIIRaYFNlC
 CCGEEEIsMCmyhRBCCCGEWGBSZAshhBBCCLHApMgWQgghhBBigUmRLYQQQgghxAKTIlsIIYQQQogF
 JkW2EEIIIYQQC+z/AJ+IA24/IQjzAAAAAElFTkSuQmCC
-">
-
-</div>
-</div>
-
-</div>
+"
+>
 </div>
 
 </div>
 
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>(note the subplots are equivalent up to a flip)</p>
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>One could not fit psychometric curves for this 2AFC. See for instance https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3110332/</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One could not fit psychometric curves for this 2AFC. See for instance <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3110332/">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3110332/</a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[30]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">n_hist</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">C_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="n">n_hist</span><span class="p">)</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
@@ -950,20 +1040,23 @@ In&nbsp;[30]:
 <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">&#39;contrast&#39;</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
+<div class="output_wrapper">
+<div class="output">
 
 
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAscAAAFHCAYAAABNruFrAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XtwVPX9//HX5gIJlxg2EFOMX0BQQVAJRKEGiyVN27FK
 oepMxzpWaUeFcrMjVWAcwQ614qVWLY6OodgZpuOtOkw7tUNRq8Fv5RvJWokk6QbwJ9eYhBgTQtjd
@@ -1144,43 +1237,62 @@ Dx+WbdvKzMxUSkpK9Hufd955Onz48Nn/4QGgn2HnGADOUkpKiu6//3798Y9/1KJFiyRJ1157rX76
 ncLhsKZPn67CwsLo64cPH9bGjRvV3NysYcOG6Xvf+54uu+wySdL8+fO1ceNGbd68WTfddJNuuOEG
 F64EAJz7uJUbAAAA4CBWAQAAADhojgEAAAAHzTEAAADgoDkGAAAAHDTHAAAAgIPmGAAAAHDQHAMA
 AAAOmmMAAADAQXMMAAAAOP4/bPUsBqM4WNwAAAAASUVORK5CYII=
-">
-
-</div>
-</div>
-
-</div>
+"
+>
 </div>
 
 </div>
 
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>let's explore another way:</p>
+<p>let&#39;s explore another way:</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[31]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">pypsignifit</span> <span class="kn">as</span> <span class="nn">psi</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
+</div>
 </div>
 </div>
 
 </div>
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>data : an array or a list of lists containing stimulus intensities in the first column, number of correct responses (nAFC) or number of YES- responses in the second column, and number of trials in the third column. Each row should correspond to one experimental block. In addition, the sequence of the rows is taken as the sequence of data aquisition. Alternatively, the relative frequencies of correct responses resp YES responses can be given.</p>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>data :
+an array or a list of lists containing stimulus intensities in the first column, number of correct responses (nAFC) or number of YES- responses in the second column, and number of trials in the third column. Each row should correspond to one experimental block. In addition, the sequence of the rows is taken as the sequence of data aquisition. Alternatively, the relative frequencies of correct responses resp YES responses can be given.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[32]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">stimulus_intensities</span><span class="p">,</span> <span class="n">percent_correct</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
 <span class="k">for</span> <span class="n">data_</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
     <span class="c">#print data_.shape</span>
@@ -1197,18 +1309,21 @@ In&nbsp;[32]:
 <span class="n">psidata</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">stimulus_intensities</span><span class="p">,</span> <span class="n">percent_correct</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">num_observations</span><span class="p">)))</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
 num_observations:  45
 
@@ -1220,17 +1335,25 @@ num_observations:  45
 </div>
 
 </div>
+</div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>BootstrapInference</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[34]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="c"># see http://psignifit.sourceforge.net/DESIGN.html</span>
 <span class="n">nafc</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">constraints</span> <span class="o">=</span> <span class="p">(</span> <span class="s">&#39;unconstrained&#39;</span><span class="p">,</span> <span class="s">&#39;unconstrained&#39;</span><span class="p">,</span> <span class="s">&#39;Beta(2,20)&#39;</span><span class="p">)</span>
@@ -1239,18 +1362,21 @@ In&nbsp;[34]:
 <span class="k">print</span> <span class="n">B</span><span class="o">.</span><span class="n">estimate</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
 [ 0.49862663  0.03601899  0.04546066]
 
@@ -1262,32 +1388,43 @@ In&nbsp;[34]:
 </div>
 
 </div>
+</div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How well do these parameters describe the data? The deviance is a measure that describes the goodness of fit for a model, based on the sum of the squares error metric:</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[35]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="k">print</span> <span class="n">B</span><span class="o">.</span><span class="n">deviance</span><span class="p">,</span> <span class="n">B</span><span class="o">.</span><span class="n">getThres</span><span class="p">()</span><span class="c">#, B.getCI(1)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
 0.186105675197 0.498626633193
 
@@ -1299,31 +1436,36 @@ In&nbsp;[35]:
 </div>
 
 </div>
+</div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[36]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">_</span> <span class="o">=</span> <span class="n">psi</span><span class="o">.</span><span class="n">psigniplot</span><span class="o">.</span><span class="n">plotPMF</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">xlabel_text</span><span class="o">=</span><span class="s">&#39;contrast&#39;</span><span class="p">,</span> <span class="n">showaxes</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
+<div class="output_wrapper">
+<div class="output">
 
 
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXEAAAD9CAYAAABKgkezAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAFgtJREFUeJzt3X9s1fW9x/HX4VRafq47ZyuNdFPsMMOYzEKnhtZrpOlm
 ZuKKTgPoFtMtOolCnZCsbchwS4dzQMAoZQs1sGSLji2QLds0DW5zh+p2a3uWKmy1GUO7WTp6wEL5
@@ -1425,52 +1567,61 @@ x7Vz507Nnz9f99xzz4jHWHmsp/21U1pbW4ecYrh8+fIhb9T86quvqrGxUdOmTVN2dra+9rWv6cYb
 b5ziXdu1bds2HT58WL29vcrNzdUDDzygaDQq6WLektTQ0KBwODz4xtg33HDDVG7ZE5LlzuM8tf72
 t7/pO9/5jj796U/L5/NJklauXKnjx49LsvVYT/shDgAYXVrXKQCAxBjiAGAYQxwADGOIA4BhDHEA
 MIwhDgCGMcQBwDCGOAAY9n8Tz8BAtogLpgAAAABJRU5ErkJggg==
-">
-
-</div>
-</div>
-
-</div>
+"
+>
 </div>
 
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[37]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">B</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[38]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">psi</span><span class="o">.</span><span class="n">GoodnessOfFit</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_pyerr">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_pyerr">
 <pre>
 <span class="ansired">---------------------------------------------------------------------------</span>
 <span class="ansired">IndexError</span>                                Traceback (most recent call last)
@@ -1509,10 +1660,10 @@ In&nbsp;[38]:
 </div>
 </div>
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
+<div class="output_area"><div class="prompt"></div>
 
 
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAp8AAAH6CAYAAABBOSd8AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3VFslfX9x/FP1wYQKIHnmK5uzRQUMi7MRsRARje6kprM
 xAQuSBbchSNExSiUDZwtI4ELMDNqiM46EkrKhRfLZiRw4ZZmQmbdsqXSQ9QZagdhMhiGc9ZVC1mg
@@ -1769,20 +1920,26 @@ Ql1dXXrggQcq+pEupeQfPnxYx44dU01NjVatWqWHH344keyRkRF1dXUpk8kol8tpzZo1am5urkj2
 3r179fHHH2tkZERz587V2rVrNTY2Np4tTd2eqxaWvSwlfyq76bmXpeTTTTuee1lKfqFKd5NeVraX
 5odPAAAA+FEVbzgCAADA7YHDJwAAABLD4RMAAACJ4fAJAACAxHD4BAAAQGI4fAIAACAxHD4BAACQ
 GA6fAAAASMz/AQUNsjkJYyDWAAAAAElFTkSuQmCC
-">
-
-</div>
-</div>
-
-</div>
+"
+>
 </div>
 
 </div>
 
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Top left: displays the given data points and the fitted psychometric function. Thresholds and confidence intervals are plotted at three levels (default: 25%, 50% and 75% ). Mind that the y-axis starts at 0.5 (the guess rate in a 2AFC task), therefore the 50% threshold is located at . signifies the deviance value.</li>
+<li>Top left: displays the given data points and the fitted psychometric function. Thresholds and confidence intervals are plotted at three levels (default: 25%, 50% and 75% ). Mind that the y-axis starts at 0.5 (the guess rate in a 2AFC task), therefore the 50% threshold is located at .  signifies the deviance value.</li>
 <li>Bottom left: histogram of bootstrapped deviance values (default = 2000 samples). The 95% confidence limits are indicated by red dotted lines and the actually observed deviance is indicated by the solid red line. If the observed deviance is outside the 95% confidence limits that indicates a bad fit and you will receive a warning message.</li>
 <li>Top middle: deviance residuals are plotted as a function of the predicted correct response rate of the model (x-axis corresponds to y-axis in panel 1). This plot helps you to detect systematic deviations between the model and the data. The dotted line is the best linear fit that relates deviance residuals to the predicted correct response rate. Rpd gives the numerical value of that correlation. Note that the residuals are scaled to account for differences in the variability of a binomially distributed random variable (e.g. maximum variance at p=0.5).</li>
 <li>Bottom middle: histogram of bootstrapped correlation coefficients for the correlation between residuals and performance level (same logic applies as in panel 2). Dotted lines denote 95% intervals of the sampled correlation coefficients, the solid line marks the observed correlation between model prediction and deviance residuals.</li>
@@ -1790,41 +1947,50 @@ GA6fAAAASMz/AQUNsjkJYyDWAAAAAElFTkSuQmCC
 <li>Bottom right: histogram of bootstrapped correlation coefficients for the correlation between deviance residuals and block index (same logic applies as in panel 2 and 4).</li>
 </ul>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[13]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">priors</span> <span class="o">=</span> <span class="p">(</span> <span class="s">&#39;Gauss(0,5)&#39;</span><span class="p">,</span> <span class="s">&#39;Gamma(1,3)&#39;</span><span class="p">,</span> <span class="s">&#39;Beta(2,20)&#39;</span> <span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[14]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">mcmc</span> <span class="o">=</span> <span class="n">psi</span><span class="o">.</span><span class="n">BayesInference</span> <span class="p">(</span> <span class="n">psidata</span><span class="p">,</span> <span class="n">priors</span><span class="o">=</span><span class="n">priors</span><span class="p">,</span> <span class="n">nafc</span><span class="o">=</span><span class="n">nafc</span> <span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
 Acceptance: 0.943333333333
 Acceptance:
@@ -1832,8 +1998,8 @@ Acceptance:
 </div>
 </div>
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stderr">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
 <pre>
 /usr/local/lib/python2.7/site-packages/pypsignifit/pygibbsit.py:63: RuntimeWarning: divide by zero encountered in log
   G2 = 2 * sum ( T*log(T/fitted) )
@@ -1850,8 +2016,8 @@ Acceptance:
 </div>
 </div>
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
  0.541666666667
 Acceptance: 0.525
@@ -1861,8 +2027,8 @@ Acceptance: 0.506015960712
 </div>
 </div>
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stderr">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
 <pre>
 /usr/local/lib/python2.7/site-packages/pypsignifit/pygibbsit.py:94: RuntimeWarning: invalid value encountered in multiply
   G2 = 2 * sum ( T*log(T/fitted) )
@@ -1875,66 +2041,76 @@ Acceptance: 0.506015960712
 </div>
 
 </div>
+</div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[15]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">mcmc</span><span class="o">.</span><span class="n">estimate</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_area"><div class="prompt output_prompt">
     Out[15]:</div>
-<div class="box-flex1 output_subarea output_pyout">
 
 
+<div class="output_text output_subarea output_pyout">
 <pre>
 array([-1.63854678,  2.99021992,  0.0866207 ])
 </pre>
-
-</div>
-</div>
-
-</div>
 </div>
 
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[16]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">psi</span><span class="o">.</span><span class="n">ConvergenceMCMC</span> <span class="p">(</span> <span class="n">mcmc</span> <span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stderr">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
 <pre>
 /usr/local/lib/python2.7/site-packages/pypsignifit/psignidata.py:1330: RuntimeWarning: invalid value encountered in double_scalars
   B = n * sum( (psi_i-psi_mean)**2 ) / (m-1)
@@ -1943,10 +2119,10 @@ In&nbsp;[16]:
 </div>
 </div>
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
+<div class="output_area"><div class="prompt"></div>
 
 
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkwAAADRCAYAAAA+A+13AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXdck9f+xz9JGGGHIEOWgOKqAy11FFRAtGq1Uq8dauu+
 3qu919XW1au/tl7r6HW01tKh1mrHdVS91VpbBw7AhYA4UEAERPaWEUby/P6ICQl5Mp7skPN+vfKC
@@ -2464,38 +2640,44 @@ MQZbW1sEBATobZczZszA9u3bIRaLKeibtApD6jLRjcd03YcmnYJMJsOOHTvUjyMIIY2pVCoolUqY
 mZkhJycH77//Pvbu3avxOI4Q0rXRHaYugP5yIES/qqoqvPfee+o7rMuXL6fOEiFEA91hIoQQQgjh
 QEHfhBBCCCEcqMNECCGEEMKBOkyEEEIIIRyow0QIIYQQwoE6TIQQQgghHP4fS8EGmd5jwhIAAAAA
 SUVORK5CYII=
-">
-
-</div>
-</div>
-
-</div>
+"
+>
 </div>
 
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[17]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">psi</span><span class="o">.</span><span class="n">GoodnessOfFit</span> <span class="p">(</span> <span class="n">mcmc</span> <span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stderr">
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
 <pre>
 /usr/local/lib/python2.7/site-packages/matplotlib/lines.py:503: RuntimeWarning: invalid value encountered in greater_equal
   return np.alltrue(x[1:] - x[0:-1] &gt;= 0)
@@ -2506,10 +2688,10 @@ In&nbsp;[17]:
 </div>
 </div>
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
+<div class="output_area"><div class="prompt"></div>
 
 
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAssAAAILCAYAAAAe4NFvAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXl8E9Xa+L+TpElaukBBKMsFFVCrLCK4scn+u3Ityisg
 KiqX6yuLIDsIZd9EkH1TFEXRy6ugIiBgEUQoy5WtCIhiRasUkEuhdE2bJvn9UTMk3UsmmUxyvp9P
@@ -3884,54 +4066,60 @@ MhEYGMjSpUvdD/gBzJw5k6ysLBYtWkR8fDwDBw403qFC+Mi1EJvtpk+fTmNjIy+88AILFy5k5syZ
 /OUvf8FisTBs2DBD/Si0Myk5j+8TVVVVrF27loyMjB+6KUIIg66VeH7qqaeYM2eOxyf1hbjSXCux
 Ka4schuGD8nvIgrhPySehbgySWyKviZnloUQQgghhPBAziwLIYQQQgjhgSTLQgghhBBCeCDJshBC
 CCGEEB5IsiyEEEIIIYQHkiwLIYQQQgjhgSTLQgghhBBCePD/W1EqgankA3YAAAAASUVORK5CYII=
-">
-
-</div>
-</div>
-
-</div>
+"
+>
 </div>
 
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[18]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre> <span class="n">psi</span><span class="o">.</span><span class="n">ParameterPlot</span> <span class="p">(</span> <span class="n">mcmc</span> <span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area"><div class="prompt output_prompt">
+<div class="output_area"><div class="prompt output_prompt">
     Out[18]:</div>
-<div class="box-flex1 output_subarea output_pyout">
 
 
+<div class="output_text output_subarea output_pyout">
 <pre>
 [&lt;matplotlib.axes.Axes at 0x10cd42610&gt;,
  &lt;matplotlib.axes.Axes at 0x10ce1aa90&gt;,
  &lt;matplotlib.axes.Axes at 0x10cef8810&gt;]
 </pre>
-
-</div>
 </div>
 
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
+</div>
+
+<div class="output_area"><div class="prompt"></div>
 
 
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAocAAADTCAYAAADzlLkqAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXlYE9f6x79ZgISdsAQRURDEDRF3BRcQbdVaba+37VW7
 2fa2at1ad2tvW39Uq7a2WrW2ttUueq9aq1at1gUV3FEWURERcAFZZJUtgWR+f9DEBCZkkplscD7P
@@ -4495,40 +4683,46 @@ EhUVFcydOxdfX18mTpxIcnIyjz/+OAEBAQwbNgwADw8PZs6cyRNPPIGvr6+YWOkAkmyrL1YgEAgE
 AoFA0CcRw8oCgUAgEAgEAiuicSgQCAQCgUAgsCIahwKBQCAQCAQCK6JxKBAIBAKBQCCwIhqHAoFA
 IBAIBAIronEoEAgEAoFAILAiGocCgUAgEAgEAiuicSgQCAQCgUAgsPL/PB9e+midPIsAAAAASUVO
 RK5CYII=
-">
-
-</div>
-</div>
-
-</div>
+"
+>
 </div>
 
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[19]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">psi</span><span class="o">.</span><span class="n">plotInfluential</span><span class="p">(</span><span class="n">mcmc</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area"><div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
+<div class="output_wrapper">
+<div class="output">
 
 
+<div class="output_area"><div class="prompt"></div>
+
+
+<div class="output_png output_subarea ">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZIAAAH5CAYAAACrsbhjAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3X98U/W9P/DXSdIm/UlJIBSpQClFFN0AK6hF2S2r9z5Q
 7spDvXP4Y97OLwwmP3SoFMZEHQMVi+NOUKQM9+v6uN2Gc5sTe3edUKqw2kbBH4uVVq3SBhpKf/9I
@@ -4865,41 +5059,49 @@ n0CSJGi1Wtx3331IT08P+Jn8xcZ7flpa2qB1XHnllUhJSQk4JmSxWJCRkYHLLrsMx48fR3p6ut96
 FN94Yysi8ksURWzYsAEPPvggMjMzo90cimHs2iKiQRobG7F27VpcddVVTCI0JO6REBGRLNwjISIi
 WZhIiIhIFiYSIiKShYmEiIhkYSIhIiJZmEiIiEgWJhIiIpLl/wNTJ8xIneuiZgAAAABJRU5ErkJg
 gg==
-">
-
-</div>
-</div>
-
-</div>
+"
+>
 </div>
 
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[19]:
 </div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre> 
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In&nbsp;[]:
 </div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre> 
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">&nbsp;&nbsp;Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+&nbsp;&nbsp;Hide output</i>
+</div>
 </div>
 </div>
 

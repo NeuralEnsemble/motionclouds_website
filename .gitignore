@@ -4,5 +4,7 @@ doc/montypython.npy
 .@__thumb
 doc/diff.tex
 results
+.ipynb_checkpoints
+posts/.ipynb_checkpoints
 *pyc
 *pyo

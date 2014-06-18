@@ -1,12 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    
+<html prefix="
+og: http://ogp.me/ns#
+article: http://ogp.me/ns/article#
+" lang="en">
+    <head>
     <meta charset="utf-8">
-    <meta name="description" content="">
-    <meta name="author" content="Laurent Perrinet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width">
     <title>Testing discrimination between Motion Clouds with psychopy | Motion Clouds</title>
+
+                <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+
+                <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+
+      <link rel="canonical" href="http://neuralensemble.github.io/MotionClouds/posts/psychopy_discrimination.html">
+
+
+
     
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -21,183 +30,200 @@ MathJax.Hub.Config({
 });
 </script>
 
-    
-        
-            <link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-        
-    
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
-    <![endif]-->
-    
-        
-            <link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
-        
-    
-    
+        <!--[if lt IE 9]><script src="/assets/js/html5.js"></script><![endif]-->
 
     
 
     
+    <meta name="author" content="Laurent Perrinet">
+            <meta name="og:title" content="Testing discrimination between Motion Clouds with psychopy">
+        <meta name="og:url" content="http://neuralensemble.github.io/MotionClouds/posts/psychopy_discrimination.html">
+            <meta name="og:description" content="Analysis of a discrimination experiment¶
 
 
+
+
+
+
+
+
+
+In the psychopy_discrimination.py script, we implemented an experiment to test whether the overall shape of motion clouds could influence discriminati">
+        <meta name="og:site_name" content="Motion Clouds">
+        <meta name="og:type" content="article">
 
     
+    
+
 </head>
-
 <body>
     <section class="social">
         <ul>
-<!--        <h1 id="blog-title">
-            <a href="http://neuralensemble.github.io/MotionClouds/" title="Motion Clouds">Motion Clouds</a>
-        </h1>
-        
-        
-         -->
-        
-    
-        
-            <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
-        
-    
-        
+                    <li><a href="../intro.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../blog" title="Blog!"><i class="icon-folder-open-user"></i></a></li>
-        
-    
-        
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
-        
-    
-        
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
-        
-    
-        
             <li><a href="../rss.xml" title="RSS"><i class="icon-rss"></i></a></li>
-        
-    
-        
             <li><a href="http://invibe.net" title="About my research"><i class="icon-user"></i></a></li>
-        
-    
-        
             <li><a href="https://github.com/NeuralEnsemble/MotionClouds" title="My Github"><i class="icon-github"></i></a></li>
-        
-    
-        
             <li><a href="https://plus.google.com/+LaurentPerrinet" title="My Google plus"><i class="icon-igoogle-plus"></i></a></li>
-        
-    
 
-<!--         -->
         </ul>
     </section>
     <section class="page-content">
         <div class="content" rel="main">
-            
     <div class="post">
-    
-    <h1>Testing discrimination between Motion Clouds with psychopy</h1>
-    
+        <h1 class="p-name entry-title" itemprop="headline name">Testing discrimination between Motion Clouds with psychopy</h1>
 
         <div class="meta">
             <div class="authordate">
-                <time class="timeago" datetime="2013-08-21T08:17:00+00:00">2013-08-21 08:17</time>
-            </div>
+                <time class="timeago" datetime="2013-08-21T08:17:00+02:00">2013-08-21 08:17</time>
             
-    
-
-            
-    
-          |  
+                      |  
         <a href="psychopy_discrimination.ipynb" id="sourcelink">Source</a>
           |  
         <a href="javascript:%24.getScript(%22/assets/js/miniPageNav.js%22);">Minimap</a>
-          |  
-        Note: Just click on any IPython input cell to see the output.
-    
 
-            
-    
-    <div class="tags">
+            </div>
+                    <div itemprop="keywords" class="tags">
         <ul>
-        More posts about:  
-        
-            <li><a class="tag" href="../categories/motionclouds.html">motionclouds</a></li>
-        
-            <li><a class="tag" href="../categories/psychopy.html">psychopy</a></li>
-        
-            <li><a class="tag" href="../categories/python.html">python</a></li>
-        
+        Tags : 
+           <li><a class="tag p-category" href="../categories/motionclouds.html" rel="tag">motionclouds</a></li>
+           <li><a class="tag p-category" href="../categories/psychopy.html" rel="tag">psychopy</a></li>
+           <li><a class="tag p-category" href="../categories/python.html" rel="tag">python</a></li>
         </ul>
-    </div>
-    
+        </div>
 
         </div>
         <div class="body">
-            <div class="text_cell_render border-box-sizing rendered_html">
+            <div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Analysis-of-a-discrimination-experiment">Analysis of a discrimination experiment<a class="anchor-link" href="psychopy_discrimination.html#Analysis-of-a-discrimination-experiment">¶</a>
 </h1>
 </div>
+</div>
+</div>
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the <code>psychopy_discrimination.py</code> script, we implemented an experiment to test whether the overall shape of motion clouds could influence discrimination of speed.</p>
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Herein, we analyse the data that was collected over different sessions and try to draw some conclusions.</p>
 </div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In [1]:
+</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pylab</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="The-experiment">The experiment<a class="anchor-link" href="psychopy_discrimination.html#The-experiment">¶</a>
 </h2>
 </div>
-
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In [6]:
 </div>
-<div class="input_area box-flex1">
+</div>
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In [2]:
+</div>
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="c">#%pycat psychopy_discrimination.py</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
+</div>
 </div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Analysis---version-1">Analysis - version 1<a class="anchor-link" href="psychopy_discrimination.html#Analysis---version-1">¶</a>
 </h2>
 </div>
+</div>
+</div>
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In a first version of the experiment, we only stored the results in a numpy file.</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In [7]:
 </div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="o">!</span>ls  data/discriminating_*
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In [11]:
+</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="o">!</span>ls  ../data/discriminating_*
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area">
+<div class="output_area">
 <div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
-data/discriminating_john_Jan_23_1515.npy  data/discriminating_lup_Jan_23_1401.npy  data/discriminating_lup_Jan_24_0914.npy  data/discriminating_lup_Jan_24_0931.npy  data/discriminating_v2_lup_Feb_07_1409.pickle
-data/discriminating_lup.pickle		  data/discriminating_lup_Jan_23_1735.npy  data/discriminating_lup_Jan_24_0919.npy  data/discriminating_lup_Jan_24_0937.npy  data/discriminating_v2_lup_Feb_07_1434.pickle
+../data/discriminating_john_Jan_23_1515.npy  ../data/discriminating_lup_Jan_24_0914.npy  ../data/discriminating_lup_Jan_24_0937.npy
+../data/discriminating_lup_Jan_23_1401.npy   ../data/discriminating_lup_Jan_24_0919.npy  ../data/discriminating_v2_lup_Feb_07_1409.pickle
+../data/discriminating_lup_Jan_23_1735.npy   ../data/discriminating_lup_Jan_24_0931.npy  ../data/discriminating_v2_lup_Feb_07_1434.pickle
 
 </pre>
 </div>
@@ -207,66 +233,113 @@ data/discriminating_lup.pickle		  data/discriminating_lup_Jan_23_1735.npy  data/
 </div>
 
 </div>
+</div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
-In [8]:
+In [12]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="o">!</span>ls  ../data/
+</pre></div>
+
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+competing_v1_bruno_Dec_14_1210.npy  competing_v1_meduz_Dec_14_1204.npy	 discriminating_lup_Jan_24_0914.npy  discriminating_v2_lup_Feb_07_1409.pickle
+competing_v1_lup_Dec_12_1003.npy    discriminating_john_Jan_23_1515.npy  discriminating_lup_Jan_24_0919.npy  discriminating_v2_lup_Feb_07_1434.pickle
+competing_v1_lup_Dec_12_1013.npy    discriminating_lup_Jan_23_1401.npy	 discriminating_lup_Jan_24_0931.npy
+competing_v1_lup_Dec_14_1201.npy    discriminating_lup_Jan_23_1735.npy	 discriminating_lup_Jan_24_0937.npy
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In [4]:
+</div>
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">glob</span>
-<span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">'data/discriminating_*npy'</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">'../data/discriminating_*npy'</span><span class="p">):</span>
     <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">fn</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">shape</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'analyzing results'</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">'# of trials :'</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">'average results: '</span><span class="p">,</span> <span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">*.</span><span class="mi">5</span><span class="o">+.</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">'# of trials :'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">'average results: '</span><span class="p">,</span> <span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">*.</span><span class="mi">5</span><span class="o">+.</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area">
+<div class="output_area">
 <div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
-data/discriminating_john_Jan_23_1515.npy (2, 50)
+../data/discriminating_john_Jan_23_1515.npy (2, 50)
 analyzing results
-# of trials : [ 50.          24.50835188]
+# of trials : [ 50.     24.508]
 average results:  [ 0.48  1.  ]
-data/discriminating_lup_Jan_23_1401.npy (2, 50)
+../data/discriminating_lup_Jan_23_1401.npy (2, 50)
 analyzing results
-# of trials : [ 50.          28.12570981]
+# of trials : [ 50.     28.126]
 average results:  [ 0.66  1.  ]
-data/discriminating_lup_Jan_23_1735.npy (3, 50)
+../data/discriminating_lup_Jan_23_1735.npy (3, 50)
 analyzing results
 # of trials : [  9.  14.  13.]
 average results:  [ 1.  1.  1.]
-data/discriminating_lup_Jan_24_0914.npy (3, 50)
+../data/discriminating_lup_Jan_24_0914.npy (3, 50)
 analyzing results
 # of trials : [ 17.  21.  12.]
-average results:  [ 0.64705882  0.85714286  1.        ]
-data/discriminating_lup_Jan_24_0919.npy (3, 50)
+average results:  [ 0.647  0.857  1.   ]
+../data/discriminating_lup_Jan_24_0919.npy (3, 50)
 analyzing results
 # of trials : [ 10.  25.  15.]
-average results:  [ 0.7         0.32        0.53333333]
-data/discriminating_lup_Jan_24_0931.npy (7, 50)
+average results:  [ 0.7    0.32   0.533]
+../data/discriminating_lup_Jan_24_0931.npy (7, 50)
 analyzing results
 # of trials : [  3.   4.   8.   8.   7.  12.   8.]
-average results:  [ 0.66666667  1.          0.625       0.375       1.          0.16666667
-  0.125     ]
-data/discriminating_lup_Jan_24_0937.npy (7, 50)
+average results:  [ 0.667  1.     0.625  0.375  1.     0.167  0.125]
+../data/discriminating_lup_Jan_24_0937.npy (7, 50)
 analyzing results
 # of trials : [  7.   5.   6.  12.  10.   2.   8.]
-average results:  [ 0.85714286  0.8         0.83333333  0.41666667  0.2         1.          0.375     ]
+average results:  [ 0.857  0.8    0.833  0.417  0.2    1.     0.375]
 
 </pre>
 </div>
@@ -276,35 +349,43 @@ average results:  [ 0.85714286  0.8         0.83333333  0.41666667  0.2         
 </div>
 
 </div>
+</div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
-In [9]:
+In [5]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="o">%</span><span class="k">whos</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area">
+<div class="output_area">
 <div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
 Variable   Type       Data/Info
 -------------------------------
-fn         str        data/discriminating_lup_Jan_24_0937.npy
+fn         str        ../data/discriminating_lup_Jan_24_0937.npy
 glob       module     &lt;module 'glob' from '/usr&lt;...&gt;/lib/python2.7/glob.pyc'&gt;
+np         module     &lt;module 'numpy' from '/us&lt;...&gt;ages/numpy/__init__.pyc'&gt;
+plt        module     &lt;module 'matplotlib.pyplo&lt;...&gt;s/matplotlib/pyplot.pyc'&gt;
+pylab      module     &lt;module 'pylab' from '/us&lt;...&gt;site-packages/pylab.pyc'&gt;
 results    ndarray    7x50: 350 elems, type `float64`, 2800 bytes
 
 </pre>
@@ -315,271 +396,323 @@ results    ndarray    7x50: 350 elems, type `float64`, 2800 bytes
 </div>
 
 </div>
+</div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Another solution is to use:</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In [10]:
 </div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">data</span><span class="o">=</span> <span class="mi">1</span>
-<span class="n">np</span><span class="o">.</span><span class="n">savez</span><span class="p">(</span><span class="s">'toto'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s">'toto.npz'</span><span class="p">)[</span><span class="s">'data'</span><span class="p">]</span>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In [6]:
+</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="c">#data= 1</span>
+<span class="c">#np.savez('toto', data=data, results=results)</span>
+<span class="c">#print np.load('toto.npz')['data']</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
 </div>
-</div>
-
-<div class="output_hidden">
-
-<div class="vbox output_wrapper">
-<div class="output vbox">
-
-
-<div class="hbox output_area">
-<div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
-<pre>
-1
-
-</pre>
 </div>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
 </div>
-
-</div>
-
-</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>or directly <code>psychopy.misc</code>:</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
-<div class="prompt input_prompt">
-In [11]:
 </div>
-<div class="input_area box-flex1">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In [7]:
+</div>
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="kn">from</span> <span class="nn">psychopy</span> <span class="kn">import</span> <span class="n">misc</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
-In [12]:
+In [9]:
 </div>
-<div class="input_area box-flex1">
-<div class="highlight"><pre><span class="n">info</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">fromFile</span><span class="p">(</span><span class="s">'data/discriminating.pickle'</span><span class="p">)</span>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight"><pre><span class="c">#info = misc.fromFile('../data/discriminating.pickle')</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
-In [13]:
+In [10]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="n">alphas</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-.</span><span class="mi">5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]</span>
-<span class="n">fileName</span> <span class="o">=</span> <span class="s">'data/discriminating_'</span> <span class="o">+</span> <span class="n">info</span><span class="p">[</span><span class="s">'observer'</span><span class="p">]</span> <span class="o">+</span> <span class="s">'.pickle'</span>
+<span class="n">fileName</span> <span class="o">=</span> <span class="s">'../data/discriminating_'</span> <span class="o">+</span> <span class="n">info</span><span class="p">[</span><span class="s">'observer'</span><span class="p">]</span> <span class="o">+</span> <span class="s">'.pickle'</span>
 <span class="n">info</span><span class="p">[</span><span class="s">'alphas'</span><span class="p">]</span> <span class="o">=</span> <span class="n">alphas</span>
 <span class="n">info</span><span class="p">[</span><span class="s">'results'</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span>
 <span class="c">#numpy.savez(fileName, results=results, alphas=alphas)</span>
 <span class="n">misc</span><span class="o">.</span><span class="n">toFile</span><span class="p">(</span><span class="n">fileName</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
+</div>
+</div>
+</div>
+
+<div class="output_wrapper output_hidden">
+<div class="output">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_text output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">NameError</span>                                 Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-10-1bd6d05d02af&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">      1</span> alphas <span class="ansiblue">=</span> <span class="ansiblue">[</span><span class="ansiblue">-</span><span class="ansicyan">1.</span><span class="ansiblue">,</span> <span class="ansiblue">-</span><span class="ansicyan">.5</span><span class="ansiblue">,</span> <span class="ansicyan">0.</span><span class="ansiblue">,</span> <span class="ansicyan">0.5</span><span class="ansiblue">,</span> <span class="ansicyan">1.</span><span class="ansiblue">,</span> <span class="ansicyan">1.5</span><span class="ansiblue">,</span> <span class="ansicyan">2.</span><span class="ansiblue">]</span><span class="ansiblue"></span>
+<span class="ansigreen">----&gt; 2</span><span class="ansired"> </span>fileName <span class="ansiblue">=</span> <span class="ansiblue">'../data/discriminating_'</span> <span class="ansiblue">+</span> info<span class="ansiblue">[</span><span class="ansiblue">'observer'</span><span class="ansiblue">]</span> <span class="ansiblue">+</span> <span class="ansiblue">'.pickle'</span><span class="ansiblue"></span>
+<span class="ansigreen">      3</span> info<span class="ansiblue">[</span><span class="ansiblue">'alphas'</span><span class="ansiblue">]</span> <span class="ansiblue">=</span> alphas<span class="ansiblue"></span>
+<span class="ansigreen">      4</span> info<span class="ansiblue">[</span><span class="ansiblue">'results'</span><span class="ansiblue">]</span> <span class="ansiblue">=</span> results<span class="ansiblue"></span>
+<span class="ansigreen">      5</span> <span class="ansired">#numpy.savez(fileName, results=results, alphas=alphas)</span><span class="ansiblue"></span><span class="ansiblue"></span>
+
+<span class="ansired">NameError</span>: name 'info' is not defined</pre>
 </div>
 </div>
 
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Analysis---version-2">Analysis - version 2<a class="anchor-link" href="psychopy_discrimination.html#Analysis---version-2">¶</a>
 </h2>
 </div>
+</div>
+</div>
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the second version, we stored more data:</p>
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
 In [14]:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="kn">import</span> <span class="nn">glob</span>
 <span class="kn">from</span> <span class="nn">psychopy</span> <span class="kn">import</span> <span class="n">misc</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">'data/discriminating_v2_*pickle'</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">fn</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">'../data/discriminating_v2_*pickle'</span><span class="p">):</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">fromFile</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
     <span class="k">print</span> <span class="n">fn</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">shape</span>
     <span class="k">print</span><span class="p">(</span><span class="s">'analyzing results'</span><span class="p">)</span>
     <span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'alphas'</span><span class="p">])</span>
     <span class="k">print</span> <span class="s">' alphas = '</span><span class="p">,</span> <span class="n">alphas</span>
-    <span class="k">print</span> <span class="s">'# of trials :'</span><span class="p">,</span> <span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'results'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">print</span> <span class="s">'average results: '</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'results'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'results'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">*.</span><span class="mi">5</span><span class="o">+.</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">'# of trials :'</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'results'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">'average results: '</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'results'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'results'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">*.</span><span class="mi">5</span><span class="o">+.</span><span class="mi">5</span><span class="p">)</span>
     <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="n">alphas</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">alphas</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'alphas'</span><span class="p">]</span> <span class="o">-</span> <span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'results'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">numpy</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'results'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">*.</span><span class="mi">5</span><span class="o">+.</span><span class="mi">5</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span> <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'alphas'</span><span class="p">]</span> <span class="o">-</span> <span class="n">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'results'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s">'results'</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">*.</span><span class="mi">5</span><span class="o">+.</span><span class="mi">5</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span> <span class="p">)</span>
 <span class="c">#    for i_trial in xrange(data['results'].shape[1]):</span>
 <span class="c">#        ax.scatter(data['alphas'][data['results']</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'alpha'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'</span><span class="si">% c</span><span class="s">orrect'</span><span class="p">)</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
 </div>
 </div>
+</div>
 
-<div class="output_hidden">
+<div class="output_wrapper output_hidden">
+<div class="output">
 
-<div class="vbox output_wrapper">
-<div class="output vbox">
+<div class="output_wrapper">
+<div class="output">
 
 
-<div class="hbox output_area">
+<div class="output_area">
 <div class="prompt"></div>
-<div class="box-flex1 output_subarea output_stream output_stdout">
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>
-data/discriminating_v2_lup_Feb_07_1409.pickle (7, 50)
+ ../data/discriminating_v2_lup_Feb_07_1409.pickle (7, 50)
 analyzing results
  alphas =  [-1.  -0.5  0.   0.5  1.   1.5  2. ]
 # of trials : [ 10.   4.   5.  11.   6.  11.   3.]
-average results:  [ 0.7         1.          0.4         0.54545455  0.83333333  0.27272727
-  1.        ]
-data/discriminating_v2_lup_Feb_07_1434.pickle (7, 50)
+average results:  [ 0.7    1.     0.4    0.545  0.833  0.273  1.   ]
+../data/discriminating_v2_lup_Feb_07_1434.pickle (7, 50)
 analyzing results
  alphas =  [-1.  -0.5  0.   0.5  1.   1.5  2. ]
 # of trials : [  4.   3.  10.  12.   8.   8.   5.]
-average results:  [ 0.75        0.66666667  0.8         0.5         0.125       0.25        0.4       ]
+average results:  [ 0.75   0.667  0.8    0.5    0.125  0.25   0.4  ]
 
 </pre>
 </div>
 </div>
 
-<div class="hbox output_area">
+<div class="output_area">
 <div class="prompt output_prompt">
     Out[14]:</div>
-<div class="box-flex1 output_subarea output_pyout">
 
 
+<div class="output_text output_subarea output_pyout">
 <pre>
-&lt;matplotlib.text.Text at 0x10f75e850&gt;
+&lt;matplotlib.text.Text at 0x1068affd0&gt;
 </pre>
-
-</div>
 </div>
 
-<div class="hbox output_area">
+</div>
+
+<div class="output_area">
 <div class="prompt"></div>
-<div class="box-flex1 output_subarea output_display_data">
 
 
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYsAAAEUCAYAAADa0BodAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz%0AAAALEgAACxIB0t1+/AAAIABJREFUeJzt3XtwVPUZN/DvZgNJjLmwK0mQAEYuAi9VEsKlBgompjOg%0AIFQqiG2HUmuVFohVrATx0oiIAgooVCURtJfp4AzUTuslg3gJ+FZCiIoRaSAhEE1CsoSE3Eh29/3D%0Aly0hl3Ny8jub8yTfz4wznt2zZ7/7O2yes89v9xyb1+v1goiIqBMBPR2AiIisj8WCiIg0sVgQEZEm%0AFgsiItLEYkFERJpYLIiISFOgv55o27ZtOHLkCMLDw7Fx48Z218nKykJ+fj6CgoKwdOlSxMXF+Sse%0AERF1wm+fLG655Rakp6d3eH9eXh7Ky8uxZcsW3HfffdixY4e/ohERkQa/FYsxY8YgNDS0w/tzc3Mx%0Affp0AMDIkSNRV1eH6upqf8UjIqJOWGbOwuVywel0+padTidcLlcPJiIiokssUywAgGceISKyJr9N%0AcGtxOByoqqryLVdVVcHhcHS4/vvvvw+73e6PaEREvUZkZCQmTJjQ5cdZplgkJibivffeQ1JSEo4f%0AP47Q0FBERkZ2uL7dbkdCQoIfE1pTWW0TilyNPR3DJ84RjJiwoJ6OQaRbX3sP5eXlGXqc39pQL774%0AItasWYNvv/0WDzzwAD744ANkZ2cjOzsbAJCQkICoqCgsW7YMr732Gn71q1/5K5qpcnJyejqCLgUF%0ABT0dQRcJ4ykhI8Ccqkl5Dxnlt08WaWlpmuv0lgJBRNTb2KRez2Lfvn1sQ6HvfYQmUq2vvYfy8vKQ%0AkpLS5cdZ6ttQRERkTSwWJmO/VS0J4ykhI8Ccqkl5DxnFYkFERJo4ZyFcX+u3EqnW195DnLMgIiLT%0AsFiYjP1WtSSMp4SMAHOqJuU9ZBSLBRERaeKchXB9rd9KpFpfew9xzoKIiEzDYmEy9lvVkjCeEjIC%0AzKmalPeQUSwWRESkiXMWwvW1fiuRan3tPcQ5CyIiMg2LhcnYb1VLwnhKyAgwp2pS3kNGsVgQEZEm%0AzlkI19f6rUSq9bX3EOcsiIjINCwWJmO/VS0J4ykhI8Ccqkl5DxnFYkFERJo4ZyFcX+u3EqnW195D%0AnLMgIiLTsFiYjP1WtSSMp4SMAHOqJuU9ZBSLBRERaeKchXB9rd9KpFpfew9xzoKIiEzDYmEy9lvV%0AkjCeEjICzKmalPeQUSwWRESkiXMWwvW1fiuRan3tPcQ5CyIiMg2LhcnYb1VLwnhKyAgwp2pS3kNG%0AsVgQEZEmzlkI19f6rUSq9bX3kNE5i0ATshCRiWqbWlB30d3TMXxC+9sRFsQ/Jb0d97DJcnJyMHXq%0A1J6OoamgoABjx47t6RiaJIyn2RnrLrqVHAmr2udxjmBTi4WEfQ7IeQ8ZxTkLIiLS5LdPFvn5+di5%0Acyc8Hg+Sk5Mxd+7cVvfX1NRg69atqK6uhsfjwezZszFjxgx/xTONhCMiAGKOiCSMp4SMAPe5alLG%0A0yi/FAuPx4PMzEysWbMGDocDq1atQmJiImJjY33rvPvuu4iLi8OiRYtQU1ODtLQ0TJs2DXa73R8R%0AiYioE35pQxUWFiImJgZRUVEIDAxEUlIScnNzW60zYMAA1NfXAwAaGhoQFhbWKwoFvyOuloTxlJAR%0A4D5XTcp4GuWXYuFyueB0On3LDocDLper1TopKSk4c+YMfvOb32DlypVYvHixP6IREZEOlvk21J49%0Ae3DdddfhySefRFlZGZ5++mk8//zzCAkJ6fAxl39L4tLRR19bHnHTRAD/O6q51Dft6vKl24w+/tJy%0A3NSEdvN+8p9cNHlsGDduHADg6NGjAND15Zsmoqy2yfjjx41DaH87Pj/0f3WNr5HlqVOnmr7/u7u/%0ArzwK7u72zHy9HE/1y0b45Ud5x48fx+7du7F69WoA3xcGm83WapJ73bp1mDdvHkaPHg0A+OMf/4h7%0A7rkHw4cPb3eb/FHe96T8oMhKOaX/cNBKYwlwPFWz6o/y/NKGGj58OMrKylBRUYGWlhYcPHgQiYmJ%0Arda59tpr8eWXXwIAqqur8e233yI6Otof8UzFfqtaEnJyn6vF8bQGv7Sh7HY7lixZgrVr1/q+Ohsb%0AG4vs7GwAQGpqKubNm4dt27Zh5cqV8Hg8+NnPfoarr77aH/GIiEgDzw0lnJSP0FbKybaJWhxPtfp0%0AG4qIiGRjsTAZ+61qScjJfa4Wx9MaWCyIiEgTi4XJeF4btSTk5D5Xi+NpDSwWRESkicXCZOy3qiUh%0AJ/e5WhxPa7DM6T6sRtXVyBrtISirber2dng1MiLqSfzr0wFVVyMLvXaEku2YfTUyKf1WCTnZY1eL%0A42kNbEMREZEmFguTSeljMqc67LGrxfG0BhYLIiLSxGJhMil9TOZUhz12tTie1sBiQUREmlgsTCal%0Aj8mc6rDHrhbH0xpYLIiISBOLhcmk9DGZUx322NXieFoDiwUREWlisTCZlD4mc6rDHrtaHE9r4Ok+%0AOlDf7EZ1Q3O3t9Ns769kO/XN/bq9DSIio1gsOtDY7EH5hYvd3k6wY5CS7QwbENztbXRGSr9VQk72%0A2NXieFoD21BERKSJxcJkJSWnezqCLlL6rRJysseuFsfTGlgsiIhIE4uFyYYOHdLTEXSR0m+VkJM9%0AdrU4ntbAYkFERJpYLExm9pxFY7MbDQr++6awSMl2Gpu7fynazkjoC7PHrhbH0xr41Vnh6ps9KKnu%0A/mVbS843AQq2ExPWv9vbICLr4ScLk0mZs5CSU0JfmD12tTie1sBiQUREmlgsTCbldxZSckroC7PH%0ArhbH0xpYLIiISBOLhcmkzAVIySmhL8weu1ocT2tgsSAiIk0sFiaTMhcgJaeEvjB77GpxPK2BxYKI%0AiDTpKhaPPPJIu7c/+uijup8oPz8faWlpWL58Ofbu3dvuOl999RUeeeQRPPTQQ3jyySd1b9vKpMwF%0ASMkpoS/MHrtaHE9r0PUL7rKysja3eb1elJeX63oSj8eDzMxMrFmzBg6HA6tWrUJiYiJiY2N969TV%0A1SEzMxOrV6+G0+lETU2NzpdARERm67RYbN26FQDQ3NyMl156CV6v13ff2bNnMWSIvqPRwsJCxMTE%0AICoqCgCQlJSE3NzcVsUiJycHkydPhtPpBACEh4d37ZVYVEnJaRFH7VJyFhQUWP4ILicnR8TRsISx%0ABDieVtFpsYiOjgYA2Gw2REdH+4pFQEAARo8ejR/+8Ie6nsTlcvmKAAA4HA4UFha2Wue7776D2+3G%0AU089hYaGBsyaNQs/+tGPuvRiiIjIHJ0Wi7vuugsAMGrUKIwfP97UIG63G0VFRXj88cfR1NSExx57%0ADCNHjsSgQYNMfV6zSThaB+TklHDkJuEoGJAxlgDH0yp0TXAXFRW1+SRQWFiIf/zjH7qexOFwoKqq%0AyrdcVVUFh8PRah2n04kbb7wR/fv3R1hYGMaMGYNTp051ut3Lv1KXk5OjdLm4uLjV10lLSk736HJx%0AcXGneXs635XLV+Y7evRoq68WFhQU9Oiy6n8v/l7u6fHjeMoeTyNs3ssnIjrw61//Glu3bkVwcLDv%0AtoaGBqxYsQKvvvqq5pO43W6kpaW1muBesWJFqzmL0tJSZGVlYfXq1WhubkZ6ejoefPDBVutcbt++%0AfUhISNDzGg0pKL+Az053f5Jd1VzApCHhGBt9dZvbpeQsq21Ckav7p0BX0ReOcwQjJiyo21k6YnaP%0A3UpjCXA8L5Eynnl5eUhJSeny43R9G8rtdiMwsPWqgYGBaG5u1vUkdrsdS5Yswdq1a+HxeJCcnIzY%0A2FhkZ2cDAFJTUzF48GDcdNNNePjhh2Gz2ZCSktJhoSAiIv/SVSzi4uLw7rvv4vbbb/fdlp2djeuv%0Av173E8XHxyM+Pr7Vbampqa2W58yZgzlz5ujepgRS5gKk5JTQF2aPXS2OpzXoKhaLFy9GRkYGPvnk%0AE0RHR6O8vBzV1dV47LHHzM5HREQWoGuCe8iQIdi8eTNmz56NESNGYM6cOdi8ebPu31n0ZVLOuSQl%0Ap4Tz7/BcRmpxPK1B9zW4Q0JCMHr0aLhcLowaNcrMTEREZDG6ikVlZSU2b96M4uJiAMCbb76JTz/9%0AFJ9//jnuv/9+M/OJJ2UuQEpOCX1h9tjV4nhag6421CuvvIL4+Hjs2rXL962om266CZ9//rmp4YiI%0AyBp0FYvCwkLMnTsXAQH/W/2qq65CfX29acF6CylzAVJySugLs8euFsfTGnQVi8jIyDZnnj1z5gwG%0ADhxoSigiIrIWXXMWs2fPxrPPPou5c+fC7XYjJycHe/bswR133GF2PvGkzAVIySmhL8weu1ocT2vQ%0AVSySk5MRFhaG7OxsOJ1OfPTRR1iwYAEmTZpkdj4iv6ltakHdRXdPx/AJ7W9HWJDuLywSmUrzX6Lb%0A7UZGRgbS09MxceJEf2TqVaRcJ0JKTjOvGVB30W25cwSZWSykXH+B17OwBs05C7vdjoqKCn9kISIi%0Ai9I1wT1//ny89tprqKiogMfjafUfdU7C0TogJ6eEIzcJGQE5OSV8qgDkjKdRuj7jvvLKKwCAjz/+%0AuM19f//739UmIiIiy9FVLDZv3tzqNxakn5S5ACk5JfSFJWQE5OTknIU16Jrgfuihh7Bz507069fP%0AH5mIiMhidE1wDxo0CLW1tf7I0+tIOFoH5OSUcOQmISMgJ6eETxWAnPE0Slcbatq0aVi/fj1mzpwJ%0Ap9MJm83mu2/cuHGmhSMiImvQVSzef/99AMDu3bvb3Pfyyy+rTdTLSJkLkJJTQl9YQkZATk7OWViD%0ArmLBgkB9QWOzGw3N3f8Ft71/iJLtNCrYBpEqun8e6na78c0338DlcsHhcOCGG26A3W43M1uvIOFo%0AHZCT08wjt/pmD0qqu/8LbkREKdlOTFj/7mfphJSjYAmfKgA542mUrmJRWlqK9evX4+LFi3A6naiq%0AqkK/fv3whz/8AbGxsWZnJCKiHqbrxxM7duzArbfeiu3bt2Pt2rXYvn07UlNTkZmZaXY+8aRcJ0JK%0ATgnXDOBYqsXrWViDrmJRXFyM22+/3fctKJvNhlmzZqGoqMjUcEREZA26isWAAQPw1Vdftbrt2LFj%0AcDgcpoTqTaTMBUjJKaEvzLFUi3MW1qBrzmLRokV47rnnMGHCBFxzzTU4e/Ys8vLysGzZMrPzERGR%0ABej6ZJGYmIj169cjNjYWjY2NGDp0KNavX8+LH+kgpX8tJaeEvjDHUi3OWViDrk8WFy9eRFRUFObP%0An++7raWlBRcvXkT//uZ+vY+IiHqerk8WTz/9NE6ePNnqtpMnT+KZZ54xJVRvIqV/LSWnhL4wx1It%0AzllYg65iUVJSghEjRrS6bcSIESguLjYjExERWYyuYhEaGorz58+3uu38+fMIDg42JVRvIqV/LSWn%0AhL4wx1ItzllYg65iMXnyZGzZsgUlJSVoamrCqVOn8NJLL2HKlClm5yMiIgvQNcG9cOFCvPHGG0hP%0AT0dzczP69euHW265BYsWLTI7n3hS+tdSckroC3Ms1eKchTXoKhb9+/fHvffeiyVLlqC2thZhYWG8%0AzCoRUR/Spb/4AQEBiIiIYKHoAin9ayk5JfSFOZZqcc7CGvhXn4iINLFYmExK/1pKTgl9YY6lWpyz%0AsAa/FYv8/HykpaVh+fLl2Lt3b4frFRYWYuHChfjPf/7jr2hERKShS8Wivr4ef/3rX7Fu3TpkZWXB%0A5XLpepzH40FmZibS09OxadMmHDhwAGfOnGl3vb/85S8YP348vF5vV6JZlpT+tZScEvrCHEu1OGdh%0ADV0qFjt27EBwcDBmzpyJ4OBgbNq0SdfjCgsLERMTg6ioKAQGBiIpKQm5ublt1nvnnXcwZcoUhIeH%0AdyUWERGZrNNi8frrr6Ox8X/XEq6qqsLcuXMxfvx4/OQnP0FpaamuJ3G5XHA6nb5lh8PR5lOJy+VC%0Abm4ufvzjHwOA70JL0knpX0vJKaEvzLFUi3MW1tDp7yxGjhyJJ554AnPmzEFSUhImT56MlStXYtiw%0AYThx4gSmT5+uLMjOnTuxaNEi2Gw2eL3eXtOGIiLqDTotFlOnTkVCQgL+9re/Yf/+/ViyZAl+8IMf%0A4PTp05g1a1abkwt2xOFwoKqqyrdcVVXV5ip7J0+exIsvvggAqK2tRX5+PgIDA5GYmNjhdnNycnxH%0AHZf6mqqWi4uLUVJa5ztKvNSH7urypduMPv7ScnFxMVz/rW6T1zFyfLfyXVo+fPgwBg6M6vbrnTTk%0A/7Q7nl8eO44T5y5i2NBhAIBTJacAoMvLl24z+vhhQ4ehvrlfu/u/pl8kYHd0ezyv3PdGtxflDsXY%0A6HHtjuel/vilo1kjy6dOFWPmzFlKtqf6/Xf58uVzFmZsv7HZjW8Kv79E9NBhQwEAJadKurxcXlGG%0AiRMnGX78peXGZrep42mUzavzEP7EiRPYuXMnxowZg/nz53fpOhZutxtpaWlYs2YNHA4HVq1ahRUr%0AViA2Nrbd9bdt24YJEyZg8uTJHW5z3759SEhI0J2hqwrKL+Cz0zXd3k5JyWklbYlJQ8IxNvrqNrcz%0AZ9dJyAh0nLOstglFrsZ2HtE1BQUFSloncY5gxIQFdXs7Hbn8oNAMUva7Knl5eUhJSeny4zr9ZOFy%0AubB3716Ul5djyJAhWLlyJQ4ePIjVq1fjrrvuwsSJE3U9id1ux5IlS7B27Vp4PB4kJycjNjYW2dnZ%0AAIDU1NQuB5dCSv+aOdWRkBGQ02OXMmchZb8b1Wmx2LRpE0aPHo2ZM2fiyy+/RFZWFtLS0jBlyhS8%0A8cYb2LdvHx599FFdTxQfH4/4+PhWt3VUJJYuXaozPhER+UOn34YqLS3FwoULMX78eCxYsMD37afI%0AyEgsX74ct99+u19CSiblO/fMqY6EjICc3wVI+Z2FlP1uVKefLKZPn46MjAzccMMNOHbsGGbMmNHq%0A/nHjxpmZjYiILKLTYrF48WIUFhaioqIC06ZNw5AhvbsnZwYpfUzmVEdCRoBzFqpJ2e9GaV7PYsSI%0AEbq/IktERL0TzzprMil9TOZUR0JGgHMWqknZ70axWBARkSYWC5NJ6WMypzoSMgKcs1BNyn43isWC%0AiIg0sViYTEofkznVkZAR4JyFalL2u1EsFkREpInFwmRS+pjMqY6EjADnLFSTst+NYrEgIiJNLBYm%0Ak9LHZE51JGQEOGehmpT9bhSLBRERaWKxMJmUPiZzqiMhI8A5C9Wk7HejWCyIiEgTi4XJpPQxmVMd%0ACRkBzlmoJmW/G8ViQUREmlgsTCalj8mc6kjICHDOQjUp+90oFgsiItLEYmEyKX1M5lRHQkaAcxaq%0ASdnvRrFYEBGRJhYLk0npYzKnOhIyApyzUE3KfjeKxYKIiDQF9nSA3q6k5LSIIw7mVEdCRuD7OQsz%0AP13UNrWg7qK729s5evQoxo0b1+3thPa3IyzIvD95Uva7USwWRGSKuotuFLkau72dU9UXEapgO3GO%0AYFOLRW/HNpTJpBxpMKc6EjICcuYspOSUst+NYrEgIiJNLBYmk/Lda+ZUR0JGQM7vLKTklLLfjWID%0Aj4hM0djsRkNz9ye47f1DlGynUcE2+jIWC5NJ6WMypzoSMgLmzwXUN3tQUt39iWlERCnZTkxY/+5n%0A6YSU/W4U21BERKSJxcJkUvqYzKmOhIwA5wJUk5LTKBYLIiLSxGJhMil9TOZUR0JGgL9fUE1KTqNY%0ALIiISJNfvw2Vn5+PnTt3wuPxIDk5GXPnzm11/yeffIK3334bXq8XISEhuPfeezFs2DB/RlROyvli%0AmFMdCRkB888NpYqU8ZSS0yi/fbLweDzIzMxEeno6Nm3ahAMHDuDMmTOt1omOjsZTTz2FDRs24M47%0A78Srr77qr3hERNQJvxWLwsJCxMTEICoqCoGBgUhKSkJubm6rdUaNGoWrrroKADBixAhUVVX5K55p%0ApBxpMKc6EjICnLNQTUpOo/xWLFwuF5xOp2/Z4XDA5XJ1uP4HH3yA+Ph4f0QjIiINlpzgPnr0KPbv%0A34977rmn0/UuvzZvTk6O0uXi4uJW35suKTltaPnSbUYff3mezvJ2d/uHDx9W8no7yme18Wxv/xcX%0AFyt5/VdmNbq9y/NcmbegoKDV7ySMLL/zzr+VbU/6eKrY/uHDh5VtT/XfsyuXjbB5vV5vt7ag0/Hj%0Ax7F7926sXr0aALBnzx7YbLY2k9ynTp3Chg0bsHr1asTExHS4vX379iEhIcG0vAXlF/DZ6Zpub0fV%0ApNekIeEYG311m9uZs+skZAQ6zllW26TkOhGqJrjjHMGICQtqu30h4yklpyp5eXlISUnp8uP89sli%0A+PDhKCsrQ0VFBVpaWnDw4EEkJia2WqeyshIbNmzAsmXLOi0UkkjpYzKnOhIyApyzUE1KTqP89tVZ%0Au92OJUuWYO3atb6vzsbGxiI7OxsAkJqairfeegt1dXXYsWOH7zHr1q3zV0QiIuqAX39nER8f32bS%0AOjU11ff/999/P+6//35/RjKdlO9eM6c6EjIC/J2FalJyGmXJCW4iIrIWFguTSTnSYE51JGQEOGeh%0AmpScRrFYEBGRJhYLk0k5xz1zqiMhI8DrWagmJadRLBZERKSJxcJkUvqYzKmOhIwA5yxUk5LTKBYL%0AIiLSxGJhMil9TOZUR0JGgHMWqknJaRSLBRERaWKxMJmUPiZzqiMhI8A5C9Wk5DSKxYKIiDSxWJhM%0ASh+TOdWRkBHgnIVqUnIa5dcTCRJR9zU2u9HQ7O72duz9Q5Rsp1HBNsj6WCxMJqWPyZzqmJ2xvtmD%0AkuruX/wIEVFKthMT1r/7WTohYZ8DcnIaxTYUERFpYrEwmZQ+JnOqIyEjwJyqSclpFIsFERFpYrEw%0AmZQ+JnOqIyEjwJyqSclpFIsFERFpYrEwmZQ+JnOqIyEjwJyqSclpFIsFERFpYrEwmZQ+JnOqIyEj%0AwJyqSclpFIsFERFpYrEwmZQ+JnOqIyEjwJyqSclpFIsFERFpYrEwmZQ+JnOqIyEjwJyqSclpFIsF%0AERFpYrEwmZQ+JnOqIyEjwJyqSclpFIsFERFpYrEwmZQ+JnOqIyEjwJyqSclpFIsFERFpYrEwmZQ+%0AJnOqIyEjwJyqSclpFIsFERFpYrEwmZQ+JnOqIyEjwJyqSclpFIsFERFp8luxyM/PR1paGpYvX469%0Ae/e2u05WVhaWL1+OlStXoqioyF/RTCWlj8mc6kjICDCnalJyGuWXYuHxeJCZmYn09HRs2rQJBw4c%0AwJkzZ1qtk5eXh/LycmzZsgX33XcfduzY4Y9oRESkg1+KRWFhIWJiYhAVFYXAwEAkJSUhNze31Tq5%0AubmYPn06AGDkyJGoq6tDdXW1P+KZSkofkznVkZARYE7VpOQ0yi/FwuVywel0+pYdDgdcLlen6zid%0AzjbrEBFRz7DUBLfX6+3pCMpJ6WMypzoSMgLMqZqUnEYF+uNJHA4HqqqqfMtVVVVwOBxdXudykZGR%0AyMvLUx/2MjcqKKU3XtcPQFm3t9NYWoa80g6egzm7REJGgDl922BOpSIjIw09zi/FYvjw4SgrK0NF%0ARQUcDgcOHjyIFStWtFonMTER7733HpKSknD8+HGEhoZ2+qImTJhgdmwiIvr/bF4/9X6OHDmCnTt3%0AwuPxIDk5GfPmzUN2djYAIDU1FQCQmZmJ/Px8BAcH44EHHsD111/vj2hERKTBb8WCiIjkstQENxER%0AWROLBRERafLLBLcKn376KXbv3o3S0lKsW7euw/mM3/72twgJCUFAQADsdjvWrVtnyZz5+fmt5nDm%0Azp3rt4wXLlzACy+8gMrKSgwcOBAPPvggQkND26zXU2OpZ2yysrKQn5+PoKAgLF26FHFxcX7J1pWc%0AX331FZ577jlER0cDACZPnow777zTrxm3bduGI0eOIDw8HBs3bmx3HSuMpVZOK4wlAFRWVuLll1/G%0A+fPnYbPZkJKSglmzZrVZr6fHVE/OLo+pV4gzZ854S0tLvU8++aT3xIkTHa63dOlSb21trR+TtaYn%0Ap9vt9v7ud7/zlpeXe5ubm70PP/yw9/Tp037L+Oabb3r37t3r9Xq93j179nj//Oc/t7teT4ylnrE5%0AfPiw95lnnvF6vV7v8ePHvenp6X7NqDfn0aNHvc8++6zfs12uoKDAe/LkSe/vf//7du+3wlh6vdo5%0ArTCWXq/Xe+7cOW9RUZHX6/V6GxoavMuXL7fkv089Obs6pmLaUIMHD8a1116ra11vD87Z68mp5/Qn%0AZrr81CozZszAoUOHOlzX32Mp5dQwevdhT/5bBIAxY8a0+6nxEiuMJaCdE+j5sQS+/43CddddBwAI%0ADg7G4MGDce7cuVbrWGFM9eQEujamYtpQetlsNmRkZCAgIAC33norbr311p6O1EZ7pz8pLCz02/Of%0AP3/e9xuWiIgInD9/vt31emIs9YxNR6eGMfpjI7Ny2mw2HD9+HCtXroTD4cDPf/5zxMbG+i2jHlYY%0ASz2sOJYVFRUoLi7GyJEjW91utTHtKGdXx9RSxSIjI6PdCnz33XcjMTFR9zYGDBiAmpoaZGRkYPDg%0AwRgzZozlcpqts4yXs9lsnW7D7LE0ygpHmVri4uKwfft2BAUF4ciRI3j++eexefPmno7VBsey6xob%0AG7Fp0yYsXrwYwcHBbe63yph2lrOrY2qpYrFmzZpub2PAgAEAgPDwcEyaNAmFhYXK/8B1N2dXT21i%0ARGcZIyIiUF1djcjISJw7dw4RERHtruePsbySGaeGMYOeDCEhIb7/j4+Px44dO3DhwgVcffXVfsup%0AxQpjqYeVxrKlpQUbN27EtGnTMGnSpDb3W2VMtXJ2dUzFzFno0dTUhIaGBgDfV9QvvvgCQ4cO7eFU%0AbV1++pOWlhYcPHjQr59IEhMT8eGHHwIAPvroI0ycOLHNOj01lnrGJjExER9//DEA6Do1TE/lrK6u%0A9h1hXmpRWalQANYYSz2sMpZerxd/+tOfMHjwYNx2223trmOFMdWTs6tjKuYX3J999hlef/111NTU%0A4KqrrkJcXBzS09PhcrnwyiuvYNWqVSgvL8eGDRsAfH/BpalTp2LevHmWywm0f/oTf+noq7NWGUsp%0Ap4bRyvluvkSdAAADNElEQVTuu+8iOzsbAQEBCAoKwi9+8QuMGjXKrxlffPFFfP3116ipqUFkZCR+%0A+tOfwu12+zIC1hhLrZxWGEsAOHbsGJ544gkMHTrU18K9++67UVlZ6csK9PyY6snZ1TEVUyyIiKjn%0A9Ko2FBERmYPFgoiINLFYEBGRJhYLIiLSxGJBRESaWCyIiEgTiwVRF3z44Yd4/PHHla9LZHUsFkRE%0ApInFgoiINFnqRIJEVrF3717s27cPNTU1cDqdWLhwYbsnY1uwYAEWL16Mf//736ivr8ctt9yCe+65%0Ap9XZfN9880188MEHCA0Nxb333ovx48cDAPbv34+3334bLpcL4eHhuOOOOyx5Sn0igJ8siNoVExOD%0AjIwM7Nq1C/Pnz8fWrVs7vIDNoUOH8Oyzz2L9+vU4dOgQ9u/f77vvv//9LwYPHoysrCzMmTMH27dv%0A990XERGBVatWYdeuXXjggQewa9cuFBUVmf7aiIxgsSBqx5QpU3xnCr355psxaNCgDi9QdccddyA0%0ANBTXXHMNbrvtNhw4cMB338CBA5GcnAybzYbp06ejurrad7GphIQEREVFAQDGjh2LG2+8EV9//bXJ%0Ar4zIGLahiNrx0Ucf4V//+hfOnj0L4PvTtNfU1CAgoO3x1eVXRbvmmmvgcrl8y5efmjooKMi3rYiI%0ACBw5cgRvvfUWvvvuO3i9XjQ1NWHYsGFmvSSibmGxILrC2bNn8eqrr+Lxxx/HqFGjYLPZ8Mgjj3S4%0AfmVlpe9ylJWVlboudNPc3IyNGzdi2bJlmDhxIgICAvD8889b5gprRFdiG4roCk1NTQCAsLAweL1e%0A7N+/H6dPn+5w/X/+85+oq6tDZWUl3nnnHdx8882az9HS0oKWlhaEhYXBZrPhyJEj+OKLL5S9BiLV%0A+MmC6AqxsbGYPXs2HnvsMd9cw+jRo333X3nd8okTJ+LRRx9FfX09ZsyYgeTk5A7XvSQkJAS//OUv%0A8cILL6ClpQUTJkywzPXbidrDix8RdcOCBQuwZcsWREdH93QUIlOxDUVERJpYLIiISBPbUEREpImf%0ALIiISBOLBRERaWKxICIiTSwWRESkicWCiIg0sVgQEZGm/wdXaLF3W9b5RAAAAABJRU5ErkJggg==">
-
-</div>
-</div>
-
-</div>
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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">
 </div>
 
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
-In [16]:
+In []:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre><span class="c"># TODO : correct for the number of trials / make global reading / make a new draw of alphas</span>
 <span class="c"># TODO : test f_0</span>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
+</div>
 </div>
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell vbox">
-<div class="input hbox">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
-In [15]:
+In []:
 </div>
-<div class="input_area box-flex1">
+<div class="inner_cell">
+<div class="input_area">
 <div class="highlight"><pre>
 </pre></div>
 
-<i class="icon-hand-up icon-large" style="float:right; margin-top:8px; margin-right:10px">  Click me!</i>
+<i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
+  Hide output</i>
+</div>
 </div>
 </div>
 
 </div>
         </div>
-        
-    <ul class="pager">
-    
-    
-        <li class="next">
-            <a href="testing_basis.html">Next post →</a>
-        </li>
-    
-    </ul>
+        <p><b>Don't forget this blog post is an ipynb file itself! So, you can download it from the "Source" link
+                <ul class="pager">
+            <li class="next">
+                <a href="testing_basis.html" rel="next" title="Testing basic functions of Motion Clouds">Next post</a>
+            </li>
+        </ul>
 
-        
-            
-    
-        
-    
-        <div id="disqus_thread"></div>
-        <script type="text/javascript">
-        var disqus_shortname ="invibe";
-        
-            var disqus_url="http://neuralensemble.github.io/MotionClouds/posts/psychopy_discrimination.html";
-        
-        var disqus_title="Testing discrimination between Motion Clouds with psychopy";
-        var disqus_identifier="cache/posts/psychopy_discrimination.html";
-        var disqus_config = function () {
+                            <div id="disqus_thread"></div>
+        <script>
+        var disqus_shortname ="invibe",
+            disqus_url="http://neuralensemble.github.io/MotionClouds/posts/psychopy_discrimination.html",
+        disqus_title="Testing discrimination between Motion Clouds with psychopy",
+        disqus_identifier="cache/posts/psychopy_discrimination.html",
+        disqus_config = function () {
             this.language = "";
         };
         (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            var dsq = document.createElement('script'); dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
     </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
 </noscript>
-    <a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a>
-    
+    <a href="//disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
-    
 
         
-        
-    
+    </b></p>
+</div>
+                    <footer id="footer" role="contentinfo">
+            <p>Contents © 2014 <a href="mailto:laurent.perrinet@univ-amu.fr">Laurent Perrinet</a> - 
+Powered by <a href="http://getnikola.com">Nikola</a> - 
+Zen theme based in <a href="https://github.com/arusahni/website-template">Arusahni's website-template</a><br>
 
-    </div>
-
-            Contents © 2014         <a href="mailto:laurent.perrinet@univ-amu.fr">Laurent Perrinet</a> - Powered by         <a href="http://getnikola.com" rel="nofollow">Nikola</a>         
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/2.5/ar/">
-<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>
+<img alt="Creative Commons License BY-NC-SA" style="border-width:0; margin-bottom:12px;" src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a></p>
             
-	
+        </footer>
+
+        </div>
+    </section>
+    
+    
+                <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
+    
  <!-- Social buttons -->
  <div id="addthisbox" class="addthis_toolbox addthis_peekaboo_style addthis_default_style addthis_label_style addthis_32x32_style">
  <a class="addthis_button_more"><i class="icon-share-sign icon-2x"></i>    Share</a>
@@ -602,22 +735,10 @@ In [15]:
  <!-- End of social buttons -->
  
 
-        </div>
-    </section>
-    
-    
-        
-            <script src="../assets/js/all-nocdn.js" type="text/javascript"></script>
-        
-    
-
-    
         <script type="text/javascript">
             $(function(){
                 $('.timeago').timeago();
             });
         </script>
-    
-    
 </body>
 </html>
