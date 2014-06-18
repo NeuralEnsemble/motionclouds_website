@@ -67,7 +67,7 @@ import MotionClouds as mc
 <body>
     <section class="social">
         <ul>
-                    <li><a href="../intro.html" title="Home"><i class="icon-home"></i></a></li>
+                    <li><a href="../index.html" title="Home"><i class="icon-home"></i></a></li>
             <li><a href="../blog" title="Blog!"><i class="icon-folder-open-user"></i></a></li>
             <li><a href="../archive.html" title="Archives"><i class="icon-folder-open-alt"></i></a></li>
             <li><a href="../categories/index.html" title="Tags"><i class="icon-tags"></i></a></li>
@@ -295,7 +295,7 @@ Could not import Mayavi
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In [11]:
+In [13]:
 </div>
 <div class="inner_cell">
 <div class="input_area">
@@ -303,7 +303,7 @@ In [11]:
 <span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">ft</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">get_grids</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">N_X</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">N_Y</span><span class="p">,</span> <span class="n">mc</span><span class="o">.</span><span class="n">N_frame</span><span class="p">)</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">mc</span><span class="o">.</span><span class="n">rectif</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">random_cloud</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">envelope_gabor</span><span class="p">(</span><span class="n">fx</span><span class="p">,</span> <span class="n">fy</span><span class="p">,</span> <span class="n">ft</span><span class="p">)))</span>
 <span class="k">for</span> <span class="n">vext</span> <span class="ow">in</span> <span class="n">mc</span><span class="o">.</span><span class="n">SUPPORTED_FORMATS</span><span class="p">:</span>
-    <span class="n">mc</span><span class="o">.</span><span class="n">anim_save</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">vext</span><span class="o">=</span><span class="n">vext</span><span class="p">)</span>
+    <span class="n">mc</span><span class="o">.</span><span class="n">anim_save</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mc</span><span class="o">.</span><span class="n">figpath</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">display</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">vext</span><span class="o">=</span><span class="n">vext</span><span class="p">)</span>
 </pre></div>
 
 <i class="icon-hand-up icon-large" style="float:right; margin-bottom:8px; margin-right:10px">
@@ -323,7 +323,7 @@ In [11]:
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>
-[6350 %] elapsed[sec]: 0.831 | ETA[sec]: -0.818 
+[6350 %] elapsed[sec]: 0.903 | ETA[sec]: -0.888 
 </pre>
 </div>
 </div>
@@ -332,33 +332,10 @@ In [11]:
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
-Saving sequence export.mpg
+Saving sequence results/export.mpg
 Title: 
-                      Started: 06/18/2014 16:49:59
-                      Finished: 06/18/2014 16:50:00
-                      Total time elapsed: 0.000 sec
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-[6350 %] elapsed[sec]: 0.817 | ETA[sec]: -0.804 
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>
-
-Saving sequence export.mp4
-Title: 
-                      Started: 06/18/2014 16:50:00
-                      Finished: 06/18/2014 16:50:01
+                      Started: 06/18/2014 17:10:26
+                      Finished: 06/18/2014 17:10:26
                       Total time elapsed: 0.000 sec
 </pre>
 </div>
@@ -378,7 +355,7 @@ Title:
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 
-Saving sequence export.gif
+Saving sequence results/export.mp4
 </pre>
 </div>
 </div>
@@ -387,7 +364,7 @@ Saving sequence export.gif
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>
-[6350 %] elapsed[sec]: 0.766 | ETA[sec]: -0.754 
+[6350 %] elapsed[sec]: 0.836 | ETA[sec]: -0.823 
 </pre>
 </div>
 </div>
@@ -398,8 +375,8 @@ Saving sequence export.gif
 <pre>
 
 Title: 
-                      Started: 06/18/2014 16:50:01
-                      Finished: 06/18/2014 16:50:02
+                      Started: 06/18/2014 17:10:27
+                      Finished: 06/18/2014 17:10:27
                       Total time elapsed: 0.000 sec
 </pre>
 </div>
@@ -419,7 +396,7 @@ Title:
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 
-Saving sequence export.zip
+Saving sequence results/export.gif
 </pre>
 </div>
 </div>
@@ -428,7 +405,7 @@ Saving sequence export.zip
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>
-[6350 %] elapsed[sec]: 0.696 | ETA[sec]: -0.685 
+[6350 %] elapsed[sec]: 0.871 | ETA[sec]: -0.857 
 </pre>
 </div>
 </div>
@@ -439,8 +416,8 @@ Saving sequence export.zip
 <pre>
 
 Title: 
-                      Started: 06/18/2014 16:50:03
-                      Finished: 06/18/2014 16:50:03
+                      Started: 06/18/2014 17:10:28
+                      Finished: 06/18/2014 17:10:28
                       Total time elapsed: 0.000 sec
 </pre>
 </div>
@@ -460,7 +437,7 @@ Title:
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>
 
-Saving sequence export.mkv
+Saving sequence results/export.zip
 </pre>
 </div>
 </div>
@@ -469,7 +446,7 @@ Saving sequence export.mkv
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>
-[6350 %] elapsed[sec]: 0.753 | ETA[sec]: -0.741 
+[6350 %] elapsed[sec]: 0.765 | ETA[sec]: -0.753 
 </pre>
 </div>
 </div>
@@ -480,8 +457,49 @@ Saving sequence export.mkv
 <pre>
 
 Title: 
-                      Started: 06/18/2014 16:50:07
-                      Finished: 06/18/2014 16:50:08
+                      Started: 06/18/2014 17:10:29
+                      Finished: 06/18/2014 17:10:30
+                      Total time elapsed: 0.000 sec
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+[  0 %] elapsed[sec]: 0.000
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+Saving sequence results/export.mkv
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+[6350 %] elapsed[sec]: 0.808 | ETA[sec]: -0.796 
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+
+Title: 
+                      Started: 06/18/2014 17:10:34
+                      Finished: 06/18/2014 17:10:35
                       Total time elapsed: 0.000 sec
 
 </pre>
@@ -591,7 +609,6 @@ In []:
 
 </div>
         </div>
-        <p><b>Don't forget this blog post is an ipynb file itself! So, you can download it from the "Source" link
                 <ul class="pager">
             <li class="previous">
                 <a href="testing_components.html" rel="prev" title="Testing the different components of the enveloppe">Previous post</a>
@@ -619,8 +636,7 @@ In []:
 
 
         
-    </b></p>
-</div>
+    </div>
                     <footer id="footer" role="contentinfo">
             <p>Contents © 2014 <a href="mailto:laurent.perrinet@univ-amu.fr">Laurent Perrinet</a> - 
 Powered by <a href="http://getnikola.com">Nikola</a> - 
