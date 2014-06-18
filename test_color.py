@@ -32,16 +32,16 @@ for ft_0 in [0.125, 0.25, 0.5, 1., 2., 4., np.inf]:# time space scaling
 for contrast in [0.1, 0.25, 0.5, 0.75, 1.0, 2.0]:
     name_ = name + '-contrast-' + str(contrast).replace('.', '_')
     im = mc.rectif(mc.random_cloud(mc.envelope_color(fx, fy, ft)), contrast)
-    mc.anim_save(im, name_, display=False)
+    mc.anim_save(im, os.path.join(mc.figpath, name_), display=False)
 
 for contrast in [0.1, 0.25, 0.5, 0.75, 1.0, 2.0]:
     name_ = name + '-energy_contrast-' + str(contrast).replace('.', '_')
     im = mc.rectif(mc.random_cloud(mc.envelope_color(fx, fy, ft)), contrast, method='energy')
-    mc.anim_save(im, name_, display=False)
+    mc.anim_save(im, os.path.join(mc.figpath, name_), display=False)
 
 for seed in [123456 + step for step in range(7)]:
     name_ = name + '-seed-' + str(seed)
-    mc.anim_save(mc.rectif(mc.random_cloud(mc.envelope_color(fx, fy, ft), seed=seed)), name_, display=False)
+    mc.anim_save(mc.rectif(mc.random_cloud(mc.envelope_color(fx, fy, ft), seed=seed)), os.path.join(mc.figpath, name_), display=False)
 
 for size in range(5, 7):
     N_X, N_Y, N_frame = 2**size, 2**size, 2**size

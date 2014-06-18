@@ -605,10 +605,13 @@ def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,
         z = envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
                     B_V=B_V, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor,
                     theta=theta, B_theta=B_theta, alpha=alpha)
-    figures(z, name, vext=vext, do_figs=do_figs, do_movie=do_movie,
+        figures(z, name, vext=vext, do_figs=do_figs, do_movie=do_movie,
+                    seed=seed, impulse=impulse, verbose=verbose, do_amp=do_amp, sparseness=sparseness)
+    else:
+        figures(z=None, name=name, vext=vext, do_figs=do_figs, do_movie=do_movie,
                     seed=seed, impulse=impulse, verbose=verbose, do_amp=do_amp, sparseness=sparseness)
 
-def figures(z, name, vext=vext, do_movie=True, do_figs=True,
+def figures(z=None, name='MC', vext=vext, do_movie=True, do_figs=True,
                     seed=None, impulse=False, verbose=False, masking=False, do_amp=False, sparseness=0.):
 
     import_mayavi()
@@ -616,7 +619,7 @@ def figures(z, name, vext=vext, do_movie=True, do_figs=True,
     if ((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and check_if_anim_exist(name, vext=ext):
         visualize(z, name=os.path.join(figpath, name + ext))           # Visualize the Fourier Spectrum
 
-    if (do_movie and check_if_anim_exist(name, vext=vext)) or (MAYAVI and do_figs and check_if_anim_exist(name + '_cube', vext=ext)):
+    if (do_movie and check_if_anim_exist(name, vext=vext)) or (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and check_if_anim_exist(name + '_cube', vext=ext)):
         movie = rectif(random_cloud(z, seed=seed, impulse=impulse, do_amp=do_amp, sparseness=sparseness), verbose=verbose)
 
     if (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and check_if_anim_exist(name + '_cube', vext=ext)):
