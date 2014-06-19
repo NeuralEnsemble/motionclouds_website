@@ -3,6 +3,7 @@ List of things to improve in the code
 
 (by order of priority)
 
+* link to the paper from Paula on the website
 * make a class out of the `MotionClouds.py` library
 * update to the warped_MotionClouds
 * sPDE: use a Laplace (in itme) - Fourier (in space) transform to generate Motion Clouds as a stream of frames instead of the whole memory (would be good for memory concerns)
