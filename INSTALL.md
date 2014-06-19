@@ -15,27 +15,35 @@ This package consists of:
 
 ## Installation
 
-* Installation of MotionClouds consists simply in downloading the ```MotionClouds.py``` file which contains all routines to compute and use the MotionClouds textures. This script uses python (http://python.org) which comes (pre-installed /  easy to download and install) on many operating systems.
+*   MotionClouds consist of a one-file python script: Installation consists simply in downloading the ```MotionClouds.py``` file which contains all routines to compute and use the MotionClouds textures. This script uses python (http://python.org) which comes (pre-installed /  easy to download and install) on many operating systems.
 
-* Installation has some dependencies: 
-1. mandatory: ```numpy``` is the core library used to compute textures,
-1. optional: ```mayavi``` is used to visualize envelopes,
-1. optional: ```ffmpeg``` is used to generate movies.
-1. optional: ```matplotlib```, ```scipy``` (with PIL support) and ```imagemagick``` are used to generate figures in the documentation.
-1. optional: ```progressbar``` for displaying progress of encoding.
-1. optional: ```texlive-latex-recommended  latexmk latexdiff``` to compile the documentation 
-1. optional: ```PyOpenGL PyOpenGL_accelerate glumpy``` to display MotionClouds online
+* MotionClouds may easily be installed using
+
+```
+    pip install MotionClouds
+```
+
+* Other solutions consist to simply grab this file at: https://raw.githubusercontent.com/NeuralEnsemble/MotionClouds/master/MotionClouds.py and to use it along with the examples.
+
+* Installation has some dependencies:
+ 1. mandatory: ```numpy``` is the core library used to compute textures,
+ 1. optional: ```mayavi``` is used to visualize envelopes,
+ 1. optional: ```ffmpeg``` is used to generate movies.
+ 1. optional: ```matplotlib```, ```scipy``` (with PIL support) and ```imagemagick``` are used to generate figures in the documentation.
+ 1. optional: ```progressbar``` for displaying progress of encoding.
+ 1. optional: ```texlive-latex-recommended  latexmk latexdiff``` to compile the documentation
+ 1. optional: ```PyOpenGL PyOpenGL_accelerate glumpy``` to display MotionClouds online
 
 ## download
 
 * to get the latest version, download the current state from the repository:
 ```
-git clone https://github.com/meduz/MotionClouds.git 
+git clone https://github.com/meduz/MotionClouds.git
 ```
 
 * other sources exist to get a stable release, such as ModelDb (http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=146953).
 
-### installation using custom scripts 
+### installation using custom scripts
 
 * depending on your system you should use in a terminal window ```
 sh install_dependencies_debian.sh

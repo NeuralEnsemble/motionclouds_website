@@ -6,35 +6,43 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/2013/index.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
+ </url>
+ <url>
+  <loc>http://neuralensemble.github.io/MotionClouds/2014/index.html</loc>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/archive.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/blog/index.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/categories/index.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/categories/motionclouds.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/categories/psychopy.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/categories/python.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/index.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
+ </url>
+ <url>
+  <loc>http://neuralensemble.github.io/MotionClouds/install.html</loc>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/intro.html</loc>
@@ -42,18 +50,22 @@
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/posts/psychopy_competing.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/posts/psychopy_discrimination.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/posts/testing_basis.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
  </url>
  <url>
   <loc>http://neuralensemble.github.io/MotionClouds/posts/testing_components.html</loc>
-  <lastmod>2014-06-18</lastmod>
+  <lastmod>2014-06-19</lastmod>
+ </url>
+ <url>
+  <loc>http://neuralensemble.github.io/MotionClouds/posts/testing_utility.html</loc>
+  <lastmod>2014-06-19</lastmod>
  </url>
 </urlset>
