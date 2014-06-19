@@ -5,6 +5,7 @@ doc/montypython.npy
 .DS*
 .@__thumb
 doc/diff.tex
+cache/lastdeploy
 results
 .ipynb_checkpoints
 posts/.ipynb_checkpoints
