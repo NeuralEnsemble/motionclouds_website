@@ -3,7 +3,7 @@
 .. date: 2014/01/15 11:20:10
 .. tags: motion-clouds, python
 .. link:
-.. description: home page for Motion clouds 
+.. description: home page for Motion Clouds
 .. type: text
 
 These scripts implement a framework to generate random texture movies with controlled information content that we call [Motion Clouds](http://neuralensemble.github.io/MotionClouds "The Motion Clouds page on neuralensemble"). In particular, these stimuli can be made closer to naturalistic textures compared to usual stimuli such as gratings and random-dot kinetograms. We simplified the definition to parametrically define these "Motion Clouds" around the most prevalent feature axis (mean and bandwith): direction, spatial frequency, orientation.
