@@ -23,13 +23,13 @@ wiki:
 
 doc:
 	@(cd doc && $(MAKE))
-edit: 
+edit:
 	open Makefile &
 	spe &
 
 # https://docs.python.org/2/distutils/packageindex.html
 pypi_tags:
-	git tag 0.1 -m "Adds a tag so that we can put this on PyPI."
+	git tag 0.1.1 -m "Adds a tag so that we can put this on PyPI."
 	git push --tags origin master
 
 pypi_push:
