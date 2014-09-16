@@ -134,7 +134,7 @@ core.wait(0.5)
 win.close()
 
 #save data
-fileName = 'data/' + info['observer'] + '_' + info['timeStr']
+fileName = 'data/' + experiment + info['observer'] + '_' + info['timeStr']
 numpy.save(fileName, results)
 
 # see the notebook
