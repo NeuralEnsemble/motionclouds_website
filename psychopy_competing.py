@@ -28,10 +28,6 @@ print('launching experiment')
 from psychopy import visual, core, event, logging, gui, misc
 logging.console.setLevel(logging.DEBUG)
 
-import os, numpy
-import MotionClouds as mc
-import time
-
 #if no file use some defaults
 info = {}
 info['observer'] = 'anonymous'
@@ -81,7 +77,7 @@ wait_for_response = visual.TextStim(win,
 wait_for_next = visual.TextStim(win, 
                         text = u"+", units='norm', height=0.15, color='BlanchedAlmond',
                         pos=[0., -0.], alignHoriz='center', alignVert='center' ) 
-                        
+
 def getResponse():
     event.clearEvents()#clear the event buffer to start with
     resp = None#initially
@@ -137,11 +133,23 @@ win.close()
 fileName = 'data/' + experiment + info['observer'] + '_' + info['timeStr']
 numpy.save(fileName, results)
 
-# see the notebook
-#print('analyzing results')
-# TODO: loop over all data + make a fit for each
-#import pylab
-#pylab.scatter(results[1, :], results[0, :])
-#pylab.axis([0., 1., -1.1, 1.1])
-#pylab.xlabel('contrast')
-#pylab.savefig('competing_psychopy.png')
+print('analyzing results')
+# see the notebook but this gives a quick plot of the results
+import pylab
+from scipy.optimize import curve_fit
+def sigmoid(c, c0, k):
+    y = 1 / (1 + np.exp(-k*(c-c0)))
+    return y
+
+cdata, ydata = results[1, :], .5*results[0, : ]+.5
+pylab.plot(cdata, ydata, 'o', label='data')
+
+popt, pcov = curve_fit(sigmoid, cdata, ydata)
+pylab.text(0.05, 0.8, 'mean : %0.2f , slope : %0.2f ' %(popt[0], popt[1]))
+c = np.linspace(0, 1, 50)
+y = sigmoid(c, *popt)
+pylab.plot(c, y, label='fit')
+pylab.ylim(-.05, 1.05)
+pylab.legend(loc='best')
+pylab.xlabel('contrast')
+pylab.savefig('psychopy_competing.png')
