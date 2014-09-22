@@ -218,7 +218,7 @@ shape
     return z
 
 ########################## Display Tools #######################################
-vext = '.mp4'
+vext = '.webm'
 ext = '.png'
 T_movie = 8. # this value defines the duration of a temporal period
 
@@ -396,7 +396,7 @@ def check_if_anim_exist(filename, vext=vext):
     """
     return not(os.path.isfile(os.path.join(figpath, filename + vext)))
 
-SUPPORTED_FORMATS = ['.h5', '.mpg', '.mp4', '.gif', '.zip', '.mat', '.mkv']
+SUPPORTED_FORMATS = ['.h5', '.mpg', '.mp4', '.gif', '.webm', '.zip', '.mat', '.mkv']
 def anim_save(z, filename, display=True, flip=False, vext=vext,
               centered=False, T_movie=T_movie, verbose=False):
     """
@@ -459,6 +459,16 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
 #         options += ' -g ' + str(fps) + '  -r ' + str(fps) + ' '
 #         cmd = 'cat '  + tmpdir + '/*.png  | ffmpeg '  + options + filename + vext + verb_
         options = ' -f mp4 -pix_fmt yuv420p -c:v libx264  -g ' + str(fps) + '  -r ' + str(fps) + ' '
+        cmd = 'ffmpeg -i '  + tmpdir + '/frame%03d.png ' + options + filename + vext + verb_
+        os.system(cmd)
+        # 3) clean up
+        remove_frames(tmpdir, files)
+
+    if vext == '.webm':
+        # 1) create temporary frames
+        tmpdir, files = make_frames(z)
+        # 2) convert frames to movie
+        options = ' -vcodec libvpx -g ' + str(fps) + '  -r ' + str(fps) + ' '
         cmd = 'ffmpeg -i '  + tmpdir + '/frame%03d.png ' + options + filename + vext + verb_
         os.system(cmd)
         # 3) clean up
@@ -617,13 +627,13 @@ def figures(z=None, name='MC', vext=vext, do_movie=True, do_figs=True,
     import_mayavi()
 
     if ((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and check_if_anim_exist(name, vext=ext):
-        visualize(z, name=os.path.join(figpath, name + ext))           # Visualize the Fourier Spectrum
+        visualize(z, name=os.path.join(figpath, name))           # Visualize the Fourier Spectrum
 
     if (do_movie and check_if_anim_exist(name, vext=vext)) or (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and check_if_anim_exist(name + '_cube', vext=ext)):
         movie = rectif(random_cloud(z, seed=seed, impulse=impulse, do_amp=do_amp, sparseness=sparseness), verbose=verbose)
 
     if (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and check_if_anim_exist(name + '_cube', vext=ext)):
-        cube(movie, name=os.path.join(figpath, name + '_cube' + ext))   # Visualize the Stimulus cube
+        cube(movie, name=os.path.join(figpath, name + '_cube'))   # Visualize the Stimulus cube
 
     if (do_movie) and check_if_anim_exist(name, vext=vext):
         anim_save(movie, os.path.join(figpath, name), display=False, vext=vext)
