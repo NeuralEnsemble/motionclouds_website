@@ -1,9 +1,12 @@
+build
+dist
 .ipynb_checkpoints
 posts/.ipynb_checkpoints
 .doit.db
 doc/montypython.npy
 .DS*
 .@__thumb
+MANIFEST
 doc/diff.tex
 cache
 output
