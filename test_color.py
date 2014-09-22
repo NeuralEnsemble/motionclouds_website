@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """
 
-Testing different colored noised.
+Testing differently colored noises.
 
 """
 

@@ -21,10 +21,6 @@ z = color * mc.envelope_gabor(fx, fy, ft)
 mc.figures(z, name)
 
 # explore parameters
-for sparseness in np.linspace(.9, 4., 8):
-    name_ = name + '-sparseness-' + str(sparseness).replace('.', '_')
-    mc.figures_MC(fx, fy, ft, name_, do_amp=True, B_V=0.01, sparseness=sparseness)
-
 for sigma_div in [1, 2, 3, 5, 8, 13 ]:
     name_ = name + '-largeband-B_theta-pi-over-' + str(sigma_div).replace('.', '_')
     z = color * mc.envelope_gabor(fx, fy, ft, B_theta=np.pi/sigma_div)

@@ -173,7 +173,7 @@ def envelope_gabor(fx, fy, ft, V_X=V_X, V_Y=V_Y,
     envelope *= envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V)
     return envelope
 
-def random_cloud(envelope, seed=None, impulse=False, do_amp=False, sparseness=0., threshold=1.e-3):
+def random_cloud(envelope, seed=None, impulse=False, do_amp=False, threshold=1.e-3):
     """
     Returns a Motion Cloud movie as a 3D matrix.
     It first creates a random phase spectrum and then it computes the inverse FFT to obtain
@@ -183,7 +183,6 @@ def random_cloud(envelope, seed=None, impulse=False, do_amp=False, sparseness=0.
     - test the impulse response of the kernel by setting impulse to True
     - test the effect of randomizing amplitudes too by setting do_amp to True
 shape
-    - the sparseness parameter tunes the sparseness of the amplitude coefficient - there would be as much coefficients to reach the threshold
 
     """
     (N_X, N_Y, N_frame) = envelope.shape
@@ -196,18 +195,6 @@ shape
         if do_amp:
             # see Galerne, B., Gousseau, Y. & Morel, J.-M. Random phase textures: Theory and synthesis. IEEE Transactions in Image Processing (2010). URL http://www.biomedsearch.com/nih/Random-Phase-Textures-Theory-Synthesis/20550995.html. (basically, they conclude "Even though the two processes ADSN and RPN have different Fourier modulus distributions (see Section 4), they produce visually similar results when applied to natural images as shown by Fig. 11.")
             amps = np.random.randn(N_X, N_Y, N_frame)
-        # a special case when we want to build a texture using a sparse set of components (see Lagae et al.)
-        if sparseness > 0.:
-            fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
-            amps, phase =  np.zeros((N_X, N_Y, N_frame), dtype=np.complex), np.zeros((N_X, N_Y, N_frame))
-            coeff, rank = 1., 1
-            print 'I evaluate sparse Motion Cloud with ', np.int(threshold**(-1/sparseness)), ' components'
-            # TODO: here we make a sum of exactly similar components (corresponding to the enveloppes) such that there is no variability in their charcteristics
-            while rank**(-sparseness) > threshold:
-                a, x, y, t = np.random.randn(), N_X * np.random.rand(), N_Y * np.random.rand(), N_frame * np.random.rand()
-                amps +=  a * rank**(-sparseness) * np.exp(-1j*np.pi*(x*fx + y*fy + t*ft))
-                rank += 1
-            print 'stopped sparse Motion Cloud with ', rank, ' components'
 
     Fz = amps * envelope * np.exp(1j * phase)
 
@@ -605,7 +592,7 @@ def rectif(z, contrast=.9, method='Michelson', verbose=False):
 def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,
                     B_V=B_V, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor,
                     theta=theta, B_theta=B_theta, alpha=alpha, vext=vext,
-                    seed=None, impulse=False, do_amp=False, sparseness=0., verbose=False):
+                    seed=None, impulse=False, do_amp=False, verbose=False):
     """
     Generates the figures corresponding to the Fourier spectra and the stimulus cubes and
     movies.
@@ -616,13 +603,13 @@ def figures_MC(fx, fy, ft, name, V_X=V_X, V_Y=V_Y, do_figs=True, do_movie=True,
                     B_V=B_V, sf_0=sf_0, B_sf=B_sf, loggabor=loggabor,
                     theta=theta, B_theta=B_theta, alpha=alpha)
         figures(z, name, vext=vext, do_figs=do_figs, do_movie=do_movie,
-                    seed=seed, impulse=impulse, verbose=verbose, do_amp=do_amp, sparseness=sparseness)
+                    seed=seed, impulse=impulse, verbose=verbose, do_amp=do_amp)
     else:
         figures(z=None, name=name, vext=vext, do_figs=do_figs, do_movie=do_movie,
-                    seed=seed, impulse=impulse, verbose=verbose, do_amp=do_amp, sparseness=sparseness)
+                    seed=seed, impulse=impulse, verbose=verbose, do_amp=do_amp)
 
 def figures(z=None, name='MC', vext=vext, do_movie=True, do_figs=True,
-                    seed=None, impulse=False, verbose=False, masking=False, do_amp=False, sparseness=0.):
+                    seed=None, impulse=False, verbose=False, masking=False, do_amp=False):
 
     import_mayavi()
 
@@ -630,7 +617,7 @@ def figures(z=None, name='MC', vext=vext, do_movie=True, do_figs=True,
         visualize(z, name=os.path.join(figpath, name))           # Visualize the Fourier Spectrum
 
     if (do_movie and check_if_anim_exist(name, vext=vext)) or (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and check_if_anim_exist(name + '_cube', vext=ext)):
-        movie = rectif(random_cloud(z, seed=seed, impulse=impulse, do_amp=do_amp, sparseness=sparseness), verbose=verbose)
+        movie = rectif(random_cloud(z, seed=seed, impulse=impulse, do_amp=do_amp), verbose=verbose)
 
     if (((MAYAVI == 'Import') or MAYAVI[:2]=='Ok') and do_figs and check_if_anim_exist(name + '_cube', vext=ext)):
         cube(movie, name=os.path.join(figpath, name + '_cube'))   # Visualize the Stimulus cube
