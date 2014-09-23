@@ -312,7 +312,7 @@ def visualize(z, azimuth=290., elevation=45.,
         print(" You should upgrade your mayavi version")
 
     if not(name is None):
-        mlab.savefig(name + ext, magnification=1, size=figsize)
+        mlab.savefig(name + ext, magnification='auto', size=figsize)
     else:
        mlab.show(stop=True)
 
@@ -368,7 +368,7 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
         print(" You should upgrade your mayavi version")
 
     if not(name is None):
-        mlab.savefig(name + ext, magnification=1, size=figsize)
+        mlab.savefig(name + ext, magnification='auto', size=figsize)
     else:
         mlab.show(stop=True)
 
@@ -455,7 +455,7 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         # 1) create temporary frames
         tmpdir, files = make_frames(z)
         # 2) convert frames to movie
-        options = ' -vcodec libvpx -g ' + str(fps) + '  -r ' + str(fps) + ' '
+        options = ' -f webm  -pix_fmt yuv420p -vcodec libvpx -g ' + str(fps) + '  -r ' + str(fps) + ' '
         cmd = 'ffmpeg -i '  + tmpdir + '/frame%03d.png ' + options + filename + vext + verb_
         os.system(cmd)
         # 3) clean up
