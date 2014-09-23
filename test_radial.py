@@ -36,10 +36,10 @@ for sf_0 in [0.01, 0.05, 0.1, 0.2, 0.4, 0.8]:
     name_ = name + '-sf_0_nologgabor-' + str(sf_0).replace('.', '_')
     mc.figures_MC(fx, fy, ft, name_, sf_0=sf_0, B_theta=B_theta, loggabor=False, verbose=verbose)
 
-for seed in [123456, 123456, 123457, None, None]:
-    name_ = name + '-seed-' + str(seed)
-    mc.figures_MC(fx, fy, ft, name_, seed=seed, B_theta=B_theta, verbose=verbose)
-
+# for seed in [123456, 123457, None, None]:
+#     name_ = name + '-seed-' + str(seed)
+#     mc.figures_MC(fx, fy, ft, name_, seed=seed, B_theta=B_theta, verbose=verbose)
+# 
 for V_X in [0., 0.5, 1., -1.]:
     name_ = name + '-V_X-' + str(V_X).replace('.', '_')
     mc.figures_MC(fx, fy, ft, name_, V_X=V_X, B_theta=B_theta, verbose=verbose)

@@ -65,7 +65,7 @@ figpath = 'results/'
 if not(os.path.isdir(figpath)):os.mkdir(figpath)
 recompute = False
 
-def get_grids(N_X, N_Y, N_frame, sparse=False):
+def get_grids(N_X, N_Y, N_frame, sparse=True):
     """
         Use that function to define a reference outline for envelopes in Fourier space.
         In general, it is more efficient to define dimensions as powers of 2.
