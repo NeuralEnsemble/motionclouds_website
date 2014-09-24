@@ -1,4 +1,4 @@
-### Why use MotionClouds?
+## Why use MotionClouds?
 
 These scripts implement a framework to generate random texture movies with controlled information content that we call [Motion Clouds](http://neuralensemble.github.io/MotionClouds "The Motion Clouds page on neuralensemble").
 
