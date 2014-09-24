@@ -30,7 +30,7 @@ This package consists of:
  1. optional: ```mayavi``` is used to visualize envelopes,
  1. optional: ```ffmpeg``` is used to generate movies.
  1. optional: ```matplotlib```, ```scipy``` (with PIL support) and ```imagemagick``` are used to generate figures in the documentation.
- 1. optional: ```progressbar``` for displaying progress of encoding.
+ 1. optional: ```pyprind``` and ```psutil``` for displaying progress of encoding.
  1. optional: ```texlive-latex-recommended  latexmk latexdiff``` to compile the documentation
  1. optional: ```PyOpenGL PyOpenGL_accelerate glumpy``` to display MotionClouds online
 
