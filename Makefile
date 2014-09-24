@@ -4,22 +4,28 @@ report_%.pdf: report_%.py MotionParticles.py
 	    pyreport --double $< && open $@
 
 test:
-	python test_color.py
-	python test_grating.py
-	python test_radial.py
-	python test_speed.py
+	python test/test_color.py
+	python test/test_grating.py
+	python test/test_radial.py
+	python test/test_speed.py
+
 experiments:
-	python experiment_B_sf.py
-	python experiment_competing.py
-	python experiment_smooth.py
-	# python experiment_VSDI.py
+	# experiments/experiment
+	python experiments/experiment_B_sf.py
+	# python experiments/experiment_VSDI.py
+	python experiments/experiment_competing.py
+	# python experiments/experiment_concentric.py
+	python experiments/experiment_smooth.py
+
 figures:
-	python fig_artwork_eschercube.py
-	python fig_contrast.py
+	python figures/fig_artwork_eschercube.py
+	python figures/fig_contrast.py
+	python figures/fig_wave.py
+
 wiki:
-	python fig_orientation.py
-	python fig_ApertureProblem.py
-	python fig_MotionPlaid.py
+	python wiki/fig_ApertureProblem.py
+	python wiki/fig_MotionPlaid.py
+	python wiki/fig_orientation.py
 
 doc:
 	@(cd doc && $(MAKE))
