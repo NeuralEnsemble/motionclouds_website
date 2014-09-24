@@ -65,16 +65,14 @@ figpath = 'results/'
 if not(os.path.isdir(figpath)):os.mkdir(figpath)
 recompute = False
 
-def get_grids(N_X, N_Y, N_frame, sparse=True):
+def get_grids(N_X, N_Y, N_frame):
     """
         Use that function to define a reference outline for envelopes in Fourier space.
         In general, it is more efficient to define dimensions as powers of 2.
+        output is always  of even size..
 
     """
-    if sparse:
-        fx, fy, ft = np.ogrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always of even size.
-    else:
-        fx, fy, ft = np.mgrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]     # output is always  of even size..
+    fx, fy, ft = np.mgrid[(-N_X//2):((N_X-1)//2 + 1), (-N_Y//2):((N_Y-1)//2 + 1), (-N_frame//2):((N_frame-1)//2 + 1)]
     fx, fy, ft = fx*1./N_X, fy*1./N_Y, ft*1./N_frame
     return fx, fy, ft
 
@@ -119,11 +117,11 @@ def envelope_radial(fx, fy, ft, sf_0=sf_0, B_sf=B_sf, ft_0=ft_0, loggabor=loggab
     if sf_0 == 0.: return 1.
     if loggabor:
         # see http://en.wikipedia.org/wiki/Log-normal_distribution
-        fr = frequency_radius(fx, fy, ft, ft_0=1.)
+        fr = frequency_radius(fx, fy, ft, ft_0=ft_0)
         env = 1./fr*np.exp(-.5*(np.log(fr/sf_0)**2)/(np.log((sf_0+B_sf)/sf_0)**2))
         return env
     else:
-        return np.exp(-.5*(frequency_radius(fx, fy, ft, ft_0=1.) - sf_0)**2/B_sf**2)
+        return np.exp(-.5*(frequency_radius(fx, fy, ft, ft_0=ft_0) - sf_0)**2/B_sf**2)
 
 def envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V):
     """
@@ -140,7 +138,7 @@ def envelope_speed(fx, fy, ft, V_X=V_X, V_Y=V_Y, B_V=B_V):
     Run 'test_speed.py' to explore the speed parameters
 
     """
-    env = np.exp(-.5*((ft+fx*V_X+fy*V_Y))**2/(B_V*frequency_radius(fx, fy, ft, ft_0=1.))**2)
+    env = np.exp(-.5*((ft+fx*V_X+fy*V_Y))**2/(B_V*frequency_radius(fx, fy, ft, ft_0=ft_0))**2)
     return env
 
 def envelope_orientation(fx, fy, ft, theta=theta, B_theta=B_theta):
@@ -260,7 +258,7 @@ def visualize(z, azimuth=290., elevation=45.,
     import_mayavi()
 
     N_X, N_Y, N_frame = z.shape
-    fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
+    fx, fy, ft = get_grids(N_X, N_Y, N_frame)
 
     mlab.figure(1, bgcolor=(1, 1, 1), fgcolor=(0, 0, 0), size=figsize)
     mlab.clf()
@@ -329,7 +327,7 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
     import_mayavi()
 
     N_X, N_Y, N_frame = im.shape
-    fx, fy, ft = get_grids(N_X, N_Y, N_frame, sparse=False)
+    fx, fy, ft = get_grids(N_X, N_Y, N_frame)
 
     mlab.figure(1, bgcolor=(1, 1, 1), fgcolor=(0, 0, 0), size=figsize)
     mlab.clf()
@@ -640,6 +638,9 @@ def in_show_video(name):
     from base64 import b64encode
     video = open(os.path.join(figpath, name + vext), "rb").read()
     video_encoded = b64encode(video)
-    video_tag = '<video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
+    if vext=='.webm':
+        video_tag = '<video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/webm;base64,{0}">'.format(video_encoded)
+    else:
+        video_tag = '<video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
     display(HTML(data=video_tag))
 
