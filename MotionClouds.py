@@ -400,10 +400,10 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         tmpdir = tempfile.mkdtemp()
 
         if PROGRESS:
-            pbar = progressbar.ProgPercent(N_frame)
+            pbar = progressbar.ProgPercent(N_frame, monitor=True)
         print('Saving sequence ' + filename + vext)
         for frame in range(N_frame):
-            if PROGRESS: pbar.update(frame)
+            if PROGRESS: pbar.update()
             fname = os.path.join(tmpdir, 'frame%03d.png' % frame)
             image = np.rot90(z[:, :, frame])
             if flip: image = np.flipud(image)
@@ -453,7 +453,7 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         # 1) create temporary frames
         tmpdir, files = make_frames(z)
         # 2) convert frames to movie
-        options = ' -f webm  -pix_fmt yuv420p -vcodec libvpx -g ' + str(fps) + '  -r ' + str(fps) + ' '
+        options = ' -f webm  -pix_fmt yuv420p -vcodec libvpx -deadline best -qmax 12 -g ' + str(fps) + '  -r ' + str(fps) + ' '
         cmd = 'ffmpeg -i '  + tmpdir + '/frame%03d.png ' + options + filename + vext + verb_
         os.system(cmd)
         # 3) clean up
