@@ -383,7 +383,7 @@ def check_if_anim_exist(filename, vext=vext):
 
 SUPPORTED_FORMATS = ['.h5', '.mpg', '.mp4', '.gif', '.webm', '.zip', '.mat', '.mkv']
 def anim_save(z, filename, display=True, flip=False, vext=vext,
-              centered=False, T_movie=T_movie, verbose=False):
+              centered=False, T_movie=T_movie, verbose=True):
     """
     Saves a numpy 3D matrix (x-y-t) to a multimedia file.
 
@@ -453,7 +453,7 @@ def anim_save(z, filename, display=True, flip=False, vext=vext,
         # 1) create temporary frames
         tmpdir, files = make_frames(z)
         # 2) convert frames to movie
-        options = ' -f webm  -pix_fmt yuv420p -vcodec libvpx -deadline best -qmax 12 -g ' + str(fps) + '  -r ' + str(fps) + ' '
+        options = ' -f webm  -pix_fmt yuv420p -vcodec libvpx -qmax 12 -g ' + str(fps) + '  -r ' + str(fps) + ' '
         cmd = 'ffmpeg -i '  + tmpdir + '/frame%03d.png ' + options + filename + vext + verb_
         os.system(cmd)
         # 3) clean up

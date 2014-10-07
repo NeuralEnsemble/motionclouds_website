@@ -11,7 +11,7 @@ setup(
     name = NAME,
     version = version,
     packages = [NAME],
-    package_dir = {NAME: ''},
+    package_dir = {NAME: NAME},
     author = "Laurent Perrinet INT - CNRS",
     author_email = "Laurent.Perrinet@univ-amu.fr",
     description = "Model-based stimulus synthesis of natural-like random textures for the study of motion perception.",
