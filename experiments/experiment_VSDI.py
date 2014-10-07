@@ -66,6 +66,40 @@ alpha = 1.0
 sf_0=0.1
 V_X=0.5
 
+def physicalUnits2discreteUnits(sf0_cpd, Bsf_cpd, v_dps, B_dps,pixelPitch,viewingDistance,frameRate):
+    %   % laptop monitor
+    %   pixelPitch      = 0.22/10; % in cm
+    %   viewingDistance = 50;
+    %   sf0_cpd         = 4 ;
+    %   Bsf_cpd         = 1 ;
+    %   v_dps           = 4 ;
+    %   B_dps           = 1 ;
+    %   frameRate       = 20 ;
+    % convert to machine units
+    cmPerDegree    = 2*viewingDistance*tand(1/2)
+    pxPerDegree    = cmPerDegree/pixelPitch
+    sf0            = sf0_cpd/pxPerDegree
+    Bsf            = Bsf_cpd/pxPerDegree
+
+    v              = v_dps/frameRate*pxPerDegree
+    Bv             = B_dps/frameRate*pxPerDegree
+    return sf0, Bsf, v, Bv
+
+
+% take monitor parameters
+% planar display
+monitorRefresh = 60 ;
+pixelPitch     = 0.2865/10 ;% pixelsize in cm
+
+% experiments parameter
+viewingDistance = 70 ;
+
+frameRefresh   = monitorRefresh/3 ;
+stimModRate    = 1 ;
+numberOfReps   = 12 ;
+framesPerMod   = frameRefresh/stimModRate/2 ; 
+
+
 # Masks
 # gaussian mask
 sigma_mask_x = 0.15
@@ -73,6 +107,7 @@ sigma_mask_y = 0.2
 x, y, t = mc.get_grids(N_X, N_Y, N_frame)
 n_x, n_y = N_X, N_Y
 gauss = np.exp(-(((x-172./n_x)**2/(2*sigma_mask_x**2)) + (((y-108./n_y)**2)/(2*sigma_mask_y**2))))
+
 
 def tukey(n, r=0.5):
     '''The Tukey window, also known as the tapered cosine window, can be regarded as a 
