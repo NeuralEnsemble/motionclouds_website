@@ -30,24 +30,31 @@ This package consists of:
  1. optional: ```mayavi``` is used to visualize envelopes,
  1. optional: ```ffmpeg``` is used to generate movies.
  1. optional: ```matplotlib```, ```scipy``` (with PIL support) and ```imagemagick``` are used to generate figures in the documentation.
- 1. optional: ```pyprind``` and ```psutil``` for displaying progress of encoding.
+ 1. optional: ```progressbar``` for displaying progress of encoding.
  1. optional: ```texlive-latex-recommended  latexmk latexdiff``` to compile the documentation
  1. optional: ```PyOpenGL PyOpenGL_accelerate glumpy``` to display MotionClouds online
+
+* These dependencies may  be easily met using the dedicated scripts:
+
+ * For MacOsX, first install command line tools by typing the ```git``` command in the terminal (a pop-up message should happen if these tools are not installed). Then issue the following command in the terminal:
+```
+    curl https://raw.githubusercontent.com/NeuralEnsemble/MotionClouds/master/install/install_dependencies_macosx.sh |sh
+```
+ * For Debian-like systems, issue the following command in the terminal
+```
+    curl https://raw.githubusercontent.com/NeuralEnsemble/MotionClouds/master/install/install_dependencies_debian.sh |sh
+```
+
+Again, these line of code may be copy-and-pasted in your terminal.
+
 
 ## download
 
 * to get the latest version, download the current state from the repository:
 ```
-git clone https://github.com/NeuralEnsemble/MotionClouds.git
+git clone https://github.com/meduz/MotionClouds.git
 ```
 
 * other sources exist to get a stable release, such as ModelDb (http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=146953).
 
-### installation using custom scripts
-
-* depending on your system you should use in a terminal window ```
-sh install_dependencies_debian.sh
-``` or ```
-sh install_dependencies_macosx.sh
-```
-* an alternative is to use a virtual machine such as for instance the one provided by the NeuroDebian team (http://neuro.debian.net/vm.html).
+* This was tested on several MacOsX/Mavericks 64bit machines and on ubuntu 14.04 LTS and Debian squeezy 64bit machines.
