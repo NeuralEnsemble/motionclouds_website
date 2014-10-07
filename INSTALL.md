@@ -38,7 +38,7 @@ This package consists of:
 
 * to get the latest version, download the current state from the repository:
 ```
-git clone https://github.com/meduz/MotionClouds.git
+git clone https://github.com/NeuralEnsemble/MotionClouds.git
 ```
 
 * other sources exist to get a stable release, such as ModelDb (http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=146953).
