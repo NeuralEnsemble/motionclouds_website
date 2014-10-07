@@ -33,6 +33,7 @@ brew install libtool
 brew install hdf5
 brew tap homebrew/science
 brew tap Homebrew/python
+brew install pillow
 pip install -U numexpr
 pip install -U cython
 pip install -U tables
@@ -56,8 +57,9 @@ pip install cython
 pip install numexpr
 pip install tables
 
-brew install wxpython
-pip install -U psychopy
+# brew install wxpython
+# pip install -U psychopy
+
 pip install pyprind
 
 
