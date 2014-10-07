@@ -42,7 +42,7 @@ This package consists of:
 ```
  * For Debian-like systems, issue the following command in the terminal
 ```
-    curl https://raw.githubusercontent.com/NeuralEnsemble/MotionClouds/master/install/install_dependencies_debian.sh |sh
+    wget https://raw.githubusercontent.com/NeuralEnsemble/MotionClouds/master/install/install_dependencies_debian.sh -O - |sh
 ```
 
 Again, these line of code may be copy-and-pasted in your terminal.
