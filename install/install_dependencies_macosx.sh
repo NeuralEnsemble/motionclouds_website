@@ -48,6 +48,7 @@ pip install -U nose
 pip install -U ipython
 brew install numpy #--with-openblas
 brew test numpy
+brew install scipy
 
 # pylab
 brew install matplotlib --with-tex
