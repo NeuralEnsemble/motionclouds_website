@@ -61,7 +61,8 @@ pip install git+https://github.com/enthought/traitsgui
 pip install git+https://github.com/enthought/traitsbackendqt
 pip install configobj
 pip install envisage
-pip install  "Mayavi[app]"
+# pip install "Mayavi[app]"
+pip install git+https://github.com/enthought/mayavi
 
 # HDF export
 brew install hdf5
