@@ -26,19 +26,26 @@ brew install python
 pip install --upgrade setuptools
 pip install --upgrade distribute
 
+# installing xquartz
+brew tap caskroom/cask
+brew install brew-cask
+brew cask install xquartz
+
 # numpy et al
+brew tap homebrew/science
+brew tap Homebrew/python
 brew install gcc
 brew install cmake
 brew install fftw
 brew install libtool
 brew install hdf5
-brew tap homebrew/science
-brew tap Homebrew/python
 brew install pillow
 pip install -U numexpr
 pip install -U cython
 pip install -U tables
 pip install -U pandas
+pip install -U nose
+pip install -U ipython
 brew install numpy #--with-openblas
 brew test numpy
 
@@ -52,6 +59,7 @@ brew install vtk5 --with-qt
 pip install configobj
 pip install envisage
 pip install  "Mayavi[app]"
+
 # HDF export
 brew install hdf5
 pip install cython
@@ -61,6 +69,7 @@ pip install tables
 # brew install wxpython
 # pip install -U psychopy
 
+pip install psutil
 pip install pyprind
 
 
