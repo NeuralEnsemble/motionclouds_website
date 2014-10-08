@@ -17,9 +17,7 @@ brew update
 brew upgrade
 
 # install python through HomeBrew
-
-pip install --upgrade setuptools
-pip install --upgrade distribute
+brew install python
 
 # bootstrap pip
 pip install --upgrade setuptools
