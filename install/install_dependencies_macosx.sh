@@ -57,6 +57,7 @@ brew install matplotlib --with-tex
 brew install vtk5 --with-qt
 ln -s /usr/local/opt/vtk5/lib/python2.7/site-packages/vtk/ /usr/local/lib/python2.7/site-packages/vtk # there is a bug in the onstallation of vtk such that it can not be imported
 #brew install vtk --python
+pip install git+https://github.com/enthought/traitsgui
 pip install git+https://github.com/enthought/traitsbackendqt
 pip install configobj
 pip install envisage
@@ -76,11 +77,12 @@ pip install pyprind
 
 
 # install online displaying tools
-pip install PyOpenGL PyOpenGL_accelerate
-pip install glumpy
-brew install --HEAD smpeg
-brew install pygame
-pip install hg+https://pyglet.googlecode.com/hg/
+# pip install PyOpenGL PyOpenGL_accelerate
+# pip install glumpy
+# brew install --HEAD smpeg
+# brew install pygame
+# brew install mercurial
+# pip install hg+https://pyglet.googlecode.com/hg/
 pip install -U NeuroTools
 
 # convert
@@ -90,3 +92,4 @@ brew install ffmpeg --with-libvpx
 
 # Remove outdated versions from the cellar
 brew cleanup
+python -c 'import MotionClouds as mc; fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame); z = mc.envelope_gabor(fx, fy, ft); mc.figures(z, "test")'
