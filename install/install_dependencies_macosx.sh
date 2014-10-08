@@ -35,7 +35,6 @@ brew cask install xquartz
 brew tap homebrew/science
 brew tap Homebrew/python
 brew install gcc
-brew install cmake
 brew install fftw
 brew install libtool
 brew install hdf5
@@ -54,8 +53,15 @@ brew install scipy
 brew install matplotlib --with-tex
 
 # mayavi
-brew install vtk5 --with-qt
-ln -s /usr/local/opt/vtk5/lib/python2.7/site-packages/vtk/ /usr/local/lib/python2.7/site-packages/vtk # there is a bug in the onstallation of vtk such that it can not be imported
+# http://davematthew.blogspot.fr/2013/10/installing-matplotlib-and-mayavi-on-mac.html
+brew install cmake
+brew install qt
+brew install pyqt
+brew install --python --qt vtk
+brew install wxmac
+
+#brew install vtk5 --with-qt
+#ln -s /usr/local/opt/vtk5/lib/python2.7/site-packages/vtk/ /usr/local/lib/python2.7/site-packages/vtk # there is a bug in the onstallation of vtk such that it can not be imported
 #brew install vtk --python
 pip install git+https://github.com/enthought/traitsgui
 pip install git+https://github.com/enthought/traitsbackendqt
