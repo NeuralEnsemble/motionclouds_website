@@ -1,9 +1,12 @@
 #!/bin/bash
 
-# 1. install Xcode:
+# 1. install Xcode command-line tools:
 # From this url : (uncomment the following line)
 # open http://itunes.apple.com/us/app/xcode/id497799835?mt=12
 # install Xcode on the Mac App Store by clicking on “View in Mac App Store”.
+# or simpler, issue
+git
+# a pop-up window should appear which recommends to install the command-line tools.
 
 # 2. install HomeBrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
