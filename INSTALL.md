@@ -57,4 +57,14 @@ git clone https://github.com/meduz/MotionClouds.git
 
 * other sources exist to get a stable release, such as ModelDb (http://senselab.med.yale.edu/modeldb/ShowModel.asp?model=146953).
 
-* This was tested on several MacOsX/Mavericks 64bit machines and on ubuntu 14.04 LTS and Debian squeezy 64bit machines.
+* This iinstallation procedure was tested on several MacOsX/Mavericks 64bit machines, Snow Leopard 10.6-32bits and on ubuntu 14.04 LTS / Debian squeezy 64bit machines.
+
+##testing
+
+* To test the basic functionality of Motion Clouds, try in the terminal:
+
+```
+python -c'import MotionClouds as mc; fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame); z = mc.envelope_gabor(fx, fy, ft)'
+```
+
+* If that fails, we will be happy to help out, so send an e-mail to laurent.perrinet@univ-amu.fr.
