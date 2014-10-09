@@ -37,11 +37,7 @@ brew tap Homebrew/python
 brew install gcc
 brew install fftw
 brew install libtool
-brew install hdf5
 brew install pillow
-pip install -U numexpr
-pip install -U cython
-pip install -U tables
 pip install -U pandas
 pip install -U nose
 pip install -U ipython
@@ -57,14 +53,12 @@ brew install matplotlib --with-tex
 brew install cmake
 brew install qt
 brew install pyqt
-brew install --python --qt vtk
-brew install wxmac
 
-#brew install vtk5 --with-qt
-#ln -s /usr/local/opt/vtk5/lib/python2.7/site-packages/vtk/ /usr/local/lib/python2.7/site-packages/vtk # there is a bug in the onstallation of vtk such that it can not be imported
+brew install vtk5 --with-qt
+ln -s /usr/local/opt/vtk5/lib/python2.7/site-packages/vtk/ /usr/local/lib/python2.7/site-packages/vtk # there is a bug in the onstallation of vtk such that it can not be imported
 #brew install vtk --python
 pip install -U git+https://github.com/enthought/traitsgui
-pip install -U git+https://github.com/enthought/traitsbackendqt
+pip install -U giYt+https://github.com/enthought/traitsbackendqt
 pip install -U configobj
 pip install -U envisage
 # pip install "Mayavi[app]"
@@ -91,6 +85,7 @@ pip install -U pyprind
 # brew install mercurial
 # pip install hg+https://pyglet.googlecode.com/hg/
 pip install -U NeuroTools
+pip install -U git+https://github.com/NeuralEnsemble/MotionClouds
 
 # convert
 brew install imagemagick
@@ -98,5 +93,5 @@ brew install x264
 brew install ffmpeg --with-libvpx
 
 # Remove outdated versions from the cellar
-brew cleanup
+brew cleanup 
 python -c 'import MotionClouds as mc; fx, fy, ft = mc.get_grids(mc.N_X, mc.N_Y, mc.N_frame); z = mc.envelope_gabor(fx, fy, ft); mc.figures(z, "test")'
