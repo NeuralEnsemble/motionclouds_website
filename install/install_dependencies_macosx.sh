@@ -63,24 +63,24 @@ brew install wxmac
 #brew install vtk5 --with-qt
 #ln -s /usr/local/opt/vtk5/lib/python2.7/site-packages/vtk/ /usr/local/lib/python2.7/site-packages/vtk # there is a bug in the onstallation of vtk such that it can not be imported
 #brew install vtk --python
-pip install git+https://github.com/enthought/traitsgui
-pip install git+https://github.com/enthought/traitsbackendqt
-pip install configobj
-pip install envisage
+pip install -U git+https://github.com/enthought/traitsgui
+pip install -U git+https://github.com/enthought/traitsbackendqt
+pip install -U configobj
+pip install -U envisage
 # pip install "Mayavi[app]"
-pip install git+https://github.com/enthought/mayavi
+pip install -U git+https://github.com/enthought/mayavi
 
 # HDF export
 brew install hdf5
-pip install cython==1.3 #tables doesn't build with last upgrade
-pip install numexpr
-pip install tables
+pip install cython==0.13 #tables doesn't build with last upgrade
+pip install -U numexpr
+pip install -U tables
 
 # brew install wxpython
 # pip install -U psychopy
 
-pip install psutil
-pip install pyprind
+pip install -U psutil
+pip install -U pyprind
 
 
 # install online displaying tools
