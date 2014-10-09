@@ -40,7 +40,7 @@ brew install libtool
 brew install hdf5
 brew install pillow
 pip install -U numexpr
-pip install -U cython
+pip install cython==1.3 #tables doesn't build with last upgrade
 pip install -U tables
 pip install -U pandas
 pip install -U nose
@@ -70,11 +70,6 @@ pip install envisage
 # pip install "Mayavi[app]"
 pip install git+https://github.com/enthought/mayavi
 
-# HDF export
-brew install hdf5
-pip install cython==1.3 #tables doesn't build with last upgrade
-pip install numexpr
-pip install tables
 
 # brew install wxpython
 # pip install -U psychopy
