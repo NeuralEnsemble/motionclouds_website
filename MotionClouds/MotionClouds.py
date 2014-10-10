@@ -250,11 +250,17 @@ def get_size(mat):
 #NOTE: Python uses the first dimension (rows) as vertical axis and this is the Y in the spatiotemporal domain. Be careful with the convention of X and Y.
 
 def visualize(z, azimuth=290., elevation=45.,
-    thresholds=[0.94, .89, .75, .5, .25, .1], opacities=[.9, .8, .7, .5, .2, .2],
+    thresholds=[0.94, .89, .75, .5, .25, .1], opacities=[.9, .8, .7, .5, .2, .1],
     name=None, ext=ext, do_axis=True, do_grids=False, draw_projections=True,
     colorbar=False, f_N=2., f_tN=2., figsize=figsize):
 
-    """ Visualize the  Fourier spectrum """
+    """ Visualize the  Fourier spectrum by showing 3D contour plots at different thresholds
+    
+    parameters
+    ----------
+    z : envelope of the cloud
+
+    """
     import_mayavi()
 
     N_X, N_Y, N_frame = z.shape
@@ -284,10 +290,9 @@ def visualize(z, azimuth=290., elevation=45.,
         scpz.implicit_plane.plane.origin = [1/N_X, 1/N_Y, -border]
         scpz.enable_contours = True
 
-    # Generate iso-surfaces at differnet energy levels
+    # Generate iso-surfaces at different energy levels
     for threshold, opacity in zip(thresholds, opacities):
-        mlab.pipeline.iso_surface(src, contours=[z.max()-threshold*z.ptp(), ],
-                                  opacity=opacity)
+        mlab.pipeline.iso_surface(src, contours=[z.max()-threshold*z.ptp(), ], opacity=opacity)
         mlab.outline(extent=[-1./2, 1./2, -1./2, 1./2, -1./2, 1./2],)
 
     # Draw a sphere at the origin
@@ -299,9 +304,7 @@ def visualize(z, azimuth=290., elevation=45.,
 
     if colorbar: mlab.colorbar(title='density', orientation='horizontal')
     if do_axis:
-        ax = mlab.axes(xlabel='fx', ylabel='fy', zlabel='ft',
-                       extent=[-1./2, 1./2, -1./2, 1./2, -1./2, 1./2],
-                       )
+        ax = mlab.axes(xlabel='fx', ylabel='fy', zlabel='ft',)
         ax.axes.set(font_factor=2.)
 
     try:
@@ -333,16 +336,14 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
     mlab.clf()
     src = mlab.pipeline.scalar_field(fx*2., fy*2., ft*2., im)
 
-    mlab.pipeline.image_plane_widget(src, plane_orientation='z_axes',
-                                     slice_index=0, colormap=colormap, vmin=vmin, vmax=vmax)
-    mlab.pipeline.image_plane_widget(src, plane_orientation='z_axes',
-                                     slice_index=N_frame, colormap=colormap,
-                                     vmin=vmin, vmax=vmax)
+    mlab.pipeline.image_plane_widget(src, plane_orientation='z_axes', slice_index=0,
+                                     colormap=colormap, vmin=vmin, vmax=vmax)
+    mlab.pipeline.image_plane_widget(src, plane_orientation='z_axes', slice_index=N_frame, 
+                                     colormap=colormap, vmin=vmin, vmax=vmax)
     mlab.pipeline.image_plane_widget(src, plane_orientation='x_axes', slice_index=0,
                                      colormap=colormap, vmin=vmin, vmax=vmax)
     mlab.pipeline.image_plane_widget(src, plane_orientation='x_axes', slice_index=N_X,
                                      colormap=colormap, vmin=vmin, vmax=vmax)
-
     mlab.pipeline.image_plane_widget(src, plane_orientation='y_axes', slice_index=0,
                                      colormap=colormap, vmin=vmin, vmax=vmax)
     mlab.pipeline.image_plane_widget(src, plane_orientation='y_axes', slice_index=N_Y,
@@ -350,7 +351,6 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
 
     if do_axis:
         ax = mlab.axes(xlabel='x', ylabel='y', zlabel='t',
-                       extent=[-1., 1., -1., 1., -1., 1.],
                        ranges=[0., N_X, 0., N_Y, 0., N_frame],
                        x_axis_visibility=True, y_axis_visibility=True,
                        z_axis_visibility=True)
@@ -516,6 +516,8 @@ def play(z, T=5.):
     """
     T: duration in second of a period
 
+    TODO: currently failing on MacOsX - use pyglet?
+
     """
     global t, t0, frames
     N_X, N_Y, N_frame = z.shape
@@ -627,7 +629,6 @@ def figures(z=None, name='MC', vext=vext, do_movie=True, do_figs=True,
         in_show_video(name)
 
 def in_show_video(name):
-    print(name)
     import os
     from IPython.core.display import display, Image
     if os.path.isfile(os.path.join(figpath, name + ext)):
@@ -643,4 +644,3 @@ def in_show_video(name):
     else:
         video_tag = '<video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
     display(HTML(data=video_tag))
-
