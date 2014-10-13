@@ -12,15 +12,22 @@ git
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 # to reinstall, do:
 # rm -rf /usr/local/Cellar /usr/local/.git && brew cleanup
-
+echo "export PATH=/usr/local/bin:/usr/local/sbin:$HOME/.gem/ruby/1.8/bin:$PATH" >> ~/.bash_profile
+echo "export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/opt/vtk5/lib/python2.7/site-packages:$PYTHONPATH" >> ~/.bash_profile
+echo "export QT_API=pyqt" >> ~/.bash_profile
+source ~/.bash_profile
 # Make sure we’re using the latest Homebrew
 brew update
 
 # Upgrade any already-installed formulae
 brew upgrade
 
+brew uninstall python pyqt pyside vtk
+brew uninstall wxpython
+mv /usr/local/lib/python2.7/site-packages /usr/local/lib/python2.7/site-packages-old 
+mv /usr/local/share/python /usr/local/share/python-old
 # install python through HomeBrew
-brew install python
+brew install python --framework --universal
 
 # bootstrap pip
 pip install --upgrade setuptools
@@ -54,8 +61,11 @@ brew install cmake
 brew install qt
 brew install pyqt
 
-brew install vtk5 --with-qt
-ln -s /usr/local/opt/vtk5/lib/python2.7/site-packages/vtk/ /usr/local/lib/python2.7/site-packages/vtk # there is a bug in the onstallation of vtk such that it can not be imported
+brew tap iMichka/homebrew-MacVTKITKPythonBottles
+brew install iMichka/MacVTKITKPythonBottles/imichka-vtk --with-qt --with-matplotlib --with-python
+
+# brew install vtk5 --with-qt
+# ln -s /usr/local/opt/vtk5/lib/python2.7/site-packages/vtk/ /usr/local/lib/python2.7/site-packages/vtk # there is a bug in the onstallation of vtk such that it can not be imported
 #brew install vtk --python
 pip install -U git+https://github.com/enthought/traitsgui
 pip install -U git+https://github.com/enthought/traitsbackendqt
@@ -70,7 +80,7 @@ pip install cython==0.13 #tables doesn't build with last upgrade
 pip install -U numexpr
 pip install -U tables
 
-# brew install wxpython
+# brew uninstall wxpython
 # pip install -U psychopy
 
 pip install -U psutil
