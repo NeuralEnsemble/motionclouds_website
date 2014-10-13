@@ -352,8 +352,8 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
     if do_axis:
         ax = mlab.axes(xlabel='x', ylabel='y', zlabel='t',
                        ranges=[0., N_X, 0., N_Y, 0., N_frame],
-                       x_axis_visibility=True, y_axis_visibility=True,
-                       z_axis_visibility=True)
+                       x_axis_visibility=False, y_axis_visibility=False,
+                       z_axis_visibility=False)
         ax.axes.set(font_factor=2.)
 
         if not(show_label): ax.axes.set(label_format='')
