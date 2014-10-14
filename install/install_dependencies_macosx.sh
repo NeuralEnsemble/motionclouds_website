@@ -22,10 +22,10 @@ brew update
 # Upgrade any already-installed formulae
 brew upgrade
 
-brew uninstall python pyqt pyside vtk
-brew uninstall wxpython
-mv /usr/local/lib/python2.7/site-packages /usr/local/lib/python2.7/site-packages-old 
-mv /usr/local/share/python /usr/local/share/python-old
+# brew uninstall python pyqt pyside vtk
+# brew uninstall wxpython
+# mv /usr/local/lib/python2.7/site-packages /usr/local/lib/python2.7/site-packages-old 
+# mv /usr/local/share/python /usr/local/share/python-old
 # install python through HomeBrew
 brew install python --framework --universal
 
