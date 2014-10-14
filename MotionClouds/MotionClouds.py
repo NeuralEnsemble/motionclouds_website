@@ -628,47 +628,36 @@ def figures(z=None, name='MC', vext=vext, do_movie=True, do_figs=True,
     if notebook:
         in_show_video(name)
 
-def in_show_video(name):
-    import os
-    from IPython.core.display import display, Image
-    if os.path.isfile(os.path.join(figpath, name + ext)):
-        display(Image(filename = os.path.join(figpath, name + ext)))
-    if os.path.isfile(os.path.join(figpath, name + '_cube' + ext)):
-        display(Image(filename = os.path.join(figpath, name + '_cube' + ext)))
-    from IPython.core.display import HTML
-    from base64 import b64encode
-    video = open(os.path.join(figpath, name + vext), "rb").read()
-    video_encoded = b64encode(video)
-    if vext=='.webm':
-        video_tag = '<video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/webm;base64,{0}">'.format(video_encoded)
-    else:
-        video_tag = '<video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
-    display(HTML(data=video_tag))
-
-
-
-
-def show_video2(name):
+def in_show_video(name, loop=True):
     import os
     from IPython.core.display import display, Image, HTML
     from base64 import b64encode
-    with open(os.path.join(figpath, name + ext), "r") as image_file:
-        im1 = 'data:image/png;base64,' + b64encode(image_file.read())
-    with open(os.path.join(figpath, name + '_cube' + ext), "r") as image_file:
-        im2 = 'data:image/png;base64,' + b64encode(image_file.read())
-    with open(os.path.join(figpath, name + vext), "r") as video_file:
-        im3 = 'data:video/webm;base64,' + b64encode(video_file.read())
+    try: #if MAYAVI[:2]=='Ok':
+        with open(os.path.join(figpath, name + ext), "r") as image_file:
+            im1 = 'data:image/png;base64,' + b64encode(image_file.read())
+        with open(os.path.join(figpath, name + '_cube' + ext), "r") as image_file:
+            im2 = 'data:image/png;base64,' + b64encode(image_file.read())
+        with open(os.path.join(figpath, name + vext), "r") as video_file:
+            im3 = 'data:video/webm;base64,' + b64encode(video_file.read())
+        s = """
+        <center><table border=none width=100%% height=100%%>
+        <tr>
+        <td width=33%%><center><img src="%s" width=100%%/></td>
+        <td rowspan=2  colspan=2><center><video src="%s" autoplay="autoplay" loop="loop" type="video/%s" width=100%%/></td>
+        </tr>
+        <tr>
+        <td><center><img src="%s" width=100%%/></td>
+        </tr>
+        </table></center>"""%(im1, im3, vext, im2)
+        t=HTML(s)
+        print name
+        display(t)
+    except: #else:
+        video = open(os.path.join(figpath, name + vext), "rb").read()
+        video_encoded = b64encode(video)
+        if vext=='.webm':
+            video_tag = '<video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/webm;base64,{0}">'.format(video_encoded)
+        else:
+            video_tag = '<video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
+        display(HTML(data=video_tag))
 
-    s = """
-    <center><table border=none width=100%% height=100%%>
-    <tr>
-    <td width=33%%><center><img src="%s" width=100%%/></td>
-    <td rowspan=2  colspan=2><center><video src="%s" autoplay="autoplay" loop="loop" type="video/webm" width=100%%/></td>
-    </tr>
-    <tr>
-    <td><center><img src="%s" width=100%%/></td>
-    </tr>
-    </table></center>"""%(im1, im3, im2)
-    t=HTML(s)
-    print name
-    display(t)
