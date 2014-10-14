@@ -352,8 +352,8 @@ def cube(im, azimuth=-45., elevation=130., roll=-180., name=None,
     if do_axis:
         ax = mlab.axes(xlabel='x', ylabel='y', zlabel='t',
                        ranges=[0., N_X, 0., N_Y, 0., N_frame],
-                       x_axis_visibility=True, y_axis_visibility=True,
-                       z_axis_visibility=True)
+                       x_axis_visibility=False, y_axis_visibility=False,
+                       z_axis_visibility=False)
         ax.axes.set(font_factor=2.)
 
         if not(show_label): ax.axes.set(label_format='')
@@ -644,3 +644,31 @@ def in_show_video(name):
     else:
         video_tag = '<video controls  autoplay="autoplay" loop="loop" width=50% src="data:video/x-m4v;base64,{0}">'.format(video_encoded)
     display(HTML(data=video_tag))
+
+
+
+
+def show_video2(name):
+    import os
+    from IPython.core.display import display, Image, HTML
+    from base64 import b64encode
+    with open(os.path.join(figpath, name + ext), "r") as image_file:
+        im1 = 'data:image/png;base64,' + b64encode(image_file.read())
+    with open(os.path.join(figpath, name + '_cube' + ext), "r") as image_file:
+        im2 = 'data:image/png;base64,' + b64encode(image_file.read())
+    with open(os.path.join(figpath, name + vext), "r") as video_file:
+        im3 = 'data:video/webm;base64,' + b64encode(video_file.read())
+
+    s = """
+    <center><table border=none width=100%% height=100%%>
+    <tr>
+    <td width=33%%><center><img src="%s" width=100%%/></td>
+    <td rowspan=2  colspan=2><center><video src="%s" autoplay="autoplay" loop="loop" type="video/webm" width=100%%/></td>
+    </tr>
+    <tr>
+    <td><center><img src="%s" width=100%%/></td>
+    </tr>
+    </table></center>"""%(im1, im3, im2)
+    t=HTML(s)
+    print name
+    display(t)
