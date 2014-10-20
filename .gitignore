@@ -1,5 +1,4 @@
-site/*
-posts/*
+site/output/*
 MANIFEST
 build
 dist
