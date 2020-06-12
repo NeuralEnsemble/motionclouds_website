@@ -9,7 +9,7 @@ This script generates all figures and supplemental movies related to the publica
         Title = {Motion Clouds: Model-based stimulus synthesis of natural-like random textures for the study of motion perception},
         Year = {2012},
         Journal = {Journal of Neurophysiology},
-        Url ={http://invibe.net/LaurentPerrinet/Publications/Sanz12},
+        Url ={https://laurentperrinet.github.io//Publications/Sanz12},
 }
 
 
@@ -141,7 +141,7 @@ if not(os.path.isfile('figure1.pdf')):
         import urllib
         print "Downloading data, Please Wait "
         opener = urllib.urlopen(
-                'http://invibe.net/LaurentPerrinet/MotionClouds?action=AttachFile&do=get&target=montypython.npy')
+                'https://laurentperrinet.github.io//MotionClouds?action=AttachFile&do=get&target=montypython.npy')
         open('results/montypython.npy', 'wb').write(opener.read())
 
     image = np.load('results/montypython.npy')[:, ::-1, N_first:(N_first+N_frame)]

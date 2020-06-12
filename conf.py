@@ -102,7 +102,7 @@ NAVIGATION_LINKS = {
 		('https://www.google.fr/cse/publicurl?cx=005955371941833639548:qupzal9fqky', 'Search', 'icon-search'),
 #        ('/rss.xml', 'RSS', 'icon-rss'),
 #        ('/portfolio/portfolio.slides.html', 'Portfolio', 'icon-briefcase'),
-        ('http://invibe.net', 'About my research', 'icon-user'),
+        ('https://laurentperrinet.github.io/', 'About my research', 'icon-user'),
         ('https://github.com/NeuralEnsemble/MotionClouds', 'My Github', 'icon-github'),
 #        ('https://plus.google.com/+LaurentPerrinet', 'My Google plus', 'icon-google-plus'),
     ),
@@ -458,8 +458,8 @@ src="http://i.creativecommons.org/l/by-nc-sa/2.5/ar/88x31.png"></a>"""
 
 # A small copyright notice for the page footer (in HTML).
 # (translatable)
-CONTENT_FOOTER = """Contents &copy; {date} <a href="mailto:{email}">{author}</a> - 
-Powered by <a href="http://getnikola.com">Nikola</a> - 
+CONTENT_FOOTER = """Contents &copy; {date} <a href="mailto:{email}">{author}</a> -
+Powered by <a href="http://getnikola.com">Nikola</a> -
 Zen theme based in <a href="https://github.com/arusahni/website-template">Arusahni's website-template</a><br>
 {license}"""
 
