@@ -1,5 +1,12 @@
+doc/.ipynb_checkpoints
+posts/results/
+posts/.ipynb_checkpoints
+.ipynb_checkpoints
 .doit.db
+cache*.pyc
+cache/*
 cache
+posts/.ipynb_checkpoints
 output/*
 lftpdeploy.sh
 site/output/*
@@ -10,3 +17,12 @@ dist
 .@__thumb
 *pyc
 *pyo
+bordel/*
+posts/test.ipynb
+posts/test.meta
+lftpdeploy.sh
+.doit.db
+*.pyc
+cache/*
+posts/.ipynb_checkpoints
+output/*
